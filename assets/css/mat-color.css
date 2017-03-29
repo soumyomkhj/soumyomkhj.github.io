@@ -2055,3 +2055,36 @@
 .transparent-text {
   color: transparent !important;
 }
+
+.red-orange,.orange-red{
+  background: #fd746c !important; /* fallback for old browsers */
+  background: -webkit-linear-gradient(-45deg, #fd746c , #ff9068) !important;
+  background: linear-gradient(-45deg, #fd746c , #ff9068) !important;
+}
+
+.red-pink , .pink-red{
+  background: #c9302c !important;
+  background: -webkit-linear-gradient(-45deg, #c9302c , #F15F79) !important;
+  background: linear-gradient(-45deg, #c9302c , #F15F79) !important;
+}
+.black-red , .red-black{
+  background: #8E0E00;
+  background: -webkit-linear-gradient(-45deg, #8E0E00 , #1F1C18);
+  background: linear-gradient(-45deg, #8E0E00 , #1F1C18);
+}
+.blue-green , .green-blue{
+  background: #00C9FF;
+background: -webkit-linear-gradient(-45deg, #00C9FF , #92FE9D);
+background: linear-gradient(-45deg, #00C9FF , #92FE9D);
+}
+.blue-pink , .pink-blue
+{
+  background: #fc00ff;
+  background: -webkit-linear-gradient(-45deg, #fc00ff , #00dbde);
+  background: linear-gradient(-45deg, #fc00ff , #00dbde);
+}
+.yellow-blue , .blue-yellow{
+  background: #F1F2B5;
+background: -webkit-linear-gradient(-45deg, #F1F2B5 , #135058);
+background: linear-gradient(-45deg, #F1F2B5 , #135058);
+}
