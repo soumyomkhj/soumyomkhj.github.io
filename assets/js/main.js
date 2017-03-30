@@ -163,7 +163,7 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 
 $(document).ready(function () {
 
-
+  var mode = "hover";
 	var button = '#slidx_button'; //Elemento en el que pulsamos para abrir y cerrar el menú.
 	var menu = '#slidx_menu'; //Elemento que contiene el menú responsive.
 	var side = 'left' //Indica de que lado está el menú ('right' o 'left')
@@ -292,7 +292,7 @@ $(document).ready(function () {
 			$(slidxShadowID).remove();
 		}, speedM);
 	};
-	if(isMobile == true)
+	if(isMobile == true || mode=="click")
 	{
 		$(button).click(function () {
 			event.preventDefault();
@@ -309,7 +309,7 @@ $(document).ready(function () {
 		close(normalTime);
 	});
 	}
-	else
+	else if (mode!="click")
 	{
 		$(button).mouseover(function () {
 			if (!$(menu).hasClass(slidxOpen)) {

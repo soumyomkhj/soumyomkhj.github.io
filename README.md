@@ -24,6 +24,15 @@ Material Design CSS
 
 
 =========================================
+                Sidebar
+      .sidebar
+      menu id="slidx_menu"
+      button id="slidx_button"
+      mode "hover"
+            Change the main.js for click
+            click is automatically enabled for mobile
+
+=========================================
               Color Styles
     .pink
     .red
@@ -67,6 +76,6 @@ Material Design CSS
       .blue-green , .green-blue
       .blue-pink , .pink-blue
       .yellow-blue , .blue-yellow
-      gradients added from 
+      gradients added from
 
     more of pure beauty will be added just wait
