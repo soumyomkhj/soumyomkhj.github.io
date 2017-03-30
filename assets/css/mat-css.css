@@ -150,6 +150,17 @@ blockquote,.quote,.blockquote
   font-size: 100px !important;
   font-weight: 200;
 }
+.light-text,.description
+{
+  opacity: 50% !important;
+  font-size: 12px !important;
+}
+.top-menu-description
+{
+  right: 20px !important;
+  bottom: 20px !important;
+  position: absolute !important;
+}
 
 /*text styles ends */
 
@@ -291,6 +302,13 @@ blockquote,.quote,.blockquote
   text-decoration: none;
 	padding: 10px;
   font-size: 50px;
+  font-weight: 300;
+}
+#slidup_button
+{
+  text-align: center !important;
+  z-index: 150;
+  cursor: pointer;
 }
 
 /*footer*/
