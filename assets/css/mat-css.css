@@ -87,7 +87,15 @@ body>div
 	 -moz-box-sizing: border-box;
 		  box-sizing: border-box;
 }
-
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
 
 /*text styles*/
 
@@ -150,18 +158,16 @@ blockquote,.quote,.blockquote
   font-size: 100px !important;
   font-weight: 200;
 }
-.light-text,.description
+.light-text-light
 {
-  opacity: 50% !important;
-  font-size: 12px !important;
+  font-size: 18px !important;
+  color: rgba(255,255,255,.47) !important;
 }
-.top-menu-description
+.light-text-dark
 {
-  right: 20px !important;
-  bottom: 20px !important;
-  position: absolute !important;
+  font-size: 18px !important;
+  color: rgba(0,0,0,.47) !important;
 }
-
 /*text styles ends */
 
 
@@ -198,7 +204,14 @@ blockquote,.quote,.blockquote
 .hidden{display:none;}
 .inline-block{display:inline-block;}
 
-
+.absolute
+{
+  position: absolute !important;
+}
+.fixed
+{
+  position: fixed !important;
+}
 /*nav bar*/
 
 .mt-nav
@@ -289,6 +302,8 @@ blockquote,.quote,.blockquote
 }
 .top-menu
 {
+  padding: 0px !important;
+  margin: 0px !important;
 	height: 100% !important;
   width: 100%;
   overflow: hidden !important;

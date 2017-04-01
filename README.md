@@ -13,6 +13,11 @@ Material Design CSS
     .align-left
     .align-right
     .align-center
+    .fixed
+    .absolute
+    .light-text-light
+    .light-text-dark
+    .huge
 
 =========================================
             Navigation bar Styles
