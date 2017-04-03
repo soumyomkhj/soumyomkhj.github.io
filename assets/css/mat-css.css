@@ -285,6 +285,7 @@ blockquote,.quote,.blockquote
 {
 	text-decoration: none;
 	width: 300px;
+  left: -300px;
 	height: 100%;
 	top: 0;
 	overflow: hidden;
@@ -306,6 +307,7 @@ blockquote,.quote,.blockquote
   margin: 0px !important;
 	height: 100% !important;
   width: 100%;
+  top: -100%;
   overflow: hidden !important;
   font-size: 25px;
   text-align: center;
@@ -475,6 +477,18 @@ footer,.footer
 	-o-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
 }
+
+input {
+  margin-bottom: 20px;
+	padding:19px;
+	z-index: 5;
+  border: 2px;
+  border-color: black;
+  background: transparent;
+  border-bottom: 1px;
+  font-family: "Roboto";
+}
+
 
 /*ripple effect*/
 .wave,.wave-dark

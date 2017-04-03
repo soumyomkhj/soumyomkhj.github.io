@@ -390,11 +390,6 @@ $(document).ready(function () {
 	};
 
 	function close(delayTime) {
-		if (side == 'right') {
-			$(menu).animate({
-				top: '-100%',
-			}, delayTime)
-		}
 
 		if (side !== 'right') {
 			$(menu).animate({
