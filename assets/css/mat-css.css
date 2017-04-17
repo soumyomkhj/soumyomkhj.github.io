@@ -422,9 +422,11 @@ footer,.footer
 
 .btn,.btn-dark {
 	display: inline-block;
+  padding: 10px;
 	padding-left: 30px;
 	padding-right: 30px;
 	min-width: 100px;
+  overflow: hidden;
 	margin-bottom: 0;
 	font-size: 18px;
 	font-weight: normal;
@@ -438,7 +440,7 @@ footer,.footer
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	user-select: none;
+  user-select: none;
 	background-image: none;
 	border: 1px solid transparent;
 	border-radius: 3px;
@@ -494,6 +496,7 @@ input {
 .wave,.wave-dark
 {
 	cursor: pointer;
+  overflow: hidden !important;
 }
 
 .ripple {

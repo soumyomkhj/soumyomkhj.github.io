@@ -14,7 +14,6 @@ $(".wave").click(function (e) {
   $(this).prepend("<span class='ripple'></span>");
 
 
- // Make it round!
   if(buttonWidth >= buttonHeight) {
 	buttonHeight = buttonWidth;
   } else {
