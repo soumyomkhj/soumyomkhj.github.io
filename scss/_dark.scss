@@ -1,0 +1,9 @@
+
+.invert {
+    filter: invert(1) hue-rotate(180deg)
+  }
+
+img{
+    transition: filter 0.5s $easing;
+}
+

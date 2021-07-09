@@ -1,0 +1,62 @@
+.f-item{
+    z-index: 88;
+    display: flex;
+    align-items:center;
+    position: fixed;
+    padding: 20px;
+    color: $background-color;
+    filter: invert(1) hue-rotate(180deg);
+    mix-blend-mode: difference;
+    > div{
+        margin: 10px;
+    }
+}
+
+
+.left{
+    left: 0px; 
+}
+.right{
+    right:0px;
+}
+.top{
+    top:0px;
+}
+.bottom{
+    bottom: 0px;
+}
+
+#dark{
+    width: 25px;
+    cursor: pointer;
+    height: 25px;
+    border-radius: 100px;
+    box-shadow: inset 5px -5px 0 1px  $background-color;
+    mix-blend-mode: difference;
+    transition: all 0.5s $easing;
+    &:hover{
+        box-shadow: inset 20px -20px 0 2px  $background-color;
+    }
+}
+.darkicon{
+    box-shadow: inset 20px -20px 0 2px  $background-color !important;
+    &:hover{
+        box-shadow: inset 5px -5px 0 1px  $background-color !important;
+    }
+}
+
+li{
+    list-style-type: none;
+    width: 40px;
+}
+
+.social{
+    color: $background-color;
+    filter: invert(1) hue-rotate(180deg);
+    mix-blend-mode: difference;
+    opacity: 1;
+    transition: opacity 0.5s $easing;
+    &:hover{
+        opacity: .5;
+    }
+}

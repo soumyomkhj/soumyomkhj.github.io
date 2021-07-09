@@ -1,0 +1,65 @@
+$background-color: rgb(18, 40, 46);
+$easing: cubic-bezier(.3,0,0,1);
+
+@import "normalize";
+@import "navbar";
+@import "dark";
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&&family=Roboto:wght@400;600&display=swap');
+
+
+html{
+    background-color: $background-color;
+    transition: filter 0.5s $easing;
+    margin: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    font-weight: 400;
+}
+
+a:hover{
+    font-weight: 600;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Krona One', sans-serif;
+    color: $background-color;
+    filter: invert(1) hue-rotate(180deg);
+    mix-blend-mode: difference;
+}
+
+
+a,p{
+    font-family: 'Roboto', sans-serif;
+    color: $background-color;
+    filter: invert(1) hue-rotate(180deg);
+    mix-blend-mode: difference;
+}
+
+.container{
+    height: 100vh;
+    overflow: scroll;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+}
