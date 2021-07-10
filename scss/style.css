@@ -417,6 +417,10 @@ th {
   margin: 10px;
 }
 
+.item {
+  font-family: "Krona One", sans-serif;
+}
+
 .left {
   left: 0px;
 }
@@ -450,6 +454,11 @@ th {
           box-shadow: inset 20px -20px 0 2px #12282e;
 }
 
+#dark:hover ~ .follower {
+  width: 100px;
+  height: 100px;
+}
+
 .darkicon {
   -webkit-box-shadow: inset 20px -20px 0 2px #12282e !important;
           box-shadow: inset 20px -20px 0 2px #12282e !important;
@@ -479,7 +488,7 @@ li {
   opacity: .5;
 }
 
-.invert {
+.invert, .follower {
   -webkit-filter: invert(1) hue-rotate(180deg);
           filter: invert(1) hue-rotate(180deg);
 }
@@ -507,7 +516,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   width: 100vw;
   height: 100vh;
@@ -519,7 +528,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Krona One', sans-serif;
+  font-family: "Krona One", sans-serif;
   color: #12282e;
   -webkit-filter: invert(1) hue-rotate(180deg);
           filter: invert(1) hue-rotate(180deg);
@@ -534,6 +543,21 @@ a, p {
   mix-blend-mode: difference;
 }
 
+.follower {
+  opacity: 30%;
+  width: 20px;
+  height: 20px;
+  background-color: #12282e;
+  border-radius: 1000px;
+  -webkit-transition-duration: 200ms;
+          transition-duration: 200ms;
+  -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+  position: fixed;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .container {
   height: 100vh;
   overflow: scroll;
@@ -543,10 +567,10 @@ a, p {
       scroll-snap-type: y mandatory;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.3, 0, 0, 1);
-  transition: -webkit-transform 0.2s cubic-bezier(0.3, 0, 0, 1);
-  transition: transform 0.2s cubic-bezier(0.3, 0, 0, 1);
-  transition: transform 0.2s cubic-bezier(0.3, 0, 0, 1), -webkit-transform 0.2s cubic-bezier(0.3, 0, 0, 1);
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
 }
 
 .container::-webkit-scrollbar {
@@ -566,6 +590,14 @@ section {
   height: 100vh;
   scroll-snap-align: start;
   position: relative;
+}
+
+.h1 {
+  -webkit-text-stroke: 1px #12282e;
+  color: transparent;
+  text-shadow: 0px 0px 0px #12282e;
+  -webkit-transition: text-shadow .3s ease;
+  transition: text-shadow .3s ease;
 }
 
 .hero {

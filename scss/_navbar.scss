@@ -12,6 +12,9 @@
     }
 }
 
+.item{
+    font-family: $headerFont;
+}
 
 .left{
     left: 0px; 
@@ -36,6 +39,10 @@
     transition: all 0.5s $easing;
     &:hover{
         box-shadow: inset 20px -20px 0 2px  $background-color;
+    }
+    &:hover ~ .follower{
+        width: 100px;
+        height: 100px;
     }
 }
 .darkicon{

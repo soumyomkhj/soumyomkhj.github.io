@@ -2,6 +2,8 @@ $alert-color: rgb(18, 40, 46);
 $primary-color: rgb(18, 40, 46);
 $background-color: rgb(18, 40, 46);
 $easing: cubic-bezier(.3,0,0,1);
+$headerFont: 'Krona One', sans-serif;
+$bodyFont: 'Roboto', sans-serif;
 
 @import "normalize";
 @import "navbar";
@@ -20,7 +22,7 @@ html{
     }
 }
 body{
-    font-family: 'Roboto', sans-serif;
+    font-family: $bodyFont;
     margin: 0;
     width: 100vw;
     height: 100vh;
@@ -32,7 +34,7 @@ a:hover{
 }
 
 h1,h2,h3,h4,h5,h6{
-    font-family: 'Krona One', sans-serif;
+    font-family: $headerFont;
     color: $background-color;
     filter: invert(1) hue-rotate(180deg);
     mix-blend-mode: difference;
@@ -46,6 +48,19 @@ a,p{
     mix-blend-mode: difference;
 }
 
+.follower {
+    @extend .invert;
+    opacity: 30%;
+    width: 20px;
+    height: 20px;
+    background-color: $background-color;
+    border-radius: 1000px;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    position: fixed;
+    transform: translate(-50%, -50%);
+}
+
 .container{
     height: 100vh;
     overflow: scroll;
@@ -53,7 +68,7 @@ a,p{
     scroll-snap-type: y mandatory;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    transition: transform .2s $easing;
+    transition: transform .3s ease;
     &::-webkit-scrollbar {
         display: none;
     }
@@ -65,6 +80,13 @@ section{
     height: 100vh;
     scroll-snap-align: start;
     position: relative;
+}
+
+.h1{
+    -webkit-text-stroke: 1px $background-color;
+    color: transparent;
+    text-shadow: 0px 0px 0px $background-color;
+    transition: text-shadow .3s ease;
 }
 
 .hero{
