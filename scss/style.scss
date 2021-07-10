@@ -1,3 +1,5 @@
+$alert-color: rgb(18, 40, 46);
+$primary-color: rgb(18, 40, 46);
 $background-color: rgb(18, 40, 46);
 $easing: cubic-bezier(.3,0,0,1);
 
@@ -51,6 +53,7 @@ a,p{
     scroll-snap-type: y mandatory;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    transition: transform .2s $easing;
     &::-webkit-scrollbar {
         display: none;
     }
@@ -62,4 +65,9 @@ section{
     height: 100vh;
     scroll-snap-align: start;
     position: relative;
+}
+
+.hero{
+    text-align: center;
+    font-size: 2rem;
 }

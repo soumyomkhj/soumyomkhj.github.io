@@ -543,6 +543,10 @@ a, p {
       scroll-snap-type: y mandatory;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.3, 0, 0, 1);
+  transition: -webkit-transform 0.2s cubic-bezier(0.3, 0, 0, 1);
+  transition: transform 0.2s cubic-bezier(0.3, 0, 0, 1);
+  transition: transform 0.2s cubic-bezier(0.3, 0, 0, 1), -webkit-transform 0.2s cubic-bezier(0.3, 0, 0, 1);
 }
 
 .container::-webkit-scrollbar {
@@ -562,5 +566,10 @@ section {
   height: 100vh;
   scroll-snap-align: start;
   position: relative;
+}
+
+.hero {
+  text-align: center;
+  font-size: 2rem;
 }
 /*# sourceMappingURL=style.css.map */
