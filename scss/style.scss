@@ -74,7 +74,7 @@ a,p{
     scroll-snap-points-y: repeat(100vh);
     scroll-snap-type: y mandatory;
     -ms-overflow-style: none;
-    scrollbar-width: none;
+    // scrollbar-width: none;
     transition: transform .3s ease;
     &::-webkit-scrollbar {
         display: none;

@@ -10,6 +10,7 @@ $( "#dark" ).click(function() {
   });
 });
 
+// mouse hover Animation
 $(".hover").hover(function () {
     // over
     $(".follower").css({
@@ -39,12 +40,15 @@ $(document).on('mousemove', (event) => {
 
 
 // Scroll animation
-var topScr = $(this).scrollTop();
+idleTimer=100;
+topScr = $(this).scrollTop();
+timeout = 0;
 $(".container").scroll(function () { 
-  var curScr = $(this).scrollTop();
-  var diff= topScr-curScr;
+  clearTimeout(timeout);
+  curScr = $(this).scrollTop();
+  diff= topScr-curScr;
   topScr=curScr;
-  var max=25;
+  max=25;
   if (diff>max) {
     diff=max;
   }
@@ -54,10 +58,16 @@ $(".container").scroll(function () {
   if (diff==1||diff==-1) {
     diff=0;
   }
-  //console.log(diff);
+  // console.log(diff);
   $(".container").css('transform', 'skewY(' + diff + 'deg)');
   diff=diff*.1;
   $(".h1").css({
     "text-shadow": "0px "+diff+"em 0px rgb(18, 40, 46)",
   });
+  timeout=setTimeout(function(){
+    $(".container").css('transform', 'skewY(0deg)');
+    $(".h1").css({
+      "text-shadow": "0px "+"0em 0px rgb(18, 40, 46)",
+    });
+  },idleTimer);
 });

@@ -572,7 +572,6 @@ a, p {
   -ms-scroll-snap-type: y mandatory;
       scroll-snap-type: y mandatory;
   -ms-overflow-style: none;
-  scrollbar-width: none;
   -webkit-transition: -webkit-transform .3s ease;
   transition: -webkit-transform .3s ease;
   transition: transform .3s ease;
