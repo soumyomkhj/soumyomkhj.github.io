@@ -36,6 +36,10 @@ $(document).on('mousemove', (event) => {
     left: event.clientX,
     top: event.clientY,
   });
+  $('.follower_border').css({
+    left: event.clientX,
+    top: event.clientY,
+  });
 });
 
 
@@ -49,15 +53,9 @@ $(".container").scroll(function () {
   diff= topScr-curScr;
   topScr=curScr;
   max=25;
-  if (diff>max) {
-    diff=max;
-  }
-  if (diff<-max) {
-    diff=-max;
-  }
-  if (diff==1||diff==-1) {
-    diff=0;
-  }
+  if (diff>max) {diff=max;}
+  if (diff<-max) {diff=-max;}
+  // $(".barmarker").css('top', 200*curScr/totH+'px');
   // console.log(diff);
   $(".container").css('transform', 'skewY(' + diff + 'deg)');
   diff=diff*.1;
@@ -70,4 +68,30 @@ $(".container").scroll(function () {
       "text-shadow": "0px "+"0em 0px rgb(18, 40, 46)",
     });
   },idleTimer);
+});
+
+sect_c = $('section').length;
+// console.log(sect_c);
+totH=$(".container").height();
+for (let i = 0; i < sect_c; i++) {
+  $('.sidebar').append('<div class="sidebar_child"></div>');
+}
+$('.sidebar_child').css('height', (20/sect_c)+'vh');
+n=0;
+$(".sidebar_child").eq(n).addClass("bufferd_bar");
+$(".container").scroll(function(){
+  curScr = $(this).scrollTop();
+  n= Math.round(curScr/totH);
+  // console.log(n);
+  $(".sidebar_child").eq(n).addClass("bufferd_bar");
+  for (let index = 0; index < sect_c; index++) {
+    if (index!=n) {
+      $(".sidebar_child").eq(index).removeClass("bufferd_bar"); 
+    }
+  }
+});
+
+$(".sidebar_child").click(function() {
+  var target = $("section").eq($(this).index(".sidebar_child"));
+  $(".container").scrollTo(target, 800, {easing:'swing'});
 });

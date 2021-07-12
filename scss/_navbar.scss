@@ -52,12 +52,13 @@
     }
 }
 
-li{
+li.social{
     list-style-type: none;
-    width: 40px;
 }
 
 .social{
+    width: 30px;
+    margin-bottom: -7px;
     color: $background-color;
     filter: invert(1) hue-rotate(180deg);
     mix-blend-mode: difference;

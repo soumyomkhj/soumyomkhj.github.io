@@ -10,9 +10,46 @@ $bodyFont: 'Roboto', sans-serif;
 @import "dark";
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&&family=Roboto:wght@400;600&display=swap');
 
+@keyframes text-clip {
+    0% {
+        clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+      }
+    99% {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 -500%, 100% -500%, 100% 500%, 0 400%);
+      }
+  }
+
+  @keyframes bg-animation {
+    0% { background-position: 0,0 }
+    10% { background-position: -5% -5% }
+    20% { background-position: -10% 5% }
+    30% { background-position: 5% -10% }
+    40% { background-position: -5% 15% }
+    50% { background-position: -10% 5% }
+    60% { background-position: 15% 0 }
+    70% { background-position: 0 10% }
+    80% { background-position: -15% 0 }
+    90% { background-position: 10% 5% }
+    100% { background-position: 5% 0 }
+}  
+
+@keyframes fullrotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+  }
+
 
 html{
-    background-color: $background-color;
+    background: $background-color url('../img/noise-transparent.png') repeat 0 0;
+    animation: bg-animation .2s infinite;
+    visibility: visible;
     transition: filter 0.5s $easing;
     margin: 0;
     -ms-overflow-style: none;
@@ -20,7 +57,8 @@ html{
     &::-webkit-scrollbar {
         display: none;
     }
-}
+} 
+
 body{
     font-family: $bodyFont;
     margin: 0;
@@ -48,6 +86,9 @@ a,p{
     mix-blend-mode: difference;
 }
 
+.hidden{
+    display: none;
+}
 
 @media screen and (max-width: 1080px) {
     .follower{
@@ -62,8 +103,18 @@ a,p{
     height: 20px;
     background-color: $background-color;
     border-radius: 1000px;
-    transition-duration: 200ms;
-    transition-timing-function: ease-out;
+    transition:all 200ms ease-out;
+    position: fixed;
+    transform: translate(-50%, -50%);
+}
+.follower_border{
+    @extend .invert;
+    opacity: 30%;
+    width: 50px;
+    height: 50px;
+    border: 1px solid $background-color;
+    border-radius: 1000px;
+    transition:all 300ms ease-out;
     position: fixed;
     transform: translate(-50%, -50%);
 }
@@ -71,8 +122,6 @@ a,p{
 .container{
     height: 100vh;
     overflow: scroll;
-    scroll-snap-points-y: repeat(100vh);
-    scroll-snap-type: y mandatory;
     -ms-overflow-style: none;
     // scrollbar-width: none;
     transition: transform .3s ease;
@@ -96,7 +145,64 @@ section{
     transition: text-shadow .3s ease;
 }
 
+.text-clip{
+    animation: text-clip 2s 200ms $easing both;
+}
+
+
 .hero{
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    svg{
+        position: absolute;
+        width: 200px;
+        left: 54vw;
+        bottom: 40vh;
+        opacity: 10%;
+        animation: fullrotate 20000ms linear infinite;
+    }
+}
+
+
+.cls-1,.cls-2{
+    @extend .invert;
+    fill: $background-color;
+}
+
+.sidebar{
+    position: fixed;
+    right: 0px;
+    z-index: 5;
+    transform: translate(0,-60%);
+    margin: 20px;
+    top: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    >.sidebar_child{
+        @extend .invert;
+        width: 1px;
+        margin-top: 5px;
+        transition: width 500ms $easing;
+        background-color: $background-color;
+        &::after{
+            content: ' ';
+            position: absolute;
+            transform: translate(-50%,0);
+            width: 30px;
+            height: inherit;
+        }
+        &:hover{
+            width: 6px;
+            // outline: 2px solid $background-color;
+        }
+    }
+}
+
+.bufferd_bar{
+    width: 8px !important;
+    &:hover{
+        width: 12px !important;
+    }
 }
