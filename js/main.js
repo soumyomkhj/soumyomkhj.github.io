@@ -53,12 +53,13 @@ $(".container").scroll(function () {
   diff= topScr-curScr;
   topScr=curScr;
   max=25;
+  diff=diff*.5;
   if (diff>max) {diff=max;}
   if (diff<-max) {diff=-max;}
   // $(".barmarker").css('top', 200*curScr/totH+'px');
   // console.log(diff);
   $(".container").css('transform', 'skewY(' + diff + 'deg)');
-  diff=diff*.1;
+  diff=diff*.2;
   $(".h1").css({
     "text-shadow": "0px "+diff+"em 0px rgb(18, 40, 46)",
   });
