@@ -8,6 +8,8 @@ $bodyFont: 'Roboto', sans-serif;
 @import "normalize";
 @import "navbar";
 @import "dark";
+@import "card";
+@import "icons";
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&&family=Roboto:wght@400;600&display=swap');
 
 @keyframes text-clip {
@@ -45,6 +47,41 @@ $bodyFont: 'Roboto', sans-serif;
     }
   }
 
+  @keyframes grow {
+    from {transform: scale(0,0); opacity: 0;}
+    to {transform: scale(1,1); opacity: 1;}
+  }
+  
+  @keyframes move {
+    from {transform: translateX(0px)}
+    to {transform: translateX(45px)}
+  }
+
+@media screen and (max-width: 1080px) {
+    .follower{
+        display: none
+    }
+    .follower_border{
+        display: none
+    }
+    .disclaimer{
+        opacity: 70% !important;
+    }
+    .hero>img{
+        position: absolute !important;
+        width: 60vh !important;
+        left: auto !important;
+        bottom: auto !important;
+    }
+    section {
+        flex-direction: column !important;
+        align-items: unset !important;
+    }
+    .eduarrow{
+        margin-left: 15vmax;
+        transform: rotate(90deg);
+    }
+}
 
 html{
     background: $background-color url('../img/noise-transparent.png') repeat 0 0;
@@ -108,52 +145,31 @@ a,p{
     background-color: #fff;
     animation: move 500ms linear 0ms infinite;
     margin-right: 30px;
-    
+
     &:first-child{
-      position: absolute;
-      top:0;
-      left:0;
-      animation: grow 500ms linear 0ms infinite;
+        position: absolute;
+        top:0;
+        left:0;
+        animation: grow 500ms linear 0ms infinite;
     }
-    
+
     &:last-child{
-      position: absolute;
-      top: 0;
-      right: 0;
-      margin-right: 0;
-      animation: grow 500ms linear 0s infinite reverse;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-right: 0;
+        animation: grow 500ms linear 0s infinite reverse;
     }
-  }
-  .circle-container{
+    }
+    .circle-container{
     height: 15px;
     width: 105px;
     display: flex;
     position: relative;
 
-  }
-  
-  @keyframes grow {
-    from {transform: scale(0,0); opacity: 0;}
-    to {transform: scale(1,1); opacity: 1;}
-  }
-  
-  @keyframes move {
-    from {transform: translateX(0px)}
-    to {transform: translateX(45px)}
-  }
-
-@media screen and (max-width: 1080px) {
-    .follower{
-        display: none
-    }
-    .follower_border{
-        display: none
-    }
-    .disclaimer{
-        opacity: 70% !important;
-        // color: red
-    }
 }
+  
+
 
 .follower {
     @extend .invert;
@@ -181,7 +197,6 @@ a,p{
 .container{
     height: 100vh;
     overflow: scroll;
-    -ms-overflow-style: none;
     // scrollbar-width: none;
     transition: transform .3s ease;
     &::-webkit-scrollbar {
@@ -193,9 +208,12 @@ section{
     align-items: center;
     justify-content: center;
     height: 100vh;
+    width: 100vw;
+    flex-direction: row;
     scroll-snap-align: start;
     position: relative;
 }
+
 
 .h1{
     -webkit-text-stroke: 1px $background-color;
@@ -215,7 +233,7 @@ section{
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    font-size: calc(1vw + 1rem);
+    font-size: calc(2vw + .6rem);
     &> p{
         margin: 0;
         font-size: 1.5rem;
@@ -223,11 +241,11 @@ section{
     &> h1{
         margin: 0;
     }
-    img{
+    &>img{
         position: absolute;
         width: 200px;
-        left: 54vw;
-        bottom: 40vh;
+        left: 58vw;
+        bottom: 38%;
         opacity: 10%;
         animation: fullrotate 20000ms linear infinite;
     }
@@ -289,7 +307,7 @@ section{
     position: absolute;
     font-size: 1rem;
     bottom: 0px;
-    margin-bottom: 20vh;
+    margin-bottom: 13vh;
     &>.disclaimer{
         opacity: 0%;
     }

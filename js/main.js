@@ -3,6 +3,7 @@ $(window).on('load', function() {
   $('#status').fadeOut();
   $('#preloader').delay(400).fadeOut('slow');
   $('.hero-anim').addClass("text-clip");
+  $('.disclaimer').delay(5000).fadeOut('slow');
 })
 
 // dark mode
@@ -39,6 +40,9 @@ $( ".hover" )
 
 // cursor
 $(document).on('mousemove', (event) => {
+  $('img').css({
+    transform: 'transform: rotate3d(1, 1, 1, 45deg);',
+  });
   $('.follower').css({
     left: event.clientX,
     top: event.clientY,
