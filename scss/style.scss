@@ -18,7 +18,7 @@ $bodyFont: 'Roboto', sans-serif;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
     100% {
-        clip-path: polygon(0 -500%, 100% -500%, 100% 500%, 0 400%);
+        clip-path: polygon(0 -700%, 100% -700%, 100% 700%, 0 700%);
       }
   }
 
@@ -90,9 +90,68 @@ a,p{
     display: none;
 }
 
+#preloader{
+    @extend .invert;
+    z-index: 100;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-color;
+}
+.circle{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #fff;
+    animation: move 500ms linear 0ms infinite;
+    margin-right: 30px;
+    
+    &:first-child{
+      position: absolute;
+      top:0;
+      left:0;
+      animation: grow 500ms linear 0ms infinite;
+    }
+    
+    &:last-child{
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-right: 0;
+      animation: grow 500ms linear 0s infinite reverse;
+    }
+  }
+  .circle-container{
+    height: 15px;
+    width: 105px;
+    display: flex;
+    position: relative;
+
+  }
+  
+  @keyframes grow {
+    from {transform: scale(0,0); opacity: 0;}
+    to {transform: scale(1,1); opacity: 1;}
+  }
+  
+  @keyframes move {
+    from {transform: translateX(0px)}
+    to {transform: translateX(45px)}
+  }
+
 @media screen and (max-width: 1080px) {
     .follower{
         display: none
+    }
+    .follower_border{
+        display: none
+    }
+    .disclaimer{
+        opacity: 70% !important;
+        // color: red
     }
 }
 
@@ -146,14 +205,25 @@ section{
 }
 
 .text-clip{
-    animation: text-clip 2s 200ms $easing both;
+    animation: text-clip 2s 700ms $easing both;
 }
 
 
 .hero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    font-size: 1.5rem;
-    svg{
+    flex-direction: column;
+    font-size: calc(1vw + 1rem);
+    &> p{
+        margin: 0;
+        font-size: 1.5rem;
+    }
+    &> h1{
+        margin: 0;
+    }
+    img{
         position: absolute;
         width: 200px;
         left: 54vw;
@@ -172,7 +242,7 @@ section{
 .sidebar{
     position: fixed;
     right: 0px;
-    z-index: 5;
+    cursor: pointer;
     transform: translate(0,-60%);
     margin: 20px;
     top: 50vh;
@@ -204,5 +274,23 @@ section{
     width: 8px !important;
     &:hover{
         width: 12px !important;
+    }
+}
+
+.sidebar-container{
+    display: flex;
+    width: 40px;
+}
+
+.section-footer{
+    text-align: center;
+    @extend .invert;
+    color: $primary-color;
+    position: absolute;
+    font-size: 1rem;
+    bottom: 0px;
+    margin-bottom: 20vh;
+    &>.disclaimer{
+        opacity: 0%;
     }
 }

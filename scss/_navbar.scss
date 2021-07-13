@@ -44,6 +44,13 @@
         width: 100px;
         height: 100px;
     }
+    &::after{
+        content: ' ';
+        width: 70px;
+        height: 70px;
+        display: block;
+        transform: translate(-30%,-30%);
+    }
 }
 .darkicon{
     box-shadow: inset 20px -20px 0 2px  $background-color !important;

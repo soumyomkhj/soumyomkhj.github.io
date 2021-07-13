@@ -1,3 +1,10 @@
+//preloader
+$(window).on('load', function() {
+  $('#status').fadeOut();
+  $('#preloader').delay(400).fadeOut('slow');
+  $('.hero-anim').addClass("text-clip");
+})
+
 // dark mode
 $( "#dark" ).click(function() {
   $("html").toggleClass("invert");
@@ -71,6 +78,9 @@ $(".container").scroll(function () {
   },idleTimer);
 });
 
+
+
+//sidebar
 sect_c = $('section').length;
 // console.log(sect_c);
 totH=$(".container").height();
