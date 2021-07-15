@@ -979,16 +979,16 @@ img {
 
 @-webkit-keyframes gyan {
   0% {
-    content: "did you know? blah blah blah blah blah blah?";
+    content: "Making black more darker...";
   }
   15% {
-    content: "did you knowwwww? blah blah blah blah blah blah?";
+    content: "Adding some more pop to the design!";
   }
   30% {
-    content: "did you know? blah blah blah blah blah blah?";
+    content: "Making logo bigger";
   }
   45% {
-    content: "did you knowwwwwww? blah blah blah blah blah blah?";
+    content: "Reverting back changes cause first one was better";
   }
   60% {
     content: "did you know? blah blah blah blah blah blah?";
@@ -1006,16 +1006,16 @@ img {
 
 @keyframes gyan {
   0% {
-    content: "did you know? blah blah blah blah blah blah?";
+    content: "Making black more darker...";
   }
   15% {
-    content: "did you knowwwww? blah blah blah blah blah blah?";
+    content: "Adding some more pop to the design!";
   }
   30% {
-    content: "did you know? blah blah blah blah blah blah?";
+    content: "Making logo bigger";
   }
   45% {
-    content: "did you knowwwwwww? blah blah blah blah blah blah?";
+    content: "Reverting back changes cause first one was better";
   }
   60% {
     content: "did you know? blah blah blah blah blah blah?";
