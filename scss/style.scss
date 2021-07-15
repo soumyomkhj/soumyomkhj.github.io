@@ -10,6 +10,7 @@ $bodyFont: 'Roboto', sans-serif;
 @import "dark";
 @import "card";
 @import "icons";
+@import "project";
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&&family=Roboto:wght@400;600&display=swap');
 
 @keyframes text-clip {
@@ -52,20 +53,32 @@ $bodyFont: 'Roboto', sans-serif;
     to {transform: scale(1,1); opacity: 1;}
   }
   
-  @keyframes move {
+  @keyframes movex {
     from {transform: translateX(0px)}
     to {transform: translateX(45px)}
   }
 
+  @keyframes scroll-ani {
+    0% {
+        transform: rotateX(-60deg) scale(.5,.5) translateY(0px);
+        opacity: 0%;
+    }
+    70% {
+        transform: rotateX(0) scale(1,1) translateY(20px);
+        opacity: 50%;
+    }
+    100% {
+        transform: rotateX(60deg) scale(.5,.5) translateY(100px);
+        opacity: 0%;
+    }
+  }
+
 @media screen and (max-width: 1080px) {
     .follower{
-        display: none
+        display: none !important
     }
     .follower_border{
         display: none
-    }
-    .disclaimer{
-        opacity: 70% !important;
     }
     .hero>img{
         position: absolute !important;
@@ -76,10 +89,6 @@ $bodyFont: 'Roboto', sans-serif;
     section {
         flex-direction: column !important;
         align-items: unset !important;
-    }
-    .eduarrow{
-        margin-left: 15vmax;
-        transform: rotate(90deg);
     }
 }
 
@@ -143,7 +152,7 @@ a,p{
     height: 15px;
     border-radius: 50%;
     background-color: #fff;
-    animation: move 500ms linear 0ms infinite;
+    animation: movex 500ms linear 0ms infinite;
     margin-right: 30px;
 
     &:first-child{
@@ -175,7 +184,13 @@ a,p{
     @extend .invert;
     opacity: 30%;
     width: 20px;
+    z-index: 100;
+    pointer-events:none; 
     height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $background-color;
     background-color: $background-color;
     border-radius: 1000px;
     transition:all 200ms ease-out;
@@ -196,7 +211,8 @@ a,p{
 
 .container{
     height: 100vh;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     // scrollbar-width: none;
     transition: transform .3s ease;
     &::-webkit-scrollbar {
@@ -302,13 +318,36 @@ section{
 
 .section-footer{
     text-align: center;
-    @extend .invert;
     color: $primary-color;
     position: absolute;
     font-size: 1rem;
     bottom: 0px;
-    margin-bottom: 13vh;
-    &>.disclaimer{
-        opacity: 0%;
+    margin-bottom: 8vh;
+    .scroll{
+        display: flex;
+        height: 80px;
+        width: 80px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        cursor: none;
+        .arrow-down{
+            margin-bottom: 10px;
+            opacity: 0;
+            position: absolute;
+            top: 0px;
+            &:first-child{
+                animation: scroll-ani 4s $easing 0s infinite;
+            }
+            &:last-child{
+                animation: scroll-ani 4s $easing 2s infinite;
+            }
+        }
+    }
+}
+
+@for $i from 1 through 2 {
+    .scroll> .arrow-down:nth-child(#{$i}n) {
+        animation-delay: #{$i * 2}s;
     }
 }

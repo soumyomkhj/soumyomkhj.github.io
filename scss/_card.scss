@@ -2,3 +2,15 @@
     max-width: 10vmax;
     margin: 15vmax;
 }
+@media screen and (max-width: 1080px) {
+    .educard{
+        max-width: 100%;
+        text-align: center;
+        align-items: center;
+        margin: 10vmax;
+    }
+    .eduarrow{
+        transform: rotate(90deg);
+        align-self: center;
+    }
+}
