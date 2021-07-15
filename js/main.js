@@ -77,7 +77,7 @@ $(".container").scroll(function () {
     "text-shadow": "0px "+diff+"em 0px rgb(18, 40, 46)",
   });
   $(".img").css({
-    "box-shadow": .2*diff+"em "+.5*diff+"em 0px #316c7a",
+    "box-shadow": .3*diff+"em "+1.8*diff+"em 0px #316c7a",
   });
   timeout=setTimeout(function(){
     $(".container").css('transform', 'skewY(0deg)');

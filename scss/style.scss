@@ -73,6 +73,33 @@ $bodyFont: 'Roboto', sans-serif;
     }
   }
 
+@keyframes gyan {
+    0%{
+        content: "did you know? blah blah blah blah blah blah?";
+    }
+    15%{
+        content: "did you knowwwww? blah blah blah blah blah blah?";
+    }
+    30%{
+        content: "did you know? blah blah blah blah blah blah?";
+    }
+    45%{
+        content: "did you knowwwwwww? blah blah blah blah blah blah?";
+    }
+    60%{
+        content: "did you know? blah blah blah blah blah blah?";
+    }
+    75%{
+        content: "did you knowwwwww? blah blah blah blah blah blah?";
+    }
+    90%{
+        content: "did you know? blah blah blah blah blah blah?";
+    }
+    100%{
+        content: "did you know? blah blah blah blah blah blah?";
+    }
+}
+
 @media screen and (max-width: 1080px) {
     .follower{
         display: none !important
@@ -143,6 +170,7 @@ a,p{
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: $primary-color;
@@ -350,4 +378,9 @@ section{
     .scroll> .arrow-down:nth-child(#{$i}n) {
         animation-delay: #{$i * 2}s;
     }
+}
+
+.gyan::after{
+    content: " ";
+    animation: gyan 30000ms linear infinite;
 }
