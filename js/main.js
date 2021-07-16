@@ -5,11 +5,53 @@ $(window).on('load', function() {
   $('.hero-anim').addClass("text-clip");
 })
 
+
+//content loader
+var list = [
+  { image: 'clay-time.png', class: 'clay-time', title: 'Clay Time',tag1: 'Tangible Interaction', tag2: 'Image Recognition', tag3: 'Python'},
+  { image: 'clay-time.png', class: 'clay-time', title: 'Clay Time',tag1: 'Tangible Interaction', tag2: 'UX', tag3: 'UI'}
+];
+
+for (let index = 0; index < list.length; index++) {
+  console.log();
+  $(".projects").append('<section class="portfolio" id="'+ list[index].class +'" onclick="location.href=\''+ list[index].class +'.html\';"><div class="project"> <div class="img '+ list[index].class +'" alt="Image"></div><h1 class="h1 title">'+ list[index].title +'</h1><div class="tags-container"><div class="tag">'+ list[index].tag1 +'</div><div class="tag">'+ list[index].tag2 +'</div><div class="tag">'+ list[index].tag3 +'</div></div><button>VIEW</button></div></section>');
+}
+
+$(".img").click(function (e) { 
+  // window.location.replace("/claytime.html");
+  $('#status').fadeIn();
+  $('#preloader').delay(400).fadeIn('slow');
+});
+
+
+//sidebar
+sect_c = list.length+2;
+// console.log(sect_c);
+totH=$(".container").height();
+for (let i = 0; i < sect_c; i++) {
+  $('.sidebar').append('<div class="sidebar_child"></div>');
+}
+$('.sidebar_child').css('height', (20/sect_c)+'vh');
+n=0;
+$(".sidebar_child").eq(n).addClass("bufferd_bar");
+$(".container").scroll(function(){
+  curScr = $(this).scrollTop();
+  n= Math.round(curScr/totH);
+  // console.log(n);
+  $(".sidebar_child").eq(n).addClass("bufferd_bar");
+  for (let index = 0; index < sect_c; index++) {
+    if (index!=n) {
+      $(".sidebar_child").eq(index).removeClass("bufferd_bar"); 
+    }
+  }
+});
+
 // dark mode
 $( "#dark" ).click(function() {
   $("html").toggleClass("invert");
   $("img").toggleClass("invert");
   $(".img").toggleClass("invert");
+  $("iframe").toggleClass("invert");
   $(".f-item").toggleClass("invert");
   $("#dark").toggleClass("darkicon");
   $(".follower").css({
@@ -65,8 +107,8 @@ $(".container").scroll(function () {
   curScr = $(this).scrollTop();
   diff= topScr-curScr;
   topScr=curScr;
-  max=15;
-  diff=diff*.3;
+  max=20;
+  diff=diff*.2;
   if (diff>max) {diff=max;}
   if (diff<-max) {diff=-max;}
   // $(".barmarker").css('top', 200*curScr/totH+'px');
@@ -74,10 +116,11 @@ $(".container").scroll(function () {
   $(".container").css('transform', 'skewY(' + diff + 'deg)');
   diff=diff*.1;
   $(".h1").css({
-    "text-shadow": "0px "+diff+"em 0px rgb(18, 40, 46)",
+    "text-shadow": "0px "+2*diff+"em 0px rgb(18, 40, 46)",
   });
+  diff=diff*2;
   $(".img").css({
-    "box-shadow": .3*diff+"em "+1.8*diff+"em 0px #316c7a",
+    "box-shadow": .8*diff+"em "+diff+"em 0px #316c7a",
   });
   timeout=setTimeout(function(){
     $(".container").css('transform', 'skewY(0deg)');
@@ -92,27 +135,7 @@ $(".container").scroll(function () {
 
 
 
-//sidebar
-sect_c = $('section').length;
-// console.log(sect_c);
-totH=$(".container").height();
-for (let i = 0; i < sect_c; i++) {
-  $('.sidebar').append('<div class="sidebar_child"></div>');
-}
-$('.sidebar_child').css('height', (20/sect_c)+'vh');
-n=0;
-$(".sidebar_child").eq(n).addClass("bufferd_bar");
-$(".container").scroll(function(){
-  curScr = $(this).scrollTop();
-  n= Math.round(curScr/totH);
-  // console.log(n);
-  $(".sidebar_child").eq(n).addClass("bufferd_bar");
-  for (let index = 0; index < sect_c; index++) {
-    if (index!=n) {
-      $(".sidebar_child").eq(index).removeClass("bufferd_bar"); 
-    }
-  }
-});
+
 
 $(".sidebar_child").click(function() {
   var target = $("section").eq($(this).index(".sidebar_child"));
@@ -120,7 +143,7 @@ $(".sidebar_child").click(function() {
 });
 
 $(".scroll").click(function() {
-  $(".container").scrollTo($('.portfolio'), 800, {easing:'swing'});
+  $(".container").scrollTo($('.educard').parent(), 800, {easing:'swing'});
 });
 $(".scroll").hover(function () {
     // over
@@ -165,21 +188,18 @@ $(".img").hover(function () {
 );
 
 
-$(".img").click(function (e) { 
-  $(this).siblings(".fullpage").toggleClass("closed");
-});
-$(".fullpage").click(function (e) { 
-  $(this).toggleClass("closed");
-});
-$(".close").click(function (e) { 
-  $(this).parent().toggleClass("closed");
-  $(this).parent().toggleClass("closed");
+$(".home").click(function (e) { 
+  // window.location.replace("/index.html");
+  $('#status').fadeIn();
+  $('#preloader').delay(400).fadeIn('slow');
+  
 });
 
-$(".fullpage").hover(function () {
+
+$(".home").hover(function () {
   // over
   $(".project > button").css("opacity", "0");
-  $(".follower").html("<p>CLOSE</p>");
+  $(".follower").html("<p>BACK</p>");
   $(".follower").css({
     "width": "100px",
     "height": "100px",        

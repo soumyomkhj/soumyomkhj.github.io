@@ -84,17 +84,17 @@
 .fullpage{
     position: absolute;
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: none;
     z-index: 90;
     top: 0;
     bottom: 0;
-    padding-left: 8vw;
-    padding-right: 8vw;
-    padding-top: 8vh;
-    padding-bottom: 8vh;
-    // background-color: rgba(0,0,0,.95);
-    backdrop-filter: blur(00px);
-    // background-color: rgba(0,0,0,.3);
+    margin-left: 8vw;
+    margin-right: 8vw;
+    margin-top: 8vh;
+    margin-bottom: 8vh;
     transition: all 300ms $easing;
     .close{
         display: none;
@@ -156,4 +156,15 @@
 
 .closed{
     display: none !important;
+}
+
+.home{
+    display: flex;
+    cursor: none;
+    align-items: center;
+    svg{
+        @extend.invert;
+        margin-right: 20px;
+        border-color: $background-color ;
+    }
 }

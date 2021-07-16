@@ -75,19 +75,19 @@ $bodyFont: 'Roboto', sans-serif;
 
 @keyframes gyan {
     0%{
-        content: "Making black more darker...";
+        content: "Please wait, Making world a better place...";
     }
     15%{
         content: "Adding some more pop to the design!";
     }
-    30%{
-        content: "Making logo bigger";
+    25%{
+        content: "Making black more darker...";
     }
-    45%{
+    35%{
         content: "Reverting back changes cause first one was better";
     }
     60%{
-        content: "did you know? blah blah blah blah blah blah?";
+        content: "Making black more darker...";
     }
     75%{
         content: "did you knowwwwww? blah blah blah blah blah blah?";
@@ -96,7 +96,7 @@ $bodyFont: 'Roboto', sans-serif;
         content: "did you know? blah blah blah blah blah blah?";
     }
     100%{
-        content: "did you know? blah blah blah blah blah blah?";
+        content: "Reverting back changes cause first one was better";
     }
 }
 
@@ -382,5 +382,6 @@ section{
 
 .gyan::after{
     content: " ";
-    animation: gyan 30000ms linear infinite;
+    margin-bottom: 5vh;
+    animation: gyan 20000ms linear infinite;
 }

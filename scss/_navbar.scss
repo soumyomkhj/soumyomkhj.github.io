@@ -37,13 +37,6 @@
     box-shadow: inset 5px -5px 0 1px  $background-color;
     mix-blend-mode: difference;
     transition: all 0.5s $easing;
-    &:hover{
-        box-shadow: inset 20px -20px 0 2px  $background-color;
-    }
-    &:hover ~ .follower{
-        width: 100px;
-        height: 100px;
-    }
     &::after{
         content: ' ';
         width: 70px;
@@ -54,10 +47,18 @@
 }
 .darkicon{
     box-shadow: inset 20px -20px 0 2px  $background-color !important;
-    &:hover{
+}
+
+
+@media screen and (min-width: 1080px){
+    #dark:hover{
+        box-shadow: inset 20px -20px 0 2px  $background-color;
+    }
+    .darkicon:hover{
         box-shadow: inset 5px -5px 0 1px  $background-color !important;
     }
 }
+
 
 li.social{
     list-style-type: none;
