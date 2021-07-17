@@ -96,6 +96,12 @@
     .close{
         display: flex !important;
     }
+    .title{
+        text-align: center;
+    }
+    .project> button{
+        top: calc(50vh - 150px);
+    }
 }
 
 

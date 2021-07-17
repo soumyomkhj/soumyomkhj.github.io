@@ -733,6 +733,12 @@ img {
     display: -ms-flexbox !important;
     display: flex !important;
   }
+  .title {
+    text-align: center;
+  }
+  .project > button {
+    top: calc(50vh - 150px);
+  }
 }
 
 .fullpage {
