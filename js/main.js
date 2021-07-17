@@ -8,9 +8,12 @@ $(window).on('load', function() {
 
 //content loader
 var list = [
-  { image: 'clay-time.png', class: 'clay-time', title: 'Clay Time',tag1: 'Tangible Interaction', tag2: 'Image Recognition', tag3: 'Python'},
-  { image: 'youtube-coach.png', class: 'youtube-coach', title: 'Youtube Coach',tag1: 'Instructional Design', tag2: 'UX', tag3: 'UI'},
-  { image: 'youtube-coach.png', class: 'youtube-coach', title: 'Youtube Coach',tag1: 'Instructional Design', tag2: 'UX', tag3: 'UI'}
+  {class: 'clay-time', title: 'Clay Time',tag1: 'Tangible Interaction', tag2: 'Image Recognition', tag3: 'Python'},
+  {class: 'youtube-coach', title: 'Youtube Coach',tag1: 'Instructional Design', tag2: 'UX', tag3: 'UI'},
+  {class: 'create-share', title: 'Create \'n\' Share',tag1: 'Interaction Design', tag2: 'Creative Assesment', tag3: 'UX'},
+  {class: 'exalt-body', title: 'Exalt Body',tag1: 'Design Fiction', tag2: 'Short Film', tag3: 'Interaction Design'},
+  {class: 'univinks', title: 'Univinks UX and Branding',tag1: 'UX', tag2: 'Branding', tag3: 'UI'},
+  {class: 'mobile-atm', title: 'Mobile Atm',tag1: 'Product Design', tag2: '3D', tag3: 'UX'},
 ];
 
 for (let index = 0; index < list.length; index++) {
