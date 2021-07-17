@@ -621,6 +621,69 @@ img {
   margin-right: 1rem;
 }
 
+.hello {
+  cursor: none;
+}
+
+.hello-anim {
+  cursor: none;
+}
+
+.hello-anim::after {
+  cursor: none;
+  content: ' ';
+  -webkit-animation: hello-anim 4000ms linear infinite;
+          animation: hello-anim 4000ms linear infinite;
+}
+
+@-webkit-keyframes hello-anim {
+  0% {
+    content: "Hi!";
+  }
+  50% {
+    content: "Hi!";
+  }
+  60% {
+    content: "Nice";
+  }
+  70% {
+    content: "to";
+  }
+  80% {
+    content: "meet";
+  }
+  90% {
+    content: "you!";
+  }
+  100% {
+    content: "you!";
+  }
+}
+
+@keyframes hello-anim {
+  0% {
+    content: "Hi!";
+  }
+  50% {
+    content: "Hi!";
+  }
+  60% {
+    content: "Nice";
+  }
+  70% {
+    content: "to";
+  }
+  80% {
+    content: "meet";
+  }
+  90% {
+    content: "you!";
+  }
+  100% {
+    content: "you!";
+  }
+}
+
 .project {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -668,8 +731,10 @@ img {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  -webkit-transition: all 200ms cubic-bezier(0.3, 0, 0, 1);
-  transition: all 200ms cubic-bezier(0.3, 0, 0, 1);
+  -webkit-transition: -webkit-box-shadow 200ms cubic-bezier(0.3, 0, 0, 1);
+  transition: -webkit-box-shadow 200ms cubic-bezier(0.3, 0, 0, 1);
+  transition: box-shadow 200ms cubic-bezier(0.3, 0, 0, 1);
+  transition: box-shadow 200ms cubic-bezier(0.3, 0, 0, 1), -webkit-box-shadow 200ms cubic-bezier(0.3, 0, 0, 1);
 }
 
 .project .img:hover {
@@ -1495,7 +1560,7 @@ section {
 }
 
 .gyan::after {
-  content: " ";
+  content: "Designing the world a better place. Please wait...";
   margin-bottom: 5vh;
   -webkit-animation: gyan 20000ms linear infinite;
           animation: gyan 20000ms linear infinite;

@@ -15,6 +15,41 @@
     border-radius: 100px;
     margin-right: 1rem;
 }
+.hello{
+    cursor: none;
+}
+.hello-anim{
+    cursor: none;
+    &::after{
+        cursor: none;
+        content: ' ';
+        animation: hello-anim 4000ms linear infinite;
+    }
+}
+
+@keyframes hello-anim {
+    0%{
+        content: "Hi!";
+    }
+    50%{
+        content: "Hi!";
+    }
+    60%{
+        content: "Nice";
+    }
+    70%{
+        content: "to";
+    }
+    80%{
+        content: "meet";
+    }
+    90%{
+        content: "you!";
+    }
+    100%{
+        content: "you!";
+    }
+}
 
 .project{
     display: flex;
@@ -48,7 +83,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        transition: all 200ms $easing;
+        transition: box-shadow 200ms $easing;
         &:hover{
             filter: grayscale(0);
         }
