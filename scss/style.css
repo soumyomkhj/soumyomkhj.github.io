@@ -494,7 +494,7 @@ li.social {
   opacity: .5;
 }
 
-.invert, .arrow-up, .arrow-down, .arrow-right, .arrow-left, .tag, .project button, .home svg, #preloader, .follower, .follower_border, .cls-1, .cls-2, .sidebar > .sidebar_child {
+.invert, .arrow-up, .arrow-down, .arrow-right, .arrow-left, .tag, .project button, #preloader, .follower, .follower_border, .cls-1, .cls-2, .sidebar > .sidebar_child {
   -webkit-filter: invert(1) hue-rotate(180deg) !important;
           filter: invert(1) hue-rotate(180deg) !important;
 }
@@ -561,6 +561,46 @@ img {
   border-right: 10px solid #12282e;
 }
 
+.arrow-left-o {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border: 2px solid;
+  -webkit-transform: scale(var(--ggs, 1));
+          transform: scale(var(--ggs, 1));
+  border-radius: 22px;
+}
+
+.arrow-left-o::after,
+.arrow-left-o::before {
+  content: "";
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  left: 4px;
+}
+
+.arrow-left-o::after {
+  width: 6px;
+  height: 6px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  bottom: 6px;
+}
+
+.arrow-left-o::before {
+  width: 10px;
+  height: 2px;
+  bottom: 8px;
+  background: currentColor;
+}
+
 .tags-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -594,6 +634,10 @@ img {
 
 .project .clay-time {
   background-image: url("../img/clay-time.png");
+}
+
+.project .youtube-coach {
+  background-image: url("../img/youtube-coach.png");
 }
 
 .project .img {
@@ -782,9 +826,12 @@ img {
           align-items: center;
 }
 
-.home svg {
+.home i {
+  -webkit-filter: invert(0) hue-rotate(0) !important;
+          filter: invert(0) hue-rotate(0) !important;
   margin-right: 20px;
-  border-color: #12282e;
+  margin-top: 2px;
+  z-index: 100;
 }
 
 @-webkit-keyframes text-clip {
@@ -1235,6 +1282,8 @@ section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1424,5 +1473,10 @@ section {
   margin-bottom: 5vh;
   -webkit-animation: gyan 20000ms linear infinite;
           animation: gyan 20000ms linear infinite;
+}
+
+.break {
+  width: 100%;
+  height: 0;
 }
 /*# sourceMappingURL=style.css.map */

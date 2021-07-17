@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
     <link rel="stylesheet" href="scss/style.css">
     <title>Soumyo's Portfolio</title>
 </head>
@@ -25,7 +25,10 @@
     <nav>
         <div class="nav">
             <div class="f-item left top">
-                <div class="item">soumyomkhj</div>
+                <div class="item home" onclick="location.href='index.html#youtube-coach'">
+                    <i class="arrow-left-o"></i>
+                    soumyomkhj
+                </div>
             </div>
             <div class="f-item right top">
                 <div class="item hover" id="dark"></div>
@@ -55,41 +58,48 @@
             </div>
         </div>
     </nav>
-    <div class="container projects">
-        <section>
-            <div class="hero">
-                <p>Hello!</p>
-                <h1 class="h1 hero-anim">I'M SOUMYO</h1>
-                <img src="img/interaction.svg" alt="">
-                <div class="section-footer">
-                    <div class="scroll">
-                        <div class="arrow-down"></div>
-                        <div class="arrow-down"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- <section>
-            <div class="educard">
-                <p>B. Tech. | IIEST Shibpur</p>
-                <h1 class="h1">Information Technology</h1>
-            </div>
-            <div class="arrow-right eduarrow"></div>
-            <div class="educard">
-                <p>M. Des. | IDC, IIT Bombay</p>
-                <h1 class="h1">Interaction Design</h1>
-            </div>
-            <div class="break"></div>
-            <div >
-                <h2>Download Resume</h2>
-            </div>
-        </section> -->
+    <div class="fullpage">
+        <div class="display">
+            <iframe id="yt-player" width="100%" height="100%" style="background-color: black;" src="https://www.youtube.com/embed/VtpMvthD0-I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <img class="lazy" src="img/youtube-coach/youtube-coach-1.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-2.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-3.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-4.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-5.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-6.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-7.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-8.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-9.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-10.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-11.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-12.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-13.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-14.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-15.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-16.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-17.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-18.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-19.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-20.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-21.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-22.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-23.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-24.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-25.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-26.jpg" alt="">
+            <img class="lazy" src="img/youtube-coach/youtube-coach-27.jpg" alt="">
+            <div class="next"></div>
+            <div class="prev"></div>
+        </div>
     </div>
-    <div class="sidebar-container">
-        <div class="sidebar"></div>
-    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/main.js"></script>
+    
+    <script>    
+        $('#status').fadeOut();
+        $('#preloader').delay(400).fadeOut('slow');
+    </script>
 </body>
 </html>

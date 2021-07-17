@@ -23,6 +23,9 @@
     .clay-time{
         background-image: url("../img/clay-time.png");
     }
+    .youtube-coach{
+        background-image: url("../img/youtube-coach.png");
+    }
     .img{
         filter: invert(0) hue-rotate(0deg);
         filter: grayscale(.8);
@@ -162,9 +165,10 @@
     display: flex;
     cursor: none;
     align-items: center;
-    svg{
-        @extend.invert;
+    i{
+        filter: invert(0) hue-rotate(0) !important;
         margin-right: 20px;
-        border-color: $background-color ;
+        margin-top: 2px;
+        z-index: 100;
     }
 }

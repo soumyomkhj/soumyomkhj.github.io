@@ -1,20 +1,21 @@
 //preloader
 $(window).on('load', function() {
   $('#status').fadeOut();
-  $('#preloader').delay(400).fadeOut('slow');
-  $('.hero-anim').addClass("text-clip");
+  $('#preloader').delay(800).fadeOut('slow');
+  $('.hero-anim').delay(400).addClass("text-clip");
 })
 
 
 //content loader
 var list = [
   { image: 'clay-time.png', class: 'clay-time', title: 'Clay Time',tag1: 'Tangible Interaction', tag2: 'Image Recognition', tag3: 'Python'},
-  { image: 'clay-time.png', class: 'clay-time', title: 'Clay Time',tag1: 'Tangible Interaction', tag2: 'UX', tag3: 'UI'}
+  { image: 'youtube-coach.png', class: 'youtube-coach', title: 'Youtube Coach',tag1: 'Instructional Design', tag2: 'UX', tag3: 'UI'},
+  { image: 'youtube-coach.png', class: 'youtube-coach', title: 'Youtube Coach',tag1: 'Instructional Design', tag2: 'UX', tag3: 'UI'}
 ];
 
 for (let index = 0; index < list.length; index++) {
   console.log();
-  $(".projects").append('<section class="portfolio" id="'+ list[index].class +'" onclick="location.href=\''+ list[index].class +'.html\';"><div class="project"> <div class="img '+ list[index].class +'" alt="Image"></div><h1 class="h1 title">'+ list[index].title +'</h1><div class="tags-container"><div class="tag">'+ list[index].tag1 +'</div><div class="tag">'+ list[index].tag2 +'</div><div class="tag">'+ list[index].tag3 +'</div></div><button>VIEW</button></div></section>');
+  $(".container").append('<section class="portfolio" id="'+ list[index].class +'" onclick="location.href=\''+ list[index].class +'.html\';"><div class="project"> <div class="img '+ list[index].class +'" alt="Image"></div><h1 class="h1 title">'+ list[index].title +'</h1><div class="tags-container"><div class="tag">'+ list[index].tag1 +'</div><div class="tag">'+ list[index].tag2 +'</div><div class="tag">'+ list[index].tag3 +'</div></div><button>VIEW</button></div></section>');
 }
 
 $(".img").click(function (e) { 
@@ -25,7 +26,7 @@ $(".img").click(function (e) {
 
 
 //sidebar
-sect_c = list.length+2;
+sect_c = list.length+1  ;
 // console.log(sect_c);
 totH=$(".container").height();
 for (let i = 0; i < sect_c; i++) {
@@ -143,7 +144,7 @@ $(".sidebar_child").click(function() {
 });
 
 $(".scroll").click(function() {
-  $(".container").scrollTo($('.educard').parent(), 800, {easing:'swing'});
+  $(".container").scrollTo($('.project').parent(), 800, {easing:'swing'});
 });
 $(".scroll").hover(function () {
     // over
@@ -194,6 +195,14 @@ $(".home").click(function (e) {
   $('#preloader').delay(400).fadeIn('slow');
   
 });
+
+$(".project").click(function (e) { 
+  // window.location.replace("/index.html");
+  $('#status').fadeIn();
+  $('#preloader').delay(400).fadeIn('slow');
+  
+});
+
 
 
 $(".home").hover(function () {
