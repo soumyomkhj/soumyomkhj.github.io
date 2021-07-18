@@ -494,7 +494,7 @@ li.social {
   opacity: .5;
 }
 
-.invert, .arrow-up, .arrow-down, .arrow-right, .arrow-left, .tag, .project button, #preloader, .follower, .follower_border, .cls-1, .cls-2, .sidebar > .sidebar_child {
+.invert, .arrow-up, .arrow-down, .arrow-right, .arrow-left, .prev, .next, .tag, .project button, #preloader, .follower, .follower_border, .cls-1, .cls-2, .sidebar > .sidebar_child {
   -webkit-filter: invert(1) hue-rotate(180deg) !important;
           filter: invert(1) hue-rotate(180deg) !important;
 }
@@ -601,6 +601,63 @@ img {
   background: currentColor;
 }
 
+.prev, .next {
+  margin: 4vh;
+  margin-top: 8vh;
+  margin-bottom: 8vh;
+  margin-left: 8vw;
+  -webkit-transform: scale(150%);
+          transform: scale(150%);
+  position: relative;
+  border-color: #12282e;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.prev::after, .next::after,
+.prev::before,
+.next::before {
+  content: "";
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  left: 3px;
+}
+
+.prev::after, .next::after {
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  bottom: 7px;
+}
+
+
+.prev::before,
+.next::before {
+  width: 16px;
+  height: 2px;
+  bottom: 10px;
+  background: currentColor;
+}
+
+.next {
+  -webkit-transform: rotate(180deg) scale(150%);
+          transform: rotate(180deg) scale(150%);
+  float: right;
+  margin: 3vh;
+  margin-top: 8vh;
+  margin-bottom: 8vh;
+  margin-right: 8vw;
+}
+
 .tags-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -640,8 +697,11 @@ img {
   0% {
     content: "Hi!";
   }
-  50% {
-    content: "Hi!";
+  25% {
+    content: "There!";
+  }
+  30% {
+    content: "There!!";
   }
   60% {
     content: "Nice";
@@ -664,8 +724,11 @@ img {
   0% {
     content: "Hi!";
   }
-  50% {
-    content: "Hi!";
+  25% {
+    content: "There!";
+  }
+  30% {
+    content: "There!!";
   }
   60% {
     content: "Nice";
@@ -719,6 +782,10 @@ img {
   background-image: url("../img/exalt-body.jpg");
 }
 
+.project .bonfire {
+  background-image: url("../img/bonfire.png");
+}
+
 .project .img {
   -webkit-filter: invert(0) hue-rotate(0deg);
           filter: invert(0) hue-rotate(0deg);
@@ -731,13 +798,17 @@ img {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  -webkit-transition: -webkit-box-shadow 200ms cubic-bezier(0.3, 0, 0, 1);
-  transition: -webkit-box-shadow 200ms cubic-bezier(0.3, 0, 0, 1);
-  transition: box-shadow 200ms cubic-bezier(0.3, 0, 0, 1);
-  transition: box-shadow 200ms cubic-bezier(0.3, 0, 0, 1), -webkit-box-shadow 200ms cubic-bezier(0.3, 0, 0, 1);
+  -webkit-transition: -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1);
+  transition: -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1);
+  transition: box-shadow 300ms cubic-bezier(0.3, 0, 0, 1);
+  transition: box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1);
 }
 
 .project .img:hover {
+  -webkit-transition: -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
+  transition: -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
+  transition: filter 1700ms cubic-bezier(0.3, 0, 0, 1);
+  transition: filter 1700ms cubic-bezier(0.3, 0, 0, 1), -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
 }
@@ -800,6 +871,7 @@ img {
   }
   .title {
     text-align: center;
+    max-width: 70vw;
   }
   .project > button {
     top: calc(50vh - 150px);
@@ -1135,7 +1207,7 @@ img {
 
 @-webkit-keyframes gyan {
   0% {
-    content: "Please wait, Making world a better place...";
+    content: "Designing world a better place, Please wait...";
   }
   15% {
     content: "Adding some more pop to the design!";
@@ -1147,13 +1219,13 @@ img {
     content: "Reverting back changes cause first one was better";
   }
   60% {
-    content: "Making black more darker...";
+    content: "Wow thats is taking really long!";
   }
   75% {
-    content: "did you knowwwwww? blah blah blah blah blah blah?";
+    content: "Its still baking, I like crispy crust.";
   }
   90% {
-    content: "did you know? blah blah blah blah blah blah?";
+    content: "Great to know you! Thank you for waiting this long";
   }
   100% {
     content: "Reverting back changes cause first one was better";
@@ -1162,7 +1234,7 @@ img {
 
 @keyframes gyan {
   0% {
-    content: "Please wait, Making world a better place...";
+    content: "Designing world a better place, Please wait...";
   }
   15% {
     content: "Adding some more pop to the design!";
@@ -1174,13 +1246,13 @@ img {
     content: "Reverting back changes cause first one was better";
   }
   60% {
-    content: "Making black more darker...";
+    content: "Wow thats is taking really long!";
   }
   75% {
-    content: "did you knowwwwww? blah blah blah blah blah blah?";
+    content: "Its still baking, I like crispy crust.";
   }
   90% {
-    content: "did you know? blah blah blah blah blah blah?";
+    content: "Great to know you! Thank you for waiting this long";
   }
   100% {
     content: "Reverting back changes cause first one was better";

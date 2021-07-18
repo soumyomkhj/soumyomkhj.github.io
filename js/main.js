@@ -12,26 +12,29 @@ var list = [
   {class: 'youtube-coach', title: 'Youtube Coach',tag1: 'Instructional Design', tag2: 'UX', tag3: 'UI'},
   {class: 'create-share', title: 'Create \'n\' Share',tag1: 'Interaction Design', tag2: 'Creative Assesment', tag3: 'UX'},
   {class: 'exalt-body', title: 'Exalt Body',tag1: 'Design Fiction', tag2: 'Short Film', tag3: 'Interaction Design'},
-  {class: 'univinks', title: 'Univinks UX and Branding',tag1: 'UX', tag2: 'Branding', tag3: 'UI'},
+  {class: 'univinks', title: 'Univinks UX & Branding',tag1: 'UX', tag2: 'Branding', tag3: 'UI'},
+  {class: 'bonfire', title: 'Bonfire!',tag1: 'Interaction Design', tag2: 'Media & Sensory', tag3: 'UX'},
+  {class: 'newzera', title: 'Newzera Summer Intern',tag1: 'UI', tag2: 'Prototype', tag3: 'UX'},
   {class: 'mobile-atm', title: 'Mobile Atm',tag1: 'Product Design', tag2: '3D', tag3: 'UX'},
+  {class: 'photo', title: 'Photography',tag1: 'Hobby', tag2: 'Fine Arts', tag3: 'Travel'},
+  {class: 'kemorebi', title: 'Kemorebi',tag1: 'Poster', tag2: 'UI', tag3: 'Acid Art'},
 ];
 
-for (let index = 0; index < list.length; index++) {
-  console.log();
-  $(".container").append('<section class="portfolio" id="'+ list[index].class +'" onclick="setTimeout(function () {location.href=\''+ list[index].class +'.html\';}, 1000);"><div class="project"> <div class="img '+ list[index].class +'" alt="Image"></div><h1 class="h1 title">'+ list[index].title +'</h1><div class="tags-container"><div class="tag">'+ list[index].tag1 +'</div><div class="tag">'+ list[index].tag2 +'</div><div class="tag">'+ list[index].tag3 +'</div></div><button>VIEW</button></div></section>');
+for (let i = 0; i < list.length; i++) {
+  index=list.length-i-1;
+  $(".container>section:nth-child(1)").after('<section class="portfolio" id="'+ list[index].class +'" onclick="location.href=\''+ list[index].class +'.html\';"><div class="project"> <div class="img '+ list[index].class +'" alt="Image"></div><h1 class="h1 title">'+ list[index].title +'</h1><div class="tags-container"><div class="tag">'+ list[index].tag1 +'</div><div class="tag">'+ list[index].tag2 +'</div><div class="tag">'+ list[index].tag3 +'</div></div><button>VIEW</button></div></section>');
 }
 
 $(".img").click(function (e) { 
   // window.location.replace("/claytime.html");
   $('#status').fadeIn();
-  $('#preloader').delay(400).fadeIn('slow');
+  $('#preloader').delay(500).fadeIn('slow');
 });
 
 
 //sidebar
-sect_c = list.length+1  ;
+sect_c = list.length+2  ;
 // console.log(sect_c);
-totH=$("section").height();
 for (let i = 0; i < sect_c; i++) {
   $('.sidebar').append('<div class="sidebar_child"></div>');
 }
@@ -39,9 +42,13 @@ $('.sidebar_child').css('height', (20/sect_c)+'vh');
 n=0;
 $(".sidebar_child").eq(n).addClass("bufferd_bar");
 $(".container").scroll(function(){
+  totH=$("section:eq(1)").height();
   curScr = $(this).scrollTop();
-  n= Math.round((curScr+40)/totH);
+  n= Math.round(curScr/totH);
+  // console.log(curScr);
+  // console.log(totH);
   // console.log(n);
+  // console.log("next");
   $(".sidebar_child").eq(n).addClass("bufferd_bar");
   for (let index = 0; index < sect_c; index++) {
     if (index!=n) {
@@ -117,13 +124,15 @@ $(".container").scroll(function () {
   if (diff>max) {diff=max;}
   if (diff<-max) {diff=-max;}
   // $(".barmarker").css('top', 200*curScr/totH+'px');
-  // console.log(diff);
   $(".container").css('transform', 'skewY(' + diff + 'deg)');
   diff=diff*.1;
   $(".h1").css({
     "text-shadow": "0px "+50*diff+"px 0px rgb(18, 40, 46)",
   });
-  diff=diff*2;
+  // if (diff>0) diff=1;
+  // else if (diff<0) diff=-1;
+  // else  diff=0;
+  diff*=5;
   $(".img").css({
     "box-shadow": .8*diff+"em "+diff+"em 0px #316c7a",
   });
@@ -234,6 +243,48 @@ $(".home").hover(function () {
   // over
   $(".project > button").css("opacity", "0");
   $(".follower").html("<p>BACK</p>");
+  $(".follower").css({
+    "width": "100px",
+    "height": "100px",        
+    "opacity":"100%",       
+  });
+}, function () {
+  // out
+  $(".project > button").css("opacity", "100%");
+  $(".follower").html("");
+  $(".follower").css({
+    "width": "20px",
+    "height": "20px",
+    "opacity":"30%",       
+  });
+}
+);
+
+$(".next").hover(function () {
+  // over
+  $(".project > button").css("opacity", "0");
+  $(".follower").html("<p>next</p>");
+  $(".follower").css({
+    "width": "100px",
+    "height": "100px",        
+    "opacity":"100%",       
+  });
+}, function () {
+  // out
+  $(".project > button").css("opacity", "100%");
+  $(".follower").html("");
+  $(".follower").css({
+    "width": "20px",
+    "height": "20px",
+    "opacity":"30%",       
+  });
+}
+);
+
+$(".prev").hover(function () {
+  // over
+  $(".project > button").css("opacity", "0");
+  $(".follower").html("<p>previous</p>");
   $(".follower").css({
     "width": "100px",
     "height": "100px",        
