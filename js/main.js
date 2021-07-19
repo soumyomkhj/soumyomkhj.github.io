@@ -12,12 +12,12 @@ var list = [
   {class: 'youtube-coach', title: 'Youtube Coach',tag1: 'Instructional Design', tag2: 'UX', tag3: 'UI'},
   {class: 'create-share', title: 'Create \'n\' Share',tag1: 'Interaction Design', tag2: 'Creative Assesment', tag3: 'UX'},
   {class: 'exalt-body', title: 'Exalt Body',tag1: 'Design Fiction', tag2: 'Short Film', tag3: 'Interaction Design'},
-  {class: 'univinks', title: 'Univinks UX & Branding',tag1: 'UX', tag2: 'Branding', tag3: 'UI'},
   {class: 'bonfire', title: 'Bonfire!',tag1: 'Interaction Design', tag2: 'Media & Sensory', tag3: 'UX'},
   {class: 'newzera', title: 'Newzera Summer Intern',tag1: 'UI', tag2: 'Prototype', tag3: 'UX'},
-  {class: 'mobile-atm', title: 'Mobile Atm',tag1: 'Product Design', tag2: '3D', tag3: 'UX'},
-  {class: 'photo', title: 'Photography',tag1: 'Hobby', tag2: 'Fine Arts', tag3: 'Travel'},
-  {class: 'kemorebi', title: 'Kemorebi',tag1: 'Poster', tag2: 'UI', tag3: 'Acid Art'},
+  {class: 'univinks', title: 'Univinks UX & Branding',tag1: 'UX', tag2: 'Branding', tag3: 'UI'},
+  // {class: 'mobile-atm', title: 'Mobile Atm',tag1: 'Product Design', tag2: '3D', tag3: 'UX'},
+  // {class: 'photo', title: 'Photography',tag1: 'Hobby', tag2: 'Fine Arts', tag3: 'Travel'},
+  // {class: 'kemorebi', title: 'Kemorebi',tag1: 'Poster', tag2: 'UI', tag3: 'Acid Art'},
 ];
 
 for (let i = 0; i < list.length; i++) {
@@ -202,6 +202,10 @@ $(".img").hover(function () {
 );
 
 
+//top nav
+$(".hello").click(function() {
+  $(".container").scrollTo($('.hero').parent(), 800, {easing:'swing'});
+});
 $(".hello").hover(function () {
   // over
   $(".project > button").css("opacity", "0");
