@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="scss/style.css">
-    <title>Soumyo's Portfolio</title>
+    <title>Photography | Soumyo's Portfolio</title>
 </head>
 <body>
     <div class="followers">
@@ -24,8 +24,11 @@
     </div>
     <nav>
         <div class="nav">
-            <div class="f-item left top hello">
-                <div class="item">soumyomkhj</div>
+            <div class="f-item left top">
+                <div class="item home" onclick="location.href='index.html#photo'">
+                    <i class="arrow-left-o"></i>
+                    soumyomkhj
+                </div>
             </div>
             <div class="f-item right top">
                 <div class="item hover" id="dark"></div>
@@ -55,43 +58,35 @@
             </div>
         </div>
     </nav>
-    <div class="container projects">
-        <section>
-            <div class="hero">
-                <p>Hello!</p>
-                <h1 class="h1 hero-anim">I'M SOUMYO</h1>
-                <img class="inter-d" src="img/interaction.svg" alt="">
-                <div class="section-footer">
-                    <div class="scroll">
-                        <div class="arrow-down"></div>
-                        <div class="arrow-down"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="edu">
-            <div class="educard">
-                <q>Soumyo is comprehensive in his research, meticulous in his approach, and comprehensive in his communications. He is a self-taught designer and I have seen him grow from an absolute beginner to one of the best I have worked with. His constant endeavor to learn is what drives his growth. He understands business requirements and excels not only at designing but also at defining a consistent design language and identity for the brands he works with.</q>
-                <h2 class="h1">Pratyush Shrivastav</h2>
-                <p>Founder | Univinks</p>
-            </div>
-            <div class="educard">
-                <q>Soumyo is my junior from college and an amazing teammate to work with. He was handed the responsibility of website designing for ProBano's replatformed website and our rebranding. He did a really good job on both. His knowledge of design combined with his fresh perspective, dynamic mindset, sincerity and hard work are qualities that I admire. I am sure he'll spread awesomeness wherever he works.</q>
-                <h2 class="h1">Aditya Bose</h2>
-                <p>Founder | CEO | Probano</p>
-            </div>
-            <!-- <div class="break"></div> -->
-            <!-- <div >
-                <h2 style="text-align: center;" class="h1">Download Resume</h2>
-                <p style="text-align: center;">Comming Soon!</p>
-            </div> -->
-        </section>
+    <div class="fullpage">
+        <div class="display caraousel">
+            <img class="lazy" src="img/photo/Jhargram 1.jpg" alt="">
+            <img class="lazy" src="img/photo/Jhargram 2.jpg" alt="">
+            <img class="lazy" src="img/photo/Jhargram 3.jpg" alt="">
+            <img class="lazy" src="img/photo/Kolkata 1.jpg" alt="">
+            <img class="lazy" src="img/photo/Kolkata 2.jpg" alt="">
+            <img class="lazy" src="img/photo/Kolkata 3.jpg" alt="">
+            <img class="lazy" src="img/photo/Lepchajagat 1.jpg" alt="">
+            <img class="lazy" src="img/photo/Lepchajagat 2.jpg" alt="">
+            <img class="lazy" src="img/photo/Lepchajagat 3.jpg" alt="">
+            <img class="lazy" src="img/photo/Lepchajagat 4.jpg" alt="">
+            <img class="lazy" src="img/photo/Varanasi 1.jpg" alt="">
+            <img class="lazy" src="img/photo/Varanasi 2.jpg" alt="">
+            <img class="lazy" src="img/photo/Varanasi 3.jpg" alt="">
+            <img class="lazy" src="img/photo/Varanasi 4.jpg" alt="">
+
+            <div class="next" style="opacity: 0;"  onclick="location.href='photo.html'"></div>
+            <div class="prev" onclick="location.href='univinks.html'"></div>
+        </div>
     </div>
-    <div class="sidebar-container">
-        <div class="sidebar"></div>
-    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/main.js"></script>
+    
+    <script>    
+        $('#status').fadeOut();
+        $('#preloader').delay(400).fadeOut('slow');
+    </script>
 </body>
 </html>
