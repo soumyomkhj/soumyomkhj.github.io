@@ -1408,6 +1408,7 @@ img {
 
 html {
   background: #12282e url("../img/noise-transparent.png") repeat 0 0;
+  cursor: none;
   -webkit-animation: bg-animation .2s infinite;
           animation: bg-animation .2s infinite;
   visibility: visible;
@@ -1530,8 +1531,8 @@ a, p {
   color: #12282e;
   background-color: #12282e;
   border-radius: 1000px;
-  -webkit-transition: all 200ms ease-out;
-  transition: all 200ms ease-out;
+  -webkit-transition: width 200ms ease-out, height 200ms ease-out;
+  transition: width 200ms ease-out, height 200ms ease-out;
   position: fixed;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -1543,8 +1544,8 @@ a, p {
   height: 50px;
   border: 1px solid #12282e;
   border-radius: 1000px;
-  -webkit-transition: all 300ms ease-out;
-  transition: all 300ms ease-out;
+  -webkit-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
   position: fixed;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);

@@ -96,9 +96,9 @@ $( ".hover" )
 
 // cursor
 $(document).on('mousemove', (event) => {
-  $('img').css({
-    transform: 'transform: rotate3d(1, 1, 1, 45deg);',
-  });
+  // $('img').css({
+  //   transform: 'transform: rotate3d(1, 1, 1, 45deg);',
+  // });
   $('.follower').css({
     left: event.clientX,
     top: event.clientY,
@@ -123,6 +123,7 @@ $(".container").scroll(function () {
   diff=diff*.2;
   if (diff>max) {diff=max;}
   if (diff<-max) {diff=-max;}
+  console.log(diff);
   // $(".barmarker").css('top', 200*curScr/totH+'px');
   $(".container").css('transform', 'skewY(' + diff + 'deg)');
   diff=diff*.1;
