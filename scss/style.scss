@@ -11,7 +11,7 @@ $bodyFont: 'Roboto', sans-serif;
 @import "card";
 @import "icons";
 @import "project";
-@import url('https://fonts.googleapis.com/css2?family=Krona+One&&family=Roboto:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&&family=Roboto:wght@400;900&display=swap');
 
 @keyframes text-clip {
     0% {
@@ -141,8 +141,12 @@ body{
     font-weight: 400;
 }
 
+b{
+    font-weight: 900;
+}
+
 a:hover{
-    font-weight: 600;
+    font-weight: 900;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -211,7 +215,7 @@ a,p{
 
 .follower {
     @extend .invert;
-    opacity: 30%;
+    opacity: 50%;
     width: 20px;
     z-index: 100;
     pointer-events:none; 
@@ -243,7 +247,8 @@ a,p{
     overflow-y: scroll;
     overflow-x: hidden;
     // scrollbar-width: none;
-    transition: transform .3s ease;
+    transition: transform .3s linear;
+    will-change: transform;
     &::-webkit-scrollbar {
         display: none;
     }
@@ -386,4 +391,16 @@ section{
     content: "Designing the world a better place. Please wait...";
     margin-bottom: 5vh;
     animation: gyan 20000ms linear infinite;
+}
+
+.about{
+    text-align: center;
+    padding: 10vw 30vw 10vw 30vw;
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 1080px) {
+    .about{
+        padding: 5vw;
+    }
 }

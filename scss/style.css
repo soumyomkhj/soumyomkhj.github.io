@@ -1,10 +1,11 @@
+@charset "UTF-8";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS and IE text size adjust after device orientation change,
  *    without disabling user zoom.
  */
-@import url("https://fonts.googleapis.com/css2?family=Krona+One&&family=Roboto:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Krona+One&&family=Roboto:wght@400;900&display=swap");
 html {
   font-family: sans-serif;
   /* 1 */
@@ -461,6 +462,14 @@ th {
 .darkicon {
   -webkit-box-shadow: inset 20px -20px 0 2px #12282e !important;
           box-shadow: inset 20px -20px 0 2px #12282e !important;
+}
+
+.darkicon::before {
+  content: "☼";
+  font-size: 3rem;
+  position: absolute;
+  -webkit-transform: translate(-21%, -32%);
+          transform: translate(-21%, -32%);
 }
 
 @media screen and (min-width: 1080px) {
@@ -921,17 +930,13 @@ img {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  -webkit-transition: -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1);
-  transition: -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1);
-  transition: box-shadow 300ms cubic-bezier(0.3, 0, 0, 1);
-  transition: box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1);
+  -webkit-transition: -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
+  transition: -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
+  transition: box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), filter 1700ms cubic-bezier(0.3, 0, 0, 1);
+  transition: box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), filter 1700ms cubic-bezier(0.3, 0, 0, 1), -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
 }
 
 .project .img:hover {
-  -webkit-transition: -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
-  transition: -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
-  transition: filter 1700ms cubic-bezier(0.3, 0, 0, 1);
-  transition: filter 1700ms cubic-bezier(0.3, 0, 0, 1), -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
 }
@@ -1433,8 +1438,12 @@ body {
   font-weight: 400;
 }
 
+b {
+  font-weight: 900;
+}
+
 a:hover {
-  font-weight: 600;
+  font-weight: 900;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1514,7 +1523,7 @@ a, p {
 }
 
 .follower {
-  opacity: 30%;
+  opacity: 50%;
   width: 20px;
   z-index: 100;
   pointer-events: none;
@@ -1555,10 +1564,11 @@ a, p {
   height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  -webkit-transition: -webkit-transform .3s ease;
-  transition: -webkit-transform .3s ease;
-  transition: transform .3s ease;
-  transition: transform .3s ease, -webkit-transform .3s ease;
+  -webkit-transition: -webkit-transform .3s linear;
+  transition: -webkit-transform .3s linear;
+  transition: transform .3s linear;
+  transition: transform .3s linear, -webkit-transform .3s linear;
+  will-change: transform;
 }
 
 .container::-webkit-scrollbar {
@@ -1760,5 +1770,17 @@ section {
   margin-bottom: 5vh;
   -webkit-animation: gyan 20000ms linear infinite;
           animation: gyan 20000ms linear infinite;
+}
+
+.about {
+  text-align: center;
+  padding: 10vw 30vw 10vw 30vw;
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 1080px) {
+  .about {
+    padding: 5vw;
+  }
 }
 /*# sourceMappingURL=style.css.map */

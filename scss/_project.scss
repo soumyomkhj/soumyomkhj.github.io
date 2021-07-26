@@ -96,9 +96,8 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        transition: box-shadow 300ms $easing;
+        transition: box-shadow 300ms $easing, filter 1700ms $easing;
         &:hover{
-            transition: filter 1700ms $easing;
             filter: grayscale(0);
         }
     }

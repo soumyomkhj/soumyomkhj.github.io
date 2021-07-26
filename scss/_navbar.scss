@@ -47,6 +47,12 @@
 }
 .darkicon{
     box-shadow: inset 20px -20px 0 2px  $background-color !important;
+    &::before{
+        content: "☼";
+        font-size: 3rem;
+        position: absolute;
+        transform: translate(-21%, -32%);
+    }
 }
 
 

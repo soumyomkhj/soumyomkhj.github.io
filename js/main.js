@@ -5,7 +5,7 @@ $(window).on('load', function() {
   $('.hero-anim').delay(400).addClass("text-clip");
 })
 
-
+dark =1;
 //content loader
 var list = [
   {class: 'clay-time', title: 'Clay Time',tag1: 'Tangible Interaction', tag2: 'Image Recognition', tag3: 'Python'},
@@ -22,7 +22,7 @@ var list = [
 
 for (let i = 0; i < list.length; i++) {
   index=list.length-i-1;
-  $(".container>section:nth-child(1)").after('<section class="portfolio" id="'+ list[index].class +'" onclick="location.href=\''+ list[index].class +'.html\';"><div class="project"> <div class="img '+ list[index].class +'" alt="Image"></div><h1 class="h1 title">'+ list[index].title +'</h1><div class="tags-container"><div class="tag">'+ list[index].tag1 +'</div><div class="tag">'+ list[index].tag2 +'</div><div class="tag">'+ list[index].tag3 +'</div></div><button>VIEW</button></div></section>');
+  $(".container>section:nth-child(2)").after('<section class="portfolio" id="'+ list[index].class +'" onclick="location.href=\''+ list[index].class +'.html\';"><div class="project"> <div class="img '+ list[index].class +'" alt="Image"></div><h1 class="h1 title">'+ list[index].title +'</h1><div class="tags-container"><div class="tag">'+ list[index].tag1 +'</div><div class="tag">'+ list[index].tag2 +'</div><div class="tag">'+ list[index].tag3 +'</div></div><button>VIEW</button></div></section>');
 }
 
 $(".img").click(function (e) { 
@@ -33,7 +33,7 @@ $(".img").click(function (e) {
 
 
 //sidebar
-sect_c = list.length+2  ;
+sect_c = list.length+3  ;
 // console.log(sect_c);
 for (let i = 0; i < sect_c; i++) {
   $('.sidebar').append('<div class="sidebar_child"></div>');
@@ -59,10 +59,12 @@ $(".container").scroll(function(){
 
 // dark mode
 $( "#dark" ).click(function() {
+  dark=-dark;
   $("html").toggleClass("invert");
   $("img").toggleClass("invert");
   $(".img").toggleClass("invert");
   $("iframe").toggleClass("invert");
+  $(".image-hover").toggleClass("invert");
   $(".f-item").toggleClass("invert");
   $("#dark").toggleClass("darkicon");
   $(".inter-d").toggleClass("invert");
@@ -123,7 +125,7 @@ $(".container").scroll(function () {
   diff=diff*.2;
   if (diff>max) {diff=max;}
   if (diff<-max) {diff=-max;}
-  console.log(diff);
+  // console.log(diff);
   // $(".barmarker").css('top', 200*curScr/totH+'px');
   $(".container").css('transform', 'skewY(' + diff + 'deg)');
   diff=diff*.1;
@@ -134,9 +136,9 @@ $(".container").scroll(function () {
   // else if (diff<0) diff=-1;
   // else  diff=0;
   diff*=5;
-  $(".img").css({
-    "box-shadow": .8*diff+"em "+diff+"em 0px #316c7a",
-  });
+  // $(".img").css({
+  //   "box-shadow": .8*diff+"em "+diff+"em 0px #316c7a",
+  // });
   timeout=setTimeout(function(){
     $(".container").css('transform', 'skewY(0deg)');
     $(".h1").css({
@@ -158,8 +160,12 @@ $(".sidebar_child").click(function() {
 });
 
 $(".scroll").click(function() {
+  $(".container").scrollTo($('.about').parent(), 800, {easing:'swing'});
+});
+$(".about").click(function() {
   $(".container").scrollTo($('.project').parent(), 800, {easing:'swing'});
 });
+
 $(".scroll").hover(function () {
     // over
     $(this).css('opacity', '0');
@@ -293,6 +299,30 @@ $(".prev").hover(function () {
   $(".follower").css({
     "width": "100px",
     "height": "100px",        
+    "opacity":"100%",       
+  });
+}, function () {
+  // out
+  $(".project > button").css("opacity", "100%");
+  $(".follower").html("");
+  $(".follower").css({
+    "width": "20px",
+    "height": "20px",
+    "opacity":"30%",       
+  });
+}
+);
+
+$(".about").hover(function () {
+  // over
+  $(".project > button").css("opacity", "0");
+  if (dark==-1) {
+    $(".follower").html("<img class=\"image-hover\" src=\"img/favicon.png\">");
+  }
+  else  $(".follower").html("<img class=\"image-hover invert\" src=\"img/favicon.png\">");
+  $(".follower").css({
+    "width": "150px",
+    "height": "150px",        
     "opacity":"100%",       
   });
 }, function () {
