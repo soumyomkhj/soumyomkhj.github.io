@@ -88,7 +88,7 @@ $(".hover").hover(function () {
     $(".follower").css({
       "width": "20px",
       "height": "20px",
-      "opacity":"30%",       
+      "opacity":"60%",       
       "z-index": "100"   
     });
   }
@@ -182,7 +182,7 @@ $(".scroll").hover(function () {
     $(".follower").css({
       "width": "20px",
       "height": "20px",
-      "opacity":"30%",       
+      "opacity":"60%",       
     });
   }
 );
@@ -203,7 +203,7 @@ $(".img").hover(function () {
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"30%",       
+    "opacity":"60%",       
   });
 }
 );
@@ -229,7 +229,7 @@ $(".hello").hover(function () {
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"30%",       
+    "opacity":"60%",       
   });
 }
 );
@@ -266,7 +266,7 @@ $(".home").hover(function () {
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"30%",       
+    "opacity":"60%",       
   });
 }
 );
@@ -287,7 +287,7 @@ $(".next").hover(function () {
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"30%",       
+    "opacity":"60%",       
   });
 }
 );
@@ -308,7 +308,7 @@ $(".prev").hover(function () {
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"30%",       
+    "opacity":"60%",       
   });
 }
 );
@@ -332,7 +332,7 @@ $(".about").hover(function () {
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"30%",       
+    "opacity":"60%",       
   });
 }
 );
