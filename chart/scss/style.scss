@@ -8,7 +8,7 @@ $bodyFont: 'Roboto', sans-serif;
 @import "normalize";
 @import "navbar";
 @import "dark";
-@import "card";
+// @import "card";
 @import "icons";
 @import "project";
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&&family=Roboto:wght@400;900&display=swap');
@@ -215,7 +215,7 @@ a,p{
 
 .follower {
     @extend .invert;
-    opacity: 60%;
+    opacity: 100%;
     width: 20px;
     z-index: 100;
     pointer-events:none; 

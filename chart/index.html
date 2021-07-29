@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"></script>
     <link rel="stylesheet" href="scss/style.css">
-    <title>Youtube Coach | Soumyo's Portfolio</title>
+    <title>Chart.js | Soumyo's website</title>
 </head>
 <body>
     <div class="followers">
@@ -25,8 +26,7 @@
     <nav>
         <div class="nav">
             <div class="f-item left top">
-                <div class="item home" onclick="location.href='index.html#youtube-coach'">
-                    <i class="arrow-left-o"></i>
+                <div class="item">
                     soumyomkhj
                 </div>
             </div>
@@ -60,36 +60,46 @@
     </nav>
     <div class="fullpage">
         <div class="display">
-            <iframe id="yt-player" width="100%" height="80%" style="background-color: black;" src="https://www.youtube.com/embed/l67Lwd0-QNs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <img class="lazy" src="img/youtube-coach/youtube-coach-1.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-2.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-3.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-4.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-5.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-6.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-7.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-8.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-9.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-10.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-11.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-12.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-13.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-14.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-15.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-16.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-17.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-18.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-19.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-20.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-21.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-22.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-23.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-24.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-25.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-26.jpg" alt="">
-            <img class="lazy" src="img/youtube-coach/youtube-coach-27.jpg" alt="">
-            <div class="next" onclick="location.href='create-share.html'"></div>
-            <div class="prev" onclick="location.href='clay-time.html'"></div>
+            <div class="chart">
+                <canvas id="myChart" width="600" height="400"></canvas>
+            </div> 
+        <script>
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        </script>
         </div>
     </div>
 
