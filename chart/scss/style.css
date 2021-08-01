@@ -682,6 +682,11 @@ img {
   background: currentColor;
 }
 
+#myChart {
+  width: 60vw;
+  height: 60vh;
+}
+
 .tags-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -997,7 +1002,7 @@ img {
   width: 84vw;
   border-radius: 10px;
   overflow-y: scroll;
-  background-color: #CAE0E6;
+  background-color: #fff;
   -webkit-box-shadow: 0px 50px 100px -30px rgba(255, 255, 255, 0.3);
           box-shadow: 0px 50px 100px -30px rgba(255, 255, 255, 0.3);
   scrollbar-width: none;
