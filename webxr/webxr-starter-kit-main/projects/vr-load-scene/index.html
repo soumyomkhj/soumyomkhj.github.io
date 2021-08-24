@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Title of the page -->
+		<title>Loading VR Scenes - WebXR Starter Kit</title>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        
+        <!-- Basic styling to make sure the body occupies the full screen area -->
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+	
+    </head>
+
+	<body>
+
+
+        <!-- Loading the Font Awesome library for the Cardboard icon -->
+        <script src="../../libs/fas.js"></script>
+
+        <!-- Loading the js app for this page -->
+        <script type="module">
+            import { App } from './app.js';
+
+            // The app starts once the DOM content is loaded (after the HTML is rendered).
+            document.addEventListener("DOMContentLoaded", function(){
+                const app = new App();
+                window.app = app;
+            });
+        </script>
+	
+    </body>
+
+</html>

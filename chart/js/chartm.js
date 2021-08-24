@@ -32,10 +32,17 @@ $(window).on('load', function() {
                     9.00,
                     8.61
                     ],
-                backgroundColor: 'rgba(117, 79, 255, 0.2)',
-                borderColor: 'rgba(117, 79, 255, 1)',
-                borderWidth: 1
+                // backgroundColor: 'rgba(117, 79, 255, 0.2)',
+                // borderColor: 'rgba(117, 79, 255, 1)',
+                backgroundColor: 'rgba(0, 145, 143, 0.2)',
+                borderColor: 'rgba(0, 145, 143, 1)',
+                borderWidth: 1,
+                tension: .5,
+                fill: true,
             }]
         },
     });
   })
+  
+//   d3.csv('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2814973/atp_wta.csv').then(makeChart);
+//   var playerLabels = players.map(function(d) {return d.Name});
