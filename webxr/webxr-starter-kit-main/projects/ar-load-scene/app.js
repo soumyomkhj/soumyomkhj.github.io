@@ -39,15 +39,15 @@ class App {
 
         // OBJECTS
         // Define a Box Geometry
-        const geometry = new THREE.BoxBufferGeometry();
-        // Define a basic material with color Red
-        const material = new THREE.MeshStandardMaterial({ color: 0x00FF00 });
-        // Create a new mesh using the geometry and material
-        this.mesh = new THREE.Mesh(geometry, material);
-        // Move the mesh to a new position
-        this.mesh.position.set(0, 1, -3);
-        // Add the mesh to the scene
-        this.scene.add(this.mesh);
+        // const geometry = new THREE.BoxBufferGeometry();
+        // // Define a basic material with color Red
+        // const material = new THREE.MeshStandardMaterial({ color: 0x00FF00 });
+        // // Create a new mesh using the geometry and material
+        // this.mesh = new THREE.Mesh(geometry, material);
+        // // Move the mesh to a new position
+        // this.mesh.position.set(0, 1, -3);
+        // // Add the mesh to the scene
+        // this.scene.add(this.mesh);
 
         /*
          *   CAMERA
@@ -146,7 +146,7 @@ class App {
 
         loader.load(
             // Enter the name of the file here
-            "testscene.json",
+            "scene.json",
 
             // onLoad callback
             // Here the loaded data is assumed to be an object
