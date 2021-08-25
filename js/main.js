@@ -13,7 +13,7 @@ var list = [
   {class: 'create-share', title: 'Create \'n\' Share',tag1: 'Interaction Design', tag2: 'Creative Assesment', tag3: 'UX'},
   {class: 'exalt-body', title: 'Exalt Body',tag1: 'Design Fiction', tag2: 'Short Film', tag3: 'Interaction Design'},
   {class: 'bonfire', title: 'Bonfire!',tag1: 'Interaction Design', tag2: 'Media & Sensory', tag3: 'UX'},
-  // {class: 'newzera', title: 'Newzera Summer Intern',tag1: 'UI', tag2: 'Prototype', tag3: 'UX'},
+  {class: 'newzera', title: 'Newzera Summer Intern',tag1: 'UI', tag2: 'Prototype', tag3: 'UX'},
   {class: 'univinks', title: 'Univinks UX & Branding',tag1: 'UX', tag2: 'Branding', tag3: 'UI'},
   // {class: 'mobile-atm', title: 'Mobile Atm',tag1: 'Product Design', tag2: '3D', tag3: 'UX'},
   {class: 'photo', title: 'Photography',tag1: 'Hobby', tag2: 'Fine Arts', tag3: 'Travel'},
