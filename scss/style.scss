@@ -3,7 +3,7 @@ $primary-color: rgb(18, 40, 46);
 $background-color: rgb(18, 40, 46);
 $easing: cubic-bezier(.3,0,0,1);
 $headerFont: 'Krona One', sans-serif;
-$bodyFont: 'Roboto', sans-serif;
+$bodyFont: 'Inter', sans-serif;
 
 @import "normalize";
 @import "navbar";
@@ -11,10 +11,10 @@ $bodyFont: 'Roboto', sans-serif;
 @import "card";
 @import "icons";
 @import "project";
-@import url('https://fonts.googleapis.com/css2?family=Krona+One&&family=Roboto:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&&family=Inter:wght@400;700&display=swap');
 
 @keyframes text-clip {
-    0% {
+    0% {        
         clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
       }
     99% {
@@ -158,7 +158,7 @@ h1,h2,h3,h4,h5,h6{
 
 
 a,p{
-    font-family: 'Roboto', sans-serif;
+    font-family: $bodyFont;
     color: $background-color;
     filter: invert(1) hue-rotate(180deg);
     mix-blend-mode: difference;
@@ -394,14 +394,23 @@ section{
     animation: gyan 20000ms linear infinite;
 }
 
-.about{
-    text-align: center;
-    padding: 10vw 30vw 10vw 30vw;
-    font-size: 2rem;
-}
-
 @media screen and (max-width: 1080px) {
     .about{
         padding: 5vw;
+    }
+}
+.about-con{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    .about{
+        text-align: center;
+        padding: 10vw 25vw 10vw 25vw;
+        font-size: 2rem;
+        .section-footer{
+            text-align: center;
+            display: block;
+        }
     }
 }
