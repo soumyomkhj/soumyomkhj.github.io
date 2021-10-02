@@ -922,6 +922,10 @@ img {
   background-image: url("../img/photo.jpg");
 }
 
+.project .jagat-jamini {
+  background-image: url("../img/jagat-jamini.jpg");
+}
+
 .project .img {
   -webkit-filter: invert(0) hue-rotate(0deg);
           filter: invert(0) hue-rotate(0deg);
@@ -1006,7 +1010,7 @@ img {
     max-width: 70vw;
   }
   .project > button {
-    top: calc(50vh - 150px);
+    top: calc(35vh - 150px);
   }
 }
 
@@ -1098,6 +1102,11 @@ img {
 
 .fullpage .display::-webkit-scrollbar {
   display: none;
+}
+
+.fullpage .display video {
+  margin-left: 0px;
+  margin-bottom: -5px;
 }
 
 .fullpage img {
@@ -1398,6 +1407,9 @@ img {
   .follower_border {
     display: none;
   }
+  .hero {
+    margin-top: 25vh;
+  }
   .hero > img {
     position: absolute !important;
     width: 60vh !important;
@@ -1412,6 +1424,15 @@ img {
     -webkit-box-align: unset !important;
         -ms-flex-align: unset !important;
             align-items: unset !important;
+    height: 70vh !important;
+  }
+  .about-con {
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+  }
+  .about-con .about {
+    font-size: 1rem !important;
   }
 }
 

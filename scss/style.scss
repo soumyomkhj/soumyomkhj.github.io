@@ -107,6 +107,9 @@ $bodyFont: 'Inter', sans-serif;
     .follower_border{
         display: none
     }
+    .hero{        
+        margin-top: 25vh;
+    }
     .hero>img{
         position: absolute !important;
         width: 60vh !important;
@@ -116,6 +119,13 @@ $bodyFont: 'Inter', sans-serif;
     section {
         flex-direction: column !important;
         align-items: unset !important;
+        height: 70vh !important;
+    }
+    .about-con{
+        align-items: center !important;
+        .about{
+            font-size: 1rem !important;
+        }
     }
 }
 
