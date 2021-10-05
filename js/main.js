@@ -9,7 +9,7 @@ dark =1;
 //content loader
 var list = [
   {class: 'clay-time', title: 'Clay Time',tag1: 'Tangible Interaction', tag2: 'Image Recognition', tag3: 'Python'},
-  {class: 'create-share', title: 'Create \'n\' Share',tag1: 'Interaction Design', tag2: 'Creative Assesment', tag3: 'UX'},
+  {class: 'create-share', title: 'Create \'n\' Share',tag1: 'Interaction Design', tag2: 'User Study', tag3: 'UX'},
   {class: 'youtube-coach', title: 'Youtube Coach',tag1: 'Instructional Design', tag2: 'UX', tag3: 'UI'},
   {class: 'jagat-jamini', title: 'Jagat Jamini',tag1: 'VR', tag2: 'Spatial Audio', tag3: 'Interaction Design'},
   {class: 'bonfire', title: 'Bonfire!',tag1: 'Interaction Design', tag2: 'Media & Sensory', tag3: 'UX'},
