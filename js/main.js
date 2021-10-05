@@ -337,3 +337,9 @@ $(".about").hover(function () {
   });
 }
 );
+
+$(".fullpage").click(function (e) { 
+  // window.location.replace("/claytime.html");
+  // alert("hi");
+  $(".fullpage").toggleClass("fulldisplay");
+});
