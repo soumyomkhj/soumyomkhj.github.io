@@ -25,6 +25,7 @@ for (let i = 0; i < list.length; i++) {
   index=list.length-i-1;
   $(".container>section:nth-child(2)").after('<section class="portfolio" id="'+ list[index].class +'" onclick="location.href=\''+ list[index].class +'.html\';"><div class="project"> <div class="img '+ list[index].class +'" alt="Image"></div><h1 class="h1 title">'+ list[index].title +'</h1><div class="tags-container"><div class="tag">'+ list[index].tag1 +'</div><div class="tag">'+ list[index].tag2 +'</div><div class="tag">'+ list[index].tag3 +'</div></div><button>VIEW</button></div></section>');
 }
+$(".clay-time").prepend("<img src=\"../img/accept.png\" class=\"accept\">");
 
 $(".img").click(function (e) { 
   // window.location.replace("/claytime.html");

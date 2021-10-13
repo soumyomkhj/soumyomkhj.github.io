@@ -57,6 +57,7 @@
     </nav>
     <div class="fullpage">
         <div class="display">
+            <img src="../img/accept.png" class="accept">
             <img class="lazy" src="img/clay-time/clay-time-1.png" alt="">
             <img class="lazy" src="img/clay-time/clay-time-2.png" alt="">
             <img class="lazy" src="img/clay-time/clay-time-3.png" alt="">
@@ -78,6 +79,14 @@
     <script src="js/main.js"></script>
     
     <script>    
+        $(".display").scroll(function(){
+            if ($(this).scrollTop()>500) {
+                $(".accept").addClass("hide");
+            }
+            else{
+                $(".accept").removeClass("hide");
+            }
+        });
         $('#status').fadeOut();
         $('#preloader').delay(400).fadeOut('slow');
     </script>

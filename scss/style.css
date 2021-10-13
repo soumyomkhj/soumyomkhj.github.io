@@ -1153,6 +1153,54 @@ img {
   z-index: 100;
 }
 
+@-webkit-keyframes swing {
+  0% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+  50% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+}
+
+@keyframes swing {
+  0% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+  50% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+}
+
+.accept {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  opacity: 50%;
+  width: 15vh !important;
+  mix-blend-mode: difference;
+  overflow: hidden;
+  -webkit-animation: swing 3000ms ease-in-out infinite;
+          animation: swing 3000ms ease-in-out infinite;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+}
+
+.hide {
+  opacity: 0%;
+}
+
 @-webkit-keyframes text-clip {
   0% {
     -webkit-clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
