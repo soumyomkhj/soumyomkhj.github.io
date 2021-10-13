@@ -1188,7 +1188,7 @@ img {
   right: 30px;
   top: 30px;
   opacity: 50%;
-  width: 15vh !important;
+  width: calc(7vh + 4vw) !important;
   mix-blend-mode: difference;
   overflow: hidden;
   -webkit-animation: swing 3000ms ease-in-out infinite;
