@@ -97,11 +97,12 @@
         cursor: none;
         height: 50vh;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 100%;
         background-position: center;
-        transition: box-shadow 300ms $easing, filter 1700ms $easing;
+        transition: box-shadow 300ms $easing, filter 1700ms $easing, background-size 1000ms $easing;
         &:hover{
             filter: grayscale(0);
+            background-size: 110%;
         }
     }
     button{

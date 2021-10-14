@@ -936,17 +936,18 @@ img {
   cursor: none;
   height: 50vh;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
-  -webkit-transition: -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
-  transition: -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
-  transition: box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), filter 1700ms cubic-bezier(0.3, 0, 0, 1);
-  transition: box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), filter 1700ms cubic-bezier(0.3, 0, 0, 1), -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
+  -webkit-transition: background-size 1000ms cubic-bezier(0.3, 0, 0, 1), -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
+  transition: background-size 1000ms cubic-bezier(0.3, 0, 0, 1), -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
+  transition: box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), filter 1700ms cubic-bezier(0.3, 0, 0, 1), background-size 1000ms cubic-bezier(0.3, 0, 0, 1);
+  transition: box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), filter 1700ms cubic-bezier(0.3, 0, 0, 1), background-size 1000ms cubic-bezier(0.3, 0, 0, 1), -webkit-box-shadow 300ms cubic-bezier(0.3, 0, 0, 1), -webkit-filter 1700ms cubic-bezier(0.3, 0, 0, 1);
 }
 
 .project .img:hover {
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
+  background-size: 110%;
 }
 
 .project button {
