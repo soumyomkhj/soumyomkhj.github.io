@@ -2,7 +2,7 @@
 $(window).on('load', function() {
   $('#status').fadeOut();
   $('#preloader').delay(800).fadeOut('slow');
-  $('.hero-anim').delay(400).addClass("text-clip");
+  $('.hero-anim').delay(2000).addClass("text-clip");
 })
 
 dark =1;
