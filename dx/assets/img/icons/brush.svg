@@ -1,0 +1,11 @@
+<svg id="vuesax_bulk_brush" data-name="vuesax/bulk/brush" xmlns="http://www.w3.org/2000/svg" width="36" height="36.018" viewBox="0 0 36 36.018">
+  <rect id="vuesax_bulk_brush_Background_" data-name="vuesax/bulk/brush (Background)" width="36" height="36.018" transform="translate(0 0)" fill="none"/>
+  <g id="vuesax_bulk_brush-2" data-name="vuesax/bulk/brush" transform="translate(0 0)">
+    <g id="brush">
+      <path id="Vector" d="M10.463,0C3.908,0,0,3.908,0,10.463V25.537C0,32.11,3.908,36.018,10.463,36.018H25.537C32.092,36.018,36,32.11,36,25.555V10.463C36.018,3.908,32.11,0,25.555,0Z" transform="translate(0 0)" fill="#fff" opacity="0.4"/>
+      <path id="Vector-2" data-name="Vector" d="M7.294,17.649A8.578,8.578,0,0,0,0,10.518,50.564,50.564,0,0,1,14.929.144a2.009,2.009,0,0,1,2.179.45,1.963,1.963,0,0,1,.468,2.2A49.6,49.6,0,0,1,7.294,17.649Z" transform="translate(18.136 0)" fill="#fff"/>
+      <path id="Vector-3" data-name="Vector" d="M9.923,9.022,7.1,11.292a6.928,6.928,0,0,1-1.117.648c0-.27-.036-.54-.054-.828a5.7,5.7,0,0,0-1.675-3.3A5.962,5.962,0,0,0,.864,6.123,7.085,7.085,0,0,0,0,6.087,3.665,3.665,0,0,1,.7,4.88L2.953,2.053A26.581,26.581,0,0,1,4.772,0a8.579,8.579,0,0,1,7.276,7.132A27.749,27.749,0,0,1,9.923,9.022Z" transform="translate(13.38 10.499)" fill="#fff" opacity="0.4"/>
+      <path id="Vector-4" data-name="Vector" d="M10.41,10.074a5.877,5.877,0,0,1-3.494,1.675l-3.53.4A3.068,3.068,0,0,1,.019,8.759l.4-3.53A5.854,5.854,0,0,1,6.178.007a4.7,4.7,0,0,1,.864.036,5.908,5.908,0,0,1,3.386,1.693,5.754,5.754,0,0,1,1.675,3.3c.018.27.054.54.054.81A5.954,5.954,0,0,1,10.41,10.074Z" transform="translate(7.204 16.615)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

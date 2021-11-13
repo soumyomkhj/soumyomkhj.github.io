@@ -1,0 +1,41 @@
+{
+    "title": "Values",
+    "icon": "../../assets/img/icons/tone.svg",
+    "summary": "What does the company stand for, what are their goal? What other problems do they support? How is their appearance look and feel?",
+    "before": "We need to have very basic Idea about the project, having discussion with the client and knowing them would be helpful.",
+    "after": "You can align with the client, in terms of ethics, motives, and  overall vibe.",
+    "key_steps": [
+        {
+            "text" : "Discuss with your client which of the next keywords represents them, it is a easy way for the client to communicate their core values better!",
+            "img" : "./../assets/img/steps/31.png"
+        },
+        {
+            "text" : "Authoritative Caring Cheerful Coarse Conservative Conversational Casual Dry Edgy Enthusiastic Formal Frank Friendly Fun Funny Humorous Informative Irreverent Matter-of-fact Nostalgic Passionate Playful Professional Provocative Quirky Respectful Romantic Sarcastic Serious Smart Snarky Sympathetic Trendy Trustworthy Unapologetic Upbeat Witty",
+            "img" : "./../assets/img/steps/32.png"
+        },
+        {
+            "text" : "List all of them down and group similar keywords together, and write a heading for each group",
+            "img" : "./../assets/img/steps/33.png"
+        }
+    ],
+    "tools": ["mr", "np", "xl", "wd"],
+    "videos": [
+        "https://www.youtube.com/watch?v=HSpms43ycKg",
+        "https://www.youtube.com/watch?v=0ztM3XlHfes",
+        "https://www.youtube.com/watch?v=z9KRWgGYD8E"
+    ],
+    "resources": [
+        {
+            "title": "Words for Tone",
+            "url": "https://www.nngroup.com/articles/tone-voice-words/"
+        },
+        {
+            "title": "4 Brand tone example",
+            "url": "https://www.brafton.com/blog/creation/4-brand-tone-of-voice-examples-to-use-when-building-your-own/"
+        },
+        {
+            "title": "Tone Guideline",
+            "url": "https://www.slideteam.net/tone-voice-guidelines-template-ppt-powerpoint-presentation-file-example-file-cpb.html"
+        }
+    ]
+}

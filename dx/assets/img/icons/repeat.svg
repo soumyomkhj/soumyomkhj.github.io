@@ -1,0 +1,13 @@
+<svg id="vuesax_bulk_repeat-circle" data-name="vuesax/bulk/repeat-circle" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <rect id="vuesax_bulk_repeat-circle_Background_" data-name="vuesax/bulk/repeat-circle (Background)" width="36" height="36" fill="none"/>
+  <g id="vuesax_bulk_repeat-circle-2" data-name="vuesax/bulk/repeat-circle">
+    <g id="repeat-circle">
+      <path id="Vector" d="M36,0V36H0V0Z" transform="translate(36 36) rotate(180)" fill="none" opacity="0"/>
+      <path id="Vector-2" data-name="Vector" d="M15,30A15,15,0,1,1,30,15,15,15,0,0,1,15,30Z" transform="translate(3 3)" fill="#ffa41e" opacity="0.4"/>
+      <g id="Group" transform="translate(10.125 8.854)">
+        <path id="Vector-3" data-name="Vector" d="M3.84,2.531l.615-.615A1.124,1.124,0,1,0,2.865.326L.33,2.861a1.164,1.164,0,0,0-.24.36,1.06,1.06,0,0,0,0,.855,1.164,1.164,0,0,0,.24.36L2.865,6.971a1.122,1.122,0,0,0,1.59,0,1.132,1.132,0,0,0,0-1.59L3.84,4.766h8.385A1.274,1.274,0,0,1,13.5,6.041V8.7a1.125,1.125,0,0,0,2.25,0V6.041a3.537,3.537,0,0,0-3.525-3.51Z" fill="#ffa41e"/>
+        <path id="Vector-4" data-name="Vector" d="M15.42,5.385,12.885,2.85a1.124,1.124,0,0,0-1.59,1.59l.615.615H3.525A1.274,1.274,0,0,1,2.25,3.78V1.125A1.133,1.133,0,0,0,1.125,0,1.133,1.133,0,0,0,0,1.125V3.78A3.53,3.53,0,0,0,3.525,7.3H11.91l-.615.615a1.132,1.132,0,0,0,0,1.59,1.123,1.123,0,0,0,1.59,0L15.42,6.975a1.164,1.164,0,0,0,.24-.36,1.1,1.1,0,0,0,0-.87A1.164,1.164,0,0,0,15.42,5.385Z" transform="translate(0 8.456)" fill="#ffa41e"/>
+      </g>
+    </g>
+  </g>
+</svg>

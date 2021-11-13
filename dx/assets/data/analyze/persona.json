@@ -1,0 +1,51 @@
+{
+    "title": "Persona",
+    "icon": "../../assets/img/icons/persona.svg",
+    "summary": "Describe your potential users within a page, what are their daily life is like, what are their likings, and so on. Seeing this throughout the project will keep our website aligned with the user needs.Describe your potential users within a page, what are their daily life is like, what are their likings, and so on. Seeing this through out the project will keep our website aligned with the user needs.",
+    "before": "We need to have clear Idea about how people uses this website and how is our product affecting their lives, where and they from and what are they like",
+    "after": "Starting the project after this will give you a perspective from the user's point of view, and we can solve problems for them better.",
+    "key_steps": [
+        {
+            "text" : "Identify how many types of unique users you have, for example buyer and seller, wholesale and retail, parent, teacher and student, like so. It can be one or more than one. For each type of user we will have a different persona.",
+            "img" : "./../assets/img/steps/61.png"
+        },
+        {
+            "text" : "Personas consist of basic demographic information like Name, age, gender, highest education, occupation, etc.",
+            "img" : "./../assets/img/steps/62.png"
+        },
+        {
+            "text" : "And it also has, the situation where user is in now, their likings, dislikes, habits, activities, objects and devices that they use, their pain points, constraints and their desired gains. After this also map out a day in life of that persona.",
+            "img" : "./../assets/img/steps/63.png"
+        }
+        
+        
+        
+    ],
+    "key_steps_img": [
+        "Step 1 is here",
+        "Step 2 is here",
+        "Step 3 is here",
+        "Step 4 is here",
+        "Step 5 is here"
+    ],
+    "tools": ["ai", "ps", "xd", "iv", "fg", "cd"],
+    "videos": [
+        "https://www.youtube.com/watch?v=u44pBnAn7cM",
+        "https://www.youtube.com/watch?v=UnAuwhu2C9Q",
+        "https://www.youtube.com/watch?v=GaEdg9zTdB8"
+    ],
+    "resources": [
+        {
+            "title": "User Persona Template",
+            "url": "https://www.justinmind.com/blog/user-persona-templates/"
+        },
+        {
+            "title": "Invision Template",
+            "url": "https://www.invisionapp.com/inside-design/user-persona-template/"
+        },
+        {
+            "title": "XD template",
+            "url": "https://www.adobe.com/express/create/user-persona"
+        }
+    ]
+}

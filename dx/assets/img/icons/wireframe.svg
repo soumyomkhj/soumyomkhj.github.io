@@ -1,0 +1,18 @@
+<svg id="vuesax_bulk_category-2" data-name="vuesax/bulk/category-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45" height="45" viewBox="0 0 45 45">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1" y1="0.763" x2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffa41e"/>
+      <stop offset="1" stop-color="#ffda60"/>
+    </linearGradient>
+  </defs>
+  <rect id="vuesax_bulk_category-2_Background_" data-name="vuesax/bulk/category-2 (Background)" width="45" height="45" fill="none"/>
+  <g id="vuesax_bulk_category-2-2" data-name="vuesax/bulk/category-2">
+    <g id="category-2">
+      <path id="Vector" d="M6.244,0C2.156,0,0,2.156,0,6.244V9.806c0,4.087,2.156,6.244,6.244,6.244H9.806c4.088,0,6.244-2.156,6.244-6.244V6.244C16.05,2.156,13.894,0,9.806,0Z" transform="translate(25.199 3.75)" opacity="0.4" fill="url(#linear-gradient)"/>
+      <path id="Vector-2" data-name="Vector" d="M6.263,0C2.156,0,0,2.156,0,6.244V9.806c0,4.106,2.156,6.262,6.244,6.262H9.806c4.087,0,6.244-2.156,6.244-6.244V6.263C16.069,2.156,13.913,0,9.825,0Z" transform="translate(3.75 25.182)" opacity="0.4" fill="url(#linear-gradient)"/>
+      <path id="Vector-3" data-name="Vector" d="M8.044,16.087a8.044,8.044,0,1,1,8.044-8.044A8.044,8.044,0,0,1,8.044,16.087Z" transform="translate(3.75 3.75)" fill="url(#linear-gradient)"/>
+      <path id="Vector-4" data-name="Vector" d="M8.044,16.087a8.044,8.044,0,1,1,8.044-8.044A8.044,8.044,0,0,1,8.044,16.087Z" transform="translate(25.162 25.162)" fill="url(#linear-gradient)"/>
+      <path id="Vector-5" data-name="Vector" d="M45,0V45H0V0Z" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

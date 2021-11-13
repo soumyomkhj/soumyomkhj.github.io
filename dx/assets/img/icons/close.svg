@@ -1,0 +1,10 @@
+<svg id="vuesax_bulk_close-square" data-name="vuesax/bulk/close-square" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <rect id="vuesax_bulk_close-square_Background_" data-name="vuesax/bulk/close-square (Background)" width="36" height="36" fill="none"/>
+  <g id="vuesax_bulk_close-square-2" data-name="vuesax/bulk/close-square">
+    <g id="close-square">
+      <path id="Vector" d="M8.715,0C3.255,0,0,3.255,0,8.715V21.27C0,26.745,3.255,30,8.715,30H21.27c5.46,0,8.715-3.255,8.715-8.715V8.715C30,3.255,26.745,0,21.285,0Z" transform="translate(3 3)" fill="#ffa41e" opacity="0.4"/>
+      <path id="Vector-2" data-name="Vector" d="M10.406,1.916A1.124,1.124,0,0,0,8.816.326l-3.45,3.45L1.916.326a1.124,1.124,0,0,0-1.59,1.59l3.45,3.45L.326,8.816a1.132,1.132,0,0,0,0,1.59,1.123,1.123,0,0,0,1.59,0l3.45-3.45,3.45,3.45a1.123,1.123,0,0,0,1.59,0,1.132,1.132,0,0,0,0-1.59l-3.45-3.45Z" transform="translate(12.633 12.634)" fill="#ffa41e"/>
+      <path id="Vector-3" data-name="Vector" d="M36,0V36H0V0Z" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

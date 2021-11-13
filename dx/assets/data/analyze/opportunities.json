@@ -1,0 +1,35 @@
+{
+    "title": "Opportunities",
+    "icon": "../../assets/img/icons/opportunities.svg",
+    "summary": "Depending on your findings from previous stages you can now think of the points that you can solve or act upon. Recognize all the actionable areas for next steps. Discuss with the client to see if the direction aligns with them.",
+    "before": "We need to have all the findings from the interviews analyzed to see all of them togeteher and quickly match between them.",
+    "after": "Once we have found all the opportunities, we can come in and start thinking of ways to solve the problems. What can be the best possible solution.",
+    "key_steps": [
+        {
+            "text" : "Now looking at all the findings and observations identify those which have some potential of change, some potential of acting upon. Identify all of them and also identify that you think is relevant to your project.",
+            "img" : "./../assets/img/steps/71.png"
+        },
+        {
+            "text" : "Prioritize the opportunities you just found. Which ones can you take up early and can solve? Which one do not need to be addressed right now?",
+            "img" : "./../assets/img/steps/72.png"
+        }
+    ],
+    "key_steps_img": [
+        "Step 1 is here",
+        "Step 2 is here",
+        "Step 3 is here",
+        "Step 4 is here",
+        "Step 5 is here"
+    ],
+    "tools": ["xl", "mr", "pp", "wm"],
+    "videos": [
+        "https://www.youtube.com/watch?v=RZDutmtw2PM",
+        "https://www.youtube.com/watch?v=b-hDg7699S0"
+    ],
+    "resources": [
+        {
+            "title": "unavailable",
+            "url": "/step?category=analyze&content=opportunities"
+        }
+    ]
+}

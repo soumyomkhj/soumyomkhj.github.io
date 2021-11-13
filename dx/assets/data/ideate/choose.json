@@ -1,0 +1,39 @@
+{
+    "title": "Choose",
+    "icon": "../../assets/img/icons/choose.svg",
+    "summary": "Now you have multiple choices infront of you, look for what goes best with the project you are working on. Have discussion with the client to finalize the style and the direction to move forward.",
+    "before": "We must have done with as much ideation possible before selecting one and going forward with that to ensure we are using the best possible solution.",
+    "after": "Once you have selected what is the final direction with client, its time to put everything together and make a beautiful website.",
+    "key_steps": [
+        {
+            "text" : "Articulate your findings from the research you did and all the ideas, to be shown to the client. Along with the ideas and sketches show why you did what you did.",
+            "img" : "./../assets/img/steps/101.png"
+        },
+        {
+            "text" : "Together arrive at the best possible solution that is most suitable.",
+            "img" : "./../assets/img/steps/102.png"
+        }
+    ],
+    "key_steps_img": [
+        "Step 1 is here",
+        "Step 2 is here",
+        "Step 3 is here",
+        "Step 4 is here",
+        "Step 5 is here"
+    ],
+    "tools": ["mr", "wm", "pc", "iv"],
+    "videos": [
+        "https://www.youtube.com/watch?v=rOGAJwm3n_M",
+        "https://www.youtube.com/watch?v=2brmo3wgG48"
+    ],
+    "resources": [
+        {
+            "title": "Pitch your design, Lollypop",
+            "url": "https://www.lollypop.design/blog/2019/december/how-to-pitch-design-ideas-to-clients/"
+        },
+        {
+            "title": "Design Pitching Journal",
+            "url": "https://madebysidecar.com/journal/how-to-pitch-your-design-work"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <filter id="Path_422" x="-148.5" y="-145.5" width="2216.777" height="1377" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="49.5" result="blur"/>
+      <feFlood flood-color="#1e88e5" flood-opacity="0.102"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-log_in_1">
+      <rect width="1920" height="1080"/>
+    </clipPath>
+  </defs>
+  <g id="log_in_1" data-name="log in – 1" clip-path="url(#clip-log_in_1)">
+    <rect width="1920" height="1080" fill="#f9f9f9"/>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_422)">
+      <path id="Path_422-2" data-name="Path 422" d="M1919.777,0V514.476c-62.057,7.307-118.209,41.839-164.753,81.175-51.748,43.54-96.389,94.588-153.242,132.523-79.273,52.849-176.764,76.871-272.652,96.489s-193.98,36.634-280.86,78.272C969.7,940.671,900.334,1002.929,876.812,1080H0V467.433A356.127,356.127,0,0,1,36.834,435.1C110.7,378.25,205.19,342.317,297.275,306.484c92.085-35.733,185.772-73.368,256.738-132.623C610.065,127.118,650,63.759,651.6,0Z" fill="#fff"/>
+    </g>
+  </g>
+</svg>

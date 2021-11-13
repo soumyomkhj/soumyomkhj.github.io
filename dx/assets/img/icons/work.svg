@@ -1,0 +1,10 @@
+<svg id="vuesax_bulk_shapes" data-name="vuesax/bulk/shapes" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <rect id="vuesax_bulk_shapes_Background_" data-name="vuesax/bulk/shapes (Background)" width="36" height="36" fill="none"/>
+  <g id="vuesax_bulk_shapes-2" data-name="vuesax/bulk/shapes">
+    <g id="shapes">
+      <path id="Vector" d="M36,0V36H0V0Z" fill="none" opacity="0"/>
+      <path id="Vector-2" data-name="Vector" d="M3.6,19.5a3.593,3.593,0,0,1-3.15-5.325l3.5-6.36,3.27-5.955a3.6,3.6,0,0,1,6.3,0L16.8,7.811l1.575,2.865,1.92,3.5a3.593,3.593,0,0,1-3.15,5.325Z" transform="translate(3 3.004)" fill="#1d87c9"/>
+      <path id="Vector-3" data-name="Vector" d="M9.75,19.5A9.75,9.75,0,0,1,0,9.75C0,9.495.015,9.255.03,9H6.645a3.593,3.593,0,0,0,3.15-5.325L7.875.18A9.578,9.578,0,0,1,9.75,0a9.75,9.75,0,0,1,0,19.5Z" transform="translate(13.5 13.5)" fill="#1d87c9" opacity="0.4"/>
+    </g>
+  </g>
+</svg>

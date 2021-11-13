@@ -1,0 +1,17 @@
+<svg id="vuesax_bulk_timer" data-name="vuesax/bulk/timer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45" height="45" viewBox="0 0 45 45">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.933" y1="1.836" x2="0.186" y2="0.23" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffa41e"/>
+      <stop offset="1" stop-color="#ffda60"/>
+    </linearGradient>
+  </defs>
+  <rect id="vuesax_bulk_timer_Background_" data-name="vuesax/bulk/timer (Background)" width="45" height="45" fill="none"/>
+  <g id="vuesax_bulk_timer-2" data-name="vuesax/bulk/timer">
+    <g id="timer">
+      <path id="Vector" d="M17.9,18.75H6.842A6.815,6.815,0,0,1,2.248,6.881L9.842,0h5.081L22.5,6.881A6.815,6.815,0,0,1,17.9,18.75Z" transform="translate(10.126 22.5)" opacity="0.4" fill="url(#linear-gradient)"/>
+      <path id="Vector-2" data-name="Vector" d="M1.275,2.55a1.275,1.275,0,1,1,0-2.55H8.1A1.276,1.276,0,0,1,9.375,1.275,1.289,1.289,0,0,1,8.1,2.55Z" transform="translate(17.813 31.463)" fill="url(#linear-gradient)"/>
+      <path id="Vector-3" data-name="Vector" d="M14.913,18.751H9.832L2.256,11.867A6.8,6.8,0,0,1,6.832,0H17.895a6.814,6.814,0,0,1,4.593,11.867L14.914,18.75ZM8.95,7.255A1.291,1.291,0,0,0,7.678,8.531,1.276,1.276,0,0,0,8.95,9.807h6.825a1.293,1.293,0,0,0,1.276-1.276,1.277,1.277,0,0,0-1.276-1.276Z" transform="translate(10.137 3.75)" fill="url(#linear-gradient)"/>
+      <path id="Vector-4" data-name="Vector" d="M45,0V45H0V0Z" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

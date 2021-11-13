@@ -1,0 +1,45 @@
+{
+    "title": "Wireframe",
+    "icon": "../../assets/img/icons/wireframe.svg",
+    "summary": "Depending on the architecture start making the pages on paper without any color or stylization, Think about how things will function rather than how it will look like for the best experience.",
+    "before": "You need all the pages that are to be designed, for that you need a list or architecture (skeleton) of the whole website.",
+    "after": "Now having the wireframe is like having a flesh on the skeleton of the website. Now for the rest you have to put a high fidelity user interface(UI) on it.",
+    "key_steps": [
+        {
+            "text" : "The goal is to make only layouts representing features and formats, not illustrating with all fine details. Draft, don’t draw. Sketch, don’t illustrate",
+            "img" : "./../assets/img/steps/121.png"
+        },
+        {
+            "text" : "Looking at all the Information architecture from last stage now sketch out the pages",
+            "img" : "./../assets/img/steps/122.png"
+        },
+        {
+            "text" : "Which information should be most prominent? Where should your main message go? What should the user see first when arriving at the page? What will the user expect to see on certain areas of the page?",
+            "img" : "./../assets/img/steps/123.png"
+        },
+        {
+            "text" : "What will the user expect to see on certain areas of the page? Which buttons or touch points does the user need to complete the desired actions?",
+            "img" : "./../assets/img/steps/124.png"
+        }
+    ],
+    "tools": ["mr", "xd", "pc", "fg", "iv"],
+    "videos": [
+        "https://www.youtube.com/watch?v=qpH7-KFWZRI",
+        "https://www.youtube.com/watch?v=KdfO_e0yK-g",
+        "https://www.youtube.com/watch?v=aqdn7vVKygA"
+    ],
+    "resources": [
+        {
+            "title": "Figma wireframe kit",
+            "url": "https://www.figma.com/templates/wireframe-kits/"
+        },
+        {
+            "title": "XD Template",
+            "url": "https://xd.adobe.com/ideas/process/wireframing/wireframe-templates-for-ux-designers/"
+        },
+        {
+            "title": "XD wireframe kit",
+            "url": "https://www.xdguru.com/adobe-xd-wireframe-kits/"
+        }
+    ]
+}

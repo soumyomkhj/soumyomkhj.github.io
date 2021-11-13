@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.224" y1="-0.253" x2="0.929" y2="0.908" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffa41e"/>
+      <stop offset="1" stop-color="#ffda60"/>
+    </linearGradient>
+  </defs>
+  <g id="vuesax_bulk_arrow-left" data-name="vuesax/bulk/arrow-left" transform="translate(30) rotate(90)">
+    <rect id="vuesax_bulk_arrow-left_Background_" data-name="vuesax/bulk/arrow-left (Background)" width="30" height="30" fill="none"/>
+    <g id="vuesax_bulk_arrow-left-2" data-name="vuesax/bulk/arrow-left">
+      <g id="arrow-left">
+        <path id="Vector" d="M9.553,4.738V11.75a1.346,1.346,0,0,1-2.3.95L.778,6.237a2.663,2.663,0,0,1,0-3.763L3.241,0Z" transform="translate(10.222 10.65)" opacity="0.4" fill="url(#linear-gradient)"/>
+        <path id="Vector-2" data-name="Vector" d="M6.312,9.14,0,4.4,4.012.39a1.353,1.353,0,0,1,2.3.963Z" transform="translate(13.462 6.248)" fill="url(#linear-gradient)"/>
+        <path id="Vector-3" data-name="Vector" d="M30,0V30H0V0Z" fill="none" opacity="0"/>
+      </g>
+    </g>
+  </g>
+</svg>

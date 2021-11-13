@@ -1,0 +1,16 @@
+<svg id="vuesax_bulk_devices" data-name="vuesax/bulk/devices" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45" height="45" viewBox="0 0 45 45">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.87" y1="0.933" x2="0.109" y2="0.043" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffa41e"/>
+      <stop offset="1" stop-color="#ffda60"/>
+    </linearGradient>
+  </defs>
+  <rect id="vuesax_bulk_devices_Background_" data-name="vuesax/bulk/devices (Background)" width="45" height="45" fill="none"/>
+  <g id="vuesax_bulk_devices-2" data-name="vuesax/bulk/devices">
+    <g id="devices">
+      <path id="Vector" d="M45,0V45H0V0Z" fill="none" opacity="0"/>
+      <path id="Vector-2" data-name="Vector" d="M7.5,0C1.5,0,0,1.5,0,7.5V18.563c.056,5.681,1.631,7.125,7.5,7.125h4.219v6.656H5.531a1.406,1.406,0,0,0,0,2.813H19.219a8.284,8.284,0,0,1-.431-2.812H14.531V25.688h4.256V16.106c0-4.013,1.331-5.344,5.344-5.344h8.025a13.514,13.514,0,0,1,1.594.094V7.5c0-6-1.5-7.5-7.5-7.5Z" transform="translate(3.75 3.75)" opacity="0.4" fill="url(#linear-gradient)"/>
+      <path id="Exclusion_1" data-name="Exclusion 1" d="M-10960.632,3014.738h-8.025c-2.849,0-4.271-.679-4.911-2.344a8.261,8.261,0,0,1-.433-2.812v-16.238c0-2.081.36-3.369,1.167-4.177s2.1-1.167,4.177-1.167h8.025a13.29,13.29,0,0,1,1.595.094c2.734.35,3.751,1.773,3.751,5.25V3009.4c0,2.08-.36,3.367-1.168,4.175S-10958.551,3014.738-10960.632,3014.738Zm-4.01-8.763a2.142,2.142,0,0,0-2.141,2.14,2.14,2.14,0,0,0,2.141,2.134,2.136,2.136,0,0,0,2.134-2.134A2.139,2.139,0,0,0-10964.642,3005.975Zm-2.443-13.487a.917.917,0,0,0-.914.917.915.915,0,0,0,.914.914h4.886a.928.928,0,0,0,.917-.914.929.929,0,0,0-.917-.917Z" transform="translate(10996.537 -2973.488)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg id="vuesax_bulk_medal-star" data-name="vuesax/bulk/medal-star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="49" height="49" viewBox="0 0 49 49">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffa41e"/>
+      <stop offset="1" stop-color="#ffda60"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" y1="1" y2="0" xlink:href="#linear-gradient"/>
+  </defs>
+  <rect id="vuesax_bulk_medal-star_Background_" data-name="vuesax/bulk/medal-star (Background)" width="49" height="49" fill="none"/>
+  <g id="vuesax_bulk_medal-star-2" data-name="vuesax/bulk/medal-star">
+    <g id="medal-star">
+      <path id="Vector" d="M49,0V49H0V0Z" fill="none" opacity="0"/>
+      <path id="Vector-2" data-name="Vector" d="M26.195,22.234A14.262,14.262,0,0,1,16.435,28.4a12.6,12.6,0,0,1-4.288,0,14.229,14.229,0,1,1,14.047-6.166Z" transform="translate(10.208 4.083)" opacity="0.4" fill="url(#linear-gradient)"/>
+      <path id="Vector-3" data-name="Vector" d="M35.975,12.168a2,2,0,0,0-1.511,1.511l-.715,3a2.042,2.042,0,0,1-3.552.837L20.459,6.329,10.72,17.538A2.042,2.042,0,0,1,7.167,16.7l-.715-3a2.034,2.034,0,0,0-1.511-1.511l-3.369-.8a2.047,2.047,0,0,1-.98-3.43L8.556,0a14.262,14.262,0,0,0,9.759,6.166,12.314,12.314,0,0,0,2.144.184A12.314,12.314,0,0,0,22.6,6.166,14.262,14.262,0,0,0,32.362,0l7.962,7.962a2.033,2.033,0,0,1-.98,3.41Z" transform="translate(4.039 26.337)" fill="url(#linear-gradient-2)"/>
+      <path id="Vector-4" data-name="Vector" d="M9.156,3.389a1.479,1.479,0,0,0,.98.715l2.185.367c1.388.225,1.715,1.245.715,2.246L11.34,8.412a1.447,1.447,0,0,0-.347,1.245l.49,2.1c.388,1.654-.49,2.307-1.96,1.429l-2.042-1.2a1.432,1.432,0,0,0-1.348,0l-2.042,1.2c-1.47.858-2.348.225-1.96-1.429l.49-2.1a1.532,1.532,0,0,0-.347-1.245L.581,6.717c-1-1-.674-2,.715-2.246L3.48,4.1a1.488,1.488,0,0,0,.96-.715L5.644.98C6.236-.327,7.3-.327,7.951.98Z" transform="translate(17.733 11.229)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

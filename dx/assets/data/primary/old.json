@@ -1,0 +1,36 @@
+{
+    "title": "Old Design",
+    "icon": "../../assets/img/icons/old.svg",
+    "summary": "If there is already and website in place then we need to analyze that. Why is it not working? What are the problems that users are having while using the website.",
+    "before": "If only they had a website before this ee need to have basic Idea about that, having discussion with the client and knowing them would be helpful.",
+    "after": "Clear idea about what were working or not working in the old website and why?",
+    "key_steps": [
+        {
+            "text" : "What are the functions of the website? What pages does it have? The goal here is to know the website top to bottom. Identify the main functionalities of the website.",
+            "img" : "./../assets/img/steps/4a1.png"
+        },
+        {
+            "text" : "What are the major problems in aesthetics and functionality that you can identify by just looking at the old website design? Why those designs are not working?",
+            "img" : "./../assets/img/steps/4a2.png"
+        },
+        {
+            "text" : "Depending on what kind of audience you have find people who are willing to can give us some time and answer few questions. Like this, recruit few potential or current users.",
+            "img" : "./../assets/img/steps/4a3.png"
+        },
+        {
+            "text" : "Ask them to perform or go though one of the main functionalities of the website while saying out loud what they are thinking while going through the website. Write down what points were confusing for them, what parts they did not like.",
+            "img" : "./../assets/img/steps/4a4.png"
+        }
+    ],
+    "tools": ["xl", "wd", "np", "dr"],
+    "videos": [
+        "https://www.youtube.com/watch?v=E84GpsDuaS0",
+        "https://www.youtube.com/watch?v=c6Ktw7rMv7E"
+    ],
+    "resources": [
+        {
+            "title": "Responsive design tester",
+            "url": "https://responsivedesignchecker.com/"
+        }
+    ]
+}

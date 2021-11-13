@@ -1,0 +1,50 @@
+{
+    "title": "Findings",
+    "icon": "../../assets/img/icons/findings.svg",
+    "summary": "From all the previous steps, now you have all the insights that you need move forward, but first you need to analyze them to summarize everything in actionable parts.",
+    "before": "You need to be done with all the user interviews, where you collect data/ insights from the user, to analyze that data",
+    "after": "You will have clear idea about users, you have observations ready, now you can look for opportunities here to design the solution.",
+    "key_steps": [
+        {
+            "text" : "From the interview documentation find out the most insightful comments and separate them to use further. We will call these insights or findings. Use sticky notes or use any whiteboard tool like miro.",
+            "img" : "./../assets/img/steps/51.png"
+        },
+        {
+            "text" : "From them find your most favorite findings and separate them from the others.",
+            "img" : "./../assets/img/steps/52.png"
+        },
+        {
+            "text" : "Take each of your favorite findings / insight and try to find all similar insights. Group them together. This way you will end up with multiple groups of insights. Add a summary of each of the group",
+            "img" : "./../assets/img/steps/53.png"
+        },
+        {
+            "text" : "Take those summaries and group related ones further. Now let us have heading of the each group of summaries. You can now group those headings even further and name them accordingly. Now what you have is called an affinity diagram.",
+            "img" : "./../assets/img/steps/54.png"
+        }
+    ],
+    "tools": ["xl", "pp", "mr", "wm", "iv"],
+    "videos": [
+        "https://www.youtube.com/watch?v=VngWHIE4k9s",
+        "https://www.youtube.com/watch?v=EGpgNSLtTNo",
+        "https://www.youtube.com/watch?v=C4nYxZxteJY",
+        "https://www.youtube.com/watch?v=6Aq-PUsj05M"
+    ],
+    "resources": [
+        {
+            "title": "NN Group Article",
+            "url": "https://www.nngroup.com/articles/affinity-diagram/"
+        },
+        {
+            "title": "Usertesting Blog",
+            "url": "https://www.usertesting.com/blog/affinity-mapping"
+        },
+        {
+            "title": "Miro Template",
+            "url": "https://miro.com/templates/affinity-diagram/"
+        },
+        {
+            "title": "Invision template",
+            "url": "https://www.invisionapp.com/freehand/templates/detail/affinity-diagram-template"
+        }
+    ]
+}

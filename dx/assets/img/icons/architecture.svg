@@ -1,0 +1,18 @@
+<svg id="vuesax_bulk_hierarchy" data-name="vuesax/bulk/hierarchy" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45" height="45" viewBox="0 0 45 45">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.879" y1="0.744" x2="0.208" y2="0.19" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffa41e"/>
+      <stop offset="1" stop-color="#ffda60"/>
+    </linearGradient>
+  </defs>
+  <rect id="vuesax_bulk_hierarchy_Background_" data-name="vuesax/bulk/hierarchy (Background)" width="45" height="45" fill="none"/>
+  <g id="vuesax_bulk_hierarchy-2" data-name="vuesax/bulk/hierarchy">
+    <g id="hierarchy">
+      <path id="Vector" d="M45,0V45H0V0Z" fill="none" opacity="0"/>
+      <path id="Vector-2" data-name="Vector" d="M6.094,12.188a6.094,6.094,0,1,1,6.094-6.094A6.094,6.094,0,0,1,6.094,12.188Z" transform="translate(3.75 3.75)" fill="url(#linear-gradient)"/>
+      <path id="Vector-3" data-name="Vector" d="M5.625,11.25A5.625,5.625,0,1,1,11.25,5.625,5.625,5.625,0,0,1,5.625,11.25Z" transform="translate(3.75 30)" fill="url(#linear-gradient)"/>
+      <path id="Vector-4" data-name="Vector" d="M5.625,11.25A5.625,5.625,0,1,1,11.25,5.625,5.625,5.625,0,0,1,5.625,11.25Z" transform="translate(30 30)" fill="url(#linear-gradient)"/>
+      <path id="Vector-5" data-name="Vector" d="M15.713,9.544h-.056l-6.619.019A6.358,6.358,0,0,1,2.869,4.894V1.425A1.429,1.429,0,0,0,1.425,0,1.413,1.413,0,0,0,0,1.425V22.462a1.424,1.424,0,0,0,1.425,1.425,1.44,1.44,0,0,0,1.444-1.425V10.05a9.265,9.265,0,0,0,6.15,2.362h.037l6.619-.019h.038a10.1,10.1,0,0,1,9.544,6.787,1.424,1.424,0,0,0,1.35.956,1.363,1.363,0,0,0,.469-.075,1.384,1.384,0,0,0,.9-1.8A12.992,12.992,0,0,0,15.713,9.544Z" transform="translate(7.969 11.7)" opacity="0.4" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

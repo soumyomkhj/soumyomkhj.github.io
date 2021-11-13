@@ -1,0 +1,44 @@
+{
+    "title": "Architecture ",
+    "icon": "../../assets/img/icons/architecture.svg",
+    "summary": "Based on what you already know think of how someone will navigate through the website, what are the pages and how you will reach them, Making this will show how many pages will be there, what are the main pages and the navigation.",
+    "before": "We have gone through the ideation part, we know what are the important pages are required for our website that it is easy to use and navigate.",
+    "after": "After this you have a skeleton of the website which has all the required pages and the paths to navigate through them, next you can work on the actual screens",
+    "key_steps": [
+        {
+            "text" : "Start with how user will land on your website, what will that page have, what other pages can also be accessed from that page.",
+            "img" : "./../assets/img/steps/111.png"
+        },
+        {
+            "text" : "Make a tree diagram of all the possible pages, with all possible content that would go on the page.",
+            "img" : "./../assets/img/steps/112.png"
+        }
+    ],
+    "key_steps_img": [
+        "Step 1 is here",
+        "Step 2 is here",
+        "Step 3 is here",
+        "Step 4 is here",
+        "Step 5 is here"
+    ],
+    "tools": ["mr", "xl", "wm", "dr", "iv"],
+    "videos": [
+        "https://www.youtube.com/watch?v=CkQ3q0gewrQ",
+        "https://www.youtube.com/watch?v=OJLfjgVlwDo",
+        "https://www.youtube.com/watch?v=XfxR5m8zUO8"
+    ],
+    "resources": [
+        {
+            "title": "Figma IA Template",
+            "url": "https://www.figma.com/community/file/918613302150835645"
+        },
+        {
+            "title": "IA on Dribble",
+            "url": "https://dribbble.com/tags/information_architecture"
+        },
+        {
+            "title": "IA on XD",
+            "url": "https://xd.adobe.com/ideas/process/information-architecture/information-architecture-templates-for-web-design/"
+        }
+    ]
+}

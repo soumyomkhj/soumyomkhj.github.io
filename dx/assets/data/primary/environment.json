@@ -1,0 +1,35 @@
+{
+    "title": "Environment",
+    "icon": "../../assets/img/icons/environment.svg",
+    "summary": "Where is this website placed? How is the environment? Is it made for busy environments like factory or light places like for shopping.",
+    "before": "We need to have basic Idea about the project, where is it being used who are using it.",
+    "after": "We will have clear idea about the environment where the website will be used.",
+    "key_steps": [
+        {
+            "text" : "What do you know about the place where the website is going to be used? Is it a busy place or not?",
+            "img" : "./../assets/img/steps/4b1.png"
+        },
+        {
+            "text" : "Will it be used in any special space? does it need you to be in a certain place to use the website? ",
+            "img" : "./../assets/img/steps/4b2.png"
+        },
+        {
+            "text" : "If yes, go to the place where the website will be used, look at what users of the website are working on or doing in that place. How the website fits in that place?",
+            "img" : "./../assets/img/steps/4b3.png"
+        }
+    ],
+    "tools": ["xl", "wd", "np", "dr"],
+    "videos": [
+        "https://www.youtube.com/watch?v=kDuN9siqvE0"
+    ],
+    "resources": [
+        {
+            "title": "Environment Design context",
+            "url": "https://www.open.edu/openlearn/science-maths-technology/introduction-interaction-design/content-section-3.1.3"
+        },
+        {
+            "title": "The User Environment Design",
+            "url": "https://www.sciencedirect.com/topics/computer-science/user-environment-design"
+        }
+    ]
+}

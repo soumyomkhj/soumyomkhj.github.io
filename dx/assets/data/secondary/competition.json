@@ -1,0 +1,50 @@
+{
+    "title": "Competitor",
+    "icon": "../../assets/img/icons/competition.svg",
+    "summary": "Who else is doing the same thing, solving similar types of problems? There must be many people who did something at-least remotely similar. How is it connected to the problem you are solving? We also need to position ourselves as how we are doing it better?",
+    "before": "We need to have a very basic Idea about the project, having discussion with the client and knowing them would be helpful.",
+    "after": "You will have clear Idea about where the project is positioned, with respect to the market",
+    "key_steps": [
+        {
+            "text" : "Find out the other companies that are working in the same area, doing the same stuff, solving the same problem, or even companies in related areas. Now we will compare their strengths, weaknesses, opportunities and threats. (SWOT)",
+            "img" : "./../assets/img/steps/21.png"
+        },
+        {
+            "text" : "Make a list of what are their Strengths, things they doing really good and successfully? What do others see as their strengths?",
+            "img" : "./../assets/img/steps/22.png"
+        },
+        {
+            "text" : "Make a list of what are their weaknesses, What could you improve? Where do they have fewer resources than others? What are others likely to see as weaknesses?",
+            "img" : "./../assets/img/steps/23.png"
+        },
+        {
+            "text" : "What Opportunities are they make use of? Which of these opportunities you can also make use of?",
+            "img" : "./../assets/img/steps/24.png"
+        },
+        {
+            "text" : "What Threats are they facing? Which of these threats you also have to be careful about?",
+            "img" : "./../assets/img/steps/25.png"
+        }
+    ],
+    "tools": ["wd", "xl", "np", "mr"],
+    "videos": [
+        "https://www.youtube.com/watch?v=nThUTT6DxmA",
+        "https://www.youtube.com/watch?v=S4mLTKvvqdo",
+        "https://www.youtube.com/watch?v=G2kpQGNxkRc",
+        "https://www.youtube.com/watch?v=P1g2HWNO1M4"
+    ],
+    "resources": [
+        {
+            "title": "miro SWOT Template",
+            "url": "https://miro.com/templates/swot-analysis/"
+        },
+        {
+            "title": "PPT SWOT Template",
+            "url": "https://slidesgo.com/theme/swot-analysis-infographics"
+        },
+        {
+            "title": "PPT SWOT Template",
+            "url": "https://slidemodel.com/templates/swot-analysis-template-deck/"
+        }
+    ]
+}

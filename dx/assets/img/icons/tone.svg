@@ -1,0 +1,16 @@
+<svg id="vuesax_bulk_lovely" data-name="vuesax/bulk/lovely" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.827" y1="0.676" x2="0.106" y2="0.167" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffa41e"/>
+      <stop offset="1" stop-color="#ffda60"/>
+    </linearGradient>
+  </defs>
+  <rect id="vuesax_bulk_lovely_Background_" data-name="vuesax/bulk/lovely (Background)" width="50" height="50" fill="none"/>
+  <g id="vuesax_bulk_lovely-2" data-name="vuesax/bulk/lovely">
+    <g id="lovely">
+      <path id="Vector" d="M50,0V50H0V0Z" fill="none" opacity="0"/>
+      <path id="Vector-2" data-name="Vector" d="M37.188,11.312A9.432,9.432,0,0,0,27.75,13.1a9.229,9.229,0,0,0-6.208-2.375,9.327,9.327,0,0,0-9.292,9.354,18.125,18.125,0,0,0,5.792,13,2.2,2.2,0,0,1-.583-.125C12.063,31.1,0,23.437,0,10.4a10.33,10.33,0,0,1,18.6-6.25,10.33,10.33,0,0,1,18.6,6.25C37.208,10.708,37.208,11.021,37.188,11.312Z" transform="translate(4.167 6.459)" opacity="0.4" fill="url(#linear-gradient)"/>
+      <path id="Vector-3" data-name="Vector" d="M12.375,2.75A6.875,6.875,0,0,0,0,6.917,12.808,12.808,0,0,0,.646,11C2.6,17.187,8.625,20.875,11.6,21.9a2.771,2.771,0,0,0,1.542,0c2.979-1.021,9-4.708,10.958-10.9a13,13,0,0,0,.646-4.083A6.875,6.875,0,0,0,12.375,2.75Z" transform="translate(19.625 19.979)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

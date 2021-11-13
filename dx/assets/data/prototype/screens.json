@@ -1,0 +1,39 @@
+{
+    "title": "Screens",
+    "icon": "../../assets/img/icons/screens.svg",
+    "summary": "Take the wireframe and turn those into a beautiful mockup by applying the pre-decided design style. At this time focus on how the whole interface will look like all together. ",
+    "before": "You need to have the wireframes to work on hi-fi prototype so that you already have knowledge of what will go into that page.",
+    "after": "Once you have selected what is the final direction with client, its time to put everything together and make a beautiful website ",
+    "key_steps": [
+        {
+            "text" : "Finally its time to design the website. Looking at the wireframes you have enough Idea about what will go on the pages. Depending on the stylescape you made, use the brand fonts, brand colors and design all the pages required for the website",
+            "img" : "./../assets/img/steps/131.png"
+        },
+        {
+            "text" : "The actual process of designing is usually the longest step since you are not only creating the key screens but also adapting your product to various screen sizes, mobile devices, adding error messages etc.",
+            "img" : "./../assets/img/steps/132.png"
+        }
+    ],
+    "tools": ["fg", "xd", "cd", "ai", "iv"],
+    "videos": [
+        "https://www.youtube.com/watch?v=GEnSPZkcKKA",
+        "https://www.youtube.com/watch?v=wCxQ-hHnmGc",
+        "https://www.youtube.com/watch?v=-sAAa-CCOcg",
+        "https://www.youtube.com/watch?v=V2aaotz72cE"
+
+    ],
+    "resources": [
+        {
+            "title": "Adobe UI kit for XD",
+            "url": "https://www.adobe.com/in/products/xd/features/ui-kits.html"
+        },
+        {
+            "title": "XD Guru UI Kit",
+            "url": "https://www.xdguru.com/free-xd-ui-kits/"
+        },
+        {
+            "title": "Figma Templates",
+            "url": "https://www.figma.com/community/ui_kits"
+        }
+    ]
+}

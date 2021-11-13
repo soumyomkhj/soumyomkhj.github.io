@@ -1,0 +1,19 @@
+<svg id="vuesax_bulk_emoji-sad" data-name="vuesax/bulk/emoji-sad" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.939" y1="0.874" x2="0.097" y2="-0.108" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffa41e"/>
+      <stop offset="1" stop-color="#ffda60"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="0.939" y1="0.126" x2="0.097" y2="1.108" xlink:href="#linear-gradient"/>
+  </defs>
+  <rect id="vuesax_bulk_emoji-sad_Background_" data-name="vuesax/bulk/emoji-sad (Background)" width="50" height="50" fill="none"/>
+  <g id="vuesax_bulk_emoji-sad-2" data-name="vuesax/bulk/emoji-sad">
+    <g id="emoji-sad">
+      <path id="Vector" d="M12.1,0C4.521,0,0,4.521,0,12.1V29.542c0,7.6,4.521,12.125,12.1,12.125H29.542c7.583,0,12.1-4.521,12.1-12.1V12.1C41.667,4.521,37.146,0,29.563,0Z" transform="translate(4.167 4.167)" opacity="0.4" fill="url(#linear-gradient)"/>
+      <path id="Vector-2" data-name="Vector" d="M8.036,4.224a3.81,3.81,0,0,0-5.375,0A1.562,1.562,0,0,1,.453,2.016a6.954,6.954,0,0,1,9.792,0,1.572,1.572,0,0,1,0,2.208,1.559,1.559,0,0,1-2.208,0Z" transform="translate(13.025 15.109)" fill="url(#linear-gradient)"/>
+      <path id="Vector-3" data-name="Vector" d="M.453,4.224a1.572,1.572,0,0,1,0-2.208,6.954,6.954,0,0,1,9.792,0A1.562,1.562,0,0,1,8.036,4.224a3.81,3.81,0,0,0-5.375,0,1.479,1.479,0,0,1-1.1.458A1.545,1.545,0,0,1,.453,4.224Z" transform="translate(26.278 15.109)" fill="url(#linear-gradient)"/>
+      <path id="Vector-4" data-name="Vector" d="M0,2.667A2.667,2.667,0,0,1,2.646,0h15a2.654,2.654,0,0,1,2.646,2.667A10.118,10.118,0,0,1,10.167,12.833,10.18,10.18,0,0,1,0,2.667Z" transform="translate(14.832 24.833)" fill="url(#linear-gradient-4)"/>
+      <path id="Vector-5" data-name="Vector" d="M50,0V50H0V0Z" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,40 @@
+{
+    "title": "Performance",
+    "icon": "../../assets/img/icons/performance.svg",
+    "summary": "See how easily people are navigating through the website or consuming the website content, how is the performance? Are they taking more time somewhere? Coming upon any problems here you can go back and correct those.",
+    "before": "You need a working prototype of the website so that someone can use primary features of the website which you want to test.",
+    "after": "You will get an idea of what is working what is not by the time-taken to finish tasks on the website. From this you can go back to wireframing, prototyping, ideation or even research to fix that problem.",
+    "key_steps": [
+        {
+            "text" : "We need to recruit people like we did on while primary research. Ask consent for recording the session while keeping their identity anonymous. We will ask them to perform certain kind of tasks to see how the website we designed performed.",
+            "img" : "./../assets/img/steps/151.png"
+        },
+        {
+            "text" : "Identify the most important tasks that the user will do on the website. The tasks we will choose need to be fairly complex depending on the complexity of the website.",
+            "img" : "./../assets/img/steps/152.png"
+        },
+        {
+            "text" : "Set a timer for when the user starts the task and measure how much time they are taking to complete the task. Note everything down. Note observations while user was doing the task, parts when they were confused what to do or was happy about.",
+            "img" : "./../assets/img/steps/153.png"
+        },
+        {
+            "text" : " And by all these data, find which places are generally taking more time than others, which are working well, why is it taking more or less time and so on. From this you have the idea of which areas to fix. Now go back to previous stages and fix accordingly.",
+            "img" : "./../assets/img/steps/154.png"
+        }
+    ],
+    "tools": ["mr", "xl", "np", "pp", "dr"],
+    "videos": [
+        "https://www.youtube.com/watch?v=RyGFEmimwoM",
+        "https://www.youtube.com/watch?v=IHs7OjL_6lg"
+    ],
+    "resources": [
+        {
+            "title": "User Performance test",
+            "url": "https://www.perfecto.io/blog/single-user-performance-testing"
+        },
+        {
+            "title": "Usability testing Guide",
+            "url": "https://careerfoundry.com/en/blog/ux-design/usability-testing-guide/"
+        }
+    ]
+}

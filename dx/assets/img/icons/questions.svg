@@ -1,0 +1,21 @@
+<svg id="vuesax_bulk_message-question" data-name="vuesax/bulk/message-question" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.877" y1="0.908" x2="0.114" y2="0.059" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffa41e"/>
+      <stop offset="1" stop-color="#ffda60"/>
+    </linearGradient>
+  </defs>
+  <rect id="vuesax_bulk_message-question_Background_" data-name="vuesax/bulk/message-question (Background)" width="50" height="50" fill="none"/>
+  <g id="vuesax_bulk_message-question-2" data-name="vuesax/bulk/message-question">
+    <g id="message-question">
+      <path id="Vector" d="M50,0V50H0V0Z" fill="none" opacity="0"/>
+      <path id="Vector-2" data-name="Vector" d="M22.917,33.333,13.646,39.5a2.077,2.077,0,0,1-3.229-1.729V33.333C4.167,33.333,0,29.167,0,22.917v-12.5C0,4.167,4.167,0,10.417,0H31.25C37.5,0,41.667,4.167,41.667,10.417v12.5c0,6.25-4.167,10.417-10.417,10.417Z" transform="translate(4.167 5.062)" opacity="0.4" fill="url(#linear-gradient)"/>
+      <g id="Group" transform="translate(19.979 12.729)">
+        <path id="Vector-3" data-name="Vector" d="M3.458,10.938V10.5A4.848,4.848,0,0,1,5.9,6.438c.771-.521,1.021-.875,1.021-1.417a1.9,1.9,0,1,0-3.792,0A1.574,1.574,0,0,1,1.563,6.583,1.574,1.574,0,0,1,0,5.021a5.021,5.021,0,1,1,10.042,0,4.779,4.779,0,0,1-2.4,4c-.812.542-1.063.9-1.063,1.479v.437a1.563,1.563,0,0,1-3.125,0Z" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="Group-2" data-name="Group" transform="translate(23.438 27.292)">
+        <path id="Vector-4" data-name="Vector" d="M0,1.563A1.574,1.574,0,0,1,1.563,0,1.563,1.563,0,1,1,0,1.563Z" fill="url(#linear-gradient)"/>
+      </g>
+    </g>
+  </g>
+</svg>

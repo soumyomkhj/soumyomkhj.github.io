@@ -1,0 +1,22 @@
+<svg id="vuesax_bulk_like-dislike" data-name="vuesax/bulk/like-dislike" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45" height="45" viewBox="0 0 45 45">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1" y1="0.75" x2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffa41e"/>
+      <stop offset="1" stop-color="#ffda60"/>
+    </linearGradient>
+  </defs>
+  <rect id="vuesax_bulk_like-dislike_Background_" data-name="vuesax/bulk/like-dislike (Background)" width="45" height="45" fill="none"/>
+  <g id="vuesax_bulk_like-dislike-2" data-name="vuesax/bulk/like-dislike">
+    <g id="like-dislike">
+      <path id="Vector" d="M45,0V45H0V0Z" fill="none" opacity="0"/>
+      <g id="Group" transform="translate(3.75 20.543)">
+        <path id="Vector-2" data-name="Vector" d="M13.462,7.338H9.094A.907.907,0,0,1,8.362,7a1.053,1.053,0,0,1-.225-.825l.544-3.487A2.336,2.336,0,0,0,7.181.12,2.315,2.315,0,0,0,4.612.945L.131,7.6,0,7.826v9.413l.169.169,3.375,2.606a3.507,3.507,0,0,0,2.175.694H9.862a3.418,3.418,0,0,0,3.188-2.381l2.625-7.969a2.24,2.24,0,0,0-.225-2.081A2.347,2.347,0,0,0,13.462,7.338Z" transform="translate(5.457)" opacity="0.4" fill="url(#linear-gradient)"/>
+        <path id="Vector-3" data-name="Vector" d="M2.325,0C.675,0,0,.637,0,2.212V12.919c0,1.575.675,2.212,2.325,2.212H3.412c1.65,0,2.325-.637,2.325-2.212V2.212C5.737.637,5.062,0,3.412,0Z" transform="translate(0 4.395)" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="Group-2" data-name="Group" transform="translate(20.621 3.694)">
+        <path id="Vector-4" data-name="Vector" d="M2.366,13.369H6.734a.907.907,0,0,1,.731.338,1.053,1.053,0,0,1,.225.825l-.544,3.488a2.336,2.336,0,0,0,1.5,2.569,2.315,2.315,0,0,0,2.569-.825L15.7,13.106l.131-.225V3.469L15.659,3.3,12.284.694A3.508,3.508,0,0,0,10.109,0H5.966A3.418,3.418,0,0,0,2.778,2.381L.153,10.35a2.246,2.246,0,0,0,.225,2.081A2.347,2.347,0,0,0,2.366,13.369Z" opacity="0.4" fill="url(#linear-gradient)"/>
+        <path id="Vector-5" data-name="Vector" d="M3.412,15.131c1.65,0,2.325-.637,2.325-2.212V2.213C5.737.638,5.062,0,3.412,0H2.325C.675,0,0,.638,0,2.213V12.919c0,1.575.675,2.212,2.325,2.212Z" transform="translate(15.546 1.181)" fill="url(#linear-gradient)"/>
+      </g>
+    </g>
+  </g>
+</svg>
