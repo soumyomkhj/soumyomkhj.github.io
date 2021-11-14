@@ -1,6 +1,6 @@
 {
     "title": "Performance",
-    "icon": "../../assets/img/icons/performance.svg",
+    "icon": "assets/img/icons/performance.svg",
     "summary": "See how easily people are navigating through the website or consuming the website content, how is the performance? Are they taking more time somewhere? Coming upon any problems here you can go back and correct those.",
     "before": "You need a working prototype of the website so that someone can use primary features of the website which you want to test.",
     "after": "You will get an idea of what is working what is not by the time-taken to finish tasks on the website. From this you can go back to wireframing, prototyping, ideation or even research to fix that problem.",

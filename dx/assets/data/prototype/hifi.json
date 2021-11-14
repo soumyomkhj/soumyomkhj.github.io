@@ -1,6 +1,6 @@
 {
     "title": "Hi-Fi",
-    "icon": "../../assets/img/icons/hi-fi.svg",
+    "icon": "assets/img/icons/hi-fi.svg",
     "summary": "Hi-Fi means High Fidelity which is as close to real as possible. After making the screens think about how would people interact with it, what will happen when you hover or click, work on animations and navigations. The experience of the hi-fi prototype will be as close as the real website and can be sent for development.",
     "before": "You need to start working based on a mockup that is ready, so that we can detail it out and have the final output.",
     "after": "Now our design is ready for being developed and tested, so make sure your design has all the elements that are needed for development.",

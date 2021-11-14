@@ -1,6 +1,6 @@
 {
     "title": "Wireframe",
-    "icon": "../../assets/img/icons/wireframe.svg",
+    "icon": "assets/img/icons/wireframe.svg",
     "summary": "Depending on the architecture start making the pages on paper without any color or stylization, Think about how things will function rather than how it will look like for the best experience.",
     "before": "You need all the pages that are to be designed, for that you need a list or architecture (skeleton) of the whole website.",
     "after": "Now having the wireframe is like having a flesh on the skeleton of the website. Now for the rest you have to put a high fidelity user interface(UI) on it.",

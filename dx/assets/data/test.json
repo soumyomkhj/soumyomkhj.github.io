@@ -1,6 +1,6 @@
 {
     "title": "Context",
-    "icon": "../../assets/img/icons/competition.svg",
+    "icon": "assets/img/icons/competition.svg",
     "summary": "What is the problem that we are trying to solve by the website? What details you know about the problem? How were they doing it initially? What are the important people for your project?",
     "before": "We need to have very basic Idea about the project, having discussion with the client and knowing them would be helpful.",
     "after": "You will have clear Idea about where the project is positioned, problem it is trying to solve and insights for the next steps",

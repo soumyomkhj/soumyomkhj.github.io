@@ -1,6 +1,6 @@
 {
     "title": "Brainstorming",
-    "icon": "../../assets/img/icons/brainstorming.svg",
+    "icon": "assets/img/icons/brainstorming.svg",
     "summary": "Write and sketch about alternate ideas for the website. The goal is to generate as many ideas as possible in a small amount of time. In this step remember no idea will be discarded, all Ideas are valid, the more diverse the ideas are the better.",
     "before": "We already need to have the direction set in our mind, what are the goals of the website, what are the goals of the people visiting them?",
     "after": "Now we can move on to selecting a idea(s) which matches with our requirements and fits with the brand perfectly.",

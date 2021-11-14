@@ -1,6 +1,6 @@
 {
     "title": "Think Aloud",
-    "icon": "../../assets/img/icons/think-aloud.svg",
+    "icon": "assets/img/icons/think-aloud.svg",
     "summary": "Ask people to say what they are doing, what they are thinking while they use the website, this will bring forward any conceptual problem that might be there if not it will be the validation of the website being useful to the audience.",
     "before": "You need a working prototype of the website so that someone can use primary features of the website which you want to test.",
     "after": "You will get the idea of what is working what is not by the time-taken to finish tasks on the website. From this you can go back to wireframing, prototyping, ideation or even research to fix that problem.",

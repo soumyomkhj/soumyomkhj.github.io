@@ -1,6 +1,6 @@
 {
     "title": "Old Design",
-    "icon": "../../assets/img/icons/old.svg",
+    "icon": "assets/img/icons/old.svg",
     "summary": "If there is already and website in place then we need to analyze that. Why is it not working? What are the problems that users are having while using the website.",
     "before": "If only they had a website before this ee need to have basic Idea about that, having discussion with the client and knowing them would be helpful.",
     "after": "Clear idea about what were working or not working in the old website and why?",

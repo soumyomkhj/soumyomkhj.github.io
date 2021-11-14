@@ -1,6 +1,6 @@
 {
     "title": "Persona",
-    "icon": "../../assets/img/icons/persona.svg",
+    "icon": "assets/img/icons/persona.svg",
     "summary": "Describe your potential users within a page, what are their daily life is like, what are their likings, and so on. Seeing this throughout the project will keep our website aligned with the user needs.Describe your potential users within a page, what are their daily life is like, what are their likings, and so on. Seeing this through out the project will keep our website aligned with the user needs.",
     "before": "We need to have clear Idea about how people uses this website and how is our product affecting their lives, where and they from and what are they like",
     "after": "Starting the project after this will give you a perspective from the user's point of view, and we can solve problems for them better.",

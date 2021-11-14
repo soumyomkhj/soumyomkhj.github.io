@@ -1,6 +1,6 @@
 {
     "title": "Opportunities",
-    "icon": "../../assets/img/icons/opportunities.svg",
+    "icon": "assets/img/icons/opportunities.svg",
     "summary": "Depending on your findings from previous stages you can now think of the points that you can solve or act upon. Recognize all the actionable areas for next steps. Discuss with the client to see if the direction aligns with them.",
     "before": "We need to have all the findings from the interviews analyzed to see all of them togeteher and quickly match between them.",
     "after": "Once we have found all the opportunities, we can come in and start thinking of ways to solve the problems. What can be the best possible solution.",

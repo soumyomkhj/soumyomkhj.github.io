@@ -1,6 +1,6 @@
 {
     "title": "Environment",
-    "icon": "../../assets/img/icons/environment.svg",
+    "icon": "assets/img/icons/environment.svg",
     "summary": "Where is this website placed? How is the environment? Is it made for busy environments like factory or light places like for shopping.",
     "before": "We need to have basic Idea about the project, where is it being used who are using it.",
     "after": "We will have clear idea about the environment where the website will be used.",

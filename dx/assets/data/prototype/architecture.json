@@ -1,6 +1,6 @@
 {
     "title": "Architecture ",
-    "icon": "../../assets/img/icons/architecture.svg",
+    "icon": "assets/img/icons/architecture.svg",
     "summary": "Based on what you already know think of how someone will navigate through the website, what are the pages and how you will reach them, Making this will show how many pages will be there, what are the main pages and the navigation.",
     "before": "We have gone through the ideation part, we know what are the important pages are required for our website that it is easy to use and navigate.",
     "after": "After this you have a skeleton of the website which has all the required pages and the paths to navigate through them, next you can work on the actual screens",

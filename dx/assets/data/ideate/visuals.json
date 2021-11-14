@@ -1,6 +1,6 @@
 {
     "title": "Visuals",
-    "icon": "../../assets/img/icons/visuals.svg",
+    "icon": "assets/img/icons/visuals.svg",
     "summary": "Think of how the website should look like depending on the findings? What colors fit well as per our requirements, how they will fit into the website elements. How will the elements look and feel? Try out different styles.",
     "before": "We already need to have the direction set in our mind, what are the goals of the website, what are the goals of the people visiting them?",
     "after": "Now we can move on to selecting a style which matches with our requirements and fits with the brand perfectly.",

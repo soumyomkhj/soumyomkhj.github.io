@@ -1,6 +1,6 @@
 {
     "title": "Competitor",
-    "icon": "../../assets/img/icons/competition.svg",
+    "icon": "assets/img/icons/competition.svg",
     "summary": "Who else is doing the same thing, solving similar types of problems? There must be many people who did something at-least remotely similar. How is it connected to the problem you are solving? We also need to position ourselves as how we are doing it better?",
     "before": "We need to have a very basic Idea about the project, having discussion with the client and knowing them would be helpful.",
     "after": "You will have clear Idea about where the project is positioned, with respect to the market",

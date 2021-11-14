@@ -1,6 +1,6 @@
 {
     "title": "Findings",
-    "icon": "../../assets/img/icons/findings.svg",
+    "icon": "assets/img/icons/findings.svg",
     "summary": "From all the previous steps, now you have all the insights that you need move forward, but first you need to analyze them to summarize everything in actionable parts.",
     "before": "You need to be done with all the user interviews, where you collect data/ insights from the user, to analyze that data",
     "after": "You will have clear idea about users, you have observations ready, now you can look for opportunities here to design the solution.",

@@ -1,6 +1,6 @@
 {
     "title": "Screens",
-    "icon": "../../assets/img/icons/screens.svg",
+    "icon": "assets/img/icons/screens.svg",
     "summary": "Take the wireframe and turn those into a beautiful mockup by applying the pre-decided design style. At this time focus on how the whole interface will look like all together. ",
     "before": "You need to have the wireframes to work on hi-fi prototype so that you already have knowledge of what will go into that page.",
     "after": "Once you have selected what is the final direction with client, its time to put everything together and make a beautiful website ",

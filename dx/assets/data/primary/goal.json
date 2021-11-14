@@ -1,6 +1,6 @@
 {
     "title": "User Goal",
-    "icon": "../../assets/img/icons/user-goal.svg",
+    "icon": "assets/img/icons/user-goal.svg",
     "summary": "Talk to your potential or current users, see what they are looking for while they are on the website? What things do they need first and regularly? Their likings dislikings. We have to know them better to help better.",
     "before": "We need to have clear Idea about what the project is about, what kind of people uses this website and how is our product affecting their lives",
     "after": "You need to analyze your findings and articulate them so that you can use it while designing",
