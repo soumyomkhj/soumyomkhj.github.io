@@ -273,6 +273,25 @@ $(".home").hover(function () {
 }
 );
 
+$(".fullpage").hover(function () {
+  // over
+  $(".follower").html("<p>expand</p>");
+  $(".follower").css({
+    "width": "100px",
+    "height": "100px",        
+    "opacity":"100%",       
+  });
+}, function () {
+  // out
+  $(".follower").html("");
+  $(".follower").css({
+    "width": "20px",
+    "height": "20px",
+    "opacity":"60%",       
+  });
+}
+);
+
 $(".next").hover(function () {
   // over
   $(".project > button").css("opacity", "0");
@@ -343,4 +362,10 @@ $(".fullpage").click(function (e) {
   // window.location.replace("/claytime.html");
   // alert("hi");
   $(".fullpage").toggleClass("fulldisplay");
+  $(".follower").html("");
+  $(".follower").css({
+    "width": "20px",
+    "height": "20px",
+    "opacity":"60%",       
+  });
 });
