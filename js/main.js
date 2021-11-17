@@ -281,6 +281,16 @@ $(".fullpage").hover(function () {
     "height": "100px",        
     "opacity":"100%",       
   });
+  setTimeout(
+    function() 
+    {
+      $(".follower").html("");
+      $(".follower").css({
+        "width": "20px",
+        "height": "20px",
+        "opacity":"60%",       
+      });
+    }, 3000);
 }, function () {
   // out
   $(".follower").html("");
