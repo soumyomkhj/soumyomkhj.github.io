@@ -379,3 +379,12 @@ $(".fullpage").click(function (e) {
     "opacity":"60%",       
   });
 });
+
+$(".frame").hover(function () {
+  // over
+    $(".follower").css("opacity", "0% !important");
+    }, function () {
+    // out
+    $(".follower").css("opacity", "60%");
+  }
+);
