@@ -19,6 +19,9 @@ body{
 body::-webkit-scrollbar {
     display: none; /* for Chrome, Safari, and Opera */
 }
+.p1, .p2, .p3, .p4{
+    transition: filter 1000ms ease-out;
+}
 
 .top{
     padding: 20px;
@@ -31,12 +34,26 @@ body::-webkit-scrollbar {
     transition: opacity 300ms ease-out;
 }
 
+.box{
+    display: block;
+    background-color: white;
+    padding: 20px;
+    border-radius: 3px;
+    opacity: 0%;
+    transition: opacity 300ms ease-out;
+}
+
+.box2{
+    left: 45%;
+    top: 120%;
+}
+
 .show{
     opacity: 100%;
 }
 
 .blur{
-    filter: blur(10%);
+    filter: blur(15px);
 }
 
 .hide{

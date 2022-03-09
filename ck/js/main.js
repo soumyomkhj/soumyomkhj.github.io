@@ -1,7 +1,17 @@
 $(".top").click(function(){
     $(this).toggleClass('hide');
 })
+$(function() {
 
+    var $body = $(document);
+    $body.bind('scroll', function() {
+        // "Disable" the horizontal scroll.
+        if ($body.scrollLeft() !== 0) {
+            $body.scrollLeft(0);
+        }
+    });
+
+}); 
 window.addEventListener('deviceorientation',function(e){
     const x = Math.round(e.beta);
     const y = Math.round(e.gamma);
@@ -57,6 +67,30 @@ layer.mousemove(function(e){
       triggerElement: '.top',
       duration: 3000
   })
-    .setClassToggle('.top','show')
+    .setClassToggle('.p1','blur')
     .addTo(controller);
 
+    const controller2 = new ScrollMagic.Controller();
+    const scene2 = new ScrollMagic.Scene({
+        triggerElement: '.top',
+        offset: 250,
+        duration: 5000
+    })
+        .setClassToggle('.top','show')
+        .addTo(controller2);
+
+    const controller3 = new ScrollMagic.Controller();
+    const scene3 = new ScrollMagic.Scene({
+        triggerElement: '.box2',
+        duration: 5000
+    })
+        .setClassToggle('.box2','show')
+        .addTo(controller2);
+  
+    var controller4 = new ScrollMagic.Controller();
+    var tween4 = TweenMax.to(".p1", 1, {scale: 1.4, ease: Linear.easeNone});
+    var scene4 = new ScrollMagic.Scene({offset:50 ,duration: 300})
+    .setTween(tween4)
+    .setPin(".p1", {pushFollowers: true})
+        .addIndicators(true)
+    .addTo(controller);

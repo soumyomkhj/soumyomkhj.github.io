@@ -420,6 +420,13 @@ body::-webkit-scrollbar {
   /* for Chrome, Safari, and Opera */
 }
 
+.p1, .p2, .p3, .p4 {
+  -webkit-transition: -webkit-filter 1000ms ease-out;
+  transition: -webkit-filter 1000ms ease-out;
+  transition: filter 1000ms ease-out;
+  transition: filter 1000ms ease-out, -webkit-filter 1000ms ease-out;
+}
+
 .top {
   padding: 20px;
   border-radius: 3px;
@@ -432,13 +439,28 @@ body::-webkit-scrollbar {
   transition: opacity 300ms ease-out;
 }
 
+.box {
+  display: block;
+  background-color: white;
+  padding: 20px;
+  border-radius: 3px;
+  opacity: 0%;
+  -webkit-transition: opacity 300ms ease-out;
+  transition: opacity 300ms ease-out;
+}
+
+.box2 {
+  left: 45%;
+  top: 120%;
+}
+
 .show {
   opacity: 100%;
 }
 
 .blur {
-  -webkit-filter: blur(10%);
-          filter: blur(10%);
+  -webkit-filter: blur(15px);
+          filter: blur(15px);
 }
 
 .hide {
