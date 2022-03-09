@@ -1,57 +1,31 @@
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<style>
-			body {
-				width: 100%;
-				height: 100%;
-				margin: 0;
-				position: fixed;
-				background: rgba(27.12945934615626,34.86737201178265,35.9225419207317, 1);
-			}
-			canvas { width: 100%; height: 100%; outline: none; }
-			#container { width: 100%; height: 100%; position: relative; }
-			
-					.spline-watermark {
-						position: absolute;
-						bottom: 16px;
-						right: 16px;
-						width: 32px;
-						height: 32px;
-						z-index: 2;
-					}
-					.spline-watermark:hover {
-						opacity: 0.8;
-					}
-					.spline-watermark img {
-						display: block;
-						width: 100%;
-						height: 100%;
-					}
-				
-		</style>
-		<title>Forest Lights</title>
-		<link rel="icon" type="image/png" href="https://app.spline.design/_assets/_icons/icon_favicon16x16.png" sizes="16x16">
-		<link rel="icon" type="image/png" href="https://app.spline.design/_assets/_icons/icon_favicon32x32.png" sizes="32x32">
-
-		<link rel="preload" href="./scene.json" as="fetch">
-	</head>
-	<body>
-		<div id='container'>
-			<canvas id="canvas3d"></canvas>
-			
-					<a class="spline-watermark" href="https://spline.design">
-						<img src="https://app.spline.design/_assets/_icons/icon_favicon32x32.png">
-					</a>
-					
-		</div>
-		<script type="module">
-			import { Application } from './runtime.js';
-			const app = new Application();
-			app.load('./scene.json');
-		</script>
-	</body>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=1080, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Chandrakanta Trial</title>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="pos p1"><img src="./images/pages/1/4.png" alt=""></div>
+		<div class="pos p2"><img src="./images/pages/1/3.png" alt=""></div>
+		<div class="pos p3"><img src="./images/pages/1/2.png" alt=""></div>
+		<div class="pos p4"><img src="./images/pages/1/1.png" alt=""></div>
+		<div class="pos p5"></div>
+		<div class="top">Tez and Vir will be here</div>
+		<!-- <div class="top">As you scroll the storyt gradually reveals</div>
+		<div class="top">Tez and Vir will be here</div> -->
+	</div>	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineLite.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/BezierPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/utils/Draggable.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
 </html>
