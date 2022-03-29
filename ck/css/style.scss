@@ -6,71 +6,80 @@ body{
     scrollbar-width: none; /* for Firefox */
 }
 
-.wrapper{
-    margin: 0px;
-    padding: 0px;
-    width: 100vw;
-    height: 100vh;
-    &>div{
-        position: absolute;
-    }
-}
+// .wrapper{
+//     margin: 0px;
+//     padding: 0px;
+//     width: 100vw;
+//     height: 100vh;
+//     &>div{
+//         position: absolute;
+//     }
+// }
 
-body::-webkit-scrollbar {
-    display: none; /* for Chrome, Safari, and Opera */
-}
-.p1, .p2, .p3, .p4{
-    &>img{
-        transition: filter 1000ms ease-out;
-    }
-}
+// // body::-webkit-scrollbar {
+// //     display: none; /* for Chrome, Safari, and Opera */
+// // }
+// .p1, .p2, .p3, .p4{
+//     &>img{
+//         transition: filter 1000ms ease-out;
+//     }
+// }
 
-.top{
-    padding: 20px;
-    border-radius: 3px;
-    display: block;
-    background-color: white;
-    left: 45%;
-    top: 75%;
-    opacity: 0%;
-    transition: opacity 300ms ease-out;
-}
+// .top{
+//     padding: 20px;
+//     border-radius: 3px;
+//     display: block;
+//     background-color: white;
+//     left: 45%;
+//     top: 75%;
+//     opacity: 0%;
+//     transition: opacity 300ms ease-out;
+// }
 
-.box{
-    display: block;
-    background-color: white;
-    padding: 20px;
-    border-radius: 3px;
-    opacity: 0%;
-    transition: opacity 300ms ease-out;
-}
+// .box{
+//     display: block;
+//     background-color: white;
+//     padding: 20px;
+//     border-radius: 3px;
+//     opacity: 0%;
+//     transition: opacity 300ms ease-out;
+//     transform-style: preserve-3d;
+// }
 
-.box2{
-    left: 45%;
-    top: 120%;
-}
+// .box2{
+//     left: 45%;
+//     top: 120%;
+// }
 
-.show{
-    opacity: 100%;
-}
+// .show{
+//     opacity: 100%;
+// }
 
-.blur>img{
-    filter: blur(15px);
-}
+// .blur>img{
+//     filter: blur(15px);
+// }
 
-.hide{
-    filter: blur(7px);
-    opacity: 30%;
+// .hide{
+//     filter: blur(7px);
+//     opacity: 30%;
+// }
+.pos{
+    position: absolute;
+    transform-style: preserve-3d;
 }
+// .filter1{
+//     position: fixed !important;
+//     top: 0;
+//     margin: 0;
+//     padding: 0;
+//     background-image: url(../images/bg.jpg);
+//     background-attachment:local ;
+//     width: 100vw;
+//     height: 100vh;
+//     z-index: 100;
+//     mix-blend-mode: multiply;
+// }
 
-.filter1{
-    position: fixed !important;
-    top: 0;
-    margin: 0;
-    padding: 0;
-    background-image: url(../images/bg.jpg);
-    width: 100vw;
-    height: 100vh;
-    z-index: 100;
-    mix-blend-mode: multiply;
-}
+// .img{
+//     transform-style: preserve-3d;
+// }
