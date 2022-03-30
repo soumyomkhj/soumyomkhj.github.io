@@ -404,9 +404,40 @@ body {
   /* for Firefox */
 }
 
+.wrapper {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  margin: 0px;
+  padding: 0px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.wrapper > div {
+  position: absolute;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* for Chrome, Safari, and Opera */
+}
+
 .pos {
   position: absolute;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+}
+
+.filter1 {
+  position: fixed !important;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/bg.jpg);
+  background-attachment: local;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  mix-blend-mode: multiply;
 }
 /*# sourceMappingURL=style.css.map */
