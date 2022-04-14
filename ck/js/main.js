@@ -7,13 +7,13 @@ var layer= $('.wrapper');
 
 layer.mousemove(function(e){
     var ivalueX= (e.pageX * -1 / 10);
-    var ivalueY= (e.pageY * -1 / 20);
+    var ivalueY= ((e.pageY-e.scrollPos) * -1 / 20);
     var iivalueX= (e.pageX * -1 / 35);
-    var iivalueY= (e.pageY * -1 / 40);
+    var iivalueY= ((e.pageY-e.scrollPos) * -1 / 40);
     var iiivalueX= (e.pageX * -1 / 60);
-    var iiivalueY= (e.pageY * -1 / 80);
+    var iiivalueY= ((e.pageY-e.scrollPos) * -1 / 80);
     var ivvalueX= (e.pageX * -1 / 90);
-    var ivvalueY= (e.pageY * -1 / 100);
+    var ivvalueY= ((e.pageY-e.scrollPos) * -1 / 100);
     // console.log('ok');
     p4.css('transform', 'translate3d('+ivalueX+'px,'+ivalueY+'px, 0)');
     p3.css('transform', 'translate3d('+iivalueX+'px,'+iivalueY+'px, 0)');
@@ -28,7 +28,7 @@ const video3 = document.querySelector('.v3');
 
 const controller1 = new ScrollMagic.Controller();
 const scene = new ScrollMagic.Scene({
-    duration: 2500,
+    duration: 25000,
     triggerElement: wrapper,
     triggerHook: 0
 })
@@ -41,7 +41,7 @@ let scrollpos = 0;
 let delay = 0;
 
 scene.on('update', e => {
-    scrollpos = e.scrollPos/100;
+    scrollpos = e.scrollPos/1000;
 })
 
 setInterval(() => {
@@ -62,4 +62,4 @@ setInterval(() => {
     // video3.currentTime = scrollpos;
     // video1.currentTime = scrollpos;
     // video2.currentTime = scrollpos;
-}, 10)
+}, 33.33)

@@ -67,6 +67,7 @@ body::-webkit-scrollbar {
 .pos{
     position: absolute;
     transform-style: preserve-3d;
+    transform-origin: 50% 50vh;
 }
 .filter1{
     position: fixed !important;
