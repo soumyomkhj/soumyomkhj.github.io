@@ -28,7 +28,7 @@ const video3 = document.querySelector('.v3');
 
 const controller1 = new ScrollMagic.Controller();
 const scene = new ScrollMagic.Scene({
-    duration: 25000,
+    duration: 35000,
     triggerElement: wrapper,
     triggerHook: 0
 })
@@ -46,8 +46,8 @@ scene.on('update', e => {
 
 setInterval(() => {
     delay += (scrollpos - delay) * accelamout;
-    console.log(scrollpos,delay);
+    // console.log(scrollpos,delay);
     // video3.currentTime = scrollpos;
-    video1.currentTime = scrollpos;
+    video1.currentTime = delay;
     // video2.currentTime = scrollpos;
 }, 33.33)
