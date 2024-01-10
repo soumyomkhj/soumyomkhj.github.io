@@ -47,16 +47,16 @@
 }
 .darkicon{
     box-shadow: inset 20px -20px 0 2px  $background-color !important;
-    &::before{
-        content: "☼";
-        animation: fullrotate 30000ms linear infinite;
-        font-size: 2.7rem;
-        position: absolute;
-        top: 13%;
-        right: 24%;
-        margin-top: 5px;
-        margin-right: 2.5px;
-    }
+    // &::before{
+    //     content:url('../img/sun.webp');
+    //     animation: fullrotate 30000ms linear infinite;
+    //     font-size: 2.7rem;
+    //     position: absolute;
+    //     top: 13%;
+    //     right: 24%;
+    //     margin-top: 5px;
+    //     margin-right: 2.5px;
+    // }
 }
 
 

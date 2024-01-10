@@ -8,6 +8,7 @@ $(window).on('load', function() {
 dark =1;
 //content loader
 var list = [
+  // {class: 'unacademy', title: 'Unacademy',tag1: 'Product Designer', tag2: '2022', tag3: 'Present'},
   {class: 'clay-time', title: 'Clay Time',tag1: 'Tangible Interaction', tag2: 'Image Recognition', tag3: 'Python'},
   {class: 'create-share', title: 'Create \'n\' Share',tag1: 'Interaction Design', tag2: 'User Study', tag3: 'UX'},
   {class: 'youtube-coach', title: 'Youtube Coach',tag1: 'Instructional Design', tag2: 'UX', tag3: 'UI'},
@@ -115,42 +116,42 @@ $(document).on('mousemove', (event) => {
 
 
 // Scroll animation
-idleTimer=100;
-topScr = $(this).scrollTop();
-timeout = 0;
-$(".container").scroll(function () { 
-  clearTimeout(timeout);
-  curScr = $(this).scrollTop();
-  diff= topScr-curScr;
-  topScr=curScr;
-  max=7;
-  diff=diff*.2;
-  if (diff>max) {diff=max;}
-  if (diff<-max) {diff=-max;}
-  // console.log(diff);
-  // $(".barmarker").css('top', 200*curScr/totH+'px');
-  $(".container").css('transform', 'skewY(' + diff + 'deg)');
-  diff=diff*.1;
-  $(".h1").css({
-    "text-shadow": "0px "+50*diff+"px 0px rgb(18, 40, 46)",
-  });
-  // if (diff>0) diff=1;
-  // else if (diff<0) diff=-1;
-  // else  diff=0;
-  diff*=5;
-  // $(".img").css({
-  //   "box-shadow": .8*diff+"em "+diff+"em 0px #316c7a",
-  // });
-  timeout=setTimeout(function(){
-    $(".container").css('transform', 'skewY(0deg)');
-    $(".h1").css({
-      "text-shadow": "0px "+"0em 0px rgb(18, 40, 46)",
-    });
-    $(".img").css({
-      "box-shadow": "0em 0em 0px #316c7a",
-    });
-  },idleTimer);
-});
+// idleTimer=100;
+// topScr = $(this).scrollTop();
+// timeout = 0;
+// $(".container").scroll(function () { 
+//   clearTimeout(timeout);
+//   curScr = $(this).scrollTop();
+//   diff= topScr-curScr;
+//   topScr=curScr;
+//   max=7;
+//   diff=diff*.2;
+//   if (diff>max) {diff=max;}
+//   if (diff<-max) {diff=-max;}
+//   // console.log(diff);
+//   // $(".barmarker").css('top', 200*curScr/totH+'px');
+//   $(".container").css('transform', 'skewY(' + diff + 'deg)');
+//   // diff=diff*.1;
+//   // $(".h1").css({
+//   //   "text-shadow": "0px "+50*diff+"px 0px rgb(18, 40, 46)",
+//   // });
+//   // if (diff>0) diff=1;
+//   // else if (diff<0) diff=-1;
+//   // else  diff=0;
+//   // diff*=5;
+//   // $(".img").css({
+//   //   "box-shadow": .8*diff+"em "+diff+"em 0px #316c7a",
+//   // });
+//   // timeout=setTimeout(function(){
+//   //   $(".container").css('transform', 'skewY(0deg)');
+//   //   $(".h1").css({
+//   //     "text-shadow": "0px "+"0em 0px rgb(18, 40, 46)",
+//   //   });
+//   //   $(".img").css({
+//   //     "box-shadow": "0em 0em 0px #316c7a",
+//   //   });
+//   // },idleTimer);
+// });
 
 
 

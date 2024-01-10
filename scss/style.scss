@@ -278,7 +278,7 @@ section{
 
 
 .h1{
-    -webkit-text-stroke: 1px $background-color;
+    // -webkit-text-stroke: 1px $background-color;
     color: transparent;
     text-shadow: 0px 0px 0px $background-color;
     transition: text-shadow .3s ease;
