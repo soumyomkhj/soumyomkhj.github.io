@@ -124,7 +124,7 @@ $bodyFont: 'Inter', sans-serif;
     .about-con{
         align-items: center !important;
         .about{
-            font-size: 1rem !important;
+            font-size: 2rem !important;
         }
     }
 }
@@ -164,8 +164,8 @@ h1,h2,h3,h4,h5,h6{
     color: $background-color;
     filter: invert(1) hue-rotate(180deg);
     mix-blend-mode: difference;
+    // text-shadow: 0px 0px 0px $background-color;
 }
-
 
 a,p{
     font-family: $bodyFont;
@@ -277,12 +277,12 @@ section{
 }
 
 
-.h1{
-    // -webkit-text-stroke: 1px $background-color;
-    color: transparent;
-    text-shadow: 0px 0px 0px $background-color;
-    transition: text-shadow .3s ease;
-}
+// .h1{
+//     // -webkit-text-stroke: 1px $background-color;
+//     color: transparent;
+//     text-shadow: 0px 0px 0px $background-color;
+//     transition: text-shadow .3s ease;
+// }
 
 .text-clip{
     animation: text-clip 2s 700ms $easing both;
@@ -416,8 +416,8 @@ section{
     justify-content: center;
     .about{
         text-align: center;
-        padding: 10vw 25vw 10vw 25vw;
-        font-size: 2rem;
+        padding: 10vw 12vw 10vw 12vw;
+        font-size: 3rem;
         .section-footer{
             text-align: center;
             display: block;
