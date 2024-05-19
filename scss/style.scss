@@ -17,14 +17,14 @@ $bodyFont: 'Inter', sans-serif;
     0% {        
         clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
       }
-    99% {
+    99% { 
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
     100% {
         clip-path: polygon(0 -700%, 100% -700%, 100% 700%, 0 700%);
       }
   }
-
+ 
   @keyframes bg-animation {
     0% { background-position: 0,0 }
     10% { background-position: -5% -5% }
@@ -62,7 +62,7 @@ $bodyFont: 'Inter', sans-serif;
     0% {
         transform: rotateX(-60deg) scale(.5,.5) translateY(0px);
         opacity: 0%;
-    }
+    } 
     70% {
         transform: rotateX(0) scale(1,1) translateY(20px);
         opacity: 50%;

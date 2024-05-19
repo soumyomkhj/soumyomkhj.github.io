@@ -16,6 +16,9 @@ html {
  */
 body {
   margin: 0;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 /* HTML5 display definitions
@@ -715,6 +718,12 @@ img {
 }
 
 .hello-anim {
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   cursor: none;
 }
 .hello-anim::after {
@@ -796,6 +805,9 @@ img {
   width: 50vw;
   animation: scroll-scale ease-out;
   animation-timeline: view();
+}
+.project .unacademy {
+  background-image: url("../img/unacademy.png");
 }
 .project .clay-time {
   background-image: url("../img/clay-time.png");

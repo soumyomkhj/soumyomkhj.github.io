@@ -8,7 +8,8 @@ $(window).on('load', function() {
 dark =1;
 //content loader
 var list = [
-  // {class: 'unacademy', title: 'Unacademy',tag1: 'Product Designer', tag2: '2022', tag3: 'Present'},
+  {class: 'unacademy', title: 'Unacademy',tag1: 'Product Designer', tag2: '2022', tag3: 'Present'},
+  // {class: 'chandrakanta', title: 'Chandrakanta',tag1: 'IDC Final thesis', tag2: 'Interaction design', tag3: 'Present'},
   {class: 'clay-time', title: 'Clay Time',tag1: 'Tangible Interaction', tag2: 'Image Recognition', tag3: 'Python'},
   {class: 'create-share', title: 'Create \'n\' Share',tag1: 'Interaction Design', tag2: 'User Study', tag3: 'UX'},
   {class: 'youtube-coach', title: 'Youtube Coach',tag1: 'Instructional Design', tag2: 'UX', tag3: 'UI'},
