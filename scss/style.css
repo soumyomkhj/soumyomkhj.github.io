@@ -630,7 +630,16 @@ img {
   position: absolute;
   left: 3px;
 }
-
+.download-btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.7rem 1rem;border-radius:.75rem;
+  background:#111;color:#fff;text-decoration:none;font-weight:600;
+  box-shadow:0 6px 20px rgba(0,0,0,.15);transition:.2s ease;
+}
+.download-btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.download-btn:active{transform:translateY(0)}
+.download-btn:focus-visible{outline:3px solid #6aa3ff;outline-offset:2px}
+.download-btn svg{display:block}
 .prev::after {
   width: 8px;
   height: 8px;
