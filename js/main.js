@@ -8,7 +8,9 @@ $(window).on('load', function() {
 dark =1;
 //content loader
 var list = [
-  {class: 'unacademy', title: 'Unacademy',tag1: 'Product Designer', tag2: '2022', tag3: 'Present'},
+  {class: 'nextlevel', title: 'Nextlevel Kudos',tag1: 'Case Study', tag2: 'Social', tag3: '2024'},
+  {class: 'graphy', title: 'Graphy Website Redesign',tag1: 'Redesign', tag2: 'UX Audit', tag3: '2023'},
+  {class: 'unacademy', title: 'Unacademy',tag1: 'Product Designer', tag2: '2022', tag3: '2024'},
   // {class: 'chandrakanta', title: 'Chandrakanta',tag1: 'IDC Final thesis', tag2: 'Interaction design', tag3: 'Present'},
   {class: 'clay-time', title: 'Clay Time',tag1: 'Tangible Interaction', tag2: 'Image Recognition', tag3: 'Python'},
   {class: 'create-share', title: 'Create \'n\' Share',tag1: 'Interaction Design', tag2: 'User Study', tag3: 'UX'},

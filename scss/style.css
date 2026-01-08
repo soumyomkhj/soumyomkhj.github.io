@@ -640,64 +640,78 @@ img {
 .download-btn:active{transform:translateY(0)}
 .download-btn:focus-visible{outline:3px solid #6aa3ff;outline-offset:2px}
 .download-btn svg{display:block}
-.prev::after {
-  width: 8px;
-  height: 8px;
-  border-bottom: 2px solid;
-  border-left: 2px solid;
-  transform: rotate(45deg);
-  bottom: 7px;
-}
-
-.prev::before {
-  width: 16px;
-  height: 2px;
-  bottom: 10px;
-  background: currentColor;
-}
-
-.next {
-  cursor: none;
-  margin: 4vh;
-  float: right;
-  margin-top: 8vh;
-  margin-bottom: 8vh;
-  margin-right: 8vw;
-  transform: scale(150%);
-  position: relative;
-  border-color: rgb(18, 40, 46);
-  box-sizing: border-box;
+/* Base styles for massive hit area and exact visual placement */
+.next, .prev {
+  cursor: pointer;
   position: relative;
   display: block;
   width: 22px;
   height: 22px;
+  transform: scale(1.5);
+  box-sizing: content-box;
+  color: rgb(18, 40, 46);
+  z-index: 100;
+  
+  /* The Big Target: Padding expands hit area, Margin-offset prevents layout shift */
+  padding: 60px; 
+  margin: -60px;
 }
 
-.next::after,
-.next::before {
+.next {
+  float: right;
+  margin-top: calc(8vh - 60px);
+  margin-right: calc(8vw - 60px);
+}
+
+.prev {
+  float: left;
+  margin-top: calc(8vh - 60px);
+  margin-left: calc(8vw - 60px);
+}
+
+.next::after, .next::before,
+.prev::after, .prev::before {
   content: "";
   display: block;
-  box-sizing: border-box;
   position: absolute;
-  right: 3px;
+  box-sizing: border-box;
 }
 
+/* Positioning logic: Padding (60px) + Original Offset (3px) */
+.next::after, .next::before { right: 63px; }
+.prev::after, .prev::before { left: 63px; }
+
+/* Next Arrow (Right) */
 .next::after {
   width: 8px;
   height: 8px;
   border-top: 2px solid;
   border-right: 2px solid;
   transform: rotate(45deg);
-  bottom: 7px;
+  bottom: 67px;
 }
-
 .next::before {
   width: 16px;
   height: 2px;
-  bottom: 10px;
+  bottom: 70px;
   background: currentColor;
 }
 
+/* Prev Arrow (Left) */
+.prev::after {
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  transform: rotate(45deg);
+  bottom: 67px;
+}
+.prev::before {
+  width: 16px;
+  height: 2px;
+  bottom: 70px;
+  background: currentColor;
+}
 .tags-container {
   display: flex;
   font-size: 1rem;
@@ -817,6 +831,12 @@ img {
 }
 .project .unacademy {
   background-image: url("../img/unacademy.png");
+}
+.project .graphy {
+  background-image: url("../img/graphy.png");
+}
+.project .nextlevel {
+  background-image: url("../img/nextlevel.png");
 }
 .project .clay-time {
   background-image: url("../img/clay-time.png");
