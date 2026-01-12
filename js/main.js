@@ -8,7 +8,7 @@ $(window).on('load', function() {
 dark =1;
 //content loader
 var list = [
-  {class: 'nextlevel', title: 'Nextlevel Kudos',tag1: 'Case Study', tag2: 'Social', tag3: '2024'},
+  // {class: 'nextlevel', title: 'Nextlevel Kudos',tag1: 'Case Study', tag2: 'Social', tag3: '2024'},
   {class: 'graphy', title: 'Graphy Website Redesign',tag1: 'Redesign', tag2: 'UX Audit', tag3: '2023'},
   {class: 'unacademy', title: 'Unacademy',tag1: 'Product Designer', tag2: '2022', tag3: '2024'},
   // {class: 'chandrakanta', title: 'Chandrakanta',tag1: 'IDC Final thesis', tag2: 'Interaction design', tag3: 'Present'},
@@ -26,12 +26,12 @@ var list = [
 ];
 
 for (let i = 0; i < list.length; i++) {
-  index=list.length-i-1;
-  $(".container>section:nth-child(2)").after('<section class="portfolio" id="'+ list[index].class +'" onclick="location.href=\''+ list[index].class +'.html\';"><div class="project"> <div class="img '+ list[index].class +'" alt="Image"></div><h1 class="h1 title">'+ list[index].title +'</h1><div class="tags-container"><div class="tag">'+ list[index].tag1 +'</div><div class="tag">'+ list[index].tag2 +'</div><div class="tag">'+ list[index].tag3 +'</div> </div>  <div class="view"> <h5> TAP TO VIEW </h5> </div> </div></section>');
+  index=list.length - i - 1;
+  $(".container>section:nth-child(3)").after('<section class="portfolio" id="' + list[index].class + '" onclick="location.href=\'' + list[index].class + '.html\';"><div class="project"> <div class="img ' + list[index].class + '" alt="Image"></div><h1 class="h1 title">' + list[index].title + '</h1><div class="tags-container"><div class="tag">' + list[index].tag1 + '</div><div class="tag">' + list[index].tag2 + '</div><div class="tag">' + list[index].tag3 + '</div> </div>  <div class="view"> <h5> TAP TO VIEW </h5> </div> </div></section>');
 }
 $(".clay-time").prepend("<img src=\"../img/accept.png\" class=\"accept\">");
 
-$(".img").click(function (e) { 
+$(".img, .case-card").click(function (e) { 
   // window.location.replace("/claytime.html");
   $('#status').fadeIn();
   $('#preloader').delay(500).fadeIn('slow');
@@ -169,7 +169,7 @@ $(".scroll").click(function() {
   $(".container").scrollTo($('.about').parent(), 800, {easing:'swing'});
 });
 $(".about").click(function() {
-  $(".container").scrollTo($('.project').parent(), 800, {easing:'swing'});
+  $(".container").scrollTo($('.case-studies').parent(), 800, {easing:'swing'});
 });
 
 $(".scroll").hover(function () {
@@ -193,7 +193,7 @@ $(".scroll").hover(function () {
   }
 );
 
-$(".img").hover(function () {
+$(".img, .case-card").hover(function () {
   // over
   $(".project > button").css("opacity", "0");
   $(".follower").html("<p>VIEW</p>");
