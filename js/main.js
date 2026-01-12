@@ -348,6 +348,48 @@ $(".prev").hover(function () {
 }
 );
 
+$(".nexts").hover(function () {
+  // over
+  $(".project > button").css("opacity", "0");
+  $(".follower").html("<p>next</p>");
+  $(".follower").css({
+    "width": "100px",
+    "height": "100px",        
+    "opacity":"100%",       
+  });
+}, function () {
+  // out
+  $(".project > button").css("opacity", "100%");
+  $(".follower").html("");
+  $(".follower").css({
+    "width": "20px",
+    "height": "20px",
+    "opacity":"60%",       
+  });
+}
+);
+
+$(".prevs").hover(function () {
+  // over
+  $(".project > button").css("opacity", "0");
+  $(".follower").html("<p>previous</p>");
+  $(".follower").css({
+    "width": "100px",
+    "height": "100px",        
+    "opacity":"100%",       
+  });
+}, function () {
+  // out
+  $(".project > button").css("opacity", "100%");
+  $(".follower").html("");
+  $(".follower").css({
+    "width": "20px",
+    "height": "20px",
+    "opacity":"60%",       
+  });
+}
+);
+
 $(".about").hover(function () {
   // over
   $(".project > button").css("opacity", "0");
