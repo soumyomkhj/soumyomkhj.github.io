@@ -322,6 +322,7 @@
             const prevBtnDesktop = document.getElementById('prevSlide-desktop');
             const nextBtnDesktop = document.getElementById('nextSlide-desktop');
             let current = 0;
+            let allowWheel = true; // for wheel debounce
 
             // Sync slide UI and ALL arrows
             function updateSlideshow() {
@@ -366,6 +367,73 @@
                 }
             });
 
+            // --- Scroll wheel: vertical or horizontal on slideshow to change slides ---
+            // Debounce: Only once per some ms
+            function handleWheel(e) {
+                if (!allowWheel) return;
+                // Only allow if there would be a slide to go (ignore past ends)
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                    // primarily vertical scroll
+                    if (e.deltaY > 0 && current < slides.length - 1) {
+                        nextSlide();
+                    } else if (e.deltaY < 0 && current > 0) {
+                        prevSlide();
+                    } else {
+                        return;
+                    }
+                } else {
+                    // primarily horizontal scroll
+                    if (e.deltaX > 0 && current < slides.length - 1) {
+                        nextSlide();
+                    } else if (e.deltaX < 0 && current > 0) {
+                        prevSlide();
+                    } else {
+                        return;
+                    }
+                }
+                allowWheel = false;
+                setTimeout(() => { allowWheel = true; }, 400); // Delay between scroll slide changes
+                e.preventDefault();
+            }
+            const slideshow = document.getElementById('slideshow');
+            if (slideshow) {
+                slideshow.addEventListener('wheel', handleWheel, { passive: false });
+            }
+
+            // --- Touch swipe (mobile) ---
+            let touchStartX = 0, touchStartY = 0, touchDx = 0, touchDy = 0;
+            function handleTouchStart(e) {
+                // ignore multitouch
+                if (e.touches.length > 1) return;
+                const t = e.touches[0];
+                touchStartX = t.clientX;
+                touchStartY = t.clientY;
+                touchDx = 0;
+                touchDy = 0;
+            }
+            function handleTouchMove(e) {
+                if (e.touches.length > 1) return;
+                const t = e.touches[0];
+                touchDx = t.clientX - touchStartX;
+                touchDy = t.clientY - touchStartY;
+            }
+            function handleTouchEnd(e) {
+                // Only trigger if swipe was horizontal and of sufficient length (ignore up/down)
+                if (Math.abs(touchDx) > 50 && Math.abs(touchDx) > Math.abs(touchDy)) {
+                    if (touchDx < 0 && current < slides.length - 1) { // swipe left
+                        nextSlide();
+                    } else if (touchDx > 0 && current > 0) { // swipe right
+                        prevSlide();
+                    }
+                }
+                touchDx = 0; touchDy = 0;
+            }
+            if (slideshow) {
+                slideshow.addEventListener('touchstart', handleTouchStart, { passive: true });
+                slideshow.addEventListener('touchmove', handleTouchMove, { passive: true });
+                slideshow.addEventListener('touchend', handleTouchEnd, { passive: true });
+            }
+
             // Mobile: Fullscreen open
             const fullscreenBtn = document.getElementById('openFullscreen');
             function enterFullscreen() {
@@ -395,14 +463,16 @@
             handleMobile();
 
             // Click anywhere outside image (in fullscreen) to exit fullscreen
-            document.getElementById('slideshow').addEventListener('click', function(e){
-                // Only exit when in fullscreen and not clicking on the actual image or navigation
-                if (this.classList.contains('fullscreen')) {
-                    if (!e.target.classList.contains('slide-img') && !e.target.classList.contains('arrow')) {
-                        exitFullscreen();
+            if (slideshow) {
+                slideshow.addEventListener('click', function(e){
+                    // Only exit when in fullscreen and not clicking on the actual image or navigation
+                    if (this.classList.contains('fullscreen')) {
+                        if (!e.target.classList.contains('slide-img') && !e.target.classList.contains('arrow')) {
+                            exitFullscreen();
+                        }
                     }
-                }
-            });
+                });
+            }
 
             // Prevent image drag
             slides.forEach(img => img.ondragstart = e => e.preventDefault());
@@ -410,7 +480,8 @@
             // Ensure slideshow fills viewport on load/resize (optional: can help in some edge-cases)
             function fitSlideshow() {
                 const sc = document.getElementById('slideshow');
-                sc.style.height = window.innerHeight * 0.98 + 'px';
+                if (sc)
+                    sc.style.height = window.innerHeight * 0.98 + 'px';
             }
             window.addEventListener('resize', fitSlideshow);
             fitSlideshow();
