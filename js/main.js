@@ -1,9 +1,17 @@
 //preloader
-$(window).on('load', function() {
+function hidePreloader() {
   $('#status').fadeOut();
   $('#preloader').delay(800).fadeOut('slow');
-  $('.hero-anim').delay(2000).addClass("text-clip");
-})
+  $('.hero-anim').delay(9000).addClass("text-clip");
+}
+
+$(window).on('load', hidePreloader);
+
+// Also hide preloader on 'pageshow' in case of back/forward cache (bfcache)
+window.addEventListener('pageshow', function(event) {
+  // If restored from cache, or just always hide for safety
+  hidePreloader();
+});
 
 dark =1;
 //content loader

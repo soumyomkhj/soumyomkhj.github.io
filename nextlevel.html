@@ -53,24 +53,369 @@
             <div class="f-item right bottom">
                 <div class="item">2024</div>
             </div>
+        <div class="nav-subtext desktop-only" id="navSubtext" style="display: flex; justify-content: center; align-items: center; position: absolute; left: 0; right: 0; bottom: 14px; font-size: 0.75em; color: #888; transition: opacity 0.8s;">
+            <span class="mobile-hide">&#8678; Navigate with arrow keys &#8680;</span>
         </div>
+        <style>
+            @media (max-width: 800px) {
+                .nav-subtext,
+                .nav-subtext .mobile-hide {
+                    display: none !important;
+                }
+            }
+        </style>
+        <script>
+            window.addEventListener("DOMContentLoaded", function() {
+                setTimeout(function() {
+                    var subtext = document.getElementById('navSubtext');
+                    if (subtext) {
+                        subtext.style.opacity = '0';
+                        setTimeout(function() {
+                            if (subtext && subtext.parentNode) {
+                                subtext.parentNode.removeChild(subtext);
+                            }
+                        }, 900); // slightly longer than transition duration
+                    }
+                }, 10000);
+            });
+        </script>
     </nav>
-    <div class="fullpage">
-        <div class="display">
-            <img class="lazy" src="img/nextlevel/nl (1).png" alt="">
-            <img class="lazy" src="img/nextlevel/nl (2).png" alt="">
-            <img class="lazy" src="img/nextlevel/nl (3).png" alt="">
-            <img class="lazy" src="img/nextlevel/nl (4).png" alt="">
-            <img class="lazy" src="img/nextlevel/nl (5).png" alt="">
-            <img class="lazy" src="img/nextlevel/nl (6).png" alt="">
-            <img class="lazy" src="img/nextlevel/nl (7).png" alt="">
-            <img class="lazy" src="img/nextlevel/nl (8).png" alt="">
-            <img class="lazy" src="img/nextlevel/nl (9).png" alt="">
-            <img class="lazy" src="img/nextlevel/nl (10).png" alt="">
-            <!-- <div class="next"></div>
-            <div class="prev"></div> -->
+    <div class="slideshow-container" id="slideshow" tabindex="0">
+        <div class="slides">
+            <img class="slide-img" src="img/nextlevel/01.png" alt="" style="display: block;">
+            <img class="slide-img" src="img/nextlevel/02.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/03.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/04.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/05.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/06.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/07.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/08.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/09.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/10.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/11.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/12.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/13.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/14.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/15.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/16.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/17.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/18.png" alt="" style="display: none;">
+            <img class="slide-img" src="img/nextlevel/19.png" alt="" style="display: none;">
         </div>
+        <!-- Special container for arrows only in mobile portrait -->
+        <div class="mobile-arrows">
+            <button class="arrow prevs" id="prevSlide" aria-label="Previous Slide">&#10094;</button>
+            <button class="arrow nexts" id="nextSlide" aria-label="Next Slide">&#10095;</button>
+        </div>
+        <!-- Arrows for desktop/landscape (remain) -->
+        <button class="arrow prevs desktop-arrow" id="prevSlide-desktop" aria-label="Previous Slide">&#10094;</button>
+        <button class="arrow nexts desktop-arrow" id="nextSlide-desktop" aria-label="Next Slide">&#10095;</button>
     </div>
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            min-height: 100vh;
+        }
+        .slideshow-container {
+            position: relative;
+            width: auto;
+            height: 100%;
+            min-height: 350px;
+            max-width: 100vw;
+            max-height: 98vh;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0;
+            overflow: hidden;
+        }
+        .slideshow-container.fullscreen {
+            position: fixed !important;
+            z-index: 9999;
+            inset: 0;
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: 100vw;
+            max-height: 100vh;
+            margin: 0;
+            border-radius: 0;
+        }
+        .slideshow-container .slides {
+            width: auto;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .slide-img {
+            display: none;
+            border-radius: 8px;
+            margin: 0 auto;
+            user-select: none;
+            -webkit-user-drag: none;
+            object-fit: contain;
+            width: auto;
+            height: 90vh;
+            max-width: 100vw;
+            max-height: 90vh;
+        }
+        .slideshow-container.fullscreen .slide-img {
+            max-width: 100vw;
+            max-height: 99vh;
+            width: auto;
+            height: 99vh;
+            border-radius: 0;
+        }
+        .arrow {
+            background: transparent !important;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 3.8rem;
+            z-index: 3;
+            cursor: pointer;
+            transition: background 0.2s;
+            user-select: none;
+            outline: none;
+            padding: 1.6rem 2.4rem;
+        }
+        .arrow:disabled {
+            opacity: 0.15;
+            box-shadow: none;
+            pointer-events: none;
+        }
+
+        /* Desktop/landscape: arrows beside slides */
+        .desktop-arrow {
+            position: absolute;
+        }
+        #prevSlide-desktop { left: min(2vw,40px); top: 50%; transform: translateY(-50%);}
+        #nextSlide-desktop { right: min(2vw,40px); top: 50%; transform: translateY(-50%);}
+
+        /* Hide mobile arrows by default */
+        .mobile-arrows {
+            display: none;
+        }
+
+        .open-fullscreen {
+            display: none;
+            position: absolute;
+            bottom: min(2vw,24px);
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 1.1rem 2.2rem;
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 500;
+            border-radius: 99px;
+            border: none;
+            cursor: pointer;
+            z-index: 20;
+        }
+        .slideshow-container.fullscreen .open-fullscreen {
+            display: none !important;
+        }
+
+        /* For mobile vertical: Move arrows below the slides instead of beside */
+        @media (max-width: 650px) and (orientation: portrait) {
+            .slideshow-container {
+                flex-direction: column;
+            }
+            .slideshow-container .slides {
+                height: auto;
+                min-height: 0;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .slide-img {
+                height: 65vw;      /* Smaller to fit room for arrows and avoid overflow */
+                max-height: 66vw;
+                max-width: 95vw;
+            }
+            /* Show mobile-arrows bar, hide desktop-style arrows */
+            .mobile-arrows {
+                width: 100%;
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+                margin: 1.2em 0 3em 0;
+                gap: 2vw;
+            }
+            .desktop-arrow {
+                display: none !important;
+            }
+            .arrow {
+                position: static;
+                display: inline-block;
+                margin: 0 2vw;
+                padding: 0.7rem 1.25rem;
+                font-size: 2.4rem;
+                top: unset; left: unset; right: unset; transform: none;
+            }
+        }
+
+        /* Desktop and mobile landscape: Arrows beside slides */
+        @media (min-width: 651px), (orientation: landscape) {
+            .slideshow-container .slides {
+                height: 100vh;
+                flex-direction: row;
+                align-items: center;
+            }
+            .slide-img {
+                height: 90vh;
+                max-height: 90vh;
+                max-width: 100vw;
+            }
+            .desktop-arrow {
+                display: inline-block !important;
+            }
+            .mobile-arrows {
+                display: none !important;
+            }
+            .arrow {
+                font-size: 3.1rem;
+                padding: 1.2rem 2rem;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .slideshow-container .slides {
+                height: 100%;
+                max-height: 98vh;
+            }
+            .slide-img {
+                height: 84vw;
+                max-height: 98vh;
+            }
+        }
+        @media (max-width: 900px) {
+            .slideshow-container {
+                height: 100%;
+                max-height: 98vh;
+            }
+            .slideshow-container .slides {
+                height: 100%;
+            }
+            .slide-img {
+                height: 100%;
+                max-height: 98vh;
+            }
+            .arrow {
+                font-size: 2.7rem;
+                padding: 0.95rem 1.6rem;
+            }
+        }
+    </style>
+    <script>
+        (function() {
+            const slides = document.querySelectorAll('.slide-img');
+            // Mobile ARROWS
+            const prevBtn = document.getElementById('prevSlide');
+            const nextBtn = document.getElementById('nextSlide');
+            // Desktop ARROWS
+            const prevBtnDesktop = document.getElementById('prevSlide-desktop');
+            const nextBtnDesktop = document.getElementById('nextSlide-desktop');
+            let current = 0;
+
+            // Sync slide UI and ALL arrows
+            function updateSlideshow() {
+                slides.forEach((img, i) => img.style.display = (i === current) ? 'block' : 'none');
+                // For both sets of arrows:
+                if (prevBtn) prevBtn.disabled = (current === 0);
+                if (nextBtn) nextBtn.disabled = (current === slides.length - 1);
+                if (prevBtnDesktop) prevBtnDesktop.disabled = (current === 0);
+                if (nextBtnDesktop) nextBtnDesktop.disabled = (current === slides.length - 1);
+            }
+
+            // Call on load
+            updateSlideshow();
+
+            // NAV HANDLERS (all 4, mobile and desktop)
+            function nextSlide() {
+                if (current < slides.length - 1) {
+                    current++;
+                    updateSlideshow();
+                }
+            }
+            function prevSlide() {
+                if (current > 0) {
+                    current--;
+                    updateSlideshow();
+                }
+            }
+            if (nextBtn) nextBtn.onclick = nextSlide;
+            if (prevBtn) prevBtn.onclick = prevSlide;
+            if (nextBtnDesktop) nextBtnDesktop.onclick = nextSlide;
+            if (prevBtnDesktop) prevBtnDesktop.onclick = prevSlide;
+
+            // Keyboard navigation (works everywhere)
+            document.addEventListener('keydown', function(e){
+                const tag = document.activeElement.tagName;
+                if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+                if (e.key === "ArrowRight") { nextSlide(); }
+                else if (e.key === "ArrowLeft") { prevSlide(); }
+                else if (e.key==="Escape" && document.getElementById('slideshow').classList.contains('fullscreen')) {
+                    document.getElementById('slideshow').classList.remove('fullscreen');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Mobile: Fullscreen open
+            const fullscreenBtn = document.getElementById('openFullscreen');
+            function enterFullscreen() {
+                document.getElementById('slideshow').classList.add('fullscreen');
+                fullscreenBtn.style.display = "none";
+                document.body.style.overflow = 'hidden';
+                setTimeout(()=>{ // focus for esc/cursor-out close
+                    document.getElementById('slideshow').focus();
+                },20);
+            }
+            function exitFullscreen() {
+                document.getElementById('slideshow').classList.remove('fullscreen');
+                document.body.style.overflow = '';
+            }
+            if (fullscreenBtn) fullscreenBtn.onclick = enterFullscreen;
+
+            // On mobile only show open fullscreen
+            function handleMobile() {
+                if (!fullscreenBtn) return;
+                if (window.innerWidth < 650) {
+                    fullscreenBtn.style.display = 'block';
+                } else {
+                    fullscreenBtn.style.display = 'none';
+                }
+            }
+            window.addEventListener('resize', handleMobile);
+            handleMobile();
+
+            // Click anywhere outside image (in fullscreen) to exit fullscreen
+            document.getElementById('slideshow').addEventListener('click', function(e){
+                // Only exit when in fullscreen and not clicking on the actual image or navigation
+                if (this.classList.contains('fullscreen')) {
+                    if (!e.target.classList.contains('slide-img') && !e.target.classList.contains('arrow')) {
+                        exitFullscreen();
+                    }
+                }
+            });
+
+            // Prevent image drag
+            slides.forEach(img => img.ondragstart = e => e.preventDefault());
+
+            // Ensure slideshow fills viewport on load/resize (optional: can help in some edge-cases)
+            function fitSlideshow() {
+                const sc = document.getElementById('slideshow');
+                sc.style.height = window.innerHeight * 0.98 + 'px';
+            }
+            window.addEventListener('resize', fitSlideshow);
+            fitSlideshow();
+        })();
+
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/jquery.scrollTo.min.js"></script>

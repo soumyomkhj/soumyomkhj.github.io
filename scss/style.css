@@ -1295,6 +1295,21 @@ a, p {
   justify-content: center;
   align-items: center;
   background-color: rgb(18, 40, 46);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 2s cubic-bezier(0.3,0,0,1), visibility 0s linear 2s;
+  animation: preloader-fadeout 2s cubic-bezier(0.3,0,0,1) 3s forwards;
+}
+
+@keyframes preloader-fadeout {
+  99% {
+    opacity: 99;
+    display: flex;
+  }
+  0% {
+    opacity: 0;
+    display: none;
+  }
 }
 
 .circle {

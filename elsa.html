@@ -53,6 +53,32 @@
             <div class="f-item right bottom">
                 <div class="item">2024</div>
             </div>
+            <div class="nav-subtext desktop-only" id="navSubtext" style="display: flex; justify-content: center; align-items: center; position: absolute; left: 0; right: 0; bottom: 14px; font-size: 0.75em; color: #888; transition: opacity 0.8s;">
+                <span class="mobile-hide">&#8678; Navigate with arrow keys &#8680;</span>
+            </div>
+            <style>
+                @media (max-width: 800px) {
+                    .nav-subtext,
+                    .nav-subtext .mobile-hide {
+                        display: none !important;
+                    }
+                }
+            </style>
+            <script>
+                window.addEventListener("DOMContentLoaded", function() {
+                    setTimeout(function() {
+                        var subtext = document.getElementById('navSubtext');
+                        if (subtext) {
+                            subtext.style.opacity = '0';
+                            setTimeout(function() {
+                                if (subtext && subtext.parentNode) {
+                                    subtext.parentNode.removeChild(subtext);
+                                }
+                            }, 900); // slightly longer than transition duration
+                        }
+                    }, 10000);
+                });
+            </script>
         </div>
     </nav>
     <div class="slideshow-container" id="slideshow" tabindex="0">
@@ -405,8 +431,15 @@
                 $(".accept").removeClass("hide");
             }
         });
-        $('#status').fadeOut();
-        $('#preloader').delay(400).fadeOut('slow');
+        // Always hide preloader/status on load and on page show (bfcache/back/forward)
+        function hidePreloader() {
+            $('#status').fadeOut();
+            $('#preloader').delay(400).fadeOut('slow');
+        }
+        $(window).on('load', hidePreloader);
+        window.addEventListener('pageshow', function(event) {
+            hidePreloader();
+        });
     </script>
 </body>
 </html>
