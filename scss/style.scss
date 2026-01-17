@@ -14,17 +14,17 @@ $bodyFont: 'Inter', sans-serif;
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&&family=Inter:wght@400;700&display=swap');
 
 @keyframes text-clip {
-    0% {        
+    0% {
         clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
       }
-    99% { 
+    99% {
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
     100% {
         clip-path: polygon(0 -700%, 100% -700%, 100% 700%, 0 700%);
       }
   }
- 
+
   @keyframes bg-animation {
     0% { background-position: 0,0 }
     10% { background-position: -5% -5% }
@@ -37,7 +37,7 @@ $bodyFont: 'Inter', sans-serif;
     80% { background-position: -15% 0 }
     90% { background-position: 10% 5% }
     100% { background-position: 5% 0 }
-}  
+}
 
 @keyframes fullrotate {
     from {
@@ -52,7 +52,7 @@ $bodyFont: 'Inter', sans-serif;
     from {transform: scale(0,0); opacity: 0;}
     to {transform: scale(1,1); opacity: 1;}
   }
-  
+
   @keyframes movex {
     from {transform: translateX(0px)}
     to {transform: translateX(45px)}
@@ -62,7 +62,7 @@ $bodyFont: 'Inter', sans-serif;
     0% {
         transform: rotateX(-60deg) scale(.5,.5) translateY(0px);
         opacity: 0%;
-    } 
+    }
     70% {
         transform: rotateX(0) scale(1,1) translateY(20px);
         opacity: 50%;
@@ -112,16 +112,6 @@ $bodyFont: 'Inter', sans-serif;
         overflow: hidden;
         position: relative;
     }
-    .hero>img{
-        position: absolute !important;
-        width: min(50vw, 200px) !important;
-        max-width: 200px !important;
-        left: 50% !important;
-        transform: translateX(-50%) translateY(-50%) !important;
-        top: 40% !important;
-        right: auto !important;
-        bottom: auto !important;
-    }
     section {
         flex-direction: column !important;
         align-items: unset !important;
@@ -147,7 +137,7 @@ html{
     &::-webkit-scrollbar {
         display: none;
     }
-} 
+}
 
 body{
     font-family: $bodyFont;
@@ -226,7 +216,7 @@ a,p{
     position: relative;
 
 }
-  
+
 
 
 .follower {
@@ -234,7 +224,7 @@ a,p{
     opacity: 60%;
     width: 20px;
     z-index: 100;
-    pointer-events:none; 
+    pointer-events:none;
     height: 20px;
     display: flex;
     align-items: center;
@@ -311,11 +301,19 @@ section{
     }
     &>img{
         position: absolute;
-        width: 200px;
+        width: min(50vw, 12.5rem);
         left: 58vw;
         bottom: 38%;
         opacity: 30%;
         animation: fullrotate 20000ms linear infinite;
+        
+        @media screen and (max-width: 1080px) {
+            width: min(50vw, 12.5rem) !important;
+            left: 50% !important;
+            transform: translateX(-50%) translateY(-50%) !important;
+            top: 40% !important;
+            bottom: auto !important;
+        }
     }
 }
 
