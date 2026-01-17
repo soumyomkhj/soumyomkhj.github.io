@@ -1,3 +1,7 @@
+// Legacy main.js - keeping for backward compatibility
+// New modular version is in main-modular.js
+// This file can be gradually replaced
+
 //preloader
 function hidePreloader() {
   $('#status').fadeOut();
@@ -7,19 +11,15 @@ function hidePreloader() {
 
 $(window).on('load', hidePreloader);
 
-// Also hide preloader on 'pageshow' in case of back/forward cache (bfcache)
 window.addEventListener('pageshow', function(event) {
-  // If restored from cache, or just always hide for safety
   hidePreloader();
 });
 
 dark =1;
 //content loader
 var list = [
-  // {class: 'nextlevel', title: 'Nextlevel Kudos',tag1: 'Case Study', tag2: 'Social', tag3: '2024'},
   {class: 'graphy', title: 'Graphy Website Redesign',tag1: 'Redesign', tag2: 'UX Audit', tag3: '2023'},
   {class: 'unacademy', title: 'Unacademy',tag1: 'Product Designer', tag2: '2022', tag3: '2024'},
-  // {class: 'chandrakanta', title: 'Chandrakanta',tag1: 'IDC Final thesis', tag2: 'Interaction design', tag3: 'Present'},
   {class: 'clay-time', title: 'Clay Time',tag1: 'Tangible Interaction', tag2: 'Image Recognition', tag3: 'Python'},
   {class: 'create-share', title: 'Create \'n\' Share',tag1: 'Interaction Design', tag2: 'User Study', tag3: 'UX'},
   {class: 'youtube-coach', title: 'Youtube Coach',tag1: 'Instructional Design', tag2: 'UX', tag3: 'UI'},
@@ -29,8 +29,6 @@ var list = [
   {class: 'photo', title: 'Photography',tag1: 'Hobby', tag2: 'Fine Arts', tag3: 'Travel'},
   {class: 'newzera', title: 'Newzera Summer Intern',tag1: 'UI', tag2: 'Prototype', tag3: 'UX'},
   {class: 'univinks', title: 'Univinks UX & Branding',tag1: 'UX', tag2: 'Branding', tag3: 'UI'},
-  // {class: 'mobile-atm', title: 'Mobile Atm',tag1: 'Product Design', tag2: '3D', tag3: 'UX'},
-  // {class: 'kemorebi', title: 'Kemorebi',tag1: 'Poster', tag2: 'UI', tag3: 'Acid Art'},
 ];
 
 for (let i = 0; i < list.length; i++) {
@@ -39,16 +37,13 @@ for (let i = 0; i < list.length; i++) {
 }
 $(".clay-time").prepend("<img src=\"../img/accept.png\" class=\"accept\">");
 
-$(".img, .case-card").click(function (e) { 
-  // window.location.replace("/claytime.html");
+$(".img, .case-card").click(function (e) {
   $('#status').fadeIn();
   $('#preloader').delay(500).fadeIn('slow');
 });
 
-
 //sidebar
 sect_c = list.length+3  ;
-// console.log(sect_c);
 for (let i = 0; i < sect_c; i++) {
   $('.sidebar').append('<div class="sidebar_child"></div>');
 }
@@ -59,14 +54,10 @@ $(".container").scroll(function(){
   totH=$("section:eq(1)").height();
   curScr = $(this).scrollTop();
   n= Math.round(curScr/totH);
-  // console.log(curScr);
-  // console.log(totH);
-  // console.log(n);
-  // console.log("next");
   $(".sidebar_child").eq(n).addClass("bufferd_bar");
   for (let index = 0; index < sect_c; index++) {
     if (index!=n) {
-      $(".sidebar_child").eq(index).removeClass("bufferd_bar"); 
+      $(".sidebar_child").eq(index).removeClass("bufferd_bar");
     }
   }
 });
@@ -84,37 +75,30 @@ $( "#dark" ).click(function() {
   $(".inter-d").toggleClass("invert");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
+    "height": "100px",
   });
 });
 
 // mouse hover Animation
 $(".hover").hover(function () {
-    // over
     $(".follower").css({
       "width": "100px",
-      "height": "100px",        
+      "height": "100px",
       "opacity":"100%",
-      "z-index": "0"   
+      "z-index": "0"
     });
   }, function () {
-    // out
     $(".follower").css({
       "width": "20px",
       "height": "20px",
-      "opacity":"60%",       
-      "z-index": "100"   
+      "opacity":"60%",
+      "z-index": "100"
     });
   }
 );
 
-$( ".hover" )
-
 // cursor
 $(document).on('mousemove', (event) => {
-  // $('img').css({
-  //   transform: 'transform: rotate3d(1, 1, 1, 45deg);',
-  // });
   $('.follower').css({
     left: event.clientX,
     top: event.clientY,
@@ -124,49 +108,6 @@ $(document).on('mousemove', (event) => {
     top: event.clientY,
   });
 });
-
-
-// Scroll animation
-// idleTimer=100;
-// topScr = $(this).scrollTop();
-// timeout = 0;
-// $(".container").scroll(function () { 
-//   clearTimeout(timeout);
-//   curScr = $(this).scrollTop();
-//   diff= topScr-curScr;
-//   topScr=curScr;
-//   max=7;
-//   diff=diff*.2;
-//   if (diff>max) {diff=max;}
-//   if (diff<-max) {diff=-max;}
-//   // console.log(diff);
-//   // $(".barmarker").css('top', 200*curScr/totH+'px');
-//   $(".container").css('transform', 'skewY(' + diff + 'deg)');
-//   // diff=diff*.1;
-//   // $(".h1").css({
-//   //   "text-shadow": "0px "+50*diff+"px 0px rgb(18, 40, 46)",
-//   // });
-//   // if (diff>0) diff=1;
-//   // else if (diff<0) diff=-1;
-//   // else  diff=0;
-//   // diff*=5;
-//   // $(".img").css({
-//   //   "box-shadow": .8*diff+"em "+diff+"em 0px #316c7a",
-//   // });
-//   // timeout=setTimeout(function(){
-//   //   $(".container").css('transform', 'skewY(0deg)');
-//   //   $(".h1").css({
-//   //     "text-shadow": "0px "+"0em 0px rgb(18, 40, 46)",
-//   //   });
-//   //   $(".img").css({
-//   //     "box-shadow": "0em 0em 0px #316c7a",
-//   //   });
-//   // },idleTimer);
-// });
-
-
-
-
 
 $(".sidebar_child").click(function() {
   var target = $("section").eq($(this).index(".sidebar_child"));
@@ -181,225 +122,199 @@ $(".about").click(function() {
 });
 
 $(".scroll").hover(function () {
-    // over
     $(this).css('opacity', '0');
     $(".follower").html("<p>scroll</p>");
     $(".follower").css({
       "width": "100px",
-      "height": "100px",        
-      "opacity":"100%",       
+      "height": "100px",
+      "opacity":"100%",
     });
   }, function () {
-    // out
     $(this).css('opacity', '100%');
     $(".follower").html("");
     $(".follower").css({
       "width": "20px",
       "height": "20px",
-      "opacity":"60%",       
+      "opacity":"60%",
     });
   }
 );
 
 $(".img, .case-card").hover(function () {
-  // over
   $(".project > button").css("opacity", "0");
   $(".follower").html("<p>VIEW</p>");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
 }, function () {
-  // out
   $(".project > button").css("opacity", "100%");
   $(".follower").html("");
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"60%",       
+    "opacity":"60%",
   });
 }
 );
-
 
 //top nav
 $(".hello").click(function() {
   $(".container").scrollTo($('.hero').parent(), 800, {easing:'swing'});
 });
 $(".hello").hover(function () {
-  // over
   $(".project > button").css("opacity", "0");
   $(".follower").html('<p class="hello-anim"></p>');
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
 }, function () {
-  // out
   $(".project > button").css("opacity", "100%");
   $(".follower").html("");
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"60%",       
+    "opacity":"60%",
   });
 }
 );
 
-$(".home").click(function (e) { 
-  // window.location.replace("/index.html");
+$(".home").click(function (e) {
   $('#status').fadeIn();
   $('#preloader').delay(400).fadeIn('slow');
-  
 });
 
-$(".project").click(function (e) { 
-  // window.location.replace("/index.html");
+$(".project").click(function (e) {
   $('#status').fadeIn();
   $('#preloader').delay(400).fadeIn('slow');
-  
 });
-
-
 
 $(".home").hover(function () {
-  // over
   $(".project > button").css("opacity", "0");
   $(".follower").html("<p>BACK</p>");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
 }, function () {
-  // out
   $(".project > button").css("opacity", "100%");
   $(".follower").html("");
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"60%",       
+    "opacity":"60%",
   });
 }
 );
 
 $(".fullpage").hover(function () {
-  // over
   $(".follower").html("<p>expand</p>");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
   setTimeout(
-    function() 
+    function()
     {
       $(".follower").html("");
       $(".follower").css({
         "width": "20px",
         "height": "20px",
-        "opacity":"60%",       
+        "opacity":"60%",
       });
     }, 3000);
 }, function () {
-  // out
   $(".follower").html("");
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"60%",       
+    "opacity":"60%",
   });
 }
 );
 
 $(".next").hover(function () {
-  // over
   $(".project > button").css("opacity", "0");
   $(".follower").html("<p>next</p>");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
 }, function () {
-  // out
   $(".project > button").css("opacity", "100%");
   $(".follower").html("");
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"60%",       
+    "opacity":"60%",
   });
 }
 );
 
 $(".prev").hover(function () {
-  // over
   $(".project > button").css("opacity", "0");
   $(".follower").html("<p>previous</p>");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
 }, function () {
-  // out
   $(".project > button").css("opacity", "100%");
   $(".follower").html("");
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"60%",       
+    "opacity":"60%",
   });
 }
 );
 
 $(".nexts").hover(function () {
-  // over
   $(".project > button").css("opacity", "0");
   $(".follower").html("<p>next</p>");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
 }, function () {
-  // out
   $(".project > button").css("opacity", "100%");
   $(".follower").html("");
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"60%",       
+    "opacity":"60%",
   });
 }
 );
 
 $(".prevs").hover(function () {
-  // over
   $(".project > button").css("opacity", "0");
   $(".follower").html("<p>previous</p>");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
 }, function () {
-  // out
   $(".project > button").css("opacity", "100%");
   $(".follower").html("");
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"60%",       
+    "opacity":"60%",
   });
 }
 );
 
 $(".about").hover(function () {
-  // over
   $(".project > button").css("opacity", "0");
   if (dark==-1) {
     $(".follower").html("<img class=\"image-hover\" src=\"img/favicon.png\">");
@@ -407,38 +322,33 @@ $(".about").hover(function () {
   else  $(".follower").html("<img class=\"image-hover invert\" src=\"img/favicon.png\">");
   $(".follower").css({
     "width": "150px",
-    "height": "150px",        
-    "opacity":"100%",       
+    "height": "150px",
+    "opacity":"100%",
   });
 }, function () {
-  // out
   $(".project > button").css("opacity", "100%");
   $(".follower").html("");
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"60%",       
+    "opacity":"60%",
   });
 }
 );
 
-$(".fullpage").click(function (e) { 
-  // window.location.replace("/claytime.html");
-  // alert("hi");
+$(".fullpage").click(function (e) {
   $(".fullpage").toggleClass("fulldisplay");
   $(".follower").html("");
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"60%",       
+    "opacity":"60%",
   });
 });
 
 $(".frame").hover(function () {
-  // over
     $(".follower").css("opacity", "0% !important");
     }, function () {
-    // out
     $(".follower").css("opacity", "60%");
   }
 );
