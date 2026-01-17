@@ -27,7 +27,8 @@ This TRD outlines the technical architecture, implementation details, and techni
 **Deployment Model:**
 - Source code in GitHub repository
 - Automatic deployment via GitHub Pages
-- No build pipeline (manual SCSS compilation)
+- No build pipeline (SCSS source files are currently unused/stale)
+- CSS files are the source of truth (compiled CSS is used directly)
 - Static asset delivery via GitHub CDN
 
 ### 2.2 Technology Stack
@@ -75,14 +76,17 @@ soumyomkhj.github.io/
 ├── index.html                    # Main homepage
 ├── [project].html                # Individual project pages (11+ files)
 ├── scss/
-│   ├── style.scss               # Main stylesheet
-│   ├── _navbar.scss             # Navigation styles
-│   ├── _card.scss               # Project card styles
-│   ├── _dark.scss               # Dark mode styles
-│   ├── _icons.scss              # Icon styles
-│   ├── _normalize.scss          # CSS reset
-│   ├── _project.scss            # Project page styles
-│   └── style.css                # Compiled CSS
+│   ├── style.scss               # SCSS source (currently unused/stale)
+│   ├── _navbar.scss             # Navigation styles (unused)
+│   ├── _card.scss               # Project card styles (unused)
+│   ├── _dark.scss               # Dark mode styles (unused)
+│   ├── _icons.scss              # Icon styles (unused)
+│   ├── _normalize.scss          # CSS reset (unused)
+│   ├── _project.scss            # Project page styles (used)
+│   └── style.css                # Compiled CSS (source of truth)
+├── chart/
+│   ├── index.html               # Chart demo page
+│   └── js/                      # Chart-specific JavaScript
 ├── js/
 │   ├── main.js                  # Main JavaScript logic
 │   └── jquery.scrollTo.min.js   # Scroll plugin
@@ -547,9 +551,18 @@ Implement multiple breakpoints for better control:
 
 ### 5.2 Build System Implementation
 
-**Current State:** Manual SCSS compilation
+**Current State:**
+- SCSS source files exist but are currently unused/stale
+- CSS files (style.css) are the source of truth and used directly
+- No active build process or compilation pipeline
+- Recent cleanup: Removed unused `chart/scss/` directory and `.sass-cache/` build artifacts
 
-**Recommendation:** Implement build process
+**Recent Changes (January 2026):**
+- Unified `.hero > img` styles into single definition with relative dimensions
+- Removed duplicate SCSS implementations
+- Cleaned up stale build artifacts
+
+**Recommendation:** Implement build process if SCSS source files are to be maintained
 
 **Option 1: Simple Build (npm scripts)**
 ```json
@@ -681,10 +694,11 @@ Implement multiple breakpoints for better control:
    - **Note:** Optimize if performance issues occur during normal use
 
 4. **SCSS Compilation:**
-   - Manual compilation process
-   - No minification
-   - No source maps in production
-   - **Status:** Works for current needs
+   - SCSS source files exist but are currently unused/stale
+   - CSS files are the source of truth (used directly in HTML)
+   - No active compilation process
+   - **Status:** SCSS files cleaned up, CSS is maintained directly
+   - **Recent Change:** Removed unused `chart/scss/` directory and build artifacts
 
 5. **Accessibility:**
    - Missing ARIA labels
@@ -728,11 +742,14 @@ Implement multiple breakpoints for better control:
 
 ### 7.1 Current Workflow
 
-1. Edit HTML/SCSS/JS files
-2. Manually compile SCSS (if needed)
-3. Test locally
-4. Commit and push to GitHub
-5. GitHub Pages auto-deploys
+1. Edit HTML/CSS/JS files directly
+2. CSS files (style.css) are the source of truth
+3. SCSS source files exist but are currently unused/stale
+4. Test locally
+5. Commit and push to GitHub
+6. GitHub Pages auto-deploys
+
+**Note:** If SCSS files are to be used in the future, a build process will need to be implemented.
 
 ### 7.2 Recommended Workflow
 
@@ -978,3 +995,14 @@ assets/
 ---
 
 **Document Status:** Draft - Awaiting technical review and answers to technical questions.
+
+---
+
+## 14. Recent Changes Log
+
+**January 2026:**
+- ✅ **Code Cleanup:** Removed unused `chart/scss/` directory (chart page uses main `scss/style.css`)
+- ✅ **Build Artifacts:** Removed `.sass-cache/` directories (stale build artifacts)
+- ✅ **CSS Unification:** Unified `.hero > img` styles into single definition with relative dimensions (`min(50vw, 12.5rem)` instead of fixed `200px`)
+- ✅ **SCSS Status:** SCSS source files are currently unused/stale - CSS files are the source of truth
+- **Impact:** Reduced code duplication, improved maintainability, cleaner codebase structure

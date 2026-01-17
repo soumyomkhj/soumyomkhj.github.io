@@ -374,7 +374,8 @@ A visually striking, interactive portfolio website that reflects Soumyo's design
 - **Hosting:** GitHub Pages (static site hosting)
 - **No Backend:** Serverless architecture required
 - **No Database:** All content must be static or client-side
-- **Build Process:** Currently manual SCSS compilation
+- **Build Process:** No active build process - CSS files are maintained directly
+- **SCSS Status:** SCSS source files exist but are currently unused/stale (cleaned up January 2026)
 
 ### 9.2 Technology Constraints
 - **jQuery Dependency:** Currently using jQuery - *Should we migrate to vanilla JS?*
@@ -489,3 +490,14 @@ The following features are explicitly out of scope for the current version:
 ---
 
 **Document Status:** Draft - Awaiting stakeholder review and answers to open questions.
+
+---
+
+## 16. Recent Changes Log
+
+**January 2026:**
+- ✅ Unified `.hero > img` CSS definitions into single location with relative dimensions
+- ✅ Removed unused `chart/scss/` directory (chart uses main `scss/style.css`)
+- ✅ Cleaned up stale build artifacts (`.sass-cache/` directories)
+- ✅ Code cleanup: Removed duplicate and unused SCSS implementations
+- **Note:** SCSS source files are currently unused/stale. CSS files (style.css) are the source of truth.

@@ -1410,7 +1410,7 @@
    left: 58vw;
    top: 40%;
    transform: translateY(-50%);
-   opacity: 30%;
+   opacity: 30% !important;
    animation: fullrotate 20000ms linear infinite;
  }
 
