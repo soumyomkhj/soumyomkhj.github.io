@@ -1,8 +1,15 @@
 // Main entry point - initializes all modules
 // Load order matters: modules must be loaded before this file
 $(document).ready(() => {
-    // Initialize modules in dependency order
+    // Initialize image loader first
+    if (typeof ImageLoader !== 'undefined') {
+        ImageLoader.init();
+    }
+
+    // Initialize preloader (will wait for images)
     Preloader.init();
+
+    // Initialize other modules
     DarkMode.init();
     Cursor.init();
 
@@ -15,9 +22,4 @@ $(document).ready(() => {
     // Sidebar needs project count
     const sectionCount = Projects.list.length + 3;
     Sidebar.init(sectionCount);
-});
-
-// Also initialize on window load for preloader
-$(window).on('load', () => {
-    Preloader.init();
 });

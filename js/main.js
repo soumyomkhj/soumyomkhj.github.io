@@ -2,17 +2,57 @@
 // New modular version is in main-modular.js
 // This file can be gradually replaced
 
-//preloader
+//preloader - legacy version (modular version in modules/preloader.js)
+let preloaderHidden = false;
 function hidePreloader() {
-  $('#status').fadeOut();
-  $('#preloader').delay(800).fadeOut('slow');
-  $('.hero-anim').delay(9000).addClass("text-clip");
+  if (preloaderHidden) return;
+  preloaderHidden = true;
+
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    preloader.style.transition = 'opacity 0.5s ease-out, visibility 0s linear 0.5s';
+    preloader.style.opacity = '0';
+    preloader.style.visibility = 'hidden';
+
+    setTimeout(() => {
+      preloader.style.display = 'none';
+    }, 500);
+  }
+
+  $('.hero-anim').delay(100).addClass("text-clip");
 }
 
-$(window).on('load', hidePreloader);
+// Load critical images first
+const criticalImages = ['img/interaction.svg', 'img/nextlevel.png', 'img/elsa.png', 'img/favicon.png'];
+const imagePromises = criticalImages.map(src => {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(src);
+    img.onerror = () => resolve(src);
+    img.src = src;
+    setTimeout(() => resolve(src), 5000);
+  });
+});
+
+Promise.all(imagePromises).then(() => {
+  setTimeout(() => hidePreloader(), 300);
+});
+
+// Fallback timeout
+setTimeout(() => {
+  if (!preloaderHidden) hidePreloader();
+}, 6000);
+
+$(window).on('load', function() {
+  if (!preloaderHidden) {
+    setTimeout(() => hidePreloader(), 300);
+  }
+});
 
 window.addEventListener('pageshow', function(event) {
-  hidePreloader();
+  if (event.persisted) {
+    hidePreloader();
+  }
 });
 
 dark =1;

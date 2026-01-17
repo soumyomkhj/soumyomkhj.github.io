@@ -74,7 +74,7 @@
             <div class="hero">
                 <p>Hello!</p>
                 <h1 class="h1 hero-anim">I'M SOUMYO</h1>
-                <img class="inter-d" src="img/interaction.svg" alt="">
+                <img class="inter-d" src="img/interaction.svg" alt="" loading="eager">
                 <div class="section-footer">
                     <div class="scroll">
                         <div class="arrow-down"></div>
@@ -94,7 +94,7 @@
             <h3 style="text-align: center;">Case Studies</h3> <br>
             <div class="case-cards">
                 <div class="case-card" style="align-items: flex-start;"  onclick="location.href='nextlevel.html'">
-                    <img src="img/nextlevel.png" alt="Case Study 1" class="case-card-img">
+                    <img src="img/nextlevel.png" alt="Case Study 1" class="case-card-img" loading="eager" style="opacity: 0; transition: opacity 0.3s;">
                     <div class="case-card-content">
                         <h4>NextLevel</h4>
                         <p>
@@ -103,7 +103,7 @@
                     </div>
                 </div>
                 <div class="case-card img"  onclick="location.href='elsa.html'">
-                    <img src="img/elsa.png" alt="Case Study 2" class="case-card-img">
+                    <img src="img/elsa.png" alt="Case Study 2" class="case-card-img" loading="eager" style="opacity: 0; transition: opacity 0.3s;">
                     <div class="case-card-content">
                         <h4>Grammar & Vocab Games</h4>
                         <p>
@@ -140,6 +140,24 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/jquery.scrollTo.min.js"></script>
+    <script>
+        // Fade in images once loaded to prevent jagged appearance
+        document.addEventListener('DOMContentLoaded', function() {
+            const eagerImages = document.querySelectorAll('img[loading="eager"]');
+            eagerImages.forEach(function(img) {
+                if (img.complete && img.naturalHeight !== 0) {
+                    img.style.opacity = '1';
+                } else {
+                    img.addEventListener('load', function() {
+                        this.style.opacity = '1';
+                    });
+                    img.addEventListener('error', function() {
+                        this.style.opacity = '1';
+                    });
+                }
+            });
+        });
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>
