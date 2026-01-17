@@ -1218,11 +1218,17 @@ img {
   }
   .hero {
     margin-top: 25vh;
+    overflow: hidden;
+    position: relative;
   }
   .hero > img {
     position: absolute !important;
-    width: 60vh !important;
-    left: auto !important;
+    width: min(50vw, 200px) !important;
+    max-width: 200px !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(-50%) !important;
+    top: 40% !important;
+    right: auto !important;
     bottom: auto !important;
   }
   section {
@@ -1542,6 +1548,10 @@ section {
     /* Override fixed/mobile "section" height: let this section grow as needed */
     height: auto !important;
     min-height: 0 !important;
+  }
+  .hero > img {
+    width: min(40vw, 150px) !important;
+    max-width: 150px !important;
   }
 }
 .case-cards {
