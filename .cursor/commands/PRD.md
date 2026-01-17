@@ -115,7 +115,7 @@ A visually striking, interactive portfolio website that reflects Soumyo's design
 - **Frontend:** HTML5, CSS3 (SCSS), JavaScript (ES5/ES6)
 - **Libraries:** jQuery 3.6.0, jQuery ScrollTo
 - **Fonts:** Google Fonts (Krona One, Inter)
-- **Hosting:** GitHub Pages (soumyomkhj.github.io)
+- **Hosting:** GitHub Pages (soumyomkh.github.io)
 - **Assets:** Images (PNG, JPG), Videos (MP4), SVG icons
 
 ### 4.3 Identified Gaps & Opportunities
@@ -362,7 +362,7 @@ A visually striking, interactive portfolio website that reflects Soumyo's design
 - **Error States:** Graceful error handling (if forms added)
 
 ### 8.3 Brand Guidelines
-- **Logo/Branding:** "soumyomkhj" text logo
+- **Logo/Branding:** "soumyomkh" text logo
 - **Tone of Voice:** Professional, creative, approachable
 - **Visual Style:** Modern, minimal, interactive
 
@@ -481,8 +481,8 @@ The following features are explicitly out of scope for the current version:
 - **KPI:** Key Performance Indicator
 
 ### 15.2 References
-- Current website: soumyomkhj.github.io
-- GitHub repository: soumyomkhj.github.io
+- Current website: soumyomkh.github.io
+- GitHub repository: soumyomkh.github.io
 - Design portfolio best practices
 - Accessibility guidelines (WCAG 2.1)
 

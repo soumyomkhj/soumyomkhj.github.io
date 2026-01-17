@@ -21,7 +21,7 @@ This TRD outlines the technical architecture, implementation details, and techni
 **Architecture Type:** Static Single-Page Application (SPA-like with multi-page support)
 
 **Hosting:** GitHub Pages (static site hosting)
-**Domain:** soumyomkhj.github.io
+**Domain:** soumyomkh.github.io
 **Protocol:** HTTPS (provided by GitHub Pages)
 
 **Deployment Model:**
@@ -71,7 +71,7 @@ JavaScript
 ### 3.1 File Structure
 
 ```
-soumyomkhj.github.io/
+soumyomkh.github.io/
 ├── index.html                    # Main homepage
 ├── [project].html                # Individual project pages (11+ files)
 ├── scss/
@@ -456,7 +456,7 @@ Implement multiple breakpoints for better control:
 <meta property="og:title" content="Soumyo's Portfolio | Senior Product Designer">
 <meta property="og:description" content="...">
 <meta property="og:image" content="...">
-<meta property="og:url" content="https://soumyomkhj.github.io">
+<meta property="og:url" content="https://soumyomkh.github.io">
 <meta name="twitter:card" content="summary_large_image">
 ```
 
@@ -467,10 +467,10 @@ Implement multiple breakpoints for better control:
   "@type": "Person",
   "name": "Soumyoprabho Mukherjee",
   "jobTitle": "Senior Product Designer",
-  "url": "https://soumyomkhj.github.io",
+  "url": "https://soumyomkh.github.io",
   "sameAs": [
-    "https://www.behance.net/soumyomkhj",
-    "https://github.com/soumyomkhj"
+    "https://www.behance.net/soumyomkh",
+    "https://github.com/soumyomkh"
   ]
 }
 ```
