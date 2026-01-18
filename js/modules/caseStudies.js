@@ -9,12 +9,10 @@ const CaseStudies = {
 
     loadData() {
         try {
-            const dataScript = document.getElementById('portfolio-data');
-            if (dataScript) {
-                const data = JSON.parse(dataScript.textContent);
-                this.list = data.caseStudies || [];
+            if (typeof window.PortfolioData !== 'undefined') {
+                this.list = window.PortfolioData.caseStudies || [];
             } else {
-                console.error('Portfolio data script not found');
+                console.error('Portfolio data not found');
                 this.list = [];
             }
         } catch (error) {

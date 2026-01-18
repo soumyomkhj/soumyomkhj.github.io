@@ -24,9 +24,8 @@ const DetailPage = {
 
     loadData() {
         try {
-            const dataScript = document.getElementById('portfolio-data');
-            if (dataScript) {
-                this.data = JSON.parse(dataScript.textContent);
+            if (typeof window.PortfolioData !== 'undefined') {
+                this.data = window.PortfolioData;
             } else {
                 console.error('Portfolio data not found');
             }
