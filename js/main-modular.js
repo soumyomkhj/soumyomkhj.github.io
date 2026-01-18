@@ -13,6 +13,9 @@ $(document).ready(() => {
     DarkMode.init();
     Cursor.init();
 
+    // Case Studies must initialize before Projects
+    CaseStudies.init();
+
     // Projects must initialize before Sidebar (needs project count)
     Projects.init();
 
@@ -22,6 +25,9 @@ $(document).ready(() => {
     // Sidebar needs project count
     const sectionCount = Projects.list.length + 3;
     Sidebar.init(sectionCount);
+
+    // Testimonials must initialize before Education (needs testimonials rendered)
+    Testimonials.init();
 
     // Initialize education cards navigation
     Education.init();
