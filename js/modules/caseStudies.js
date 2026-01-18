@@ -32,7 +32,7 @@ const CaseStudies = {
         for (let i = 0; i < this.list.length; i++) {
             const caseStudy = this.list[i];
             const html = `
-                <div class="case-card" style="align-items: flex-start;" onclick="location.href='${caseStudy.link}'">
+                <div class="case-card" style="align-items: flex-start;" onclick="location.href='detail.html?id=${caseStudy.class}'">
                     <img src="${caseStudy.image}" alt="${caseStudy.title}" class="case-card-img" loading="lazy" style="opacity: 0; transition: opacity 0.3s;">
                     <div class="case-card-content">
                         <h4>${caseStudy.title}</h4>

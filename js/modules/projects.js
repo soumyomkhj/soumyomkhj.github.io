@@ -35,7 +35,7 @@ const Projects = {
             const index = this.list.length - i - 1;
             const project = this.list[index];
             const html = `
-                <section class="portfolio" id="${project.class}" onclick="location.href='${project.class}.html';">
+                <section class="portfolio" id="${project.class}" onclick="location.href='detail.html?id=${project.class}';">
                     <div class="project">
                         <div class="img ${project.class}" alt="Image"></div>
                         <h1 class="h1 title">${project.title}</h1>
