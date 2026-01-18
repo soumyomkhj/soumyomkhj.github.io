@@ -98,8 +98,8 @@ A visually striking, interactive portfolio website that reflects Soumyo's design
 ### 4.1 Existing Features
 ✅ Hero section with animated introduction
 ✅ About section describing experience
-✅ Case studies section (2 featured projects: NextLevel, Grammar & Vocab Games)
-✅ Projects section (11 projects displayed)
+✅ Case studies section (2 featured projects: NextLevel, Grammar & Vocab Games) - **Tokenized**
+✅ Projects section (11 projects displayed) - **Tokenized with isSpecial flag**
 ✅ Individual project detail pages with image slideshows
 ✅ Dark/light mode toggle
 ✅ Custom cursor follower animations
@@ -107,9 +107,11 @@ A visually striking, interactive portfolio website that reflects Soumyo's design
 ✅ Responsive design (mobile-friendly)
 ✅ Social media links (Behance, Pinterest, GitHub, YouTube)
 ✅ Resume download functionality
-✅ Testimonials/recommendations section
+✅ Testimonials/recommendations section - **Tokenized, horizontal wrap layout**
 ✅ Navigation sidebar with scroll indicators
 ✅ Smooth scrolling animations
+✅ Centralized data storage (embedded JSON in index.html)
+✅ Modular JavaScript architecture
 
 ### 4.2 Technology Stack
 - **Frontend:** HTML5, CSS3 (SCSS), JavaScript (ES5/ES6)
@@ -153,6 +155,9 @@ A visually striking, interactive portfolio website that reflects Soumyo's design
   - Clicking project navigates to detail page
   - Projects load in reverse chronological order
   - Minimum 11 projects visible
+  - **Data tokenized in centralized JSON structure**
+  - **Support for special project markers (isSpecial flag)**
+  - **Special projects can display additional elements (e.g., accept badge)**
 
 #### FR-3: Case Studies Section
 - **Priority:** P0 (Critical)
@@ -162,6 +167,8 @@ A visually striking, interactive portfolio website that reflects Soumyo's design
   - Clear visual distinction from regular projects
   - Clickable cards linking to detailed pages
   - At least 2 case studies featured (NextLevel, ELSA Grammar & Vocab Games)
+  - **Data tokenized in centralized JSON structure**
+  - **Images load with fade-in animation**
 
 #### FR-4: Project Detail Pages
 - **Priority:** P0 (Critical)
@@ -501,3 +508,15 @@ The following features are explicitly out of scope for the current version:
 - ✅ Cleaned up stale build artifacts (`.sass-cache/` directories)
 - ✅ Code cleanup: Removed duplicate and unused SCSS implementations
 - **Note:** SCSS source files are currently unused/stale. CSS files (style.css) are the source of truth.
+
+**Latest Updates (Tokenization & Architecture Improvements):**
+- ✅ **Tokenized Case Studies:** Created `caseStudies.js` module with tokenized data structure similar to projects
+- ✅ **Tokenized Projects:** Enhanced `projects.js` with `isSpecial` flag for special project markers (e.g., accept badge)
+- ✅ **Tokenized Testimonials:** Created `testimonials.js` module with tokenized testimonial data
+- ✅ **Centralized Data Storage:** All tokenized data stored in embedded JSON within `index.html` (single source of truth)
+- ✅ **Modular Architecture:** Separated concerns into individual modules (caseStudies.js, projects.js, testimonials.js)
+- ✅ **Image Handling:** Implemented consistent image fade-in handling for both case studies and projects
+- ✅ **Testimonials Layout:** Updated testimonials to display in horizontal wrap layout (max 300px per card)
+- ✅ **Code Structure:** Standardized module structure across all data-driven components
+- ✅ **Path Fixes:** Fixed image path issues (accept.png path corrected)
+- **Impact:** Improved maintainability, easier content updates, consistent code patterns across modules

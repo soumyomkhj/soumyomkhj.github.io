@@ -73,8 +73,10 @@ JavaScript
 
 ```
 soumyomkhj.github.io/
-├── index.html                    # Main homepage
+├── index.html                    # Main homepage (contains embedded JSON data)
 ├── [project].html                # Individual project pages (11+ files)
+├── css/
+│   └── style.css                # Main stylesheet (source of truth)
 ├── scss/
 │   ├── style.scss               # SCSS source (currently unused/stale)
 │   ├── _navbar.scss             # Navigation styles (unused)
@@ -88,8 +90,21 @@ soumyomkhj.github.io/
 │   ├── index.html               # Chart demo page
 │   └── js/                      # Chart-specific JavaScript
 ├── js/
-│   ├── main.js                  # Main JavaScript logic
-│   └── jquery.scrollTo.min.js   # Scroll plugin
+│   ├── main-modular.js          # Main entry point (initializes modules)
+│   ├── jquery.scrollTo.min.js   # Scroll plugin
+│   └── modules/
+│       ├── componentLoader.js   # Component loading utility
+│       ├── imageLoader.js       # Image loading and fade-in
+│       ├── preloader.js         # Preloader functionality
+│       ├── darkMode.js          # Dark/light mode toggle
+│       ├── cursor.js            # Custom cursor system
+│       ├── projects.js          # Projects module (tokenized)
+│       ├── caseStudies.js       # Case studies module (tokenized)
+│       ├── testimonials.js      # Testimonials module (tokenized)
+│       ├── scroll.js            # Scroll functionality
+│       ├── sidebar.js           # Sidebar navigation
+│       ├── fullpage.js          # Fullpage toggle
+│       └── education.js         # Education/testimonials navigation
 ├── img/                         # Image assets (300+ files)
 │   ├── [project]/               # Project-specific images
 │   └── [assets].png/jpg/svg     # General assets
@@ -198,24 +213,41 @@ soumyomkhj.github.io/
 - Add loading states for images
 - Consider using a lightweight slider library (e.g., Swiper.js)
 
-#### 3.2.6 Dynamic Project Loading
-**Technology:** JavaScript + DOM manipulation
+#### 3.2.6 Dynamic Content Loading (Projects, Case Studies, Testimonials)
+**Technology:** Modular JavaScript + Embedded JSON
 **Implementation:**
-- Projects loaded dynamically from array in `main.js`
-- Injected into DOM via jQuery `.after()` method
-- Reverse chronological order
+- **Modular Architecture:** Separate modules for each content type:
+  - `js/modules/projects.js` - Project rendering and management
+  - `js/modules/caseStudies.js` - Case study rendering
+  - `js/modules/testimonials.js` - Testimonial rendering
+- **Centralized Data:** All content data stored in embedded JSON within `index.html`
+- **Data Structure:** Tokenized arrays with consistent structure
+- Projects injected into DOM via jQuery `.after()` method
+- Case studies and testimonials use container-based rendering
+- Reverse chronological order for projects
 
-**Code Location:** `js/main.js` (lines 18-39)
+**Code Locations:**
+- `js/modules/projects.js` - Project module
+- `js/modules/caseStudies.js` - Case studies module
+- `js/modules/testimonials.js` - Testimonials module
+- `index.html` - Embedded JSON data (`<script id="portfolio-data">`)
 
 **Technical Notes:**
-- Project data hardcoded in JavaScript
-- No external data source
-- Background images defined in SCSS
+- Data loaded synchronously from embedded JSON (no fetch required)
+- Consistent module structure across all content types
+- Support for special project markers via `isSpecial` flag
+- Image fade-in handling implemented for dynamically loaded images
+- Testimonials use horizontal flex wrap layout (max 300px per card)
+
+**Current Implementation:**
+- ✅ Tokenized data structure
+- ✅ Modular JavaScript architecture
+- ✅ Embedded JSON for single source of truth
+- ✅ Consistent rendering patterns
 
 **Recommendation:**
-- Move project data to JSON file for easier management
-- Implement a simple CMS or build script for content updates
-- Consider using a static site generator (e.g., 11ty, Jekyll)
+- Consider external JSON file with fetch (if needed for CMS integration)
+- Implement build script to generate embedded JSON from source files (good to have)
 
 ---
 
@@ -590,32 +622,64 @@ Implement multiple breakpoints for better control:
 
 ### 5.3 Content Management Strategy
 
-**Current State:** Hardcoded content in JavaScript and HTML
+**Current State:** ✅ **Tokenized content in embedded JSON within HTML**
 
-**Status:** CMS is good to have but not immediately required. Current hardcoded approach works for now.
+**Implementation:**
+- All content (projects, case studies, testimonials) stored in embedded JSON
+- Single source of truth: `<script id="portfolio-data" type="application/json">` in `index.html`
+- Modular JavaScript modules load data synchronously from embedded JSON
+- Consistent data structure across all content types
+
+**Data Structure:**
+```json
+{
+  "caseStudies": [
+    {
+      "class": "nextlevel",
+      "title": "NextLevel",
+      "description": "...",
+      "image": "img/nextlevel.png",
+      "link": "nextlevel.html"
+    }
+  ],
+  "projects": [
+    {
+      "class": "graphy",
+      "title": "Graphy Website Redesign",
+      "tag1": "Redesign",
+      "tag2": "UX Audit",
+      "tag3": "2023",
+      "isSpecial": false
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "...",
+      "name": "...",
+      "title": "..."
+    }
+  ]
+}
+```
+
+**Status:** ✅ **Implemented** - Tokenized data structure with embedded JSON. CMS is good to have for future but not immediately required.
+
+**Benefits:**
+- Single source of truth for all content
+- Easy to update content by editing JSON
+- No external dependencies or fetch requests
+- Consistent structure across modules
+- Type-safe data access
 
 **Recommendation:**
-1. **Short-term:** Move project data to JSON file (good to have)
-   ```json
-   // projects.json
-   {
-     "projects": [
-       {
-         "class": "graphy",
-         "title": "Graphy Website Redesign",
-         "tags": ["Redesign", "UX Audit", "2023"],
-         "url": "graphy.html"
-       }
-     ]
-   }
-   ```
-
+1. **Current:** ✅ Embedded JSON works well for static content
 2. **Medium-term (Future):** Use a headless CMS (Contentful, Sanity, Strapi) - Good to have
    - API-based content management
    - Easy updates without code changes
    - Image optimization built-in
+   - Could generate embedded JSON via build process
 
-3. **Long-term (Future):** Consider a static site generator with markdown files
+3. **Long-term (Future):** Consider build process to generate embedded JSON from external source
    - Version control for content
    - Easy to edit
    - Can be integrated with CMS later
@@ -682,10 +746,12 @@ Implement multiple breakpoints for better control:
    - **Status:** ⏸️ No immediate need to migrate - Current implementation works well
    - Migration to vanilla JS can be considered in future
 
-2. **Hardcoded Content:**
-   - Project data in JavaScript array
-   - Difficult to update without code changes
-   - Move to JSON or CMS (good to have, not critical)
+2. **Content Management:**
+   - ✅ **RESOLVED:** Content now tokenized in embedded JSON
+   - ✅ **RESOLVED:** Modular architecture for easy content updates
+   - ✅ **RESOLVED:** Single source of truth for all content data
+   - **Status:** Content management improved significantly
+   - **Future:** Consider external JSON file or CMS (good to have)
 
 3. **Image Optimization:**
    - Large unoptimized images
@@ -1006,3 +1072,38 @@ assets/
 - ✅ **CSS Unification:** Unified `.hero > img` styles into single definition with relative dimensions (`min(50vw, 12.5rem)` instead of fixed `200px`)
 - ✅ **SCSS Status:** SCSS source files are currently unused/stale - CSS files are the source of truth
 - **Impact:** Reduced code duplication, improved maintainability, cleaner codebase structure
+
+**Latest Updates (Tokenization & Architecture Improvements):**
+- ✅ **Modular Architecture:** Separated JavaScript into individual modules:
+  - `js/modules/projects.js` - Projects rendering with tokenized data
+  - `js/modules/caseStudies.js` - Case studies rendering with tokenized data
+  - `js/modules/testimonials.js` - Testimonials rendering with tokenized data
+  - `js/main-modular.js` - Main entry point coordinating module initialization
+
+- ✅ **Data Tokenization:** 
+  - All content (projects, case studies, testimonials) tokenized in embedded JSON
+  - Single source of truth: `<script id="portfolio-data">` in `index.html`
+  - Consistent data structure across all content types
+  - Support for special project markers via `isSpecial` flag
+
+- ✅ **Image Handling:**
+  - Consistent image fade-in implementation for case studies and projects
+  - `setupImageFadeIn()` method in both caseStudies and projects modules
+  - Fixed image path issues (accept.png path corrected)
+
+- ✅ **Layout Improvements:**
+  - Testimonials display in horizontal flex wrap layout
+  - Maximum 300px width per testimonial card
+  - Responsive design maintained
+
+- ✅ **Code Structure:**
+  - Standardized module pattern across all data-driven components
+  - Consistent initialization and rendering methods
+  - Improved code reusability and maintainability
+
+**Impact:** 
+- Significantly improved maintainability and content management
+- Easier to update content (single JSON location)
+- Consistent code patterns across modules
+- Better separation of concerns
+- Foundation for potential CMS integration
