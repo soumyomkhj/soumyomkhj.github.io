@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="scss/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Jagat Jamini | Soumyo's Portfolio</title>
 </head>
 <body>
@@ -69,9 +69,14 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/modules/darkMode.js"></script>
+    <script src="js/modules/cursor.js"></script>
 
     <script>
+        $(document).ready(() => {
+            DarkMode.init();
+            Cursor.init();
+        });
         $('#status').fadeOut();
         $('#preloader').delay(400).fadeOut('slow');
     </script>

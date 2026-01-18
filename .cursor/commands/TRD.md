@@ -1001,7 +1001,7 @@ assets/
 ## 14. Recent Changes Log
 
 **January 2026:**
-- ✅ **Code Cleanup:** Removed unused `chart/scss/` directory (chart page uses main `scss/style.css`)
+- ✅ **Code Cleanup:** Removed unused `chart/scss/` directory (chart page uses main `css/style.css`)
 - ✅ **Build Artifacts:** Removed `.sass-cache/` directories (stale build artifacts)
 - ✅ **CSS Unification:** Unified `.hero > img` styles into single definition with relative dimensions (`min(50vw, 12.5rem)` instead of fixed `200px`)
 - ✅ **SCSS Status:** SCSS source files are currently unused/stale - CSS files are the source of truth

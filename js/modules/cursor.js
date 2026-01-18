@@ -20,7 +20,7 @@ const Cursor = {
 
     setupHoverEffects() {
         $(".hover").hover(
-            () => this.expand("100%"),
+            () => this.expand("150px"),
             () => this.shrink()
         );
 
@@ -28,7 +28,7 @@ const Cursor = {
             () => {
                 $(this).css('opacity', '0');
                 this.setContent("<p>scroll</p>");
-                this.expand("100%");
+                this.expand("150px");
             },
             () => {
                 $(this).css('opacity', '100%');
@@ -41,7 +41,7 @@ const Cursor = {
             () => {
                 $(".project > button").css("opacity", "0");
                 this.setContent("<p>VIEW</p>");
-                this.expand("100%");
+                this.expand("150px");
             },
             () => {
                 $(".project > button").css("opacity", "100%");
@@ -54,7 +54,7 @@ const Cursor = {
             () => {
                 $(".project > button").css("opacity", "0");
                 this.setContent('<p class="hello-anim"></p>');
-                this.expand("100%");
+                this.expand("150px");
             },
             () => {
                 $(".project > button").css("opacity", "100%");
@@ -83,7 +83,7 @@ const Cursor = {
             () => {
                 $(".project > button").css("opacity", "0");
                 this.setContent("<p>BACK</p>");
-                this.expand("100%");
+                this.expand("150px");
             },
             () => {
                 $(".project > button").css("opacity", "100%");
@@ -95,7 +95,7 @@ const Cursor = {
         $(".fullpage").hover(
             () => {
                 this.setContent("<p>expand</p>");
-                this.expand("100%");
+                this.expand("150px");
                 setTimeout(() => {
                     this.setContent("");
                     this.shrink();
@@ -111,7 +111,7 @@ const Cursor = {
             () => {
                 $(".project > button").css("opacity", "0");
                 this.setContent("<p>next</p>");
-                this.expand("100%");
+                this.expand("150px");
             },
             () => {
                 $(".project > button").css("opacity", "100%");
@@ -124,7 +124,7 @@ const Cursor = {
             () => {
                 $(".project > button").css("opacity", "0");
                 this.setContent("<p>previous</p>");
-                this.expand("100%");
+                this.expand("150px");
             },
             () => {
                 $(".project > button").css("opacity", "100%");
@@ -144,7 +144,7 @@ const Cursor = {
             "width": size,
             "height": size,
             "opacity": "100%",
-            "z-index": "0"
+            "z-index": "999"
         });
     },
 
@@ -153,7 +153,7 @@ const Cursor = {
             "width": "20px",
             "height": "20px",
             "opacity": "60%",
-            "z-index": "100"
+            "z-index": "999"
         });
     },
 

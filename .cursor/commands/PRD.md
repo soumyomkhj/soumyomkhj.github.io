@@ -497,7 +497,7 @@ The following features are explicitly out of scope for the current version:
 
 **January 2026:**
 - ✅ Unified `.hero > img` CSS definitions into single location with relative dimensions
-- ✅ Removed unused `chart/scss/` directory (chart uses main `scss/style.css`)
+- ✅ Removed unused `chart/scss/` directory (chart uses main `css/style.css`)
 - ✅ Cleaned up stale build artifacts (`.sass-cache/` directories)
 - ✅ Code cleanup: Removed duplicate and unused SCSS implementations
 - **Note:** SCSS source files are currently unused/stale. CSS files (style.css) are the source of truth.
