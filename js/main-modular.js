@@ -22,4 +22,7 @@ $(document).ready(() => {
     // Sidebar needs project count
     const sectionCount = Projects.list.length + 3;
     Sidebar.init(sectionCount);
+
+    // Initialize education cards navigation
+    Education.init();
 });

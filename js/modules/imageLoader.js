@@ -6,10 +6,9 @@ const ImageLoader = {
     },
 
     setupImageFadeIn() {
-        // Fade in images once loaded
-        const images = document.querySelectorAll('img[loading="eager"]');
-        images.forEach(img => {
-            if (img.complete) {
+        // Handle all images with opacity fade-in (both eager and lazy)
+        const setupImage = (img) => {
+            if (img.complete && img.naturalHeight !== 0) {
                 img.style.opacity = '1';
             } else {
                 img.addEventListener('load', function() {
@@ -19,24 +18,42 @@ const ImageLoader = {
                     this.style.opacity = '1'; // Show even if error
                 });
             }
-        });
+        };
+
+        // Handle eager images immediately
+        const eagerImages = document.querySelectorAll('img[loading="eager"]');
+        eagerImages.forEach(setupImage);
+
+        // Handle lazy images with Intersection Observer
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+        if (lazyImages.length > 0 && 'IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        setupImage(img);
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+        } else {
+            // Fallback for browsers without IntersectionObserver
+            lazyImages.forEach(setupImage);
+        }
     },
 
     preloadCriticalImages() {
-        // Ensure images are loaded in cache
-        const criticalImages = [
-            'img/interaction.svg',
-            'img/nextlevel.png',
-            'img/elsa.png',
-            'img/favicon.png'
-        ];
-
-        criticalImages.forEach(src => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = src.endsWith('.svg') ? 'image/svg+xml' : 'image';
-            link.href = src;
-            document.head.appendChild(link);
-        });
+        // Only preload the hero image - others can load lazily
+        const heroImage = 'img/interaction.svg';
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.type = 'image/svg+xml';
+        link.href = heroImage;
+        document.head.appendChild(link);
     }
 };

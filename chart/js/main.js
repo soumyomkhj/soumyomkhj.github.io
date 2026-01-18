@@ -8,7 +8,7 @@ $(window).on('load', function() {
 dark =1;
 
 
-$(".img").click(function (e) { 
+$(".img").click(function (e) {
   // window.location.replace("/claytime.html");
   $('#status').fadeIn();
   $('#preloader').delay(500).fadeIn('slow');
@@ -29,7 +29,7 @@ $( "#dark" ).click(function() {
   $(".inter-d").toggleClass("invert");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
+    "height": "100px",
   });
 });
 
@@ -38,17 +38,17 @@ $(".hover").hover(function () {
     // over
     $(".follower").css({
       "width": "100px",
-      "height": "100px",        
+      "height": "100px",
       "opacity":"100%",
-      "z-index": "0"   
+      "z-index": "0"
     });
   }, function () {
     // out
     $(".follower").css({
       "width": "20px",
       "height": "20px",
-      "opacity":"100%",       
-      "z-index": "100"   
+      "opacity":"100%",
+      "z-index": "100"
     });
   }
 );
@@ -74,7 +74,7 @@ $(document).on('mousemove', (event) => {
 idleTimer=100;
 topScr = $(this).scrollTop();
 timeout = 0;
-$(".container").scroll(function () { 
+$(".container").scroll(function () {
   clearTimeout(timeout);
   curScr = $(this).scrollTop();
   diff= topScr-curScr;
@@ -130,8 +130,8 @@ $(".scroll").hover(function () {
     $(".follower").html("<p>scroll</p>");
     $(".follower").css({
       "width": "100px",
-      "height": "100px",        
-      "opacity":"100%",       
+      "height": "100px",
+      "opacity":"100%",
     });
   }, function () {
     // out
@@ -140,7 +140,7 @@ $(".scroll").hover(function () {
     $(".follower").css({
       "width": "20px",
       "height": "20px",
-      "opacity":"100%",       
+      "opacity":"100%",
     });
   }
 );
@@ -151,8 +151,8 @@ $(".img").hover(function () {
   $(".follower").html("<p>VIEW</p>");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
 }, function () {
   // out
@@ -161,7 +161,7 @@ $(".img").hover(function () {
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"100%",       
+    "opacity":"100%",
   });
 }
 );
@@ -177,8 +177,8 @@ $(".hello").hover(function () {
   $(".follower").html('<p class="hello-anim"></p>');
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
 }, function () {
   // out
@@ -187,23 +187,23 @@ $(".hello").hover(function () {
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"100%",       
+    "opacity":"100%",
   });
 }
 );
 
-$(".home").click(function (e) { 
+$(".home").click(function (e) {
   // window.location.replace("/index.html");
   $('#status').fadeIn();
   $('#preloader').delay(400).fadeIn('slow');
-  
+
 });
 
-$(".project").click(function (e) { 
+$(".project").click(function (e) {
   // window.location.replace("/index.html");
   $('#status').fadeIn();
   $('#preloader').delay(400).fadeIn('slow');
-  
+
 });
 
 
@@ -214,8 +214,8 @@ $(".home").hover(function () {
   $(".follower").html("<p>BACK</p>");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
 }, function () {
   // out
@@ -224,7 +224,7 @@ $(".home").hover(function () {
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"100%",       
+    "opacity":"100%",
   });
 }
 );
@@ -235,8 +235,8 @@ $(".next").hover(function () {
   $(".follower").html("<p>next</p>");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
 }, function () {
   // out
@@ -245,7 +245,7 @@ $(".next").hover(function () {
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"100%",       
+    "opacity":"100%",
   });
 }
 );
@@ -256,8 +256,8 @@ $(".prev").hover(function () {
   $(".follower").html("<p>previous</p>");
   $(".follower").css({
     "width": "100px",
-    "height": "100px",        
-    "opacity":"100%",       
+    "height": "100px",
+    "opacity":"100%",
   });
 }, function () {
   // out
@@ -266,7 +266,7 @@ $(".prev").hover(function () {
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"100%",       
+    "opacity":"100%",
   });
 }
 );
@@ -280,8 +280,8 @@ $(".about").hover(function () {
   else  $(".follower").html("<img class=\"image-hover invert\" src=\"img/favicon.png\">");
   $(".follower").css({
     "width": "150px",
-    "height": "150px",        
-    "opacity":"100%",       
+    "height": "150px",
+    "opacity":"100%",
   });
 }, function () {
   // out
@@ -290,7 +290,7 @@ $(".about").hover(function () {
   $(".follower").css({
     "width": "20px",
     "height": "20px",
-    "opacity":"100%",       
+    "opacity":"100%",
   });
 }
 );

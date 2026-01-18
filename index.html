@@ -6,6 +6,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Interaction Designer, specialized in HCI, UI, UX, User Research, User Evaluation">
+
+    <!-- Resource hints for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://ajax.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" as="style">
+    <link rel="preload" href="img/interaction.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="scss/style.css" as="style">
+
     <link rel="stylesheet" href="scss/style.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-8SQLGN8BW5"></script> -->
@@ -94,7 +106,7 @@
             <h3 style="text-align: center;">Case Studies</h3> <br>
             <div class="case-cards">
                 <div class="case-card" style="align-items: flex-start;"  onclick="location.href='nextlevel.html'">
-                    <img src="img/nextlevel.png" alt="Case Study 1" class="case-card-img" loading="eager" style="opacity: 0; transition: opacity 0.3s;">
+                    <img src="img/nextlevel.png" alt="Case Study 1" class="case-card-img" loading="lazy" style="opacity: 0; transition: opacity 0.3s;">
                     <div class="case-card-content">
                         <h4>NextLevel</h4>
                         <p>
@@ -103,7 +115,7 @@
                     </div>
                 </div>
                 <div class="case-card img"  onclick="location.href='elsa.html'">
-                    <img src="img/elsa.png" alt="Case Study 2" class="case-card-img" loading="eager" style="opacity: 0; transition: opacity 0.3s;">
+                    <img src="img/elsa.png" alt="Case Study 2" class="case-card-img" loading="lazy" style="opacity: 0; transition: opacity 0.3s;">
                     <div class="case-card-content">
                         <h4>Grammar & Vocab Games</h4>
                         <p>
@@ -146,26 +158,23 @@
     <div class="sidebar-container">
         <div class="sidebar"></div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script>
-        // Fade in images once loaded to prevent jagged appearance
-        document.addEventListener('DOMContentLoaded', function() {
-            const eagerImages = document.querySelectorAll('img[loading="eager"]');
-            eagerImages.forEach(function(img) {
-                if (img.complete && img.naturalHeight !== 0) {
-                    img.style.opacity = '1';
-                } else {
-                    img.addEventListener('load', function() {
-                        this.style.opacity = '1';
-                    });
-                    img.addEventListener('error', function() {
-                        this.style.opacity = '1';
-                    });
-                }
-            });
-        });
-    </script>
-    <script src="js/main.js"></script>
+    <!-- Load jQuery first, then other scripts (defer ensures order) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="js/jquery.scrollTo.min.js" defer></script>
+    
+    <!-- Load modules in order -->
+    <script src="js/modules/componentLoader.js" defer></script>
+    <script src="js/modules/imageLoader.js" defer></script>
+    <script src="js/modules/preloader.js" defer></script>
+    <script src="js/modules/darkMode.js" defer></script>
+    <script src="js/modules/cursor.js" defer></script>
+    <script src="js/modules/projects.js" defer></script>
+    <script src="js/modules/scroll.js" defer></script>
+    <script src="js/modules/sidebar.js" defer></script>
+    <script src="js/modules/fullpage.js" defer></script>
+    <script src="js/modules/education.js" defer></script>
+    
+    <!-- Initialize all modules -->
+    <script src="js/main-modular.js" defer></script>
 </body>
 </html>

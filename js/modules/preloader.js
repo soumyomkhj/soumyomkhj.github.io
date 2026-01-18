@@ -24,23 +24,32 @@ const Preloader = {
     },
 
     loadCriticalImages() {
-        const imagePromises = this.criticalImages.map(src => {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                img.onload = () => resolve(src);
-                img.onerror = () => resolve(src); // Continue even if one fails
-                img.src = src;
+        // Only wait for the hero image (interaction.svg) - others can load later
+        const heroImage = this.criticalImages[0]; // interaction.svg
 
-                // Timeout after 5 seconds
-                setTimeout(() => resolve(src), 5000);
-            });
+        const heroPromise = new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(heroImage);
+            img.onerror = () => resolve(heroImage);
+            img.src = heroImage;
+            // Shorter timeout for hero image
+            setTimeout(() => resolve(heroImage), 2000);
         });
 
-        Promise.all(imagePromises).then(() => {
-            // Wait a bit for smooth transition
+        // Load other images in parallel but don't wait for them
+        this.criticalImages.slice(1).forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+
+        // Hide preloader as soon as hero image loads or after 3.5s min
+        Promise.race([
+            heroPromise,
+            new Promise(resolve => setTimeout(resolve, 3500))
+        ]).then(() => {
             setTimeout(() => {
                 this.hidePreloader();
-            }, 300);
+            }, 500);
         });
 
         // Fallback: hide after max 6 seconds
@@ -57,13 +66,13 @@ const Preloader = {
 
         const preloader = document.getElementById('preloader');
         if (preloader) {
-            preloader.style.transition = 'opacity 0.5s ease-out, visibility 0s linear 0.5s';
+
+            preloader.style.transition = 'opacity 0.7s ease-out, visibility 0s linear 0.9s';
             preloader.style.opacity = '0';
             preloader.style.visibility = 'hidden';
-
             setTimeout(() => {
                 preloader.style.display = 'none';
-            }, 500);
+            }, 1000);
         }
 
         // Trigger hero animation
