@@ -13,10 +13,8 @@ $(document).ready(() => {
     DarkMode.init();
     Cursor.init();
 
-    // Case Studies must initialize before Projects
+    // Load data and initialize modules in order
     CaseStudies.init();
-
-    // Projects must initialize before Sidebar (needs project count)
     Projects.init();
 
     Scroll.init();

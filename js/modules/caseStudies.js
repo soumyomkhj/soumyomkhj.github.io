@@ -1,24 +1,26 @@
 // Case Studies module
 const CaseStudies = {
-    list: [
-        {
-            class: 'nextlevel',
-            title: 'NextLevel',
-            description: 'Enhanced user growth and engagement through viral loops for NextLevel, an innovative social platform empowering job seekers.',
-            image: 'img/nextlevel.png',
-            link: 'nextlevel.html'
-        },
-        {
-            class: 'elsa',
-            title: 'Grammar & Vocab Games',
-            description: 'Crafted innovative ELSA Grammar & Vocab Games to transform learning into an engaging and interactive experience.',
-            image: 'img/elsa.png',
-            link: 'elsa.html'
-        }
-    ],
+    list: [],
 
     init() {
+        this.loadData();
         this.renderCaseStudies();
+    },
+
+    loadData() {
+        try {
+            const dataScript = document.getElementById('portfolio-data');
+            if (dataScript) {
+                const data = JSON.parse(dataScript.textContent);
+                this.list = data.caseStudies || [];
+            } else {
+                console.error('Portfolio data script not found');
+                this.list = [];
+            }
+        } catch (error) {
+            console.error('Error loading case studies data:', error);
+            this.list = [];
+        }
     },
 
     renderCaseStudies() {
