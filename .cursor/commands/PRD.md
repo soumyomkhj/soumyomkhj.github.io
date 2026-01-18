@@ -1,10 +1,10 @@
 # Product Requirements Document (PRD)
 ## Soumyo's Portfolio Website
 
-**Version:** 1.0
-**Date:** 2026
+**Version:** 2.0
+**Date:** January 2026
 **Author:** Product Team
-**Status:** Draft
+**Status:** Updated - Final
 
 ---
 
@@ -99,8 +99,10 @@ A visually striking, interactive portfolio website that reflects Soumyo's design
 ✅ Hero section with animated introduction
 ✅ About section describing experience
 ✅ Case studies section (2 featured projects: NextLevel, Grammar & Vocab Games) - **Tokenized**
-✅ Projects section (11 projects displayed) - **Tokenized with isSpecial flag**
-✅ Individual project detail pages with image slideshows
+✅ Projects section (11 projects displayed) - **Tokenized with isSpecial flag and YouTube video support**
+✅ Auto-generated project/case study detail pages from single template (`detail.html`)
+✅ Image slideshow/carousel functionality with keyboard, wheel, and touch navigation
+✅ YouTube video embeds support for projects (clay-time, youtube-coach, exalt-body)
 ✅ Dark/light mode toggle
 ✅ Custom cursor follower animations
 ✅ Preloader with animated loading states
@@ -110,7 +112,7 @@ A visually striking, interactive portfolio website that reflects Soumyo's design
 ✅ Testimonials/recommendations section - **Tokenized, horizontal wrap layout**
 ✅ Navigation sidebar with scroll indicators
 ✅ Smooth scrolling animations
-✅ Centralized data storage (embedded JSON in index.html)
+✅ Centralized data storage (`js/data.js` - single source of truth)
 ✅ Modular JavaScript architecture
 
 ### 4.2 Technology Stack
@@ -178,6 +180,9 @@ A visually striking, interactive portfolio website that reflects Soumyo's design
   - Keyboard navigation (arrow keys)
   - Back to homepage navigation
   - Consistent layout across all project pages
+  - **Auto-generated from single template (`detail.html`) using URL parameters**
+  - **Support for YouTube video embeds in project pages**
+  - **Navigation between projects/case studies within detail pages**
 
 #### FR-5: Resume Download
 - **Priority:** P0 (Critical)
@@ -496,7 +501,7 @@ The following features are explicitly out of scope for the current version:
 
 ---
 
-**Document Status:** Draft - Awaiting stakeholder review and answers to open questions.
+**Document Status:** Updated - Final - Reflects current implementation with tokenized data, auto-generated detail pages, and unified architecture.
 
 ---
 
@@ -513,10 +518,14 @@ The following features are explicitly out of scope for the current version:
 - ✅ **Tokenized Case Studies:** Created `caseStudies.js` module with tokenized data structure similar to projects
 - ✅ **Tokenized Projects:** Enhanced `projects.js` with `isSpecial` flag for special project markers (e.g., accept badge)
 - ✅ **Tokenized Testimonials:** Created `testimonials.js` module with tokenized testimonial data
-- ✅ **Centralized Data Storage:** All tokenized data stored in embedded JSON within `index.html` (single source of truth)
-- ✅ **Modular Architecture:** Separated concerns into individual modules (caseStudies.js, projects.js, testimonials.js)
+- ✅ **Centralized Data Storage:** All tokenized data stored in `js/data.js` (single source of truth, shared by index.html and detail.html)
+- ✅ **Modular Architecture:** Separated concerns into individual modules (caseStudies.js, projects.js, testimonials.js, detailPage.js)
 - ✅ **Image Handling:** Implemented consistent image fade-in handling for both case studies and projects
 - ✅ **Testimonials Layout:** Updated testimonials to display in horizontal wrap layout (max 300px per card)
 - ✅ **Code Structure:** Standardized module structure across all data-driven components
 - ✅ **Path Fixes:** Fixed image path issues (accept.png path corrected)
-- **Impact:** Improved maintainability, easier content updates, consistent code patterns across modules
+- ✅ **Auto-Generated Detail Pages:** Created single `detail.html` template that dynamically generates all project/case study pages using URL parameters
+- ✅ **YouTube Video Support:** Added `youtubeVideo` field to project data structure for embedding videos (clay-time, youtube-coach, exalt-body)
+- ✅ **Code Cleanup:** Removed 13 individual HTML files, componentLoader.js, and components directory (all unused)
+- ✅ **Unified Data Source:** Both index.html and detail.html now load from `js/data.js` via `window.PortfolioData`
+- **Impact:** Significantly improved maintainability, easier content updates, consistent code patterns, reduced code duplication, single template for all detail pages

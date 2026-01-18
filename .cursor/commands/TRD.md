@@ -1,10 +1,10 @@
 # Technical Requirements Document (TRD)
 ## Soumyo's Portfolio Website
 
-**Version:** 1.0
-**Date:** 2024
+**Version:** 2.0
+**Date:** January 2026
 **Author:** Technical Team
-**Status:** Draft
+**Status:** Updated - Final
 
 ---
 
@@ -73,8 +73,8 @@ JavaScript
 
 ```
 soumyomkhj.github.io/
-├── index.html                    # Main homepage (contains embedded JSON data)
-├── [project].html                # Individual project pages (11+ files)
+├── index.html                    # Main homepage
+├── detail.html                   # Single template for all project/case study pages
 ├── css/
 │   └── style.css                # Main stylesheet (source of truth)
 ├── scss/
@@ -86,14 +86,11 @@ soumyomkhj.github.io/
 │   ├── _normalize.scss          # CSS reset (unused)
 │   ├── _project.scss            # Project page styles (used)
 │   └── style.css                # Compiled CSS (source of truth)
-├── chart/
-│   ├── index.html               # Chart demo page
-│   └── js/                      # Chart-specific JavaScript
 ├── js/
+│   ├── data.js                  # Portfolio data - single source of truth
 │   ├── main-modular.js          # Main entry point (initializes modules)
 │   ├── jquery.scrollTo.min.js   # Scroll plugin
 │   └── modules/
-│       ├── componentLoader.js   # Component loading utility
 │       ├── imageLoader.js       # Image loading and fade-in
 │       ├── preloader.js         # Preloader functionality
 │       ├── darkMode.js          # Dark/light mode toggle
@@ -101,6 +98,7 @@ soumyomkhj.github.io/
 │       ├── projects.js          # Projects module (tokenized)
 │       ├── caseStudies.js       # Case studies module (tokenized)
 │       ├── testimonials.js      # Testimonials module (tokenized)
+│       ├── detailPage.js        # Detail page generator (auto-generates project/case study pages)
 │       ├── scroll.js            # Scroll functionality
 │       ├── sidebar.js           # Sidebar navigation
 │       ├── fullpage.js          # Fullpage toggle
@@ -213,41 +211,54 @@ soumyomkhj.github.io/
 - Add loading states for images
 - Consider using a lightweight slider library (e.g., Swiper.js)
 
-#### 3.2.6 Dynamic Content Loading (Projects, Case Studies, Testimonials)
-**Technology:** Modular JavaScript + Embedded JSON
+#### 3.2.6 Dynamic Content Loading (Projects, Case Studies, Testimonials, Detail Pages)
+**Technology:** Modular JavaScript + Centralized Data File
 **Implementation:**
 - **Modular Architecture:** Separate modules for each content type:
   - `js/modules/projects.js` - Project rendering and management
   - `js/modules/caseStudies.js` - Case study rendering
   - `js/modules/testimonials.js` - Testimonial rendering
-- **Centralized Data:** All content data stored in embedded JSON within `index.html`
+  - `js/modules/detailPage.js` - Auto-generated detail pages
+- **Centralized Data:** All content data stored in `js/data.js` as `window.PortfolioData`
 - **Data Structure:** Tokenized arrays with consistent structure
+- **Single Source of Truth:** Both `index.html` and `detail.html` load from `js/data.js`
 - Projects injected into DOM via jQuery `.after()` method
 - Case studies and testimonials use container-based rendering
 - Reverse chronological order for projects
+- Detail pages auto-generated from URL parameters
 
 **Code Locations:**
+- `js/data.js` - Single source of truth for all portfolio data
 - `js/modules/projects.js` - Project module
 - `js/modules/caseStudies.js` - Case studies module
 - `js/modules/testimonials.js` - Testimonials module
-- `index.html` - Embedded JSON data (`<script id="portfolio-data">`)
+- `js/modules/detailPage.js` - Detail page generator
+- `detail.html` - Single template for all project/case study pages
 
 **Technical Notes:**
-- Data loaded synchronously from embedded JSON (no fetch required)
+- Data loaded synchronously from `js/data.js` (no fetch required, no CORS issues)
+- All modules read from `window.PortfolioData` global object
 - Consistent module structure across all content types
 - Support for special project markers via `isSpecial` flag
+- Support for YouTube video embeds via `youtubeVideo` field
 - Image fade-in handling implemented for dynamically loaded images
 - Testimonials use horizontal flex wrap layout (max 300px per card)
+- Detail pages use pattern-based image discovery
+- Full slideshow functionality for case studies (keyboard, wheel, touch)
 
 **Current Implementation:**
 - ✅ Tokenized data structure
 - ✅ Modular JavaScript architecture
-- ✅ Embedded JSON for single source of truth
+- ✅ Centralized data file (`js/data.js`) for single source of truth
 - ✅ Consistent rendering patterns
+- ✅ Auto-generated detail pages (eliminated 13 individual HTML files)
+- ✅ YouTube video support for projects
 
-**Recommendation:**
-- Consider external JSON file with fetch (if needed for CMS integration)
-- Implement build script to generate embedded JSON from source files (good to have)
+**Benefits:**
+- Single file to update for all content changes
+- No code duplication between pages
+- Easier maintenance and content updates
+- Reduced codebase size (~120KB of duplicate HTML removed)
 
 ---
 
@@ -622,24 +633,25 @@ Implement multiple breakpoints for better control:
 
 ### 5.3 Content Management Strategy
 
-**Current State:** ✅ **Tokenized content in embedded JSON within HTML**
+**Current State:** ✅ **Tokenized content in centralized JavaScript file**
 
 **Implementation:**
-- All content (projects, case studies, testimonials) stored in embedded JSON
-- Single source of truth: `<script id="portfolio-data" type="application/json">` in `index.html`
-- Modular JavaScript modules load data synchronously from embedded JSON
+- All content (projects, case studies, testimonials) stored in `js/data.js`
+- Single source of truth: `window.PortfolioData` object in `js/data.js`
+- Both `index.html` and `detail.html` load from same data source
+- Modular JavaScript modules read from `window.PortfolioData`
 - Consistent data structure across all content types
 
 **Data Structure:**
-```json
-{
+```javascript
+window.PortfolioData = {
   "caseStudies": [
     {
       "class": "nextlevel",
       "title": "NextLevel",
       "description": "...",
       "image": "img/nextlevel.png",
-      "link": "nextlevel.html"
+      "link": "detail.html?id=nextlevel"
     }
   ],
   "projects": [
@@ -650,6 +662,18 @@ Implement multiple breakpoints for better control:
       "tag2": "UX Audit",
       "tag3": "2023",
       "isSpecial": false
+    },
+    {
+      "class": "clay-time",
+      "title": "Clay Time",
+      "tag1": "Tangible Interaction",
+      "tag2": "Image Recognition",
+      "tag3": "Python",
+      "isSpecial": true,
+      "youtubeVideo": {
+        "videoId": "YcyrtFk-_LA",
+        "position": 9
+      }
     }
   ],
   "testimonials": [
@@ -662,24 +686,34 @@ Implement multiple breakpoints for better control:
 }
 ```
 
-**Status:** ✅ **Implemented** - Tokenized data structure with embedded JSON. CMS is good to have for future but not immediately required.
+**Status:** ✅ **Implemented** - Tokenized data structure with centralized JavaScript file. CMS is good to have for future but not immediately required.
 
 **Benefits:**
-- Single source of truth for all content
-- Easy to update content by editing JSON
+- Single source of truth for all content (one file: `js/data.js`)
+- Easy to update content by editing JavaScript file
 - No external dependencies or fetch requests
+- No CORS issues (local file access)
 - Consistent structure across modules
-- Type-safe data access
+- Both pages (index.html and detail.html) use same data
+- Support for YouTube video embeds
+- Support for special project markers
+
+**Detail Page Generation:**
+- Single `detail.html` template replaces 13 individual HTML files
+- Auto-generated pages using URL parameters (`detail.html?id=project-name`)
+- Pattern-based image discovery for different project types
+- Full slideshow functionality for case studies
+- Navigation between projects/case studies
 
 **Recommendation:**
-1. **Current:** ✅ Embedded JSON works well for static content
+1. **Current:** ✅ Centralized JavaScript file works well for static content
 2. **Medium-term (Future):** Use a headless CMS (Contentful, Sanity, Strapi) - Good to have
    - API-based content management
    - Easy updates without code changes
    - Image optimization built-in
-   - Could generate embedded JSON via build process
+   - Could generate `js/data.js` via build process
 
-3. **Long-term (Future):** Consider build process to generate embedded JSON from external source
+3. **Long-term (Future):** Consider build process to generate `js/data.js` from external source
    - Version control for content
    - Easy to edit
    - Can be integrated with CMS later
@@ -747,10 +781,12 @@ Implement multiple breakpoints for better control:
    - Migration to vanilla JS can be considered in future
 
 2. **Content Management:**
-   - ✅ **RESOLVED:** Content now tokenized in embedded JSON
+   - ✅ **RESOLVED:** Content now tokenized in centralized `js/data.js` file
    - ✅ **RESOLVED:** Modular architecture for easy content updates
-   - ✅ **RESOLVED:** Single source of truth for all content data
-   - **Status:** Content management improved significantly
+   - ✅ **RESOLVED:** Single source of truth for all content data (`window.PortfolioData`)
+   - ✅ **RESOLVED:** Auto-generated detail pages (eliminated 13 duplicate HTML files)
+   - ✅ **RESOLVED:** Unified data access across all pages
+   - **Status:** Content management significantly improved
    - **Future:** Consider external JSON file or CMS (good to have)
 
 3. **Image Optimization:**
@@ -1000,7 +1036,7 @@ assets/
 
 ### Short-term (This Month) - Good to Have
 1. Enable Google Analytics - Good to have, not critical
-2. Move project data to JSON file - Good to have
+2. ✅ **COMPLETED:** Move project data to centralized file (`js/data.js`)
 3. Add basic SEO meta tags (Open Graph, Twitter Cards) - Good to have
 4. Implement image lazy loading - If performance issues occur
 
@@ -1060,7 +1096,7 @@ assets/
 
 ---
 
-**Document Status:** Draft - Awaiting technical review and answers to technical questions.
+**Document Status:** Updated - Final - Reflects current implementation with centralized data file, auto-generated detail pages, and modular architecture.
 
 ---
 
@@ -1078,32 +1114,53 @@ assets/
   - `js/modules/projects.js` - Projects rendering with tokenized data
   - `js/modules/caseStudies.js` - Case studies rendering with tokenized data
   - `js/modules/testimonials.js` - Testimonials rendering with tokenized data
+  - `js/modules/detailPage.js` - Auto-generated detail pages for projects/case studies
   - `js/main-modular.js` - Main entry point coordinating module initialization
 
-- ✅ **Data Tokenization:** 
-  - All content (projects, case studies, testimonials) tokenized in embedded JSON
-  - Single source of truth: `<script id="portfolio-data">` in `index.html`
+- ✅ **Data Tokenization & Unification:** 
+  - All content (projects, case studies, testimonials) tokenized in `js/data.js`
+  - Single source of truth: `window.PortfolioData` object in `js/data.js`
+  - Both `index.html` and `detail.html` load from same data source
   - Consistent data structure across all content types
   - Support for special project markers via `isSpecial` flag
+  - Support for YouTube video embeds via `youtubeVideo` field
+
+- ✅ **Auto-Generated Detail Pages:**
+  - Single `detail.html` template replaces 13 individual HTML files
+  - Dynamic page generation using URL parameters (`detail.html?id=project-name`)
+  - Automatic image discovery based on project patterns
+  - Full slideshow functionality for case studies (keyboard, wheel, touch swipe)
+  - Navigation between projects/case studies within detail pages
+  - Special handling for projects with YouTube videos
 
 - ✅ **Image Handling:**
   - Consistent image fade-in implementation for case studies and projects
   - `setupImageFadeIn()` method in both caseStudies and projects modules
   - Fixed image path issues (accept.png path corrected)
+  - Pattern-based image discovery for different project types
 
 - ✅ **Layout Improvements:**
   - Testimonials display in horizontal flex wrap layout
   - Maximum 300px width per testimonial card
   - Responsive design maintained
 
+- ✅ **Code Cleanup:**
+  - Removed 13 individual project/case study HTML files
+  - Removed unused `componentLoader.js` module
+  - Removed unused `components/` directory
+  - Eliminated code duplication
+
 - ✅ **Code Structure:**
   - Standardized module pattern across all data-driven components
   - Consistent initialization and rendering methods
   - Improved code reusability and maintainability
+  - All modules read from `window.PortfolioData` (unified data access)
 
 **Impact:** 
 - Significantly improved maintainability and content management
-- Easier to update content (single JSON location)
+- Easier to update content (single `js/data.js` file)
 - Consistent code patterns across modules
 - Better separation of concerns
+- Reduced codebase size (removed ~120KB of duplicate HTML)
+- Single template for all detail pages (easier to maintain and update)
 - Foundation for potential CMS integration
