@@ -61,7 +61,7 @@ const DetailPage = {
     renderNav() {
         const navContainer = document.getElementById('dynamic-nav');
         const backLink = this.itemType === 'caseStudy' ? 'index.html#case-studies' : `index.html#${this.currentItem.class}`;
-        const year = this.currentItem.tag3 || '2023';
+        const year = '2026';
 
         navContainer.innerHTML = `
             <div class="nav">
@@ -153,7 +153,14 @@ const DetailPage = {
 
         if (type === 'caseStudy') {
             // Case studies use numbered format: 01.png, 02.png, etc.
-            for (let i = 1; i <= 30; i++) {
+            let slidesNo = 30;
+            if (this.data && Array.isArray(this.data.caseStudies)) {
+                const caseStudy = this.data.caseStudies.find(cs => cs.class === className);
+                if (caseStudy && typeof caseStudy.slidesNo === 'number') {
+                    slidesNo = caseStudy.slidesNo;
+                }
+            }
+            for (let i = 1; i <= slidesNo; i++) {
                 const num = String(i).padStart(2, '0');
                 images.push(`img/${className}/${num}.png`);
             }

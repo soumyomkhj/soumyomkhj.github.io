@@ -6,14 +6,16 @@ window.PortfolioData = {
       "title": "NextLevel",
       "description": "Enhanced user growth and engagement through viral loops for NextLevel, an innovative social platform empowering job seekers.",
       "image": "img/nextlevel.png",
-      "link": "detail.html?id=nextlevel"
+      "link": "detail.html?id=nextlevel",
+      "slidesNo": 19
     },
     {
       "class": "elsa",
       "title": "Grammar & Vocab Games",
       "description": "Crafted innovative ELSA Grammar & Vocab Games to transform learning into an engaging and interactive experience.",
       "image": "img/elsa.png",
-      "link": "detail.html?id=elsa"
+      "link": "detail.html?id=elsa",
+      "slidesNo": 19
     }
   ],
   "projects": [

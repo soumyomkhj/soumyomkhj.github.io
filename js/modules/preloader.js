@@ -36,6 +36,8 @@ const Preloader = {
             setTimeout(() => resolve(heroImage), 2000);
         });
 
+        // Trigger hero animation
+        $('.hero-anim').addClass("text-clip");
         // Load other images in parallel but don't wait for them
         this.criticalImages.slice(1).forEach(src => {
             const img = new Image();
@@ -58,6 +60,7 @@ const Preloader = {
                 this.hidePreloader();
             }
         }, 6000);
+        
     },
 
     hidePreloader() {
@@ -75,10 +78,6 @@ const Preloader = {
             }, 1000);
         }
 
-        // Trigger hero animation
-        setTimeout(() => {
-            $('.hero-anim').addClass("text-clip");
-        }, 100);
     },
 
     hideImmediately() {
