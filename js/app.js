@@ -580,7 +580,7 @@ class InteractiveGrid {
                 let lastY = wrapper.scrollTop;
                 wrapper.addEventListener('scroll', () => {
                     const currentY = wrapper.scrollTop;
-                    this.scroll.vel = (currentY - lastY) * 0.5;
+                    this.scroll.vel = (currentY - lastY) * 0.02;
                     lastY = currentY;
                     this.startLoop();
                 });
