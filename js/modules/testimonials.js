@@ -32,9 +32,11 @@ const Testimonials = {
             const isActive = i === 0 ? ' active' : '';
             const html = `
                 <div class="educard${isActive}">
-                    <p>${testimonial.quote}</p>
-                    <h2 class="h1">${testimonial.name}</h2>
-                    <p>${testimonial.title}</p>
+                    <div class="quote-text">${testimonial.quote}</div>
+                    <div class="author-row">
+                        <div class="author-name">${testimonial.name}</div>
+                        <div class="author-title">${testimonial.title}</div>
+                    </div>
                 </div>
             `;
             testimonialsContainer.append(html);

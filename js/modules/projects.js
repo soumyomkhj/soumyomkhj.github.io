@@ -28,33 +28,32 @@ const Projects = {
 
         // Remove any existing project sections
         $('.portfolio').remove();
+        $('.project-item').remove();
+
+        if ($('.projects-grid').length === 0) {
+            insertionPoint.after('<div class="projects-grid"></div>');
+        }
+        const grid = $('.projects-grid');
 
         for (let i = 0; i < this.list.length; i++) {
             const index = this.list.length - i - 1;
             const project = this.list[index];
             const html = `
-                <section class="portfolio" id="${project.class}" onclick="location.href='detail.html?id=${project.class}';">
-                    <div class="project">
-                        <div class="img ${project.class}" alt="Image"></div>
-                        <h1 class="h1 title">${project.title}</h1>
-                        <div class="tags-container">
-                            <div class="tag">${project.tag1}</div>
-                            <div class="tag">${project.tag2}</div>
-                            <div class="tag">${project.tag3}</div>
-                        </div>
-                        <div class="view">
-                            <h5>TAP TO VIEW</h5>
-                        </div>
+                <div class="project-item" id="${project.class}" onclick="location.href='detail.html?id=${project.class}';">
+                    <div class="project" style="display: contents;">
+                        <div class="img-bg ${project.class}"></div>
                     </div>
-                </section>
+                    <div class="project-item-dots"></div>
+                    <div class="hover-slide-up">
+                        <h4>${project.title}</h4>
+                        <p>${project.tag1} &bull; ${project.tag2}</p>
+                    </div>
+                </div>
             `;
-            insertionPoint.after(html);
-
-            if (project.isSpecial) {
-                $(`.${project.class}`).prepend("<img src=\"img/accept.png\" class=\"accept\">");
-            }
+            grid.append(html);
         }
 
+        // Initialize images manually if needed by existing lazy loaders
         this.setupImageFadeIn();
     },
 

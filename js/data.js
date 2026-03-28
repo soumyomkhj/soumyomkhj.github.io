@@ -67,22 +67,14 @@ window.PortfolioData = {
         "position": 0
       }
     },
-    {
-      "class": "jagat-jamini",
-      "title": "Jagat Jamini",
-      "tag1": "VR",
-      "tag2": "Spatial Audio",
-      "tag3": "Interaction Design",
-      "isSpecial": false
-    },
-    {
-      "class": "bonfire",
-      "title": "Bonfire!",
-      "tag1": "Interaction Design",
-      "tag2": "Media & Sensory",
-      "tag3": "UX",
-      "isSpecial": false
-    },
+    // {
+    //   "class": "jagat-jamini",
+    //   "title": "Jagat Jamini",
+    //   "tag1": "VR",
+    //   "tag2": "Spatial Audio",
+    //   "tag3": "Interaction Design",
+    //   "isSpecial": false
+    // },
     {
       "class": "exalt-body",
       "title": "Exalt Body",
@@ -111,16 +103,31 @@ window.PortfolioData = {
       "tag3": "UX",
       "isSpecial": false
     },
-    {
-      "class": "univinks",
-      "title": "Univinks UX & Branding",
-      "tag1": "UX",
-      "tag2": "Branding",
-      "tag3": "UI",
-      "isSpecial": false
-    }
+    // {
+    //   "class": "univinks",
+    //   "title": "Univinks UX & Branding",
+    //   "tag1": "UX",
+    //   "tag2": "Branding",
+    //   "tag3": "UI",
+    //   "isSpecial": false
+    // }
   ],
   "testimonials": [
+    {
+      "quote": "In the two years Soumyo worked on our team, they consistently produced solid design work. They had a good eye for creativity and worked efficiently, often helping to improve our existing products and contribute to new ones. Where he truly showed his prowess was in working with limited project briefs and a blue sky vision where despite him being young, he was able to furnish high quality work taking independent but thoughtful decisions that helped shape the product. On top of the day to day work, his willingness to continuously strive to improve team processes, design productivity and tooling really stood out to me – he categorically took strong initiatives to bring positive change and exemplified optimism through this adjacent line of work he brought to the table. I vouch for his ability to work independently, especially in open-ended and early stage ideas and along with Engineers, Product folks and even senior leadership.",
+      "name": "Hardik Pandya",
+      "title": "SVP Design | Unacademy"
+    },
+    {
+      "quote": "Soumyo is a rare talent with full stack Design and Tech skills. At Elsa he managed design delivery for multiple pods effortlessly and shipped many 0-1 products and features, driving Engagement, Learning and Monetisation metrics. Given his passion for Ed-tech, I wasn't surprised within a short span Soumyo emerged as the go-to-person for Learning Games and AI led Games on Elsa Speak, driving growth for core engagement. A wonderful team player and always open for feedback, he would make a great asset for any team looking for a versatile Design led Product talent. Wishing him all the best for this future projects.",
+      "name": "Vikram Mangoli",
+      "title": "Director of Desing | Elsa"
+    },
+    {
+      "quote": "As Soumyo's manager at Unacademy, I was consistently impressed by his work. We most recently collaborated for AI Interview project, where he turned a tough challenge into an easy-to-use, engaging experience. He went the extra mile by handling the complete design end-to-end and working with engineering to get it live. His ability to quickly understand complex problems and visualise potential solutions was outstanding. He has a knack for coming up with fresh ideas and turning them into great designs in record time. I'm sure Soumyo is going to be a great addition to any team he chooses to work with.",
+      "name": "Sankalp Agrawal",
+      "title": "Head of Desing | Unacademy"
+    },
     {
       "quote": "Soumyo is comprehensive in his research, meticulous in his approach, and comprehensive in his communications. He is a self-taught designer and I have seen him grow from an absolute beginner to one of the best I have worked with. His constant endeavor to learn is what drives his growth. He understands business requirements and excels not only at designing but also at defining a consistent design language and identity for the brands he works with.",
       "name": "Pratyush Shrivastav",

@@ -188,19 +188,17 @@ const DetailPage = {
                 },
                 'newzera': { pattern: (i) => `${className} (${i}).jpg`, max: 7 },
                 'youtube-coach': { pattern: (i) => `${className}-${i}.jpg`, max: 27 },
-                'univinks': { pattern: (i) => `${className} (${String(i).padStart(2, '0')}).jpg`, max: 11 },
-                'jagat-jamini': { pattern: (i) => `jagat-${i}.jpg`, max: 4 },
                 'exalt-body': { pattern: (i) => `${className}-${i}.png`, max: 6 },
                 'create-share': { pattern: (i) => `${className}-${i}.png`, max: 35 },
-                'bonfire': { pattern: (i) => `${className}-${i}.png`, max: 35 },
                 'unacademy': { pattern: (i) => `${className}-${i}.png`, max: 15 },
                 'mobile-atm': { pattern: (i) => `${className}-${i}.png`, max: 7 }
             };
 
             const config = imagePatterns[className] || { pattern: (i) => `${className} (${i}).png`, max: 10 };
+            const dir = config.dir || className;
 
             for (let i = 1; i <= config.max; i++) {
-                const path = `img/${className}/${config.pattern(i)}`;
+                const path = `img/${dir}/${config.pattern(i)}`;
                 images.push(path);
             }
 
@@ -285,7 +283,7 @@ const DetailPage = {
         if (nextBtnDesktop) nextBtnDesktop.onclick = nextSlide;
         if (prevBtnDesktop) prevBtnDesktop.onclick = prevSlide;
 
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             const tag = document.activeElement.tagName;
             if (tag === 'INPUT' || tag === 'TEXTAREA') return;
             if (e.key === "ArrowRight") nextSlide();
@@ -357,7 +355,7 @@ const DetailPage = {
     },
 
     initAcceptBadge() {
-        $(".display").scroll(function(){
+        $(".display").scroll(function () {
             if ($(this).scrollTop() > 500) {
                 $(".accept").addClass("hide");
             } else {
@@ -372,6 +370,13 @@ const DetailPage = {
             styleEl.textContent = `
                 html, body { height: 100%; }
                 body { min-height: 100vh; }
+                #content-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 100vh;
+                    width: 100%;
+                }
                 .slideshow-container {
                     position: relative;
                     width: auto;

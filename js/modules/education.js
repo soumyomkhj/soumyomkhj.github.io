@@ -55,5 +55,16 @@ const Education = {
         if (cards.length > 0) {
             showCard(0);
         }
+
+        let autoPlayInterval = setInterval(() => {
+            if (!eduSection.classList.contains('user-controlled')) {
+                if (currentIndex < cards.length - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; // loop back
+                }
+                showCard(currentIndex);
+            }
+        }, 10000); // 10 seconds
     }
 };
