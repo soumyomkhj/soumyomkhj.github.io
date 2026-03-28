@@ -2,7 +2,7 @@
     --bg: #1a282c;
     --fg: #ebd9cd;
     --fg-trans: rgba(235, 217, 205, 0.15);
-    --frame-color: rgba(235, 217, 205, 0.5);
+    --frame-color: rgba(235, 217, 205, 0.25);
 }
 
 * {
@@ -581,7 +581,7 @@ main {
 .hero-desc {
     font-size: 3.5vw;
     font-weight: 400;
-    line-height: 1.3;
+    line-height: 1.5;
     margin: 0;
 }
 
@@ -634,11 +634,6 @@ main {
     margin-top: 80px;
 }
 
-
-/* Case Studies */
-#case-studies {
-    /* margin-bottom: 80px; */
-}
 
 .cases-grid {
     display: flex;
@@ -788,7 +783,7 @@ main {
     background-size: cover;
     background-position: center;
     filter: saturate(0.2);
-    opacity: 0.4;
+    opacity: 0.3;
     transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     z-index: 1;
 }
@@ -1098,7 +1093,7 @@ main {
     }
 
     .hero-desc-container {
-        padding: 32px;
+        padding: 24px;
     }
 
     .hero-desc {
@@ -1112,7 +1107,7 @@ main {
     }
 
     .hero-title {
-        padding: 10px;
+        padding: 24px;
         margin-bottom: -3vw;
     }
 
@@ -1122,7 +1117,7 @@ main {
     }
 
     .avatar-stack {
-        max-width: 200px;
+        max-width: 300px;
         margin: 0 auto;
     }
 
@@ -1146,7 +1141,7 @@ main {
     }
 
     .quote-text {
-        font-size: 1.1rem !important;
+        font-size: var(--dynamic-fs, 1.1rem);
     }
 
     .author-info {
@@ -1186,6 +1181,21 @@ main {
         right: 36px;
     }
 
+    .testim-nav {
+        gap: 16px;
+        padding-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    .testim-controls {
+        gap: 8px;
+    }
+
+    .testim-controls span {
+        width: 16px;
+    }
+
+
     .corner {
         width: 36px;
         height: 36px;
@@ -1204,6 +1214,14 @@ main {
     .project-card {
         grid-column: 1 / -1 !important;
         border-right: none;
+    }
+
+    .project-tags span {
+        background: rgba(31, 49, 55, 0.6);
+        padding: 6px 12px;
+        font-size: 0.75rem;
+        font-weight: 400;
+        transition: 0.3s;
     }
 
     /* Touchscreen Dropdowns Restoring Toggle Collapse */

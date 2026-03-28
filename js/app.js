@@ -133,35 +133,60 @@ const App = {
     },
 
     setupScrollObserver() {
-        const observer = new IntersectionObserver((entries) => {
-            if (window.innerWidth > 1024) return;
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                } else {
-                    entry.target.classList.remove('active');
+        if (window.innerWidth > 1024) return;
+
+        const wrapper = document.getElementById('scroll-wrapper');
+        if (!wrapper) return;
+
+        const activate = () => {
+            const cards = document.querySelectorAll('.project-card, .case-card');
+            if (!cards.length) return;
+
+            const wrapperRect = wrapper.getBoundingClientRect();
+            const wrapperMid = wrapperRect.top + wrapperRect.height / 2;
+
+            let closest = null;
+            let closestDist = Infinity;
+
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                // Skip cards that are completely outside the wrapper's visible bounds
+                if (rect.bottom < wrapperRect.top || rect.top > wrapperRect.bottom) return;
+
+                const cardMid = rect.top + rect.height / 2;
+                const dist = Math.abs(cardMid - wrapperMid);
+                if (dist < closestDist) {
+                    closestDist = dist;
+                    closest = card;
                 }
             });
-        }, { rootMargin: '0px 0px -40% 0px', threshold: 0 });
 
-        setTimeout(() => {
-            if (window.innerWidth <= 1024) {
-                document.querySelectorAll('.project-card, .case-card').forEach(card => observer.observe(card));
+            cards.forEach(card => card.classList.remove('active'));
+            if (closest) closest.classList.add('active');
+        };
+
+        // Throttle: only run once per ~16ms frame
+        let ticking = false;
+        wrapper.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    activate();
+                    ticking = false;
+                });
+                ticking = true;
             }
+        });
 
-            // Re-evaluate on resize
-            window.addEventListener('resize', () => {
-                const cards = document.querySelectorAll('.project-card, .case-card');
-                if (window.innerWidth > 1024) {
-                    cards.forEach(card => {
-                        observer.unobserve(card);
-                        card.classList.remove('active');
-                    });
-                } else {
-                    cards.forEach(card => observer.observe(card));
-                }
-            });
-        }, 500);
+        // Initial activation after cards are rendered
+        setTimeout(activate, 600);
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) {
+                document.querySelectorAll('.project-card, .case-card').forEach(c => c.classList.remove('active'));
+            } else {
+                activate();
+            }
+        });
     },
 
     setupFaceAnimation() {
@@ -367,12 +392,14 @@ const App = {
             card.className = `testim-card ${i === 0 ? 'active' : ''}`;
             card.id = `testim-${i}`;
 
-            // Dynamic font size logic for long quotes (mostly for desktop)
+            // Dynamic font size logic for long quotes
             const charCount = testim.quote.length;
-            let fontSize = "1.8vw";
-            if (charCount > 300) fontSize = "1.5vw";
-            if (charCount > 600) fontSize = "1.2vw";
-            if (charCount > 900) fontSize = "1.1vw";
+            const isMobile = window.innerWidth <= 1024;
+
+            let fontSize = isMobile ? "1.1rem" : "1.8vw";
+            if (charCount > 300) fontSize = isMobile ? "0.95rem" : "1.5vw";
+            if (charCount > 600) fontSize = isMobile ? "0.85rem" : "1.2vw";
+            if (charCount > 900) fontSize = isMobile ? "0.75rem" : "1.1vw";
 
             card.innerHTML = `
                 <div class="quote-wrap">
@@ -478,12 +505,15 @@ class InteractiveGrid {
 
         this.el.insertBefore(this.canvas, this.el.firstChild);
 
-        this.spacing = 20;
-        this.mouseRadius = 250; // Vastly increased proximity sphere
-        this.tension = 0.03; // Much looser spring tension 
-        this.dampening = 0.92; // High frictionless drift
+        this.isMobile = window.innerWidth <= 1024;
+        this.spacing = this.isMobile ? 14 : 20;
+        this.mouseRadius = 250;
+        this.tension = this.isMobile ? 0.015 : 0.03;
+        this.dampening = this.isMobile ? 0.85 : 0.92;
 
         this.mouse = { x: -1000, y: -1000, active: false };
+        this.scroll = { y: 0, vel: 0 };
+        this.gyro = { bx: 0, gy: 0, vbx: 0, vgy: 0 };
         this.ripples = [];
         this.points = [];
         this.isAnimating = false;
@@ -543,6 +573,18 @@ class InteractiveGrid {
             this.triggerEl.addEventListener('mouseleave', () => {
                 this.mouse.active = false;
             });
+        } else {
+            // Scroll velocity tracking for slosh
+            const wrapper = document.getElementById('scroll-wrapper');
+            if (wrapper) {
+                let lastY = wrapper.scrollTop;
+                wrapper.addEventListener('scroll', () => {
+                    const currentY = wrapper.scrollTop;
+                    this.scroll.vel = (currentY - lastY) * 0.5;
+                    lastY = currentY;
+                    this.startLoop();
+                });
+            }
         }
 
         this.triggerEl.addEventListener('click', (e) => {
@@ -585,11 +627,27 @@ class InteractiveGrid {
         let requiresGyroRedraw = false;
 
         if (this.isMobile && window.globalGyro && window.globalGyro.active) {
-            gx = Math.max(-45, Math.min(45, window.globalGyro.gamma));
-            gy = Math.max(-45, Math.min(45, window.globalGyro.beta));
+            const nextGx = Math.max(-45, Math.min(45, window.globalGyro.gamma));
+            const nextGy = Math.max(-45, Math.min(45, window.globalGyro.beta));
+
+            // Track gyro change rate (velocity) for slosh
+            this.gyro.vbx = (nextGy - this.gyro.bx) * 0.85;
+            this.gyro.vgy = (nextGx - this.gyro.gy) * 0.85;
+            this.gyro.bx = nextGy;
+            this.gyro.gy = nextGx;
+
+            gx = nextGx;
+            gy = nextGy;
             forceX_global = (gx / 45) * 1.5;
             forceY_global = (gy / 45) * 1.5;
             requiresGyroRedraw = true;
+        }
+
+        // Decay scroll velocity
+        if (this.isMobile) {
+            this.scroll.vel *= 0.92;
+            if (Math.abs(this.scroll.vel) < 0.01) this.scroll.vel = 0;
+            else needsUpdate = true;
         }
 
         for (let p of this.points) {
@@ -610,6 +668,11 @@ class InteractiveGrid {
             } else if (this.isMobile && requiresGyroRedraw) {
                 forceX += forceX_global * 0.15;
                 forceY += forceY_global * 0.15;
+
+                // Add velocity-based inertial slosh (Lag/Overshoot)
+                forceX += this.gyro.vgy * 0.35;
+                forceY += (this.gyro.vbx * 0.35) + (this.scroll.vel * 2.5);
+
                 needsUpdate = true;
             }
 
@@ -639,7 +702,7 @@ class InteractiveGrid {
             if (Math.abs(p.vx) > 0.05 || Math.abs(p.vy) > 0.05) needsUpdate = true;
 
             this.ctx.beginPath();
-            let size = 1.5;
+            let size = this.isMobile ? 0.8 : 1.5; // Smaller dots on mobile
             let opacity = 0.1;
 
             if (!this.isMobile && distToMouse < this.mouseRadius) {
