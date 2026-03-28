@@ -29,6 +29,7 @@ const App = {
         this.setupGyroscopeTracker();
         this.setupFaceAnimation();
         this.setupAbstractShapes();
+        this.setupScrollToTop();
 
         console.log("App Initialized. Running completely on Vanilla JS and CSS.");
 
@@ -57,6 +58,22 @@ const App = {
             }
         });
         if (wrapper.scrollTop > 50) document.body.classList.add('scrolled');
+    },
+
+    setupScrollToTop() {
+        const topHeading = document.querySelector('.top-heading');
+        const wrapper = document.getElementById('scroll-wrapper');
+        if (!topHeading || !wrapper) return;
+
+        topHeading.addEventListener('click', () => {
+            // Only scroll to top if the site is in "scrolled" state (shows 'Scroll to top')
+            if (document.body.classList.contains('scrolled')) {
+                wrapper.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
     },
 
     setupNavLinks() {
@@ -733,4 +750,117 @@ class InteractiveGrid {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => App.init());
+document.addEventListener('DOMContentLoaded', () => {
+    App.init();
+
+    // ── Fill-wipe Preloader ──
+    const preloader = document.getElementById('preloader');
+    const fill = document.getElementById('preloader-fill');
+    if (!preloader || !fill) return;
+
+    const loadStart = performance.now();
+    const MIN_DISPLAY_MS = 900;
+
+    // ── Lerp engine: displayed chases target smoothly each RAF frame ──
+    let target   = 0; // where progress should be  (0–1)
+    let current  = 0; // where fill actually is    (0–1)
+    let rafId;
+    let allDone  = false;
+
+    const LERP_SPEED = 0.07; // fraction to close per frame (~60fps → very smooth)
+
+    const tick = () => {
+        // Lerp current toward target
+        current += (target - current) * LERP_SPEED;
+
+        // Clamp to prevent floating point overshoot
+        if (Math.abs(target - current) < 0.0005) current = target;
+
+        fill.style.transform = `scaleX(${current})`;
+
+        if (!allDone || current < target - 0.001) {
+            rafId = requestAnimationFrame(tick);
+        }
+    };
+    rafId = requestAnimationFrame(tick);
+
+    // ── Pseudo-progress: exponential crawl toward 0.78 ──
+    const PSEUDO_DURATION = 2800;
+    const PSEUDO_CEILING  = 0.78;
+
+    const pseudoTick = (now) => {
+        if (allDone) return;
+        const elapsed = now - loadStart;
+        const pseudo = PSEUDO_CEILING * (1 - Math.exp(-3.5 * (elapsed / PSEUDO_DURATION)));
+        target = Math.max(target, pseudo);
+        requestAnimationFrame(pseudoTick);
+    };
+    requestAnimationFrame(pseudoTick);
+
+    // ── Real resource tracking ──
+    const tracked = [];
+
+    // 1) All <img> elements
+    document.querySelectorAll('img').forEach(img => {
+        tracked.push(new Promise(resolve => {
+            if (img.complete && img.naturalWidth > 0) { resolve(); return; }
+            img.addEventListener('load', resolve, { once: true });
+            img.addEventListener('error', resolve, { once: true });
+        }));
+    });
+
+    // 2) CSS background-image URLs (project cards)
+    document.querySelectorAll('.project-bg').forEach(el => {
+        const match = el.style.backgroundImage.match(/url\(['"]?(.+?)['"]?\)/);
+        if (match) {
+            tracked.push(new Promise(resolve => {
+                const probe = new Image();
+                probe.onload = resolve;
+                probe.onerror = resolve;
+                probe.src = match[1];
+            }));
+        }
+    });
+
+    // 3) Web fonts
+    if (document.fonts && document.fonts.ready) {
+        tracked.push(document.fonts.ready);
+    }
+
+    const total = tracked.length || 1;
+    let loaded = 0;
+
+    tracked.forEach(promise => {
+        promise.then(() => {
+            loaded++;
+            // Real progress raises the target — lerp engine chases it smoothly
+            target = Math.max(target, loaded / total);
+        });
+    });
+
+    // ── Dismiss once all resources are done ──
+    Promise.all(tracked).then(() => {
+        target = 1; // let lerp smoothly finish to 100%
+
+        // Wait for fill to visually reach 1 before fading out
+        const waitForFull = () => {
+            if (current >= 0.999) {
+                allDone = true;
+                cancelAnimationFrame(rafId);
+
+                const elapsed = performance.now() - loadStart;
+                const wait = Math.max(0, MIN_DISPLAY_MS - elapsed) + 300;
+
+                setTimeout(() => {
+                    preloader.classList.add('loaded');
+                    preloader.addEventListener('transitionend', () => {
+                        preloader.remove();
+                    }, { once: true });
+                }, wait);
+            } else {
+                requestAnimationFrame(waitForFull);
+            }
+        };
+        requestAnimationFrame(waitForFull);
+    });
+});
