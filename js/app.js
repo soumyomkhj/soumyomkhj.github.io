@@ -671,7 +671,7 @@ class InteractiveGrid {
 
                 // Add velocity-based inertial slosh (Lag/Overshoot)
                 forceX += this.gyro.vgy * 0.35;
-                forceY += (this.gyro.vbx * 0.35) + (this.scroll.vel * 2.5);
+                forceY += (this.gyro.vbx * 0.35) + (this.scroll.vel * 0.25);
 
                 needsUpdate = true;
             }
