@@ -208,16 +208,69 @@ const App = {
 
     setupFaceAnimation() {
         const container = document.getElementById('hero-face-anim');
+        const caption = document.getElementById('face-caption');
         if (!container) return;
 
         const glasses = container.querySelectorAll('.face-glass');
         if (glasses.length === 0) return;
 
+        const webMessages = [
+            "Nice, I will wear this from now on!",
+            "Just kidding, you can't stop me.",
+            "Better! This must be the one.",
+            "Consistent designs, inconsistent frame.",
+            "Looked at my portfolio yet?",
+            "Doom-hovering stopped, desinger hired.",
+            "Frame_Final_v2_FINAL_v3.eye",
+            "404: Static personality not found.",
+            "Frame follows function.",
+            "Function follows the chaos.",
+            "This one feels... Senior.",
+            "But CEO requested one more change.",
+            "This is me after Coffee.",
+            "Before coffee. Shhhhh..."
+        ];
+        const mwebMessages = [
+            "Scroll to change my frame.",
+            "Is this better than the last one?",
+            "Will the HR like this frame?",
+            "Looked at my portfolio yet?",
+            "Frame follows function.",
+            "Frame_Final_v3_REAL.eye",
+            "Optimized for Impact.",
+            "Does this frame make me look senior?",
+            "Warning: High-fidelity interaction.",
+            "Looking at portfolio right? Right?",
+            "404: Frame not found (just kidding).",
+            "Still here? Let’s talk about design.",
+            "I’m not just a pretty frame."
+        ];
+
+        let webIdx = 0;
+        let mwebIdx = 0;
         let activeIndex = 0;
         let isHovered = false;
 
-        container.addEventListener('mouseenter', () => isHovered = true);
-        container.addEventListener('mouseleave', () => isHovered = false);
+        // Set initial mobile text if needed
+        if (window.innerWidth <= 1024 && caption) {
+            caption.textContent = "Scroll to change my frame";
+        }
+
+        container.addEventListener('mouseenter', () => {
+            isHovered = true;
+            if (window.innerWidth > 1024 && caption) {
+                caption.textContent = webMessages[webIdx];
+                webIdx = (webIdx + 1) % webMessages.length;
+            }
+        });
+
+        container.addEventListener('mouseleave', () => {
+            isHovered = false;
+            if (window.innerWidth > 1024 && caption) {
+                caption.textContent = webMessages[webIdx];
+                webIdx = (webIdx + 1) % webMessages.length;
+            }
+        });
 
         const pickRandomGlass = () => {
             glasses[activeIndex].classList.remove('active');
@@ -235,6 +288,8 @@ const App = {
 
         const scrollWrapper = document.getElementById('scroll-wrapper');
         let lastScrollTime = 0;
+        let scrollStopTimeout;
+
         if (scrollWrapper) {
             scrollWrapper.addEventListener('scroll', () => {
                 if (window.innerWidth <= 1024) {
@@ -243,6 +298,16 @@ const App = {
                         pickRandomGlass();
                         lastScrollTime = now;
                     }
+
+                    // Scroll stop detection for caption change
+                    clearTimeout(scrollStopTimeout);
+                    scrollStopTimeout = setTimeout(() => {
+                        if (caption) {
+                            caption.textContent = mwebMessages[mwebIdx];
+                            mwebIdx = (mwebIdx + 1);
+                            if (mwebIdx >= mwebMessages.length) mwebIdx = 1; // Loop from index 1 only
+                        }
+                    }, 500); // 500ms after scroll stops to feel snacky
                 }
             }, { passive: true });
         }
@@ -404,6 +469,10 @@ const App = {
         const total = this.data.testimonials.length;
 
         // Render DOM
+        const authorContainer = document.createElement('div');
+        authorContainer.id = 'author-container';
+        container.parentNode.insertBefore(authorContainer, controls.parentNode);
+
         this.data.testimonials.forEach((testim, i) => {
             const card = document.createElement('div');
             card.className = `testim-card ${i === 0 ? 'active' : ''}`;
@@ -412,23 +481,36 @@ const App = {
             // Dynamic font size logic for long quotes
             const charCount = testim.quote.length;
             const isMobile = window.innerWidth <= 1024;
+            let fontSize;
 
-            let fontSize = isMobile ? "1.1rem" : "1.8vw";
-            if (charCount > 300) fontSize = isMobile ? "0.95rem" : "1.5vw";
-            if (charCount > 600) fontSize = isMobile ? "0.85rem" : "1.2vw";
-            if (charCount > 900) fontSize = isMobile ? "0.75rem" : "1.1vw";
+            if (isMobile) {
+                if (charCount < 300) fontSize = "1.5rem";        // Short (Aditya)
+                else if (charCount < 600) fontSize = "1.2rem";   // Medium-Short
+                else if (charCount < 800) fontSize = "1rem";  // Medium-Long (Sankalp/Vikram)
+                else fontSize = "0.9rem";                       // Long (Hardik)
+            } else {
+                if (charCount < 300) fontSize = "1.8vw";        // Short
+                else if (charCount < 600) fontSize = "1.5vw";   // Medium
+                else if (charCount < 800) fontSize = "1.3vw";   // Medium-Long
+                else fontSize = "1.1vw";                        // Long
+            }
 
             card.innerHTML = `
                 <div class="quote-wrap">
                     <div class="quote-mark">“</div>
                     <div class="quote-text" style="--dynamic-fs: ${fontSize}">${testim.quote}</div>
                 </div>
-                <div class="author-info">
-                    <div class="author-name">${testim.name}</div>
-                    <div class="author-role">${testim.title}</div>
-                </div>
             `;
             container.appendChild(card);
+
+            // Create author card
+            const authCard = document.createElement('div');
+            authCard.className = `author-info ${i === 0 ? 'active' : ''}`;
+            authCard.innerHTML = `
+                <div class="author-name">${testim.name}</div>
+                <div class="author-role">${testim.title}</div>
+            `;
+            authorContainer.appendChild(authCard);
 
             const dot = document.createElement('span');
             dot.className = i === 0 ? 'active' : '';
@@ -441,10 +523,12 @@ const App = {
         });
 
         const cards = document.querySelectorAll('.testim-card');
+        const authors = document.querySelectorAll('.author-info');
         const dots = document.querySelectorAll('.testim-controls span');
 
         function updateView() {
             cards.forEach((c, i) => c.classList.toggle('active', i === currentIndex));
+            authors.forEach((a, i) => a.classList.toggle('active', i === currentIndex));
             dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
         }
 
@@ -480,7 +564,16 @@ const App = {
             });
         }
 
-        startTimer();
+        const testimSection = document.getElementById('testimonials');
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                if (!timer) startTimer();
+            } else {
+                clearInterval(timer);
+                timer = null;
+            }
+        }, { threshold: 0.1 });
+        if (testimSection) observer.observe(testimSection);
     },
 
     setupInteractiveCanvas() {
@@ -761,10 +854,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // No minimum display time — on cache hits we want instant dismiss.
 
     // ── Lerp engine: displayed chases target smoothly each RAF frame ──
-    let target   = 0; // where progress should be  (0–1)
-    let current  = 0; // where fill actually is    (0–1)
+    let target = 0; // where progress should be  (0–1)
+    let current = 0; // where fill actually is    (0–1)
     let rafId;
-    let allDone  = false;
+    let allDone = false;
 
     const LERP_SPEED = 0.07; // fraction to close per frame (~60fps → very smooth)
 
@@ -785,7 +878,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Pseudo-progress: exponential crawl toward 0.78 ──
     const PSEUDO_DURATION = 2800;
-    const PSEUDO_CEILING  = 0.78;
+    const PSEUDO_CEILING = 0.78;
 
     const pseudoStart = performance.now();
     const pseudoTick = (now) => {

@@ -488,6 +488,10 @@ body {
     width: 100%;
 }
 
+.top-heading-name {
+    top: -6%;
+}
+
 .top-heading-name,
 .top-heading-top {
     opacity: 0;
@@ -615,12 +619,12 @@ main {
 .hero-title {
     padding: 80px;
     padding-top: 70px;
+    margin-top: -0.8%;
     margin-bottom: -4%;
     width: 100%;
     display: block;
     z-index: 2;
     position: relative;
-    opacity: 0.9;
 }
 
 .hero-split {
@@ -643,6 +647,7 @@ main {
 
 .hero-image-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border-left: 1px solid var(--frame-color);
@@ -657,6 +662,15 @@ main {
     position: relative;
     width: 100%;
     max-width: 480px;
+}
+
+#face-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(235, 217, 205, 0.4);
+    padding-bottom: 16px;
+    font-weight: 300;
+    transition: opacity 0.3s ease;
 }
 
 .face-base {
@@ -681,15 +695,22 @@ main {
 /* Sub-headers */
 .section-header {
     text-align: center;
-    font-size: 8vh;
+    font-size: 3rem;
     font-weight: 500;
     padding: 20px 0;
     border-top: 1px solid var(--frame-color);
     border-bottom: 1px solid var(--frame-color);
     margin: 0;
     margin-top: 80px;
+    position: sticky;
+    top: -1px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: var(--bg);
+    z-index: 99999;
+    transition: all 0.3s ease;
 }
-
 
 .cases-grid {
     display: flex;
@@ -792,17 +813,17 @@ main {
 /* Projects Grid */
 
 .projects-grid {
+    padding-top: 8px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-auto-rows: 480px;
-    border-bottom: 1px solid var(--frame-color);
 }
 
 .project-card {
     position: relative;
     overflow: hidden;
-    border-right: 1px solid var(--frame-color);
-    border-bottom: 1px solid var(--frame-color);
+    margin-right: 8px;
+    margin-bottom: 8px;
     cursor: pointer;
     text-decoration: none;
     color: inherit;
@@ -823,11 +844,11 @@ main {
 }
 
 .project-card:nth-child(2n) {
-    border-right: none;
+    margin-right: 0;
 }
 
 .project-card:last-child:nth-child(odd) {
-    border-right: none;
+    margin-right: 0;
 }
 
 .project-bg {
@@ -982,6 +1003,11 @@ main {
     pointer-events: auto;
 }
 
+#author-container {
+    display: grid;
+    margin: 0 120px;
+}
+
 .quote-wrap {
     position: relative;
     padding-left: 60px;
@@ -1003,8 +1029,8 @@ main {
 }
 
 .quote-text {
-    font-size: var(--dynamic-fs, 1.8vw);
-    font-weight: 300;
+    font-size: max(0.85rem, var(--dynamic-fs, 1.8vw));
+    font-weight: 100;
     line-height: 1.5;
     z-index: 1;
     position: relative;
@@ -1012,21 +1038,29 @@ main {
 }
 
 .author-info {
+    grid-area: 1 / 1;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-top: 40px;
     padding-left: 60px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.author-info.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .author-name {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 500;
     text-transform: capitalize;
 }
 
 .author-role {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 200;
     opacity: 0.7;
 }
@@ -1110,6 +1144,19 @@ main {
         right: 40px;
     }
 
+
+
+
+    .corner {
+        width: 40px;
+        height: 40px;
+    }
+
+    .corner svg {
+        width: 24px;
+        height: 24px;
+    }
+
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: 350px;
@@ -1186,8 +1233,13 @@ main {
         padding-left: 0;
     }
 
-    .testim-container {
-        margin: 40px 20px;
+    .testim-container,
+    #author-container {
+        margin: 20px 20px;
+    }
+
+    #author-container {
+        margin-top: 0px;
     }
 
     .quote-mark {
@@ -1197,19 +1249,24 @@ main {
     }
 
     .quote-text {
-        font-size: var(--dynamic-fs, 1.1rem);
+        font-size: max(0.85rem, var(--dynamic-fs, 1.1rem));
     }
 
     .author-info {
         flex-direction: column;
         align-items: flex-start;
+        justify-content: flex-start;
         gap: 5px;
-        margin-top: 30px;
+        margin-top: 0px;
     }
 
     .bottom-scroll-prompt {
         position: fixed;
         bottom: 8px;
+    }
+
+    .top-heading {
+        top: 8px;
     }
 }
 
@@ -1251,7 +1308,7 @@ main {
     .testim-nav {
         gap: 16px;
         padding-top: 20px;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 
     .testim-controls {
@@ -1274,13 +1331,17 @@ main {
     }
 
     .projects-grid {
+        padding-top: 0px;
         grid-template-columns: 1fr;
         grid-auto-rows: 300px;
     }
 
     .project-card {
+        margin-right: 0;
+        margin-bottom: 0;
         grid-column: 1 / -1 !important;
         border-right: none;
+        border-bottom: 1px solid var(--frame-color);
     }
 
     .project-tags span {
@@ -1363,10 +1424,6 @@ main {
         border-right: none;
         padding: 15px 25px;
         font-size: 1.2rem;
-    }
-
-    .top-heading {
-        top: 8px;
     }
 
     .resume-text svg,
