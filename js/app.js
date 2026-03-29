@@ -758,8 +758,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fill = document.getElementById('preloader-fill');
     if (!preloader || !fill) return;
 
-    const loadStart = performance.now();
-    const MIN_DISPLAY_MS = 900;
+    // No minimum display time — on cache hits we want instant dismiss.
 
     // ── Lerp engine: displayed chases target smoothly each RAF frame ──
     let target   = 0; // where progress should be  (0–1)
@@ -788,9 +787,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const PSEUDO_DURATION = 2800;
     const PSEUDO_CEILING  = 0.78;
 
+    const pseudoStart = performance.now();
     const pseudoTick = (now) => {
         if (allDone) return;
-        const elapsed = now - loadStart;
+        const elapsed = now - pseudoStart;
         const pseudo = PSEUDO_CEILING * (1 - Math.exp(-3.5 * (elapsed / PSEUDO_DURATION)));
         target = Math.max(target, pseudo);
         requestAnimationFrame(pseudoTick);
@@ -822,9 +822,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3) Web fonts
+    // 3) Web fonts — race with a 3-second timeout so a stalled
+    //    document.fonts.ready (common in Safari/WebKit) can't block the whole loader.
     if (document.fonts && document.fonts.ready) {
-        tracked.push(document.fonts.ready);
+        const fontsReady = Promise.race([
+            document.fonts.ready,
+            new Promise(resolve => setTimeout(resolve, 3000))
+        ]);
+        tracked.push(fontsReady);
     }
 
     const total = tracked.length || 1;
@@ -848,14 +853,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 allDone = true;
                 cancelAnimationFrame(rafId);
 
-                const elapsed = performance.now() - loadStart;
-                const wait = Math.max(0, MIN_DISPLAY_MS - elapsed) + 300;
+                // Small breath so the full bar is visible for a frame before fade.
+                // No minimum — on cache hits this runs immediately.
+                const wait = 150;
 
                 setTimeout(() => {
                     preloader.classList.add('loaded');
-                    preloader.addEventListener('transitionend', () => {
-                        preloader.remove();
-                    }, { once: true });
+
+                    // Hard fallback: if transitionend never fires (Safari quirk),
+                    // force-remove the preloader after the transition duration + a buffer.
+                    let removed = false;
+                    const forceRemove = () => {
+                        if (!removed) { removed = true; preloader.remove(); }
+                    };
+                    preloader.addEventListener('transitionend', forceRemove, { once: true });
+                    setTimeout(forceRemove, 1000); // 0.6s transition + 0.4s grace
                 }, wait);
             } else {
                 requestAnimationFrame(waitForFull);

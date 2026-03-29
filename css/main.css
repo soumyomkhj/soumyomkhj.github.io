@@ -44,11 +44,6 @@
 .preloader-name {
     position: relative;
     z-index: 1;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 500;
-    letter-spacing: 0.35em;
-    color: var(--fg);
     opacity: 0;
     transform: translateY(10px);
     animation: preloaderFadeIn 0.6s 0.15s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
@@ -1233,6 +1228,17 @@ main {
 
     .f-right {
         right: 36px;
+    }
+
+    .preloader-name {
+        transform: scale(.6);
+    }
+
+    @keyframes preloaderFadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(.6);
+        }
     }
 
     #scroll-wrapper {
