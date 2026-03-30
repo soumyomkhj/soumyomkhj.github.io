@@ -668,7 +668,7 @@ main {
     text-align: center;
     font-size: 0.9rem;
     color: rgba(235, 217, 205, 0.4);
-    padding-bottom: 16px;
+    padding-top: 16px;
     font-weight: 300;
     transition: opacity 0.3s ease;
 }
