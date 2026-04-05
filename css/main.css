@@ -666,7 +666,7 @@ main {
 
 #face-caption {
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 0.9vw;
     color: rgba(235, 217, 205, 0.4);
     padding-top: 16px;
     font-weight: 300;
@@ -1319,6 +1319,9 @@ main {
         width: 16px;
     }
 
+    #face-caption {
+        font-size: 2.8vw;
+    }
 
     .corner {
         width: 36px;
