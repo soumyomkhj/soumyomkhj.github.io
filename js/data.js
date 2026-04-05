@@ -15,7 +15,7 @@ window.PortfolioData = {
       "description": "Crafted innovative ELSA Grammar & Vocab Games to transform learning into an engaging and interactive experience.",
       "image": "img/elsa.png",
       "link": "detail.html?id=elsa",
-      "slidesNo": 19
+      "slidesNo": 21
     }
   ],
   "projects": [
