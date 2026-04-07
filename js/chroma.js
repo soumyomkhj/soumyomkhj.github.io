@@ -456,6 +456,48 @@ function setupEvents() {
     }
 }
 
+function setupMobileCorners() {
+    const corners = document.querySelectorAll('.corner');
+
+    corners.forEach(corner => {
+        // Skip the back button corner as it's a direct link
+        if (corner.classList.contains('tl')) return;
+
+        corner.addEventListener('click', (e) => {
+            // Only handle click expansion on mobile/tablet
+            if (window.innerWidth > 1024) return;
+            
+            // If we click an actual link inside the expanded menu, let it happen
+            if (e.target.closest('a') && !e.target.classList.contains('corner')) return;
+
+            const wasExpanded = corner.classList.contains('expanded');
+            
+            // Close all other corners
+            corners.forEach(c => c.classList.remove('expanded'));
+
+            if (!wasExpanded) {
+                corner.classList.add('expanded');
+                e.stopPropagation();
+            }
+        });
+    });
+
+    // Close corners when clicking outside
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 1024 && !e.target.closest('.corner')) {
+            corners.forEach(c => c.classList.remove('expanded'));
+        }
+    });
+
+    // On mobile, also close when starting game or returning
+    const startBtn = document.getElementById('start-btn');
+    if (startBtn) {
+        startBtn.addEventListener('click', () => {
+            corners.forEach(c => c.classList.remove('expanded'));
+        });
+    }
+}
+
 function toggleSamplingMode() {
     GameState.isSampling = !GameState.isSampling;
     const btn = document.getElementById('color-picker-btn');
@@ -937,6 +979,7 @@ class InteractiveGrid {
 
 document.addEventListener('DOMContentLoaded', () => {
     setupEvents(); // Initialize event listeners once
+    setupMobileCorners(); // Initialize mobile corner expansions
 
     const grids = {};
     document.querySelectorAll('.dotted-bg').forEach(el => {

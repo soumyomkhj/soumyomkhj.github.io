@@ -35,10 +35,6 @@ body.chroma-body::before {
     transition: opacity 0.3s ease;
 }
 
-.ui-frame * {
-    pointer-events: auto;
-}
-
 /* Hide frame only during active gameplay to avoid overlap with game header */
 body.game-active .ui-frame {
     opacity: 0;
@@ -113,7 +109,7 @@ body.game-active .ui-frame {
 .color-qty-selector {
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--primary-dark);
     border: 1px solid var(--frame-color);
     border-radius: 4px;
     padding: 2px;
@@ -1033,6 +1029,18 @@ body.game-active .ui-frame {
         display: flex;
         box-sizing: border-box;
         overflow: hidden;
+    }
+
+    .color-qty-selector {
+        background: var(--primary-dark);
+    }
+
+    .color-qty-selector:hover {
+        background: var(--primary-dark);
+    }
+
+    .qty-btn:hover:not(:disabled) {
+        background: var(--primary-dark);
     }
 
     .color-block {
