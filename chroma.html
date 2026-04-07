@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chroma Core | Color Theory Puzzle Game by Soumyomkhj</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+        rel="stylesheet">
+
+    <meta name="description"
+        content="Chroma Core — A color theory puzzle game by Soumyo Mukherjee. Test your color knowledge, build palettes, and score based on harmony rules.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://soumyomkhj.github.io/chroma.html">
+    <meta property="og:title" content="Chroma Core | Color Theory Puzzle Game">
+    <meta property="og:description"
+        content="A color theory puzzle game by Soumyo Mukherjee. Test your color knowledge and score based on harmony rules.">
+    <meta property="og:image" content="https://soumyomkhj.github.io/img/link.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://soumyomkhj.github.io/chroma.html">
+    <meta name="twitter:title" content="Chroma Core | Color Theory Puzzle Game">
+    <meta name="twitter:description" content="A color theory puzzle game by Soumyo Mukherjee.">
+    <meta name="twitter:image" content="https://soumyomkhj.github.io/img/link.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/chroma.css">
+</head>
+
+<body class="chroma-body">
+
+    <!-- ==================== LANDING FRAME ==================== -->
+    <div class="ui-frame" id="landing-frame">
+        <div class="frame-line f-top"></div>
+        <div class="frame-line f-bottom"></div>
+        <div class="frame-line f-left"></div>
+        <div class="frame-line f-right"></div>
+
+        <!-- Returns back to Portfolio (index.html) -->
+        <a href="index.html" class="corner tl chroma-back-corner" id="header-logo" title="Back to Portfolio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+        </a>
+
+        <div class="corner tr" id="header-nav">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <div class="nav-links">
+                <a href="index.html">Portfolio</a>
+                <span class="sep">|</span>
+                <a href="index.html#hero">Intro</a>
+                <span class="sep">|</span>
+                <a href="index.html#case-studies">Case Studies</a>
+                <span class="sep">|</span>
+                <a href="index.html#projects">Projects</a>
+                <span class="sep">|</span>
+                <a href="index.html#testimonials">Testimonials</a>
+            </div>
+        </div>
+
+        <div class="corner bl" id="header-socials">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+            <div class="socials">
+                <a href="https://www.linkedin.com/in/soumyomkhj/" target="_blank" class="social-icon"
+                    title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M18.72 3.99997H5.37C5.19793 3.99191 5.02595 4.01786 4.86392 4.07635C4.70189 4.13484 4.55299 4.22471 4.42573 4.34081C4.29848 4.45692 4.19537 4.59699 4.12232 4.75299C4.04927 4.909 4.0077 5.07788 4 5.24997V18.63C4.01008 18.9901 4.15766 19.3328 4.41243 19.5875C4.6672 19.8423 5.00984 19.9899 5.37 20H18.72C19.0701 19.9844 19.4002 19.8322 19.6395 19.5761C19.8788 19.32 20.0082 18.9804 20 18.63V5.24997C20.0029 5.08247 19.9715 4.91616 19.9078 4.76122C19.8441 4.60629 19.7494 4.466 19.6295 4.34895C19.5097 4.23191 19.3672 4.14059 19.2108 4.08058C19.0544 4.02057 18.8874 3.99314 18.72 3.99997ZM9 17.34H6.67V10.21H9V17.34ZM7.89 9.12997C7.72741 9.13564 7.5654 9.10762 7.41416 9.04768C7.26291 8.98774 7.12569 8.89717 7.01113 8.78166C6.89656 8.66615 6.80711 8.5282 6.74841 8.37647C6.6897 8.22474 6.66301 8.06251 6.67 7.89997C6.66281 7.73567 6.69004 7.57169 6.74995 7.41854C6.80986 7.26538 6.90112 7.12644 7.01787 7.01063C7.13463 6.89481 7.2743 6.80468 7.42793 6.74602C7.58157 6.68735 7.74577 6.66145 7.91 6.66997C8.07259 6.66431 8.2346 6.69232 8.38584 6.75226C8.53709 6.8122 8.67431 6.90277 8.78887 7.01828C8.90344 7.13379 8.99289 7.27174 9.05159 7.42347C9.1103 7.5752 9.13699 7.73743 9.13 7.89997C9.13719 8.06427 9.10996 8.22825 9.05005 8.3814C8.99014 8.53456 8.89888 8.6735 8.78213 8.78931C8.66537 8.90513 8.5257 8.99526 8.37207 9.05392C8.21843 9.11259 8.05423 9.13849 7.89 9.12997ZM17.34 17.34H15V13.44C15 12.51 14.67 11.87 13.84 11.87C13.5822 11.8722 13.3313 11.9541 13.1219 12.1045C12.9124 12.2549 12.7546 12.4664 12.67 12.71C12.605 12.8926 12.5778 13.0865 12.59 13.28V17.34H10.29V10.21H12.59V11.21C12.7945 10.8343 13.0988 10.5225 13.4694 10.3089C13.84 10.0954 14.2624 9.98848 14.69 9.99997C16.2 9.99997 17.34 11 17.34 13.13V17.34Z" />
+                    </svg></a>
+                <a href="https://www.behance.net/soumyomkhj" target="_blank" class="social-icon" title="Behance"><svg
+                        viewBox="0 0 512 512" fill="currentColor">
+                        <path
+                            d="M254.8 171.8c6.4 8.9 9.6 19.6 9.6 32 0 12.8-3.2 23.1-9.7 30.9 -3.6 4.4-9 8.4-16 12 10.7 3.9 18.8 10.1 24.2 18.5 5.5 8.4 8.2 18.7 8.2 30.7 0 12.4-3.1 23.6-9.3 33.5 -4 6.6-8.9 12.1-14.9 16.5 -6.7 5.1-14.6 8.6-23.7 10.5 -9.1 1.9-19 2.8-29.6 2.8H99.1V149.5h101.4C226.1 149.8 244.2 157.3 254.8 171.8zM140.9 185.9v46.3h51c9.1 0 16.5-1.7 22.2-5.2 5.7-3.5 8.5-9.6 8.5-18.4 0-9.8-3.8-16.2-11.3-19.4 -6.5-2.2-14.7-3.3-24.8-3.3H140.9zM140.9 266.9v55.9h50.9c9.1 0 16.2-1.2 21.2-3.7 9.2-4.6 13.8-13.3 13.8-26.2 0-10.9-4.5-18.4-13.4-22.5 -5-2.3-12-3.5-21-3.6H140.9L140.9 266.9zM396.4 207.3c10.8 4.8 19.8 12.5 26.8 23 6.4 9.2 10.5 19.9 12.4 32.1 1.1 7.1 1.5 17.4 1.3 30.8H323.9c0.6 15.6 6 26.5 16.2 32.7 6.2 3.9 13.6 5.8 22.4 5.8 9.2 0 16.8-2.4 22.5-7.1 3.2-2.6 5.9-6.1 8.4-10.7h41.4c-1.1 9.2-6.1 18.5-15 28 -13.9 15.1-33.4 22.6-58.4 22.6 -20.6 0-38.9-6.4-54.6-19.1 -15.8-12.7-23.7-33.4-23.7-62.1 0-26.9 7.1-47.5 21.4-61.8 14.2-14.3 32.7-21.5 55.5-21.5C373.4 200 385.6 202.4 396.4 207.3zM335.7 242.3c-5.7 5.9-9.3 13.9-10.8 24h69.9c-0.7-10.8-4.3-18.9-10.8-24.5 -6.5-5.6-14.5-8.4-24.1-8.4C349.5 233.4 341.4 236.4 335.7 242.3zM402.8 161.5h-91.2V182.7h91.2V161.5z">
+                        </path>
+                    </svg></a>
+                <a href="https://in.pinterest.com/soumyomkhj/" target="_blank" class="social-icon"
+                    title="Pinterest"><svg viewBox="0 0 512 512" fill="currentColor">
+                        <path
+                            d="M266.6 76.5c-100.2 0-150.7 71.8-150.7 131.7 0 36.3 13.7 68.5 43.2 80.6 4.8 2 9.2 0.1 10.6-5.3 1-3.7 3.3-13 4.3-16.9 1.4-5.3 0.9-7.1-3-11.8 -8.5-10-13.9-23-13.9-41.3 0-53.3 39.9-101 103.8-101 56.6 0 87.7 34.6 87.7 80.8 0 60.8-26.9 112.1-66.8 112.1 -22.1 0-38.6-18.2-33.3-40.6 6.3-26.7 18.6-55.5 18.6-74.8 0-17.3-9.3-31.7-28.4-31.7 -22.5 0-40.7 23.3-40.7 54.6 0 19.9 6.7 33.4 6.7 33.4s-23.1 97.8-27.1 114.9c-8.1 34.1-1.2 75.9-0.6 80.1 0.3 2.5 3.6 3.1 5 1.2 2.1-2.7 28.9-35.9 38.1-69 2.6-9.4 14.8-58 14.8-58 7.3 14 28.7 26.3 51.5 26.3 67.8 0 113.8-61.8 113.8-144.5C400.1 134.7 347.1 76.5 266.6 76.5z">
+                        </path>
+                    </svg></a>
+                <a href="https://github.com/soumyomkhj" target="_blank" class="social-icon" title="GitHub"><svg
+                        viewBox="0 0 512 512" fill="currentColor">
+                        <path
+                            d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z">
+                        </path>
+                    </svg></a>
+            </div>
+        </div>
+
+        <div class="corner br" id="header-resume">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            <a class="resume-text" href="SoumyoResume.pdf" target="_blank" download="Soumyo Resume.pdf">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg> Résumé
+            </a>
+        </div>
+    </div>
+
+    <!-- ==================== LANDING SCREEN ==================== -->
+    <div id="chroma-landing" class="chroma-landing dotted-bg">
+        <div class="landing-content">
+            <h1 class="landing-title">CHROMA<br>CORE</h1>
+            <p class="landing-subtitle">A Color Theory Puzzle Game for Digital Artists.</p>
+            <div class="landing-actions">
+                <div class="color-qty-selector">
+                    <button class="qty-btn" id="qty-minus" aria-label="Decrease color count">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                            stroke-width="3">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </button>
+                    <span id="qty-val" class="qty-val">5</span>
+                    <button class="qty-btn" id="qty-plus" aria-label="Increase color count">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                            stroke-width="3">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </button>
+                </div>
+                <button class="view-btn btn-primary" id="start-btn">
+                    Test Me
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"
+                        style="margin-left:8px;vertical-align:middle;">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="select-colors-desc">
+                Select number of colors in the palette to start
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== GAME SCREEN ==================== -->
+    <div id="chroma-app" class="chroma-app" style="display:none;">
+        <header class="chroma-header">
+            <div class="header-left">
+                <button id="game-back-btn" class="back-btn"
+                    style="background:none;border:none;color: var(--primary);cursor:pointer;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <div class="header-info">
+                    <span class="header-title">CHROMA CORE</span>
+                    <span id="scheme-name-header" class="header-scheme">Analyzing Palette...</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="timer" id="game-timer">
+                    <svg viewBox="0 0 40 40">
+                        <circle class="timer-bg" cx="20" cy="20" r="18"></circle>
+                        <circle class="timer-progress" cx="20" cy="20" r="18"></circle>
+                    </svg>
+                    <span class="timer-text">90</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="chroma-stage" id="chroma-stage">
+            <!-- Dynamically injected by initGame() -->
+        </main>
+
+        <footer class="chroma-controls">
+            <div class="color-wheel-wrapper">
+                <canvas id="color-wheel-canvas" width="120" height="120"></canvas>
+                <div class="color-wheel-handle" id="color-wheel-handle"></div>
+            </div>
+            <div class="sliders-container">
+                <div class="slider-group">
+                    <div class="slider-header"><label>Hue</label><span class="slider-val" id="hue-val">270&deg;</span>
+                    </div>
+                    <div class="slider-track hue-track" id="hue-track">
+                        <div class="slider-thumb" id="hue-thumb"></div>
+                    </div>
+                </div>
+                <div class="slider-group">
+                    <div class="slider-header"><label>Saturation</label><span class="slider-val" id="sat-val">62%</span>
+                    </div>
+                    <div class="slider-track" id="sat-track">
+                        <div class="slider-thumb" id="sat-thumb"></div>
+                    </div>
+                </div>
+                <div class="slider-group">
+                    <div class="slider-header"><label>Lightness</label><span class="slider-val" id="lit-val">46%</span>
+                    </div>
+                    <div class="slider-track lit-track" id="lit-track">
+                        <div class="slider-thumb" id="lit-thumb"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="action-container">
+                <div class="input-group">
+                    <label>Hex Input</label>
+                    <div class="hex-row">
+                        <div class="hex-input-wrapper"><span>#</span><input type="text" id="hex-input" class="hex-input"
+                                value="7B2CBF" maxlength="6" placeholder="Enter Hex Color Code"></div>
+                        <button id="color-picker-btn" class="color-picker-btn" title="Pick color from screen">
+                            <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0 18.125V13.3354L9.02469 4.31067L7.56259 2.89899L9.02469 1.48731L10.9405 3.40316L14.0664 0.277295C14.1504 0.193266 14.2555 0.126043 14.3815 0.0756259C14.5076 0.0252086 14.6378 0 14.7723 0C14.9067 0 15.0327 0.0252086 15.1504 0.0756259C15.268 0.126043 15.3773 0.193266 15.4781 0.277295L17.8477 2.64691C17.9317 2.74774 17.999 2.85698 18.0494 2.97462C18.0998 3.09226 18.125 3.2183 18.125 3.35275C18.125 3.48719 18.0998 3.61744 18.0494 3.74348C17.999 3.86952 17.9317 3.97456 17.8477 4.05859L14.747 7.15925L16.6629 9.12552L15.226 10.5624L13.8143 9.10031L4.78964 18.125H0ZM6.98296 13.1083L12.3522 7.68863L10.4364 5.77277L5.01669 11.142L6.98296 13.1083ZM13.2849 5.77277L15.705 3.35275L14.7723 2.42003L12.3522 4.84006L13.2849 5.77277Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button class="view-btn btn-primary in-game" id="evaluate-btn">Evaluate</button>
+            </div>
+        </footer>
+
+        <!-- Result Modal Overlay -->
+        <div id="result-overlay" class="result-overlay dotted-bg hidden">
+            <button class="result-back-btn" id="result-back-btn" title="Quit to Home">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="result-modal-container">
+                <div class="result-modal">
+                    <div class="result-graph">
+                        <div class="graph-wrapper">
+                            <canvas id="result-wheel-canvas" width="280" height="280"></canvas>
+                            <canvas id="result-lines-canvas" width="280" height="280"
+                                class="result-lines-overlay"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="result-info">
+                        <div class="result-header"><span class="result-sub">Result</span>
+                            <div class="result-line"></div>
+                        </div>
+                        <h1 class="result-score"><span id="final-score">94</span><span class="percent">%</span></h1>
+                        <div id="scheme-tag" class="scheme-tag">Triadic Harmony</div>
+                        <p class="result-desc">Accuracy Rating</p>
+
+                        <div class="stats-list">
+                            <div class="stat-item">
+                                <span class="stat-label">Hue Match</span>
+                                <div class="stat-row">
+                                    <span class="stat-value" id="stat-hue">98%</span>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill" id="bar-hue" style="width:98%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Luminance Balance</span>
+                                <div class="stat-row">
+                                    <span class="stat-value" id="stat-lum">72%</span>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill" id="bar-lum" style="width:72%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-actions">
+                            <button class="view-btn btn-primary" id="try-another-btn">Try Another</button>
+                            <button class="view-btn btn-secondary" id="retry-btn">Retry</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
+        <script src="js/chroma.js"></script>
+</body>
+
+</html>

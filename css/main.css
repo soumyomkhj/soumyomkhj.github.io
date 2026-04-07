@@ -243,7 +243,6 @@ body {
 .tl {
     top: 0;
     left: 0;
-    cursor: default;
 }
 
 .tl .logo-square {
