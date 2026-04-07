@@ -5,7 +5,8 @@ const GameState = {
     activeBlock: 1, // Default focus on first editable
     numColors: 5,   // User selectable
     colors: [],
-    targetScheme: 'COMPLEMENTARY'
+    targetScheme: 'COMPLEMENTARY',
+    isSampling: false
 };
 
 // ... existing DOM refs ...
@@ -100,7 +101,13 @@ function initGame() {
                 <div class="block-label" id="label-${idx}">#000000</div>
             `;
             stage.appendChild(section);
-            if (idx > 0) section.onclick = () => selectBlock(idx);
+            section.onclick = () => {
+                if (GameState.isSampling) {
+                    sampleColorFromBlock(idx);
+                } else if (idx > 0) {
+                    selectBlock(idx);
+                }
+            };
         });
     }
 
@@ -210,8 +217,8 @@ function classifyCoverage(playerColors, seedColor, scheme) {
             const dist = getShortestHueDist(col.h, targetHue);
             if (dist < minDist) minDist = dist;
         });
-        // Generous decay: e^(-0.035 * dist)
-        totalCoverage += Math.exp(-0.035 * minDist);
+        // Balanced decay: e^(-0.03 * dist)
+        totalCoverage += Math.exp(-0.03 * minDist);
     });
 
     // Normalize by number of offsets so schemes with more offsets don't auto-win
@@ -439,11 +446,39 @@ function setupEvents() {
                     }
                 });
             } else {
-                // Fallback: hide the button on unsupported browsers (Firefox/Safari)
-                colorPickerBtn.style.display = 'none';
+                // Fallback: Internal Sampler for Mobile/Safari/Firefox
+                colorPickerBtn.title = 'Sample color from palette';
+                colorPickerBtn.addEventListener('click', () => {
+                    toggleSamplingMode();
+                });
             }
         }
     }
+}
+
+function toggleSamplingMode() {
+    GameState.isSampling = !GameState.isSampling;
+    const btn = document.getElementById('color-picker-btn');
+    const stage = document.getElementById('chroma-stage');
+
+    if (GameState.isSampling) {
+        btn.classList.add('sampling-active');
+        stage.classList.add('sampling-mode');
+        // Optional: show a small toast or message
+    } else {
+        btn.classList.remove('sampling-active');
+        stage.classList.remove('sampling-mode');
+    }
+}
+
+function sampleColorFromBlock(index) {
+    const colorToCopy = GameState.colors[index];
+    GameState.colors[GameState.activeBlock] = { ...colorToCopy };
+    
+    updateBlocksUI();
+    drawColorWheel();
+    updateControlsFromState();
+    toggleSamplingMode(); // Exit mode after pick
 }
 
 function handleWheel(e) {
@@ -508,22 +543,36 @@ function getShortestHueDist(h1, h2) {
 }
 
 function calculateHueScore(playerColors, seedColor, scheme) {
-    const n = playerColors.length;
     const targetOffsets = scheme.offsets;
-    let totalHueCohesion = 0;
+    let discordanceCount = 0;
 
-    playerColors.forEach(col => {
+    const totalHueCohesion = playerColors.map(col => {
         let minDelta = 360;
         targetOffsets.forEach(offset => {
             const targetHue = (seedColor.h + offset + 360) % 360;
             const dist = getShortestHueDist(col.h, targetHue);
             if (dist < minDelta) minDelta = dist;
         });
-        // Generous decay: e^(-0.035 * dH)
-        totalHueCohesion += Math.exp(-0.035 * minDelta);
+
+        // Also check distance to seed itself (allowing shades of seed)
+        const seedDist = getShortestHueDist(col.h, seedColor.h);
+        if (seedDist < minDelta) minDelta = seedDist;
+
+        // Strict cutoff: If a color is essentially "alien" to the scheme (>45deg from any slot), 
+        // it contributes 0 and triggers a massive discordance penalty.
+        if (minDelta > 45) {
+            discordanceCount++;
+            return 0;
+        }
+
+        return Math.exp(-0.04 * minDelta);
     });
 
-    return (totalHueCohesion / n) * 60.0;
+    // Final Hue Score: Average of block cohesion * discordance penalty
+    const avgCohesion = playerColors.length > 0 ? (totalHueCohesion.reduce((a, b) => a + b, 0) / playerColors.length) : 0;
+    const discordancePenalty = Math.pow(0.4, discordanceCount); // 60% drop per alien color
+
+    return (avgCohesion * discordancePenalty) * 60.0;
 }
 
 function getBestMatch(colors) {
@@ -535,23 +584,18 @@ function getBestMatch(colors) {
         const scheme = SCHEMES[key];
         const hScore = calculateHueScore(players, seed, scheme);
         const sSL = calculateSLScore(players, seed, key === 'MONOCHROMATIC');
-        const hAccuracyRaw = (hScore / 60) * 100;
         const pU = checkUniquenessPenalty(colors);
-
-        // Only apply complexity bonus if match accuracy is at least 50%
-        const multiplier = hAccuracyRaw >= 50 ? scheme.weight : 1.0;
         
-        // Level Bonus based on color quantity
-        const levelMultiplier = 1.0 + (GameState.numColors - 5) * 0.05;
-        const weighted = Math.min(100, (hScore + sSL) * pU * multiplier * levelMultiplier);
+        const weighted = Math.min(100, (hScore + sSL) * pU);
 
         if (weighted > best.score) {
             best = {
                 key: key,
                 score: weighted,
-                hueAccuracy: hAccuracyRaw.toFixed(0),
-                slHarmony: ((sSL / 40) * 100).toFixed(0),
-                name: scheme.name
+                hueAccuracy: Math.round((hScore / 60) * 100),
+                slHarmony: Math.round((sSL / 40) * 100),
+                name: scheme.name,
+                rawHScore: hScore // Internal for classification tie-break
             };
         }
     });
@@ -564,9 +608,10 @@ function updateLiveHarmonyUI() {
     const headerEl = document.getElementById('scheme-name-header');
     if (headerEl) {
         headerEl.innerText = `${best.name} ${best.hueAccuracy}%`;
-        // Color coding based on match quality
-        if (best.hueAccuracy > 50) headerEl.style.color = '#ebd9cd';
-        else headerEl.style.color = 'rgba(255, 255, 255, 0.4)';
+        // Match quality indicators
+        if (best.hueAccuracy >= 80) headerEl.style.color = '#ebd9cd';
+        else if (best.hueAccuracy >= 50) headerEl.style.color = 'rgba(235, 217, 205, 0.7)';
+        else headerEl.style.color = 'rgba(255, 255, 255, 0.2)';
     }
 }
 
@@ -585,7 +630,7 @@ function calculateSLScore(playerColors, seedColor, isMonochrome) {
         } else {
             dist = Math.sqrt(Math.pow(col.s - seedColor.s, 2) + Math.pow(col.l - seedColor.l, 2));
         }
-        // Exponential decay: e^(-0.02 * dist) -- More lenient
+        // Balanced decay: e^(-0.02 * dist)
         totalSLCohesion += Math.exp(-0.02 * dist);
     });
 

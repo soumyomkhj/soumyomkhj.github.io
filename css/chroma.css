@@ -389,7 +389,8 @@ body.game-active .ui-frame {
 }
 
 .lock-badge {
-    top: 96px; /* Header 64px + 32px offset */
+    top: 96px;
+    /* Header 64px + 32px offset */
     flex-direction: row;
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
@@ -492,7 +493,7 @@ body.game-active .ui-frame {
 .slider-group {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 }
 
 .slider-header {
@@ -630,6 +631,39 @@ body.game-active .ui-frame {
     color: var(--primary);
 }
 
+.color-picker-btn.sampling-active {
+    background: var(--primary);
+    color: var(--primary-dark);
+}
+
+.chroma-stage.sampling-mode .color-block {
+    cursor: crosshair !important;
+}
+
+.chroma-stage.sampling-mode .color-block::after {
+    content: "Tap to sample";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0.8;
+    z-index: 20;
+}
+
+.chroma-stage.sampling-mode .block-badge,
+.chroma-stage.sampling-mode .block-label {
+    opacity: 0 !important;
+}
+
 /* Modal and Graph */
 .result-overlay {
     position: fixed;
@@ -762,6 +796,8 @@ body.game-active .ui-frame {
 }
 
 .scheme-tag {
+    margin-left: 50%;
+    transform: translateX(-50%);
     display: inline-block;
     padding: 6px 12px;
     background: rgba(255, 255, 255, 0.05);
@@ -785,7 +821,7 @@ body.game-active .ui-frame {
 .stat-item {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 4px;
 }
 
 .stat-label {
@@ -962,7 +998,7 @@ body.game-active .ui-frame {
     .stats-list {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 16px;
     }
 
     .header-info {
@@ -988,7 +1024,8 @@ body.game-active .ui-frame {
     }
 
     .chroma-stage {
-        padding-top: 52px; /* Smoother top padding */
+        padding-top: 52px;
+        /* Smoother top padding */
         padding-bottom: 0;
         flex: 1;
         min-height: 0;
@@ -1105,7 +1142,7 @@ body.game-active .ui-frame {
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 12px;
     }
 
     .color-wheel-wrapper {
@@ -1118,7 +1155,6 @@ body.game-active .ui-frame {
     .action-container {
         grid-area: actions;
         width: 100%;
-        gap: 6px;
         min-width: 0;
         display: flex;
         flex-direction: column;
@@ -1128,7 +1164,7 @@ body.game-active .ui-frame {
 
     .in-game {
         width: 100%;
-        border-radius: 0px 0px 4px 4px;
+        border-radius: 0px 0px 4px 4px !important;
     }
 
     .slider-header {
