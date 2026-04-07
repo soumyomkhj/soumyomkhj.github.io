@@ -935,14 +935,14 @@ body.game-active .ui-frame {
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .chroma-app {
-        height: 100vh;
+        height: 100dvh;
         overflow: hidden;
         display: flex;
         flex-direction: column;
     }
 
     .chroma-header {
-        padding: 12px;
+        padding: 8px 12px;
         background: #000;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         position: fixed;
@@ -988,15 +988,14 @@ body.game-active .ui-frame {
     }
 
     .chroma-stage {
-        padding-top: 64px;
+        padding-top: 52px; /* Smoother top padding */
         padding-bottom: 0;
         flex: 1;
-        min-height: 320px;
+        min-height: 0;
         flex-direction: column;
         display: flex;
         box-sizing: border-box;
         overflow: hidden;
-        height: auto !important;
     }
 
     .color-block {
@@ -1056,19 +1055,19 @@ body.game-active .ui-frame {
     }
 
     .chroma-controls {
-        padding: 20px;
+        padding: 12px 16px;
         flex: 0 0 auto;
         /* Only take required space */
         display: grid;
-        grid-template-columns: 120px 1fr;
+        grid-template-columns: 100px 1fr;
         grid-template-areas:
             "sliders sliders"
             "wheel actions";
-        gap: 20px;
+        gap: 12px;
         position: relative;
         background: #0a0f12;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
-        align-items: start;
+        align-items: center;
         overflow: visible;
         height: auto !important;
         user-select: none;
@@ -1106,24 +1105,24 @@ body.game-active .ui-frame {
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 8px;
     }
 
     .color-wheel-wrapper {
         grid-area: wheel;
-        width: 110px;
-        height: 110px;
+        width: 100px;
+        height: 100px;
         margin: 0;
     }
 
     .action-container {
         grid-area: actions;
         width: 100%;
-        gap: 0;
+        gap: 6px;
         min-width: 0;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: center;
         height: 110px;
     }
 
@@ -1136,15 +1135,19 @@ body.game-active .ui-frame {
         margin-bottom: 2px;
     }
 
+    .input-group label {
+        margin-bottom: 4px;
+    }
+
     .hex-input-wrapper {
-        padding: 12px 16px;
+        padding: 8px 12px;
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .in-game {
-        height: 44px;
-        font-size: 15px;
+        height: 38px;
+        font-size: 14px;
         font-weight: 700;
         letter-spacing: 0.05em;
         background: #ebd9cd !important;
