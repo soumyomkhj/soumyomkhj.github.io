@@ -1196,7 +1196,7 @@ body.game-active .ui-frame {
         letter-spacing: 0.05em;
         background: #ebd9cd !important;
         color: #000 !important;
-        border-radius: 4px !important;
+        border-radius: 4px;
         margin: 0;
         width: 100%;
     }
