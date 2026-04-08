@@ -896,22 +896,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1) All <img> elements
     document.querySelectorAll('img').forEach(img => {
         tracked.push(new Promise(resolve => {
-            if (img.complete && img.naturalWidth > 0) { resolve(); return; }
+            // Robust check: if complete is true, the browser is finished with it (success or fail)
+            if (img.complete) {
+                resolve();
+                return;
+            }
             img.addEventListener('load', resolve, { once: true });
             img.addEventListener('error', resolve, { once: true });
+            // Individual timeout for images
+            setTimeout(resolve, 5000);
         }));
     });
 
     // 2) CSS background-image URLs (project cards)
     document.querySelectorAll('.project-bg').forEach(el => {
-        const match = el.style.backgroundImage.match(/url\(['"]?(.+?)['"]?\)/);
-        if (match) {
-            tracked.push(new Promise(resolve => {
-                const probe = new Image();
-                probe.onload = resolve;
-                probe.onerror = resolve;
-                probe.src = match[1];
-            }));
+        const bg = getComputedStyle(el).backgroundImage;
+        if (bg && bg !== 'none') {
+            const match = bg.match(/url\(['"]?(.+?)['"]?\)/);
+            if (match) {
+                tracked.push(new Promise(resolve => {
+                    const probe = new Image();
+                    probe.onload = resolve;
+                    probe.onerror = resolve;
+                    probe.src = match[1];
+                    setTimeout(resolve, 5000); // 5s timeout per probe
+                }));
+            }
         }
     });
 
@@ -937,35 +947,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ── Dismiss once all resources are done ──
-    Promise.all(tracked).then(() => {
+    const finishLoader = () => {
+        if (allDone) return;
         target = 1; // let lerp smoothly finish to 100%
 
         // Wait for fill to visually reach 1 before fading out
         const waitForFull = () => {
-            if (current >= 0.999) {
+            if (current >= 0.995) {
                 allDone = true;
                 cancelAnimationFrame(rafId);
-
-                // Small breath so the full bar is visible for a frame before fade.
-                // No minimum — on cache hits this runs immediately.
-                const wait = 150;
 
                 setTimeout(() => {
                     preloader.classList.add('loaded');
 
-                    // Hard fallback: if transitionend never fires (Safari quirk),
-                    // force-remove the preloader after the transition duration + a buffer.
                     let removed = false;
                     const forceRemove = () => {
                         if (!removed) { removed = true; preloader.remove(); }
                     };
                     preloader.addEventListener('transitionend', forceRemove, { once: true });
-                    setTimeout(forceRemove, 1000); // 0.6s transition + 0.4s grace
-                }, wait);
+                    setTimeout(forceRemove, 1000);
+                }, 150);
             } else {
                 requestAnimationFrame(waitForFull);
             }
         };
         requestAnimationFrame(waitForFull);
-    });
+    };
+
+    // Race Promise.all(tracked) with a 6-second global timeout
+    Promise.race([
+        Promise.all(tracked),
+        new Promise(resolve => setTimeout(resolve, 6000))
+    ]).then(finishLoader);
 });
