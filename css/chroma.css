@@ -289,7 +289,7 @@ body.game-active .ui-frame {
 }
 
 .timer-text {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     font-variation-settings: "wdth" 60;
@@ -1234,9 +1234,29 @@ body.game-active .ui-frame {
 
     .drag-handle {
         top: 50%;
-        left: 32px;
+        left: 20px;
         transform: translateY(-50%) rotate(0deg);
         /* Vertical arrow */
+        width: 36px;
+        height: 36px;
+        display: none;
+        /* Changed from flex to none by default */
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.2s ease, display 0.2s ease allow-discrete;
+    }
+
+    .color-block.active .drag-handle,
+    .color-block.editable:hover .drag-handle {
+        display: flex;
+        opacity: 0.5;
+    }
+
+    .drag-handle svg {
+        width: 10px;
+        height: auto;
+        pointer-events: none;
     }
 
     .edit-badge>svg {
