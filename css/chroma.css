@@ -211,12 +211,14 @@ body.game-active .ui-frame {
     height: 64px;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(20px);
-    z-index: 1010; /* Above countdown overlay (1000) */
+    z-index: 1010;
+    /* Above countdown overlay (1000) */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0 16px;
+    padding-right: 20px;
     border-bottom: 1px solid var(--frame-color);
 }
 
@@ -281,41 +283,17 @@ body.game-active .ui-frame {
 }
 
 .timer {
-    position: relative;
-    width: 40px;
-    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.timer svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    transform: rotate(-90deg);
-}
-
-.timer circle {
-    fill: none;
-    stroke-width: 2;
-}
-
-.timer-bg {
-    stroke: var(--frame-color);
-}
-
-.timer-progress {
-    stroke: var(--fg);
-    stroke-dasharray: 113;
-    stroke-dashoffset: 40;
-}
-
 .timer-text {
-    font-size: 11px;
+    font-size: 24px;
     font-weight: 700;
-    z-index: 1;
+    font-variant-numeric: tabular-nums;
+    font-variation-settings: "wdth" 60;
+    letter-spacing: -0.02em;
 }
 
 /* Blocks Stage & Badges */
@@ -385,7 +363,7 @@ body.game-active .ui-frame {
 }
 
 .lock-badge {
-    top: 96px;
+    top: 48px;
     /* Header 64px + 32px offset */
     flex-direction: row;
     background: rgba(0, 0, 0, 0.1);
@@ -406,13 +384,13 @@ body.game-active .ui-frame {
 }
 
 .color-block.active .edit-badge {
-    opacity: 1;
+    opacity: .5;
     transform: translate(-50%, -50%);
 }
 
 .badge-text {
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     white-space: nowrap;
@@ -426,7 +404,29 @@ body.game-active .ui-frame {
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 4px;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 1);
+}
+
+/* Drag Handle */
+.drag-handle {
+    position: absolute;
+    top: 51px;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+    /* Horizontal arrow */
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    cursor: grab;
+}
+
+.color-block.editable:hover .drag-handle {
+    opacity: 0.5;
+}
+
+.color-block.active .drag-handle {
+    opacity: 0.5;
 }
 
 /* Controls & Hex Input Fix */
@@ -666,19 +666,21 @@ body.game-active .ui-frame {
     --mask-top: 64px;
     --mask-left: 0px;
     --mask-bottom: 180px;
-    
+
     position: absolute;
     inset: 0;
     z-index: 1000;
     pointer-events: auto;
-    transition: none; /* Instant IN */
+    transition: none;
+    /* Instant IN */
 }
 
 .countdown-overlay.hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.5s ease, visibility 0.5s ease; /* Fade OUT */
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    /* Fade OUT */
 }
 
 /* Stage Mask: Grayscale + Tint exactly over non-locked blocks */
@@ -688,8 +690,8 @@ body.game-active .ui-frame {
     left: var(--mask-left);
     right: 0;
     bottom: var(--mask-bottom);
-    backdrop-filter: grayscale(1);
-    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: grayscale(1) blur(10px);
+    background: rgba(255, 255, 255, 0.75);
     overflow: hidden;
     z-index: 1;
 }
@@ -697,6 +699,10 @@ body.game-active .ui-frame {
 /* Controls Mask: Covers the footer totally */
 .controls-mask {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     bottom: 0;
     left: 0;
     right: 0;
@@ -729,7 +735,7 @@ body.game-active .ui-frame {
 
 .instruction-arrow {
     width: 320px;
-    height: 1.5px;
+    height: 2px;
     background: #000;
     position: relative;
     display: flex;
@@ -773,7 +779,6 @@ body.game-active .ui-frame {
 
 #countdown-number {
     font-weight: 800;
-    color: #000;
 }
 
 .skip-btn {
@@ -787,13 +792,15 @@ body.game-active .ui-frame {
 /* Response Arrow & Layout for Mobile */
 @media (max-width: 768px) {
     .countdown-instruction {
-        flex-direction: column; /* Arrow above text */
+        margin-top: -24px;
+        flex-direction: column;
+        /* Arrow above text */
         text-align: center;
         gap: 24px;
     }
 
     .instruction-arrow {
-        width: 1.5px;
+        width: 2px;
         height: 160px;
         background: #000;
     }
@@ -1127,14 +1134,16 @@ body.game-active .ui-frame {
     }
 
     .chroma-header {
-        padding: 8px 12px;
+        padding: 9px 12px;
+        padding-right: 20px;
         background: #000;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         position: fixed;
         width: 100%;
         top: 0;
         left: 0;
-        z-index: 1010; /* Above countdown overlay (1000) */
+        z-index: 1010;
+        /* Above countdown overlay (1000) */
         height: auto;
     }
 
@@ -1221,6 +1230,13 @@ body.game-active .ui-frame {
         transform: translate(-50%, -50%) !important;
         flex-direction: row;
         gap: 10px;
+    }
+
+    .drag-handle {
+        top: 50%;
+        left: 32px;
+        transform: translateY(-50%) rotate(0deg);
+        /* Vertical arrow */
     }
 
     .edit-badge>svg {

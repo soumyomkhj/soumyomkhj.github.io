@@ -110,12 +110,21 @@ function initGame() {
             section.id = `block-${idx}`;
 
             const badgeClass = idx === 0 ? 'lock-badge' : 'edit-badge';
-            const badgeText = idx === 0 ? 'Seed Color' : 'Editing';
+            const badgeText = idx === 0 ? 'Base Color' : 'Editing';
             const icon = idx === 0 ?
                 `<svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.31548 6.27539C8.31548 6.25402 8.29825 6.23679 8.27688 6.23679H2.11765C2.09628 6.23679 2.07905 6.25402 2.07905 6.27539V9.66279C2.07905 9.68416 2.09628 9.7014 2.11765 9.7014H8.27688C8.29825 9.7014 8.31548 9.68416 8.31548 9.66279V6.27539ZM6.58318 3.46496C6.58318 2.69957 5.96264 2.07909 5.19727 2.07905C4.43185 2.07905 3.81135 2.69954 3.81135 3.46496V4.15774H6.58318V3.46496ZM8.66188 4.19319C9.64752 4.37427 10.3945 5.2374 10.3945 6.27539V9.66279C10.3945 10.8323 9.44638 11.7804 8.27688 11.7804H2.11765C0.948154 11.7804 0 10.8323 0 9.66279V6.27539C0 5.23752 0.746829 4.3744 1.7323 4.19319V3.46496C1.7323 1.55141 3.28372 0 5.19727 0C7.11077 4.74165e-05 8.66188 1.55144 8.66188 3.46496V4.19319Z" fill="currentColor"/></svg>` :
                 `<svg viewBox="0 0 22 22" fill="currentColor" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M14.5107 0.741244C15.4994 -0.246946 17.1033 -0.247217 18.0918 0.741244L20.3262 2.9766C21.3146 3.96524 21.3147 5.56908 20.3262 6.55765L6.55664 20.3243C6.08107 20.8011 5.43642 21.0664 4.7666 21.0664H1.2002C0.537459 21.0664 8.24506e-06 20.529 0 19.8662V16.2998C0 15.6291 0.266068 14.9836 0.744141 14.5078L11.9971 3.25394C12.0042 3.24645 12.0112 3.23883 12.0186 3.23148C12.0259 3.22413 12.0335 3.21711 12.041 3.20999L14.5107 0.741244ZM16.3945 2.43851C16.3432 2.38716 16.2584 2.38715 16.207 2.43851L14.5645 4.08011L16.9854 6.50199L18.6289 4.86038C18.6802 4.80907 18.6801 4.72525 18.6289 4.67386L16.3945 2.43851ZM2.40039 18.666H4.7666C4.80233 18.666 4.83456 18.6519 4.85742 18.6289L15.2891 8.19827L12.8672 5.77738L2.4375 16.209C2.41451 16.2319 2.40039 16.2641 2.40039 16.2998V18.666Z"/></svg>`;
 
+            const dragHandle = idx > 0 ? `
+                <div class="drag-handle">
+                    <svg width="13" height="24" viewBox="0 0 13 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.33684 0C6.43077 2.99358e-05 6.52116 0.0148208 6.60735 0.0390625C6.61152 0.0402434 6.61588 0.040756 6.62004 0.0419922C6.79099 0.0925067 6.94205 0.187436 7.06145 0.313477L12.3759 5.62598C12.7664 6.01633 12.767 6.64944 12.3769 7.04004C11.9864 7.4306 11.3524 7.43145 10.9618 7.04102L7.33684 3.41602V19.915L10.9618 16.29C11.3523 15.8996 11.9854 15.8997 12.3759 16.29C12.7664 16.6806 12.7664 17.3136 12.3759 17.7041L7.0761 23.0039C6.89321 23.2055 6.63044 23.3329 6.33684 23.333C6.17937 23.333 6.03087 23.2953 5.89836 23.2305C5.88672 23.2248 5.87466 23.22 5.86321 23.2139C5.85316 23.2085 5.84374 23.202 5.83391 23.1963C5.78876 23.1701 5.74451 23.1413 5.70305 23.1074C5.69039 23.097 5.67905 23.0852 5.66692 23.0742C5.65397 23.0626 5.64033 23.0515 5.62785 23.0391L0.292893 17.7041C-0.0976309 17.3136 -0.0976311 16.6806 0.292893 16.29C0.683417 15.8995 1.31643 15.8995 1.70696 16.29L5.33684 19.9199V3.41113L1.70696 7.04102C1.31636 7.43125 0.683289 7.43053 0.292893 7.04004C-0.0975082 6.64946 -0.0976554 6.01643 0.292893 5.62598L5.62785 0.292969L5.70305 0.224609C5.82855 0.122136 5.97334 0.0557745 6.12395 0.0234375C6.12788 0.0225858 6.13172 0.0213131 6.13567 0.0205078C6.15185 0.0172361 6.16819 0.0151602 6.18449 0.0126953C6.22481 0.0065384 6.26579 0.00314277 6.30754 0.00195312C6.31667 0.0017073 6.32576 0.000973886 6.33489 0.000976562L6.33684 0Z" fill="currentColor"/>
+                    </svg>
+                </div>
+            ` : '';
+
             section.innerHTML = `
+                ${dragHandle}
                 <div class="block-badge ${badgeClass}">${icon}<span class="badge-text">${badgeText}</span></div>
                 <div class="block-label" id="label-${idx}">#000000</div>
             `;
@@ -127,6 +136,48 @@ function initGame() {
                     selectBlock(idx);
                 }
             };
+        });
+
+        // Initialize Sortable
+        if (GameState.sortable) {
+            GameState.sortable.destroy();
+        }
+        GameState.sortable = new Sortable(stage, {
+            handle: '.drag-handle',
+            animation: 150,
+            filter: '.locked',
+            onMove: function (evt) {
+                return evt.related.className.indexOf('locked') === -1;
+            },
+            onEnd: function (evt) {
+                const item = GameState.colors.splice(evt.oldIndex, 1)[0];
+                GameState.colors.splice(evt.newIndex, 0, item);
+                
+                // Fix IDs and handlers based on new DOM order
+                const sections = stage.querySelectorAll('.color-block');
+                sections.forEach((sec, newIdx) => {
+                    sec.id = `block-${newIdx}`;
+                    sec.querySelector('.block-label').id = `label-${newIdx}`;
+                    sec.onclick = () => {
+                        if (GameState.isSampling) {
+                            sampleColorFromBlock(newIdx);
+                        } else if (newIdx > 0) {
+                            selectBlock(newIdx);
+                        }
+                    };
+                });
+                
+                // Fix selectedBlock tracking
+                if (GameState.activeBlock === evt.oldIndex) {
+                    GameState.activeBlock = evt.newIndex;
+                } else if (GameState.activeBlock > evt.oldIndex && GameState.activeBlock <= evt.newIndex) {
+                    GameState.activeBlock--;
+                } else if (GameState.activeBlock < evt.oldIndex && GameState.activeBlock >= evt.newIndex) {
+                    GameState.activeBlock++;
+                }
+                
+                updateBlocksUI();
+            }
         });
     }
 
@@ -143,22 +194,31 @@ function initGame() {
 
 function startTimer() {
     if (GameState.interval) clearInterval(GameState.interval);
-    document.querySelector('.timer-text').innerText = GameState.timer;
-    const progress = document.querySelector('.timer-progress');
-    let initialOffset = 113 - (113 * (GameState.timer / GameState.maxTimer));
-    progress.style.strokeDashoffset = initialOffset;
+
+    const timerEl = document.querySelector('.timer-text');
+    // Store as centiseconds internally (e.g. 9000 for 90s)
+    let cs = Math.round(GameState.timer * 100);
+    const maxCs = cs;
+
+    const fmt = (centisecs) => {
+        const secs = centisecs / 100;
+        return secs.toFixed(2);
+    };
+
+    timerEl.innerText = fmt(cs);
 
     GameState.interval = setInterval(() => {
-        GameState.timer--;
-        if (GameState.timer <= 0) {
-            GameState.timer = 0;
+        cs--;
+        if (cs <= 0) {
+            cs = 0;
+            timerEl.innerText = '0.00';
             clearInterval(GameState.interval);
             showResults();
+            return;
         }
-        document.querySelector('.timer-text').innerText = GameState.timer;
-        let offset = 113 - (113 * (GameState.timer / GameState.maxTimer));
-        progress.style.strokeDashoffset = offset;
-    }, 1000);
+        GameState.timer = cs / 100;
+        timerEl.innerText = fmt(cs);
+    }, 10);
 }
 
 function startCountdown() {
@@ -196,11 +256,9 @@ function startCountdown() {
 
 
     // Synchronize header timer to show the upcoming game's duration
-    document.querySelector('.timer-text').innerText = GameState.timer;
-    const progress = document.querySelector('.timer-progress');
-    progress.style.strokeDashoffset = 113; // Reset to full
+    document.querySelector('.timer-text').innerText = GameState.timer.toFixed(2);
 
-    GameState.countdown = 5;
+    GameState.countdown = 10;
     numEl.innerText = GameState.countdown;
     overlay.classList.remove('hidden');
 
@@ -745,8 +803,8 @@ function updateLiveHarmonyUI() {
         headerEl.innerText = `${best.name} ${best.hueAccuracy}%`;
         // Match quality indicators
         if (best.hueAccuracy >= 80) headerEl.style.color = '#ebd9cd';
-        else if (best.hueAccuracy >= 50) headerEl.style.color = 'rgba(235, 217, 205, 0.7)';
-        else headerEl.style.color = 'rgba(255, 255, 255, 0.2)';
+        else if (best.hueAccuracy >= 50) headerEl.style.color = 'rgba(235, 217, 205, 0.8)';
+        else headerEl.style.color = 'rgba(255, 255, 255, 0.5)';
     }
 }
 

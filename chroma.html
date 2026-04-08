@@ -154,7 +154,7 @@
         <header class="chroma-header">
             <div class="header-left">
                 <button id="game-back-btn" class="back-btn"
-                    style="background:none;border:none;color: var(--primary);cursor:pointer;">
+                    style="background:none;border:none;color: var(--primary);cursor:pointer; margin-top: 2px;">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
                         <path d="M19 12H5M12 19l-7-7 7-7" />
                     </svg>
@@ -166,11 +166,8 @@
             </div>
             <div class="header-right">
                 <div class="timer" id="game-timer">
-                    <svg viewBox="0 0 40 40">
-                        <circle class="timer-bg" cx="20" cy="20" r="18"></circle>
-                        <circle class="timer-progress" cx="20" cy="20" r="18"></circle>
-                    </svg>
-                    <span class="timer-text">90</span>
+                    <span class="timer-text">90.00</span> <span class="timer-text"
+                        style="opacity: 0.6; font-weight: 400;">&nbspsec</span>
                 </div>
             </div>
         </header>
@@ -181,13 +178,14 @@
                     <div class="countdown-instruction">
                         <div class="instruction-arrow"></div>
                         <div class="instruction-text">
-                            <h2>CREATE THE PALETTE FROM THIS COLOR</h2>
-                            <p>GAME STARTS IN <span id="countdown-number">5</span></p>
+                            <h2>What colors pair with this color?</h2>
+                            <p>Edit the other colors so they<br>all feel connected</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="controls-mask">
+                <p>GAME STARTS IN <span id="countdown-number">10</span></p>
                 <button id="skip-countdown-btn" class="view-btn btn-primary skip-btn">Start Now</button>
             </div>
         </div>
@@ -302,6 +300,7 @@
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
         <script src="js/chroma.js"></script>
 </body>
 
