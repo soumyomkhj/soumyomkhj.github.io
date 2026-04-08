@@ -89,10 +89,10 @@ function initGame() {
             const section = document.createElement('section');
             section.className = `color-block ${idx === 0 ? 'locked' : 'editable'}`;
             section.id = `block-${idx}`;
-            
+
             const badgeClass = idx === 0 ? 'lock-badge' : 'edit-badge';
             const badgeText = idx === 0 ? 'Seed Color' : 'Editing';
-            const icon = idx === 0 ? 
+            const icon = idx === 0 ?
                 `<svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.31548 6.27539C8.31548 6.25402 8.29825 6.23679 8.27688 6.23679H2.11765C2.09628 6.23679 2.07905 6.25402 2.07905 6.27539V9.66279C2.07905 9.68416 2.09628 9.7014 2.11765 9.7014H8.27688C8.29825 9.7014 8.31548 9.68416 8.31548 9.66279V6.27539ZM6.58318 3.46496C6.58318 2.69957 5.96264 2.07909 5.19727 2.07905C4.43185 2.07905 3.81135 2.69954 3.81135 3.46496V4.15774H6.58318V3.46496ZM8.66188 4.19319C9.64752 4.37427 10.3945 5.2374 10.3945 6.27539V9.66279C10.3945 10.8323 9.44638 11.7804 8.27688 11.7804H2.11765C0.948154 11.7804 0 10.8323 0 9.66279V6.27539C0 5.23752 0.746829 4.3744 1.7323 4.19319V3.46496C1.7323 1.55141 3.28372 0 5.19727 0C7.11077 4.74165e-05 8.66188 1.55144 8.66188 3.46496V4.19319Z" fill="currentColor"/></svg>` :
                 `<svg viewBox="0 0 22 22" fill="currentColor" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M14.5107 0.741244C15.4994 -0.246946 17.1033 -0.247217 18.0918 0.741244L20.3262 2.9766C21.3146 3.96524 21.3147 5.56908 20.3262 6.55765L6.55664 20.3243C6.08107 20.8011 5.43642 21.0664 4.7666 21.0664H1.2002C0.537459 21.0664 8.24506e-06 20.529 0 19.8662V16.2998C0 15.6291 0.266068 14.9836 0.744141 14.5078L11.9971 3.25394C12.0042 3.24645 12.0112 3.23883 12.0186 3.23148C12.0259 3.22413 12.0335 3.21711 12.041 3.20999L14.5107 0.741244ZM16.3945 2.43851C16.3432 2.38716 16.2584 2.38715 16.207 2.43851L14.5645 4.08011L16.9854 6.50199L18.6289 4.86038C18.6802 4.80907 18.6801 4.72525 18.6289 4.67386L16.3945 2.43851ZM2.40039 18.666H4.7666C4.80233 18.666 4.83456 18.6519 4.85742 18.6289L15.2891 8.19827L12.8672 5.77738L2.4375 16.209C2.41451 16.2319 2.40039 16.2641 2.40039 16.2998V18.666Z"/></svg>`;
 
@@ -113,7 +113,7 @@ function initGame() {
 
     updateBlocksUI();
     drawColorWheel();
-    selectBlock(1); 
+    selectBlock(1);
     startTimer();
 
     const schemeName = SCHEMES[GameState.targetScheme].name;
@@ -185,6 +185,7 @@ function updateBlocksUI() {
             const isDark = chromaCol.luminance() < 0.35;
             const contentColor = isDark ? '#FFFFFF' : '#000000';
             block.style.color = contentColor;
+            block.style.borderColor = isDark ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.8)';
 
             const badges = block.querySelectorAll('.block-badge, .block-label');
             badges.forEach(el => {
@@ -466,12 +467,12 @@ function setupMobileCorners() {
         corner.addEventListener('click', (e) => {
             // Only handle click expansion on mobile/tablet
             if (window.innerWidth > 1024) return;
-            
+
             // If we click an actual link inside the expanded menu, let it happen
             if (e.target.closest('a') && !e.target.classList.contains('corner')) return;
 
             const wasExpanded = corner.classList.contains('expanded');
-            
+
             // Close all other corners
             corners.forEach(c => c.classList.remove('expanded'));
 
@@ -516,7 +517,7 @@ function toggleSamplingMode() {
 function sampleColorFromBlock(index) {
     const colorToCopy = GameState.colors[index];
     GameState.colors[GameState.activeBlock] = { ...colorToCopy };
-    
+
     updateBlocksUI();
     drawColorWheel();
     updateControlsFromState();
@@ -627,7 +628,7 @@ function getBestMatch(colors) {
         const hScore = calculateHueScore(players, seed, scheme);
         const sSL = calculateSLScore(players, seed, key === 'MONOCHROMATIC');
         const pU = checkUniquenessPenalty(colors);
-        
+
         const weighted = Math.min(100, (hScore + sSL) * pU);
 
         if (weighted > best.score) {
@@ -668,12 +669,15 @@ function calculateSLScore(playerColors, seedColor, isMonochrome) {
         let dist;
         if (isMonochrome) {
             let nearestLDist = Math.min(...monoTargets.map(t => Math.abs(col.l - t)));
-            dist = Math.sqrt(Math.pow(col.s - seedColor.s, 2) + Math.pow(nearestLDist, 2));
+            dist = Math.sqrt(Math.pow((col.s - seedColor.s) * 1.2, 2) + Math.pow(nearestLDist, 2));
         } else {
-            dist = Math.sqrt(Math.pow(col.s - seedColor.s, 2) + Math.pow(col.l - seedColor.l, 2));
+            const sDiff = (col.s - seedColor.s) * 1.2;
+            const lDiff = Math.abs(col.l - seedColor.l);
+            const lPenalty = lDiff <= 15 ? (lDiff * 0.4) : (6.0 + (lDiff - 15));
+            dist = Math.sqrt(Math.pow(sDiff, 2) + Math.pow(lPenalty, 2));
         }
-        // Balanced decay: e^(-0.02 * dist)
-        totalSLCohesion += Math.exp(-0.02 * dist);
+        // Balanced decay: e^(-0.017 * dist)
+        totalSLCohesion += Math.exp(-0.017 * dist);
     });
 
     return (totalSLCohesion / n) * 40.0;
