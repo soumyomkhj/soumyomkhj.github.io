@@ -1,6 +1,9 @@
 const GameState = {
     timer: 90,
+    maxTimer: 90,
     interval: null,
+    countdown: 5,
+    countdownInterval: null,
     level: 3,
     activeBlock: 1, // Default focus on first editable
     numColors: 5,   // User selectable
@@ -56,6 +59,12 @@ function backToLanding() {
     landing.style.display = 'flex';
     setTimeout(() => { landing.style.opacity = '1'; }, 10);
     clearInterval(GameState.interval);
+    if (GameState.countdownInterval) {
+        clearInterval(GameState.countdownInterval);
+        GameState.countdownInterval = null;
+    }
+    const overlay = document.getElementById('countdown-overlay');
+    if (overlay) overlay.classList.add('hidden');
 
     // Kick the dots to ensure they resume cursor tracking
     if (window._landingGrid) {
@@ -68,7 +77,17 @@ resultBackBtn.addEventListener('click', backToLanding);
 if (gameBackBtn) gameBackBtn.addEventListener('click', backToLanding);
 
 function initGame() {
-    GameState.timer = 90;
+    // Clean timer values map based on color count
+    const timerMap = {
+        3: 45,
+        4: 60,
+        5: 90,
+        6: 120,
+        7: 150,
+        8: 180
+    };
+    GameState.maxTimer = timerMap[GameState.numColors] || 60;
+    GameState.timer = GameState.maxTimer;
 
     // Pick random target scheme
     const keys = Object.keys(SCHEMES);
@@ -113,8 +132,9 @@ function initGame() {
 
     updateBlocksUI();
     drawColorWheel();
-    selectBlock(1);
-    startTimer();
+    // Delay selectBlock(1) and inject CSS variable for positioning
+    document.getElementById('chroma-app').style.setProperty('--num-colors', GameState.numColors);
+    startCountdown();
 
     const schemeName = SCHEMES[GameState.targetScheme].name;
     const schemeEl = document.getElementById('scheme-name-header');
@@ -125,7 +145,7 @@ function startTimer() {
     if (GameState.interval) clearInterval(GameState.interval);
     document.querySelector('.timer-text').innerText = GameState.timer;
     const progress = document.querySelector('.timer-progress');
-    let initialOffset = 113 - (113 * (GameState.timer / 90));
+    let initialOffset = 113 - (113 * (GameState.timer / GameState.maxTimer));
     progress.style.strokeDashoffset = initialOffset;
 
     GameState.interval = setInterval(() => {
@@ -136,9 +156,81 @@ function startTimer() {
             showResults();
         }
         document.querySelector('.timer-text').innerText = GameState.timer;
-        let offset = 113 - (113 * (GameState.timer / 90));
+        let offset = 113 - (113 * (GameState.timer / GameState.maxTimer));
         progress.style.strokeDashoffset = offset;
     }, 1000);
+}
+
+function startCountdown() {
+    const overlay = document.getElementById('countdown-overlay');
+    const numEl = document.getElementById('countdown-number');
+    const skipBtn = document.getElementById('skip-countdown-btn');
+
+    if (!overlay || !numEl) return;
+
+    const updateMaskPosition = () => {
+        const controls = document.querySelector('.chroma-controls');
+        const firstBlock = document.getElementById('block-0');
+        if (!controls || !firstBlock) return;
+
+        const controlsRect = controls.getBoundingClientRect();
+        const firstBlockRect = firstBlock.getBoundingClientRect();
+
+        overlay.style.setProperty('--controls-h', `${controlsRect.height}px`);
+
+        const isVertical = window.innerWidth <= 768;
+        if (isVertical) {
+            overlay.style.setProperty('--mask-top', `${firstBlockRect.bottom}px`);
+            overlay.style.setProperty('--mask-left', `0px`);
+        } else {
+            // Include header height (firstBlockRect.top usually begins right below header)
+            overlay.style.setProperty('--mask-top', `${firstBlockRect.top}px`);
+            overlay.style.setProperty('--mask-left', `${firstBlockRect.right}px`);
+        }
+        overlay.style.setProperty('--mask-bottom', `${controlsRect.height}px`);
+    };
+
+    updateMaskPosition();
+    window.addEventListener('resize', updateMaskPosition);
+    GameState._maskResizeHandler = updateMaskPosition;
+
+
+    // Synchronize header timer to show the upcoming game's duration
+    document.querySelector('.timer-text').innerText = GameState.timer;
+    const progress = document.querySelector('.timer-progress');
+    progress.style.strokeDashoffset = 113; // Reset to full
+
+    GameState.countdown = 5;
+    numEl.innerText = GameState.countdown;
+    overlay.classList.remove('hidden');
+
+    if (GameState.countdownInterval) clearInterval(GameState.countdownInterval);
+
+    skipBtn.onclick = skipCountdown;
+
+    GameState.countdownInterval = setInterval(() => {
+        GameState.countdown--;
+        if (GameState.countdown <= 0) {
+            skipCountdown();
+        } else {
+            numEl.innerText = GameState.countdown;
+        }
+    }, 1000);
+}
+
+function skipCountdown() {
+    const overlay = document.getElementById('countdown-overlay');
+    if (overlay) overlay.classList.add('hidden');
+    if (GameState.countdownInterval) {
+        clearInterval(GameState.countdownInterval);
+        GameState.countdownInterval = null;
+    }
+    if (GameState._maskResizeHandler) {
+        window.removeEventListener('resize', GameState._maskResizeHandler);
+        GameState._maskResizeHandler = null;
+    }
+    selectBlock(1);
+    startTimer();
 }
 
 // ... drawColorWheel, updateBlocksUI, selectBlock, updateControlsFromState, setupEvents, handleWheel, renderResultGraph ...
@@ -365,8 +457,8 @@ function setupEvents() {
         if (retryBtn) {
             retryBtn.onclick = () => {
                 resultOverlay.classList.add('hidden');
-                GameState.timer = 90;
-                updateBlocksUI(); drawColorWheel(); startTimer();
+                GameState.timer = GameState.maxTimer;
+                updateBlocksUI(); drawColorWheel(); startCountdown();
             };
         }
 
@@ -732,10 +824,10 @@ function showResults() {
         setVal('delta-val', (1.0 - (finalScore / 100)).toFixed(2));
 
         const resultDesc = document.querySelector('.result-desc');
-        if (finalScore > 92) resultDesc.innerText = "You're a Chroma Master";
-        else if (finalScore > 80) resultDesc.innerText = "You're a Theory Expert";
-        else if (finalScore >= 40) resultDesc.innerText = "You're a Color Enthusiast";
-        else resultDesc.innerText = "You're a Noob";
+        if (finalScore >= 90) resultDesc.innerText = "Color genius. You see the spectrum others miss.";
+        else if (finalScore >= 80) resultDesc.innerText = "You know your hues. Impressive.";
+        else if (finalScore >= 50) resultDesc.innerText = "Solid eye for color. Keep going.";
+        else resultDesc.innerText = "Everyone starts somewhere. Try again?";
 
         renderResultGraph();
         resultOverlay.classList.remove('hidden');

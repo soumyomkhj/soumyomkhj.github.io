@@ -175,6 +175,23 @@
             </div>
         </header>
 
+        <div id="countdown-overlay" class="countdown-overlay hidden">
+            <div id="stage-mask" class="stage-mask">
+                <div class="countdown-content">
+                    <div class="countdown-instruction">
+                        <div class="instruction-arrow"></div>
+                        <div class="instruction-text">
+                            <h2>CREATE THE PALETTE FROM THIS COLOR</h2>
+                            <p>GAME STARTS IN <span id="countdown-number">5</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="controls-mask">
+                <button id="skip-countdown-btn" class="view-btn btn-primary skip-btn">Start Now</button>
+            </div>
+        </div>
+
         <main class="chroma-stage" id="chroma-stage">
             <!-- Dynamically injected by initGame() -->
         </main>

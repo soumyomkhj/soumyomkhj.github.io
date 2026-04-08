@@ -211,7 +211,7 @@ body.game-active .ui-frame {
     height: 64px;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(20px);
-    z-index: 150;
+    z-index: 1010; /* Above countdown overlay (1000) */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -660,6 +660,159 @@ body.game-active .ui-frame {
     opacity: 0 !important;
 }
 
+/* Countdown Overlay UI Refinement */
+.countdown-overlay {
+    --controls-h: 180px;
+    --mask-top: 64px;
+    --mask-left: 0px;
+    --mask-bottom: 180px;
+    
+    position: absolute;
+    inset: 0;
+    z-index: 1000;
+    pointer-events: auto;
+    transition: none; /* Instant IN */
+}
+
+.countdown-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Fade OUT */
+}
+
+/* Stage Mask: Grayscale + Tint exactly over non-locked blocks */
+.stage-mask {
+    position: absolute;
+    top: var(--mask-top);
+    left: var(--mask-left);
+    right: 0;
+    bottom: var(--mask-bottom);
+    backdrop-filter: grayscale(1);
+    background: rgba(255, 255, 255, 0.6);
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Controls Mask: Covers the footer totally */
+.controls-mask {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--controls-h);
+    background: var(--game-bg);
+    border-top: 1px solid var(--frame-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+}
+
+.countdown-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 40px;
+    z-index: 1002;
+    pointer-events: none;
+}
+
+.countdown-instruction {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.instruction-arrow {
+    width: 320px;
+    height: 1.5px;
+    background: #000;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Desktop: pointing LEFT */
+.instruction-arrow::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border-left: 2px solid #000;
+    border-top: 2px solid #000;
+    transform: rotate(-45deg);
+}
+
+.instruction-text {
+    pointer-events: auto;
+}
+
+.instruction-text h2 {
+    font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1;
+    margin: 0;
+    color: #000;
+    max-width: 400px;
+    letter-spacing: -0.02em;
+}
+
+.instruction-text p {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+#countdown-number {
+    font-weight: 800;
+    color: #000;
+}
+
+.skip-btn {
+    min-width: 220px;
+    padding: 16px 32px;
+    border-radius: 4px;
+    font-size: 14px;
+    pointer-events: auto;
+}
+
+/* Response Arrow & Layout for Mobile */
+@media (max-width: 768px) {
+    .countdown-instruction {
+        flex-direction: column; /* Arrow above text */
+        text-align: center;
+        gap: 24px;
+    }
+
+    .instruction-arrow {
+        width: 1.5px;
+        height: 160px;
+        background: #000;
+    }
+
+    /* Mobile: pointing UP */
+    .instruction-arrow::after {
+        top: 0;
+        left: 50%;
+        border-left: 2px solid #000;
+        border-top: 2px solid #000;
+        border-bottom: none;
+        transform: translateX(-50%) rotate(45deg);
+    }
+
+    .instruction-text h2 {
+        font-size: 1.4rem;
+    }
+}
+
 /* Modal and Graph */
 .result-overlay {
     position: fixed;
@@ -981,7 +1134,7 @@ body.game-active .ui-frame {
         width: 100%;
         top: 0;
         left: 0;
-        z-index: 200;
+        z-index: 1010; /* Above countdown overlay (1000) */
         height: auto;
     }
 
