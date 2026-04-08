@@ -146,6 +146,9 @@ function initGame() {
             handle: '.drag-handle',
             animation: 150,
             filter: '.locked',
+            delay: 200,              // Hold 200ms before drag starts on touch
+            delayOnTouchOnly: true,  // Desktop remains instant
+            touchStartThreshold: 5,  // Tolerance in px before drag commits
             onMove: function (evt) {
                 return evt.related.className.indexOf('locked') === -1;
             },
