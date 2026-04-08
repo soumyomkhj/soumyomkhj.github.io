@@ -289,7 +289,7 @@ body.game-active .ui-frame {
 }
 
 .timer-text {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     font-variation-settings: "wdth" 60;
@@ -421,11 +421,8 @@ body.game-active .ui-frame {
     cursor: grab;
 }
 
-/* Only show drag handle on hover for real pointer devices (not touch) */
-@media (hover: hover) {
-    .color-block.editable:hover .drag-handle {
-        opacity: 0.5;
-    }
+.color-block.editable:hover .drag-handle {
+    opacity: 0.5;
 }
 
 .color-block.active .drag-handle {
@@ -737,7 +734,7 @@ body.game-active .ui-frame {
 }
 
 .instruction-arrow {
-    width: 30vw;
+    width: 320px;
     height: 2px;
     background: #000;
     position: relative;
@@ -795,7 +792,7 @@ body.game-active .ui-frame {
 /* Response Arrow & Layout for Mobile */
 @media (max-width: 768px) {
     .countdown-instruction {
-        margin-top: -5vh;
+        margin-top: -24px;
         flex-direction: column;
         /* Arrow above text */
         text-align: center;
@@ -804,7 +801,7 @@ body.game-active .ui-frame {
 
     .instruction-arrow {
         width: 2px;
-        height: 15vh;
+        height: 160px;
         background: #000;
     }
 
@@ -1237,21 +1234,9 @@ body.game-active .ui-frame {
 
     .drag-handle {
         top: 50%;
-        left: 20px;
+        left: 32px;
         transform: translateY(-50%) rotate(0deg);
         /* Vertical arrow */
-        /* Keep tap target 36×36 but make the icon visually small */
-        width: 36px;
-        height: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .drag-handle svg {
-        width: 8px;
-        height: auto;
-        pointer-events: none;
     }
 
     .edit-badge>svg {
