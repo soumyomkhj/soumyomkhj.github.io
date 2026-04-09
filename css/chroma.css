@@ -792,7 +792,6 @@ body.game-active .ui-frame {
 /* Response Arrow & Layout for Mobile */
 @media (max-width: 768px) {
     .countdown-instruction {
-        margin-top: -24px;
         flex-direction: column;
         /* Arrow above text */
         text-align: center;
@@ -801,7 +800,7 @@ body.game-active .ui-frame {
 
     .instruction-arrow {
         width: 2px;
-        height: 160px;
+        height: 15vh;
         background: #000;
     }
 
