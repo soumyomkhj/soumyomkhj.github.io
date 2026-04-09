@@ -192,33 +192,65 @@ function initGame() {
     if (schemeEl) schemeEl.innerText = `${schemeName.toUpperCase()}`;
 }
 
+function playBeep(freq = 440, duration = 0.1) {
+    try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + duration);
+    } catch (e) { /* Audio blocked or not supported */ }
+}
+
 function startTimer() {
     if (GameState.interval) clearInterval(GameState.interval);
 
     const timerEl = document.querySelector('.timer-text');
-    // Store as centiseconds internally (e.g. 9000 for 90s)
-    let cs = Math.round(GameState.timer * 100);
-    const maxCs = cs;
-
-    const fmt = (centisecs) => {
-        const secs = centisecs / 100;
-        return secs.toFixed(2);
+    timerEl.style.color = ''; // Reset color
+    
+    // Use deciseconds for 1 decimal point precision
+    let ds = Math.round(GameState.timer * 10);
+    
+    const fmt = (decisecs) => {
+        return (decisecs / 10).toFixed(1);
     };
 
-    timerEl.innerText = fmt(cs);
+    timerEl.innerText = fmt(ds);
+
+    let lastBeep = -1;
 
     GameState.interval = setInterval(() => {
-        cs--;
-        if (cs <= 0) {
-            cs = 0;
-            timerEl.innerText = '0.00';
+        ds--;
+        
+        if (ds <= 0) {
+            ds = 0;
+            timerEl.innerText = '0.0';
             clearInterval(GameState.interval);
             showResults();
             return;
         }
-        GameState.timer = cs / 100;
-        timerEl.innerText = fmt(cs);
-    }, 10);
+
+        const secs = ds / 10;
+        GameState.timer = secs;
+        timerEl.innerText = fmt(ds);
+
+        // Visual alert for last 10 seconds
+        if (secs <= 10) {
+            timerEl.style.color = '#C66060';
+        }
+
+        // 3 beeps for last 3 seconds (3.0, 2.0, 1.0)
+        if (secs <= 3 && secs > 0 && Number.isInteger(secs) && secs !== lastBeep) {
+            playBeep(440, 0.08); // Higher pitch, short beep
+            lastBeep = secs;
+        }
+    }, 100);
 }
 
 function startCountdown() {
@@ -256,7 +288,11 @@ function startCountdown() {
 
 
     // Synchronize header timer to show the upcoming game's duration
-    document.querySelector('.timer-text').innerText = GameState.timer.toFixed(2);
+    const timerText = document.querySelector('.timer-text');
+    if (timerText) {
+        timerText.innerText = GameState.timer.toFixed(1);
+        timerText.style.color = ''; // Ensure normal color during countdown
+    }
 
     GameState.countdown = 10;
     numEl.innerText = GameState.countdown;
