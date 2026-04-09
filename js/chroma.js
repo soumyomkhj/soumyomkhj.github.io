@@ -801,7 +801,10 @@ function calculateHueScore(playerColors, seedColor, scheme) {
     const avgCohesion = playerColors.length > 0 ? (totalHueCohesion.reduce((a, b) => a + b, 0) / playerColors.length) : 0;
     const discordancePenalty = Math.pow(0.4, discordanceCount); // 60% drop per alien color
 
-    return (avgCohesion * discordancePenalty) * 60.0;
+    return {
+        score: (avgCohesion * discordancePenalty) * 60.0,
+        discordanceCount: discordanceCount
+    };
 }
 
 function getBestMatch(colors) {
@@ -811,20 +814,22 @@ function getBestMatch(colors) {
 
     Object.keys(SCHEMES).forEach(key => {
         const scheme = SCHEMES[key];
-        const hScore = calculateHueScore(players, seed, scheme);
+        const hRes = calculateHueScore(players, seed, scheme);
         const sSL = calculateSLScore(players, seed, key === 'MONOCHROMATIC');
         const pU = checkUniquenessPenalty(colors);
 
-        const weighted = Math.min(100, (hScore + sSL) * pU);
+        const weighted = Math.min(100, (hRes.score + sSL) * pU);
 
         if (weighted > best.score) {
             best = {
                 key: key,
                 score: weighted,
-                hueAccuracy: Math.round((hScore / 60) * 100),
+                hueAccuracy: Math.round((hRes.score / 60) * 100),
                 slHarmony: Math.round((sSL / 40) * 100),
                 name: scheme.name,
-                rawHScore: hScore // Internal for classification tie-break
+                pU: pU,
+                discordanceCount: hRes.discordanceCount,
+                rawHScore: hRes.score
             };
         }
     });
@@ -887,9 +892,8 @@ function checkUniquenessPenalty(colors) {
 function showResults() {
     try {
         const best = getBestMatch(GameState.colors);
+        const { hueAccuracy, slHarmony, pU, discordanceCount } = best;
         const finalScore = best.score.toFixed(1);
-        const hueAccuracy = best.hueAccuracy;
-        const slHarmony = best.slHarmony;
 
         const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
         const setStyle = (id, prop, val) => { const el = document.getElementById(id); if (el) el.style[prop] = val; };
@@ -917,11 +921,26 @@ function showResults() {
         setVal('meta-score', (finalScore / 100).toFixed(4));
         setVal('delta-val', (1.0 - (finalScore / 100)).toFixed(2));
 
+        let feedback = "";
+
+        if (finalScore >= 50) {
+            if (finalScore >= 90) feedback = "Vibe check: Elite. You're seeing the spectrum on a whole different level. 💎";
+            else if (discordanceCount > 0) feedback = "Tight palette, but some of these colors are crashing the party. Keep it harmonious. ⚡";
+            else if (hueAccuracy >= 80 && slHarmony < 70) feedback = "Hue placement is cracked, but your saturation and lighting are doing their own thing. 🌈";
+            else if (slHarmony >= 80 && hueAccuracy < 70) feedback = "Light and saturation are on point, but your hues drifted off-frequency. 🔊";
+            else if (pU < 1.0) feedback = "Solid vibes, but those twin-like colors are killing the depth. Mix it up! 🌀";
+            else feedback = "You're catchin' the rhythm. Sharpen those edges and you'll be unstoppable. 🚀";
+        } else {
+            // Score < 50: Constructive "what went bad"
+            if (discordanceCount > 0) feedback = "Absolute chaos. Some of these shades are on a completely different planet. 🪐";
+            else if (pU < 1.0) feedback = "Too many clones. Give each block its own soul to juice that score. 👻";
+            else if (hueAccuracy < 50 && slHarmony < 50) feedback = "The connection is lost. Hues are misaligned and tones are out of sync. 📡";
+            else if (hueAccuracy < 50) feedback = "Hues are way off-base. The harmony is asking for a different frequency. 🎼";
+            else feedback = "The vibe is flat—saturation and lighting aren't vibing with the seed. ☁️";
+        }
+
         const resultDesc = document.querySelector('.result-desc');
-        if (finalScore >= 90) resultDesc.innerText = "Color genius. You see the spectrum others miss.";
-        else if (finalScore >= 80) resultDesc.innerText = "You know your hues. Impressive.";
-        else if (finalScore >= 50) resultDesc.innerText = "Solid eye for color. Keep going.";
-        else resultDesc.innerText = "Everyone starts somewhere. Try again?";
+        if (resultDesc) resultDesc.innerText = feedback;
 
         renderResultGraph();
         resultOverlay.classList.remove('hidden');
