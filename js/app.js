@@ -577,8 +577,7 @@ const App = {
     },
 
     setupInteractiveCanvas() {
-        const containers = document.querySelectorAll('.dotted-bg');
-        containers.forEach(el => new InteractiveGrid(el));
+        // Dot canvas grids replaced with continuous Three.js 3D universe
     }
 };
 
@@ -671,31 +670,46 @@ class InteractiveGrid {
             this.resize();
         });
 
-        if (!this.isMobile) {
-            this.triggerEl.addEventListener('mousemove', (e) => {
+        // Desktop and tablet mouse tracking
+        this.triggerEl.addEventListener('mousemove', (e) => {
+            const rect = this.canvas.getBoundingClientRect();
+            this.mouse.x = e.clientX - rect.left;
+            this.mouse.y = e.clientY - rect.top;
+            this.mouse.active = true;
+            this.startLoop();
+        });
+
+        this.triggerEl.addEventListener('mouseleave', () => {
+            this.mouse.active = false;
+        });
+
+        // Touch & tap tracking on mobile
+        this.triggerEl.addEventListener('touchmove', (e) => {
+            if (e.touches && e.touches[0]) {
                 const rect = this.canvas.getBoundingClientRect();
-                this.mouse.x = e.clientX - rect.left;
-                this.mouse.y = e.clientY - rect.top;
+                this.mouse.x = e.touches[0].clientX - rect.left;
+                this.mouse.y = e.touches[0].clientY - rect.top;
                 this.mouse.active = true;
                 this.startLoop();
-            });
-
-            this.triggerEl.addEventListener('mouseleave', () => {
-                this.mouse.active = false;
-            });
-        } else {
-            // Scroll velocity tracking for slosh
-            const wrapper = document.getElementById('scroll-wrapper');
-            if (wrapper) {
-                let lastY = wrapper.scrollTop;
-                wrapper.addEventListener('scroll', () => {
-                    const currentY = wrapper.scrollTop;
-                    this.scroll.vel = (currentY - lastY) * 0.02;
-                    lastY = currentY;
-                    this.startLoop();
-                });
             }
-        }
+        }, { passive: true });
+
+        this.triggerEl.addEventListener('touchend', () => {
+            this.mouse.active = false;
+        }, { passive: true });
+
+        // Scroll velocity & displacement tracking for both desktop and mobile slosh
+        const wrapper = document.getElementById('scroll-wrapper');
+        const scrollTarget = wrapper || window;
+        let lastScrollY = wrapper ? wrapper.scrollTop : window.scrollY;
+
+        scrollTarget.addEventListener('scroll', () => {
+            const currentY = wrapper ? wrapper.scrollTop : window.scrollY;
+            const delta = currentY - lastScrollY;
+            this.scroll.vel = Math.max(-25, Math.min(25, delta * 0.08));
+            lastScrollY = currentY;
+            this.startLoop();
+        }, { passive: true });
 
         this.triggerEl.addEventListener('click', (e) => {
             const rect = this.canvas.getBoundingClientRect();
@@ -754,34 +768,42 @@ class InteractiveGrid {
         }
 
         // Decay scroll velocity
-        if (this.isMobile) {
-            this.scroll.vel *= 0.92;
-            if (Math.abs(this.scroll.vel) < 0.01) this.scroll.vel = 0;
-            else needsUpdate = true;
-        }
+        this.scroll.vel *= 0.92;
+        if (Math.abs(this.scroll.vel) < 0.01) this.scroll.vel = 0;
+        else needsUpdate = true;
 
         for (let p of this.points) {
             let forceX = 0, forceY = 0;
             let distToMouse = 9999;
 
-            if (!this.isMobile && this.mouse.active) {
+            // Mouse or direct touch interaction
+            if (this.mouse.active) {
                 let dx = this.mouse.x - p.ox;
                 let dy = this.mouse.y - p.oy;
                 distToMouse = Math.sqrt(dx * dx + dy * dy);
 
                 if (distToMouse < this.mouseRadius) {
                     let pull = Math.pow((this.mouseRadius - distToMouse) / this.mouseRadius, 2);
-                    forceX += dx * pull * 0.02;
-                    forceY += dy * pull * 0.02;
+                    forceX += dx * pull * 0.025;
+                    forceY += dy * pull * 0.025;
                     needsUpdate = true;
                 }
-            } else if (this.isMobile && requiresGyroRedraw) {
-                forceX += forceX_global * 0.15;
-                forceY += forceY_global * 0.15;
+            }
+
+            // Scroll displacement (slosh on scroll for desktop and mobile)
+            if (Math.abs(this.scroll.vel) > 0.01) {
+                forceY += this.scroll.vel * (this.isMobile ? 0.35 : 0.2);
+                needsUpdate = true;
+            }
+
+            // Gyroscope tilt and motion
+            if (this.isMobile && requiresGyroRedraw) {
+                forceX += forceX_global * 0.2;
+                forceY += forceY_global * 0.2;
 
                 // Add velocity-based inertial slosh (Lag/Overshoot)
                 forceX += this.gyro.vgy * 0.35;
-                forceY += (this.gyro.vbx * 0.35) + (this.scroll.vel * 0.25);
+                forceY += this.gyro.vbx * 0.35;
 
                 needsUpdate = true;
             }
@@ -815,10 +837,10 @@ class InteractiveGrid {
             let size = this.isMobile ? 0.8 : 1.5; // Smaller dots on mobile
             let opacity = 0.1;
 
-            if (!this.isMobile && distToMouse < this.mouseRadius) {
+            if (distToMouse < this.mouseRadius) {
                 let shine = (this.mouseRadius - distToMouse) / this.mouseRadius;
                 size += shine * 0.5;
-                opacity += shine * 0.2;
+                opacity += shine * 0.25;
             } else if (this.isMobile && requiresGyroRedraw) {
                 let normX = (p.ox - this.width / 2) / (this.width / 2 || 1);
                 let normY = (p.oy - this.height / 2) / (this.height / 2 || 1);

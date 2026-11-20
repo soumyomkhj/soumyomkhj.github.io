@@ -604,7 +604,43 @@ main {
 }
 
 .dotted-bg {
-    background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1.5" fill="%23ebd9cd" opacity="0.1"/></svg>');
+    background-image: none !important;
+}
+
+/* Global 3D Three.js canvas */
+.three-global-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Ensure all interactive sections have translucent backgrounds so the continuous 3D field shines through */
+.case-card-content {
+    background: rgba(26, 40, 44, 0.45);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    position: relative;
+    z-index: 1;
+}
+
+.case-text-wrap,
+.case-card-content .view-btn {
+    position: relative;
+    z-index: 2;
+}
+
+.project-dots {
+    display: none;
+}
+
+.project-card:hover .project-bg,
+.project-card.active .project-bg {
+    filter: saturate(0.85);
+    opacity: 0.85;
 }
 
 /* Hero */
@@ -635,6 +671,28 @@ main {
 
 .hero-desc-container {
     padding: 60px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-desc-container.has-three-hero {
+    background-image: none !important;
+}
+
+.hero-desc-container .three-hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-desc-container .hero-desc {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 14px rgba(26, 40, 44, 0.7);
 }
 
 .hero-desc {
@@ -895,7 +953,7 @@ main {
     right: 0;
     bottom: 0;
     opacity: 0;
-    transition: 0.5s;
+    transition: opacity 0.4s ease;
     pointer-events: none;
     z-index: 3;
 }
@@ -903,6 +961,13 @@ main {
 .project-card:hover .project-dots,
 .project-card.active .project-dots {
     opacity: 1;
+}
+
+@media (max-width: 1024px) {
+    /* Always show the dot lattice subtly on touch devices so gyro/scroll tilt is experienced without hover */
+    .project-dots {
+        opacity: 0.65;
+    }
 }
 
 .project-overlay {
